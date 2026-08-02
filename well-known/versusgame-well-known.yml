@@ -1,0 +1,47 @@
+generated: '2026-08-02'
+method: probed
+source: live GET of /.well-known/* on every VersusGame host
+summary: >-
+  No /.well-known/ discovery document is published on any VersusGame host. The API host
+  (api.versusgame.com) is a NestJS service that returns a JSON 404 envelope for every
+  /.well-known/ path. The marketing site (www.versusgame.com, Webflow) answers every
+  /.well-known/ path with an HTML page reading "Invalid .well-known request" under HTTP 404.
+  The SPA hosts (minigames.versusgame.com, admin.versusgame.com) return HTTP 200 with an
+  HTML application shell for ANY path, so their 200s are catch-all false positives, not
+  documents - they are recorded here as html-catch-all and were NOT accepted.
+hosts:
+- host: https://api.versusgame.com
+  server: NestJS (JSON 404 envelope)
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://www.versusgame.com
+  server: Webflow
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/apple-app-site-association, status: 404}
+  - {path: /.well-known/assetlinks.json, status: 404}
+- host: https://minigames.versusgame.com
+  server: single-page app (catch-all 200)
+  documents:
+  - {path: /.well-known/agent-card.json, status: 200, result: html-catch-all, accepted: false}
+  - {path: /.well-known/agent.json, status: 200, result: html-catch-all, accepted: false}
+  - {path: /.well-known/security.txt, status: 200, result: html-catch-all, accepted: false}
+- host: https://admin.versusgame.com
+  server: single-page app (Versus Admin Console, catch-all 200)
+  documents:
+  - {path: /.well-known/agent-card.json, status: 200, result: html-catch-all, accepted: false}
+  - {path: /.well-known/agent.json, status: 200, result: html-catch-all, accepted: false}
+  - {path: /.well-known/security.txt, status: 200, result: html-catch-all, accepted: false}
+documents_found: 0
+x-note: >-
+  No WellKnown / SecurityTxt / APICatalog pointer is wired in apis.yml, because nothing was
+  found. This file is the negative-result record of the probe, not a discovery surface.

@@ -1,0 +1,74 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/versusgame-openapi-original.json + the VersusGame public surface
+summary: >-
+  VersusGame publishes no compliance program, certification list or trust center. The assertions
+  below are derived from what the OpenAPI document and the live API actually declare. No
+  `Compliance` pointer is wired in apis.yml, because no compliance posture is published.
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 'live document at https://api.versusgame.com/api-json declares openapi: 3.0.0 with 190 paths / 239 operations'
+- id: oauth2-authorization-server
+  conforms: false
+  evidence: no oauth2 securityScheme is declared; VersusGame issues its own JWTs from /auth/login
+- id: oauth2-client
+  conforms: true
+  evidence: 'OAuth 2.0 authorization-code login against Apple, Google, Facebook and Microsoft (/auth/{provider} + /auth/{provider}/callback)'
+  note: VersusGame is the relying party, not the authorization server.
+- id: openid-connect-discovery
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on api.versusgame.com
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: false
+  evidence: /.well-known/oauth-authorization-server returns 404
+- id: rfc6750-bearer-token
+  conforms: true
+  evidence: 'securityScheme access-token is type http, scheme bearer, bearerFormat JWT'
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use the NestJS '{message,error,statusCode}' envelope; no application/problem+json media type appears in the document
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on every VersusGame host
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no Sunset or Deprecation header is documented; no operation is flagged deprecated
+- id: idempotency-key
+  conforms: true
+  partial: true
+  evidence: 'required x-idempotency-key header on 10 write operations, idempotencyKey query parameter on 2 more'
+  note: >-
+    Not the IETF draft-ietf-httpapi-idempotency-key-header field name (Idempotency-Key); VersusGame
+    uses the x- prefixed variant, and splits the same semantic across a header and a query parameter.
+- id: json-api
+  conforms: false
+  evidence: plain JSON resource representations; no JSON:API media type or document structure
+- id: rfc8615-well-known-uris
+  conforms: false
+  evidence: no /.well-known/ document is served on any host
+- id: a2a-agent-card
+  conforms: false
+  evidence: '/.well-known/agent-card.json and /.well-known/agent.json return 404 (api, www) or an HTML catch-all (SPA hosts)'
+- id: asyncapi
+  conforms: false
+  applicable: false
+  evidence: >-
+    No consumer-facing event surface exists. The two /v1/payments/callback/* operations are inbound
+    callbacks received FROM Stripe and GCOW, not outbound webhooks VersusGame delivers to
+    integrators, and notifications are polled via GET /v1/notifications.
+- id: pci-dss
+  conforms: unknown
+  evidence: >-
+    Card payments are delegated to Stripe (PaymentsController_create, /v1/payments/callback/stripe,
+    StripeEntity); no cardholder data field appears in the API. VersusGame publishes no PCI attestation.
+- id: soc2
+  conforms: unknown
+  evidence: no trust center or certification page found (trust.versusgame.com does not resolve)
+- id: gdpr
+  conforms: partial
+  evidence: >-
+    A published privacy policy (https://www.versusgame.com/privacy) and a data-preferences page
+    (https://www.versusgame.com/data-preferences); the API exposes personal-information read/update
+    (PersonalController_byId, PersonalController_update) and a deletedAt field on UserEntity. No
+    formal GDPR/DPA statement or DPO contact was found.

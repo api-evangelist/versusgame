@@ -1,0 +1,24 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/versusgame-openapi-original.json
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: access-token
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Enter the bearer token below (do not include 'Bearer')
+  sources:
+  - openapi/versusgame-openapi-original.json
+- name: x-api-key
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: API Key For External calls
+  sources:
+  - openapi/versusgame-openapi-original.json

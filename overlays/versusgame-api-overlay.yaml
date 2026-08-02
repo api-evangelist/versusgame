@@ -1,0 +1,82 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Versusgame API
+  version: 1.0.0
+x-generated: '2026-08-02'
+x-method: generated
+x-source: openapi/versusgame-openapi-original.json
+x-note: >-
+  This overlay records API Evangelist's enhancements to the harvested Versusgame API document. It
+  never mutates openapi/versusgame-openapi-original.json, which is the verbatim document served at
+  https://api.versusgame.com/api-json. Every target below is a real construct in that document.
+extends: openapi/versusgame-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-harvested: '2026-08-02'
+    x-apievangelist-source: https://api.versusgame.com/api-json
+    x-apievangelist-provider: versusgame
+    contact:
+      name: VersusGame
+      url: https://www.versusgame.com/
+    termsOfService: https://www.versusgame.com/terms
+    x-apievangelist-privacy-policy: https://www.versusgame.com/privacy
+- target: $
+  update:
+    servers:
+    - url: https://api.versusgame.com
+      description: >-
+        Production. Added by API Evangelist - the harvested document ships an empty servers array,
+        so no generated client can resolve a base URL without this.
+- target: $.info
+  update:
+    x-apievangelist-conventions:
+      idempotency:
+        header: x-idempotency-key
+        alternate_query_parameter: idempotencyKey
+        required: true
+        operations: 12
+        artifact: conventions/versusgame-conventions.yml
+      pagination:
+        styles: [limit/offset, limit/skip, cursor, start]
+        artifact: conventions/versusgame-conventions.yml
+      versioning:
+        scheme: uri-path
+        tiers: [unversioned, v1, v2]
+        artifact: lifecycle/versusgame-lifecycle.yml
+      errors:
+        envelope: '{message, error, statusCode}'
+        problem_json: false
+        artifact: errors/versusgame-problem-types.yml
+- target: $.info
+  update:
+    x-apievangelist-gaps:
+    - id: no-servers
+      severity: high
+      detail: 'servers[] is empty in the harvested document; the real base URL is https://api.versusgame.com.'
+    - id: no-operation-summaries
+      severity: high
+      detail: 220 of 239 operations carry no summary, and 229 carry no description.
+    - id: nestjs-operationids
+      severity: medium
+      detail: >-
+        operationIds are framework-generated controller names (GamesCreatorController_findAll), not
+        stable semantic ids; they leak internal class structure and change when a controller is renamed.
+    - id: undeclared-errors
+      severity: high
+      detail: >-
+        222 of 239 operations declare no 4xx/5xx response, and the real NestJS error envelope is not
+        modelled in components.schemas.
+    - id: sparse-examples
+      severity: medium
+      detail: >-
+        18 schema-level `example` values appear across 286 component schemas; no operation declares a
+        request or response example.
+    - id: admin-surface-in-public-document
+      severity: medium
+      detail: >-
+        /v1/admin/*, /superadmin/* and /internal/* operations are published in the same anonymously
+        readable document as the consumer surface.
+    - id: dual-idempotency-carrier
+      severity: low
+      detail: the same idempotency semantic is carried by a header on 10 operations and a query parameter on 2.

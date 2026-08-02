@@ -1,23 +1,116 @@
 aid: versusgame
 name: VersusGame
-description: 'VersusGame is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  VersusGame (branded "Versus") is an interactive gaming and audience-engagement company whose AI
+  content-gamification engine turns publisher articles, live broadcasts and on-demand video into embeddable
+  prediction games. Its flagship MiniGames product drops contextual, content-native games into partner sites
+  via embed widgets, and its VersusLM AI system generates prediction games from arbitrary media. The platform
+  layers real-time prediction, social competition, leaderboards, virtual wallets, coin/ticket economies, prize
+  payouts and contextual "seamless ads" on top of partner content to drive longer sessions, repeat visits and
+  incremental revenue. A single production REST API at api.versusgame.com exposes 239 operations across game
+  creation, gameplays, gamesets, leaderboards, widgets, creators, playlists, wallets, ledger, payments/payouts
+  and an autogame AI pipeline. Publicly named partners include ABC, Microsoft, Disney, BuzzFeed, Billboard,
+  ESPN and UFC.
+image: https://cdn.prod.website-files.com/661e9580f882ac357a892420/667c9c7ef8960c14de4190b9_Versus-Favicon-256.png
 url: https://raw.githubusercontent.com/api-evangelist/versusgame/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
 - Company
-apis: []
+- gaming
+- prediction-games
+- audience-engagement
+- gamification
+- media-and-entertainment
+- publishing
+- widgets
+- leaderboards
+- creator-economy
+- ai-content-generation
+- payments
+apis:
+- name: Versusgame API
+  description: >-
+    Production REST API for the Versus interactive gaming platform. 239 operations across 190 paths covering
+    authentication (email/password plus Apple, Google, Facebook and Microsoft social login), games and gameplays,
+    gamesets and gameset plays, leaderboards and prize awards, creator tooling (games, playlists, widgets, custom
+    URLs), embeddable widget delivery, categories, products, assets, keyframes, wallets and ledger, Stripe and
+    GCOW payments/payouts, meter ads, partner domains, notifications, profiles and personal information, plus the
+    "autogame" AI pipeline (article ingestion, OpenAI chat completions, Google search, ElevenLabs/Polly speech,
+    Remotion rendering). Bearer JWT for user/creator/admin calls and an x-api-key header for internal
+    service-to-service calls. Twelve write operations require an x-idempotency-key.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - gaming
+  - prediction-games
+  - gamification
+  - leaderboards
+  - widgets
+  - creator-economy
+  - payments
+  - wallets
+  - ai-content-generation
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-openapi-original.json
+  - type: APIReference
+    url: https://api.versusgame.com/api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/versusgame-agentic-access.yml
+- type: DomainSecurity
+  url: security/versusgame-domain-security.yml
+- type: Authentication
+  url: authentication/versusgame-authentication.yml
+- type: Conventions
+  url: conventions/versusgame-conventions.yml
+- type: Idempotency
+  url: conventions/versusgame-conventions.yml
+- type: ErrorCatalog
+  url: errors/versusgame-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/versusgame-lifecycle.yml
+- type: Conformance
+  url: conformance/versusgame-conformance.yml
+- type: DataModel
+  url: data-model/versusgame-data-model.yml
+- type: Components
+  url: components/versusgame-components.yml
+- type: Packages
+  url: packages/versusgame-packages.yml
+- type: Overlay
+  url: overlays/versusgame-api-overlay.yaml
+- type: LLMsTxt
+  url: llms/versusgame-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
 - type: Website
+  url: https://www.versusgame.com/
+- type: TermsOfService
+  url: https://www.versusgame.com/terms
+- type: PrivacyPolicy
+  url: https://www.versusgame.com/privacy
+- type: Contact
+  url: https://www.versusgame.com/forms/form-01
+- type: GitHubOrganization
+  url: https://github.com/VersusGame
+- type: LinkedIn
+  url: https://www.linkedin.com/company/versusgame
+- type: Crunchbase
+  url: https://www.crunchbase.com/organization/versusgame
+- type: SecondaryMarket
   url: https://forgeglobal.com/versusgame_stock/
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1

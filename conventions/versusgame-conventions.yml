@@ -1,0 +1,130 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/versusgame-openapi-original.json (plus live probes of https://api.versusgame.com)
+summary: >-
+  Cross-cutting request/response semantics for the Versusgame API, derived from the live OpenAPI
+  3.0.0 document served at https://api.versusgame.com/api-json and from observed responses of the
+  API host. VersusGame publishes no prose developer guide, so every claim below is grounded in a
+  spec construct or an observed HTTP response.
+authentication:
+  styles:
+  - name: access-token
+    type: http bearer
+    bearer_format: JWT
+    header: 'Authorization: Bearer <jwt>'
+    applies_to: user, creator, admin and superadmin operations (approximately 165 of 239 operations)
+    note: >-
+      The scheme description in the spec reads "Enter the bearer token below (do not include
+      'Bearer')" - that is Swagger-UI input guidance; the wire format is a standard Authorization
+      bearer header.
+  - name: x-api-key
+    type: apiKey
+    in: header
+    parameter: x-api-key
+    applies_to: the /internal/* service-to-service operations only (InternalController_userInfo, InternalController_FindUsers)
+  - name: refreshToken
+    type: cookie/token requirement
+    applies_to: AuthController_refresh, AuthController_logout, AuthController_changePassword
+  social_login:
+    protocol: OAuth 2.0 authorization code against third-party identity providers
+    providers: [apple, google, facebook, microsoft]
+    pattern: 'GET /auth/{provider} initiates; GET or POST /auth/{provider}/callback completes'
+    note: VersusGame is the OAuth *client* here. It is not itself an OAuth authorization server, and declares no oauth2 securityScheme.
+  see_also: authentication/versusgame-authentication.yml
+idempotency:
+  supported: true
+  header: x-idempotency-key
+  alternate_parameter: idempotencyKey (query string, on two admin/autogame create operations)
+  required: true
+  scope: per write operation
+  value_type: string (no format constraint declared in the spec)
+  retention: not documented
+  replay_semantics: not documented
+  evidence: openapi/versusgame-openapi-original.json - required parameter on 12 write operations
+  operations:
+  - {operationId: GamesCreatorController_createGame, method: POST, path: /v1/creator/games, carrier: header}
+  - {operationId: GamesAdminController_createGame, method: POST, path: /v1/admin/games, carrier: query}
+  - {operationId: GameplaysController_create, method: POST, path: /v1/gameplays, carrier: header}
+  - {operationId: GameplaysController_claimReward, method: POST, path: '/v1/gameplays/{id}/claim_reward', carrier: header}
+  - {operationId: GameplaysController_cancel, method: DELETE, path: '/v1/gameplays/{id}', carrier: header}
+  - {operationId: PaymentsController_create, method: POST, path: /v1/payments/stripe/create, carrier: header}
+  - {operationId: PaymentsController_gcowPayout, method: POST, path: /v1/payments/payout/gcow, carrier: header}
+  - {operationId: LeaderboardsAdminController_create, method: POST, path: /v1/admin/leaderboards, carrier: header}
+  - {operationId: GamesUserController_gameComplaint, method: POST, path: '/v1/games/{id}/complaint', carrier: header}
+  - {operationId: ArticleController_createGame, method: POST, path: '/autogame/article/drafts/{id}/game_index/{gameIndex}/game', carrier: header}
+  - {operationId: ArticleControllerV2_createGame_v2, method: POST, path: '/v2/autogame/article/drafts/{draftId}/game', carrier: header}
+  - {operationId: AutogameGameController_createGame, method: POST, path: /autogame/game, carrier: query}
+  x-gap: >-
+    Idempotency is genuinely enforced (the key is a *required* parameter, not optional) but the two
+    carriers are inconsistent - ten operations take the x-idempotency-key header and two take an
+    idempotencyKey query parameter for the same semantic. Neither the retention window nor the
+    replay response is documented.
+pagination:
+  styles:
+  - style: limit/offset
+    params: [limit, offset]
+    usage: the dominant style - limit on 35 operations, offset on 19
+  - style: limit/skip
+    params: [limit, skip]
+    usage: 5 operations
+  - style: cursor
+    params: [cursor]
+    usage: 2 operations (GameSetPlaysController_topPlayersForGameSet, GameSetPlaysController_topPlayersForGameSetWithEmails)
+    description_in_spec: The cursor to use for pagination.
+  - style: start marker
+    params: [start]
+    usage: 13 operations
+  sorting: {params: [sort, asc], note: 'sort names the field; asc is the direction flag'}
+  filtering: {params: [search, state, includeState, excludeState, partnerId, creatorId, userId]}
+  response_envelope: >-
+    List responses are typed List* schemas (ListGame, ListWidgets, ListCreator, ...). Only
+    PaginatedMeterAdsDto carries an explicit pagination envelope; the other list schemas do not
+    declare total/next-page fields in the spec.
+  x-gap: four different pagination idioms coexist across one API; no Link header or next-cursor field is declared.
+field_expansion:
+  supported: true
+  params: [expand, _expand]
+  note: >-
+    Both spellings are declared on the same operations (games, widgets, playlists, custom-urls,
+    payout/business - 13 operations each), with per-resource enum schemas (GameExpand,
+    WidgetExpand, PlaylistExpand, CustomUrlExpand, BusinessExpand).
+metadata:
+  supported: true
+  fields: [metadata]
+  note: Game and GameEntity carry a free-form metadata property.
+request_tracing:
+  request_id_header: not declared in the spec
+  x-app-referrer: >-
+    Declared on the two widget-delivery operations (WidgetsController_getWidgetById,
+    WidgetsControllerV2_getWidgetByIdV2) - identifies the embedding partner surface, not a trace id.
+versioning:
+  scheme: uri-path
+  versions_in_use: [unversioned, v1, v2]
+  note: >-
+    The API mixes three shapes in one document - unversioned roots (/auth/*, /autogame/*,
+    /admin/gamesets/*, /gameset/plays/*, /internal/*), a /v1 majority, and a /v2 tier for the
+    article pipeline and widgets. v1 and v2 coexist rather than superseding.
+  see_also: lifecycle/versusgame-lifecycle.yml
+errors:
+  envelope: '{"message": <string|string[]>, "error": <reason phrase>, "statusCode": <int>}'
+  envelope_source: observed live on https://api.versusgame.com (NestJS default exception filter)
+  problem_json: false
+  documented_codes_in_spec: [400, 404, 409, 302]
+  x-gap: >-
+    The error envelope is real and consistent but is not modelled anywhere in the OpenAPI - no error
+    schema exists in components.schemas, and only 17 of 239 operations declare any 4xx response at
+    all. No 401/403/429/5xx responses are declared.
+  see_also: errors/versusgame-problem-types.yml
+rate_limits:
+  documented: false
+  headers: none declared in the spec or observed on responses
+  x-gap: no published rate limit, quota, or 429 contract.
+content_types:
+  request: [application/json, multipart/form-data]
+  response: [application/json]
+localization:
+  supported: true
+  note: >-
+    A Language enum plus a {language} path parameter on all five Legal operations
+    (LegalController_tos, _privacy, _rules, _promotional, _businessServiceTerms) and a language
+    field on Game, Category and UserEntity.

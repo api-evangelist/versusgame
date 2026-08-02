@@ -1,0 +1,60 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/versusgame-openapi-original.json + probes of the VersusGame public surface
+summary: >-
+  VersusGame's core product is an embeddable client-side component - the MiniGames widget that
+  publishers drop into an article or page. The widget delivery surface is visible and real in the
+  API, but VersusGame publishes NO public integration guide, loader library, or embed-code reference:
+  partners are provisioned directly. Everything below is derived from the OpenAPI and from observed
+  hosts; no loader script URL or embed snippet is asserted, because none is published.
+families:
+- name: MiniGames widget
+  kind: embedded interactive component
+  description: >-
+    A content-native prediction game rendered inside a partner page. Publicly documented in press
+    coverage as embed code added to an article (ABC's The Bachelorette, FIBA World Cup, Digital
+    Trends), but the embed snippet itself is not published.
+  provisioning: partner-provisioned by VersusGame; creators manage their own widgets via the creator API
+  api_surface:
+    manage:
+    - {operationId: WidgetsCreatorController_list, method: GET, path: /v1/creator/widgets}
+    - {operationId: WidgetsCreatorController_create, method: POST, path: /v1/creator/widgets}
+    - {operationId: WidgetsCreatorController_getWidget, method: GET, path: '/v1/creator/widgets/{widgetId}'}
+    - {operationId: WidgetsCreatorController_update, method: PATCH, path: '/v1/creator/widgets/{widgetId}'}
+    - {operationId: WidgetsCreatorController_delete, method: DELETE, path: '/v1/creator/widgets/{widgetId}'}
+    render:
+    - {operationId: WidgetsController_getWidgetById, method: GET, path: '/v1/widgets/{widgetId}'}
+    - {operationId: WidgetsControllerV2_getWidgetByIdV2, method: GET, path: '/v2/widgets/{widgetId}'}
+    - {operationId: WidgetsControllerV2_getWidgetByIdContextV2, method: POST, path: '/v2/widgets/{widgetId}'}
+    - {operationId: WidgetsControllerV2_getWidgetByIdForTVT, method: POST, path: '/v2/widgets/tvt/{widgetId}', summary: Get a Widget for This-vs-That}
+  schemas: [Widget, WidgetTypes, CreateWidgetDto, UpdateWidgetDto, WidgetExpand, GetWidgetTVTResponseDto, FindWidgetForTVTDto, FindWidgetTextDtoV2]
+  embedding_signal:
+    header: x-app-referrer
+    declared_on: [WidgetsController_getWidgetById, WidgetsControllerV2_getWidgetByIdV2]
+    note: identifies the embedding partner surface at render time.
+  content_binding:
+    playlists: a widget can be bound to a Playlist (autofill supported) so the embed cycles through games
+    custom_urls: creators can mint branded short URLs (CustomUrl) that resolve to a game or set
+- name: Meter ads
+  kind: embedded contextual ad unit
+  description: >-
+    The "seamless ads" the marketing site describes, delivered alongside widget content and scoped to
+    a partner domain.
+  api_surface:
+    read:
+    - {operationId: MeterAdsController_listActive_v1, method: GET, path: /v1/meter-ads/active, summary: List active meter ads by partner ID}
+    manage:
+    - {operationId: MeterAdsAdminController_list_v1, method: GET, path: /v1/admin/meter-ads}
+    - {operationId: MeterAdsAdminController_create_v1, method: POST, path: /v1/admin/meter-ads}
+    - {operationId: MeterAdsAdminController_byId_v1, method: GET, path: '/v1/admin/meter-ads/{id}'}
+    - {operationId: MeterAdsAdminController_update_v1, method: PATCH, path: '/v1/admin/meter-ads/{id}'}
+    - {operationId: MeterAdsAdminController_delete_v1, method: DELETE, path: '/v1/admin/meter-ads/{id}'}
+  schemas: [MeterAd, AdSideDto, CreateMeterAdDto, UpdateMeterAdDto, UpdateAdSideDto, PaginatedMeterAdsDto]
+hosted_surfaces:
+- {host: 'https://minigames.versusgame.com', status: 200, kind: single-page app serving the game/widget experience}
+- {host: 'https://admin.versusgame.com', status: 200, kind: 'single-page app, "Versus Admin Console" (staff back office)'}
+loader_libraries: []
+x-gap: >-
+  A real, central embeddable-component product with no public component documentation, no published
+  loader script, no npm package and no embed-code reference. This is the largest developer-experience
+  gap for the surface VersusGame actually sells.

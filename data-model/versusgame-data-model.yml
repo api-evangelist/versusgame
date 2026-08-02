@@ -1,0 +1,206 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/versusgame-openapi-original.json (286 component schemas, 239 operations)
+summary: >-
+  Entity-relationship graph derived from the Versusgame API OpenAPI. Relationships come from schema
+  $ref links and from id-reference fields (creatorId, categoryId, userId, partnerId, assetId ...).
+  Identifiers are opaque UUID-style strings; the API declares no typed id prefixes.
+domains:
+- name: identity
+  entities: [User, Profile, PersonalInformation, Creator, Role, Credentials]
+- name: content
+  entities: [Game, GameDraft, GameDraftVersion, Article, Category, Playlist, GameSet, Asset, KeyFrame, Upload]
+- name: play
+  entities: [Gameplay, GameSetPlay, Achievement, BuddyListInvitation]
+- name: competition
+  entities: [Leaderboard, LeaderboardPoints, LeaderboardPlayer, LeaderboardPointsLedger]
+- name: economy
+  entities: [Wallet, Fund, Ledger, Product, Business, GcowPayout, StripePayment, Cuts]
+- name: distribution
+  entities: [Widget, CustomUrl, PartnerDomain, MeterAd]
+- name: messaging
+  entities: [Notification]
+entities:
+- name: User
+  schema: UserEntity
+  key_fields: [id, email, emailVerified, payoutEmail, roles, language, externalId, blocked, deletedAt]
+  relationships:
+  - {type: has_one, target: Profile, via: id}
+  - {type: has_one, target: PersonalInformation, via: id}
+  - {type: has_one, target: Wallet, via: userId}
+  - {type: has_many, target: Gameplay, via: userId}
+  - {type: has_many, target: LeaderboardPoints, via: userId}
+  - {type: has_many, target: Ledger, via: userId}
+  - {type: has_one, target: Cuts, via: userId}
+- name: Profile
+  schema: Profile
+  key_fields: [id, username, avatar, avatarAssetId, profileColor]
+  relationships:
+  - {type: belongs_to, target: User, via: id}
+  - {type: has_one, target: Asset, via: avatarAssetId}
+- name: Creator
+  schema: Creator
+  key_fields: [id, partnerName, userName, avatarAssetId, profileColor]
+  relationships:
+  - {type: belongs_to, target: User, via: id}
+  - {type: has_many, target: Game, via: creatorId}
+  - {type: has_many, target: Playlist, via: creatorId}
+  - {type: has_many, target: Widget, via: creatorId}
+  - {type: has_many, target: CustomUrl, via: creatorId}
+- name: Game
+  schema: Game / GameEntity
+  key_fields: [id, gameTitle, state, gameType, orientation, language, sideA, sideB, correctAnswer, startTime, endTime, lastJoinTime, isAd, isPrivate, version, metadata]
+  relationships:
+  - {type: belongs_to, target: Creator, via: creatorId}
+  - {type: belongs_to, target: Category, via: categoryId}
+  - {type: has_many, target: Gameplay, via: gameId}
+  - {type: has_one, target: Asset, via: videoAssetId}
+  - {type: has_one, target: Asset, via: questionVideoAssetId}
+  - {type: has_one, target: Asset, via: landscapeVideoAssetId}
+  - {type: has_one, target: Asset, via: audioAssetId}
+  - {type: has_one, target: Asset, via: resultAssetId}
+  - {type: has_one, target: Stats, via: stats}
+  enums: [GameStates, GameType, Orientation, Side, Language]
+- name: GameDraft
+  schema: GameDraft / GameDraftEntity
+  key_fields: [id, state, version]
+  relationships:
+  - {type: belongs_to, target: Article, via: articleId}
+  - {type: has_many, target: GameDraftVersion, via: id}
+  - {type: has_one, target: Game, via: 'promotion (createGame)'}
+  enums: [GameDraftState]
+- name: Article
+  schema: Article / ArticleEntity
+  key_fields: [id, url, hostName, sourceType, rawOpenAiChat]
+  relationships:
+  - {type: belongs_to, target: PartnerDomain, via: partnerId}
+  - {type: has_many, target: GameDraft, via: articleId}
+  enums: [ArticleSourceType, sourceType]
+- name: PartnerDomain
+  schema: PartnerDomain / PartnerDomains
+  key_fields: [id, hostName, draftsCount]
+  relationships:
+  - {type: has_many, target: Article, via: partnerId}
+  - {type: has_many, target: MeterAd, via: partnerId}
+- name: Category
+  schema: Category
+  key_fields: [id, categoryName, language, sticker, icon, deletedAt]
+  relationships:
+  - {type: has_many, target: Game, via: categoryId}
+- name: Gameplay
+  schema: Gameplay
+  key_fields: [id, state, ticketType, rewardType]
+  relationships:
+  - {type: belongs_to, target: Game, via: gameId}
+  - {type: belongs_to, target: User, via: userId}
+  - {type: has_many, target: Achievement, via: gameplayId}
+  enums: [GameplayStates, TicketType, RewardType]
+- name: GameSet
+  schema: GameSet
+  key_fields: [id]
+  relationships:
+  - {type: belongs_to, target: PartnerDomain, via: partnerId}
+  - {type: has_many, target: Game, via: 'set membership'}
+  - {type: has_many, target: GameSetPlay, via: gameSetId}
+- name: GameSetPlay
+  schema: GameSetPlayResponse / RankedPlayerStandings
+  key_fields: [gameSetId, playerId, attempt, score]
+  relationships:
+  - {type: belongs_to, target: GameSet, via: gameSetId}
+  - {type: belongs_to, target: User, via: playerId}
+- name: Leaderboard
+  schema: Leaderboard / LeaderboardAdmin
+  key_fields: [id, state, league, startDate, endDate, prizeDrawingDate]
+  relationships:
+  - {type: has_many, target: LeaderboardPoints, via: leaderboardId}
+  - {type: has_many, target: LeaderboardPlayer, via: leaderboardId}
+  - {type: has_many, target: LeaderboardPointsLedger, via: leaderboardId}
+  enums: [LeaderboardState, LeaderboardLeague]
+- name: Wallet
+  schema: WalletResponse
+  key_fields: [userId, league, dailySetCount]
+  relationships:
+  - {type: belongs_to, target: User, via: userId}
+  - {type: has_many, target: Fund, via: userId}
+  enums: [WalletLeague, FundType, FundsUpdatedReasons]
+- name: Ledger
+  schema: LedgersEntity
+  key_fields: [id, amount, reason]
+  relationships:
+  - {type: belongs_to, target: User, via: userId}
+- name: Product
+  schema: ProductEntity
+  key_fields: [id]
+  relationships:
+  - {type: referenced_by, target: StripePayment, via: productId}
+- name: StripePayment
+  schema: StripeEntity
+  key_fields: [id, status]
+  relationships:
+  - {type: belongs_to, target: User, via: userId}
+  - {type: belongs_to, target: Product, via: productId}
+  enums: [PaymentStatus]
+- name: GcowPayout
+  schema: GcowPayout
+  key_fields: [id]
+  relationships:
+  - {type: belongs_to, target: User, via: userId}
+  enums: [RewardLinkTypes]
+- name: Business
+  schema: Business / ExpandedBusiness
+  key_fields: [id]
+  relationships:
+  - {type: has_many, target: GcowPayout, via: businessId}
+- name: Cuts
+  schema: GlobalCutsEntity / UserCutsEntity / ParentCut
+  key_fields: [userId, parentCut, distributorCut]
+  relationships:
+  - {type: belongs_to, target: User, via: userId}
+  - {type: belongs_to, target: User, via: distributorId}
+  note: revenue-share splits, globally and per user, with a history trail.
+- name: Widget
+  schema: Widget
+  key_fields: [id, type]
+  relationships:
+  - {type: belongs_to, target: Creator, via: creatorId}
+  - {type: has_one, target: Playlist, via: playlistId}
+  enums: [WidgetTypes]
+- name: Playlist
+  schema: Playlist
+  key_fields: [id, autofill]
+  relationships:
+  - {type: belongs_to, target: Creator, via: creatorId}
+  - {type: has_many, target: Game, via: 'playlist membership'}
+- name: CustomUrl
+  schema: CustomUrl
+  key_fields: [id, url]
+  relationships:
+  - {type: belongs_to, target: Creator, via: creatorId}
+- name: MeterAd
+  schema: MeterAd / AdSideDto
+  key_fields: [id]
+  relationships:
+  - {type: belongs_to, target: PartnerDomain, via: partnerId}
+- name: Asset
+  schema: Asset
+  key_fields: [id]
+  relationships:
+  - {type: referenced_by, target: Game, via: 'videoAssetId / audioAssetId / resultAssetId'}
+  - {type: referenced_by, target: Profile, via: avatarAssetId}
+- name: KeyFrame
+  schema: KeyFrameEntity
+  key_fields: [id]
+  relationships:
+  - {type: belongs_to, target: Game, via: gameId}
+- name: Notification
+  schema: NotificationDto
+  key_fields: [id, type]
+  variants: [CutsNotification, GameOutcomeNotification, GamePlayedNotification, LeaderboardPointsNotification, UserDemotionNotification, UserPromotionNotification, UserAchievementNotification]
+  enums: [NotificationTypes]
+identifiers:
+  style: opaque string ids, no typed prefix declared
+  common_reference_fields: [id, userId, creatorId, categoryId, gameId, gameSetId, leaderboardId, widgetId, playlistId, customUrlId, productId, assetId, partnerId, articleId, draftId, distributorId, shareCode, externalId]
+x-note: >-
+  Relationships are derived from field naming and $ref structure in the spec; the OpenAPI declares no
+  explicit link relations. Fields ending in Id are treated as belongs_to edges to the entity the name
+  denotes. No subway/ render exists for this repo yet.

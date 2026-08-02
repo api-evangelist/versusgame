@@ -1,0 +1,17 @@
+generated: '2026-08-02'
+method: searched
+source: public package registries + the VersusGame public surface
+summary: >-
+  No first-party VersusGame client library was found in any public package registry, and the
+  company publishes no SDK page. The VersusGame GitHub organization (github.com/VersusGame)
+  exists but has zero public repositories. Integration is partner-provisioned - publishers embed
+  the MiniGames widget via embed code supplied by VersusGame - so there is no public SDK surface
+  to catalogue.
+registries_checked:
+- {registry: npm, query: versusgame, results: 0, url: 'https://registry.npmjs.org/-/v1/search?text=versusgame'}
+- {registry: pypi, query: versusgame, status: 404, url: https://pypi.org/pypi/versusgame/json}
+- {registry: github, org: VersusGame, public_repos: 0, url: https://github.com/VersusGame}
+packages: []
+x-note: >-
+  No `SDKs` pointer is wired in apis.yml - there is no official client library. This file records
+  the search, so a later round can upgrade it if VersusGame publishes one.

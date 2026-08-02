@@ -1,0 +1,150 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/versusgame-openapi-original.json
+status: candidate
+summary: >-
+  No official hosted or remote Model Context Protocol server was found for VersusGame. Searched the
+  company's public surface, the VersusGame GitHub organization (zero public repositories) and the npm
+  registry; probed api.versusgame.com for /mcp, /.well-known/ai-plugin.json and
+  /.well-known/oauth-protected-resource - all miss. The candidate tool set below is DERIVED from the
+  Versusgame API operations as a proposal for an agent-facing surface. It is NOT published by
+  VersusGame, and no MCPServer pointer is wired in apis.yml.
+server: null
+transport: null
+url: null
+auth:
+  type: http bearer
+  bearer_format: JWT
+  header: Authorization
+  note: >-
+    Every candidate tool below maps to an operation that carries the access-token security
+    requirement, except list_categories, list_playlists, list_products, list_achievements,
+    get_game_stats, get_active_meter_ads, get_current_daily_gameset and the gameset leaderboard
+    reads, which are unauthenticated in the spec.
+candidate_tools:
+- name: list_games
+  maps_to: GET /v1/creator/games
+  source_operation: openapi/versusgame-openapi-original.json#GamesCreatorController_findAll
+  description: List the games belonging to the authenticated creator, with search, sort and expand.
+- name: get_game
+  maps_to: GET /v1/creator/games/{gameId}
+  source_operation: openapi/versusgame-openapi-original.json#GamesCreatorController_byId
+  description: Retrieve a single creator game by id.
+- name: create_game
+  maps_to: POST /v1/creator/games
+  source_operation: openapi/versusgame-openapi-original.json#GamesCreatorController_createGame
+  description: Create a prediction game as a creator. Requires an x-idempotency-key.
+- name: update_game
+  maps_to: PATCH /v1/creator/games/{gameId}
+  source_operation: openapi/versusgame-openapi-original.json#GamesCreatorController_updateGame
+  description: Update a creator game.
+- name: declare_game_result
+  maps_to: POST /v1/creator/games/{gameId}/declare
+  source_operation: openapi/versusgame-openapi-original.json#GamesCreatorController_declareGame
+  description: Declare the winning side of a game and settle it.
+- name: cancel_game
+  maps_to: DELETE /v1/creator/games/{gameId}
+  source_operation: openapi/versusgame-openapi-original.json#GamesCreatorController_cancelGame
+  description: Cancel a creator game.
+- name: get_game_stats
+  maps_to: GET /v1/games/{id}/stats
+  source_operation: openapi/versusgame-openapi-original.json#GamesUserController_getStats
+  description: Public vote/stat breakdown for a game.
+- name: list_categories
+  maps_to: GET /v1/categories
+  source_operation: openapi/versusgame-openapi-original.json#CategoriesController_list
+  description: List the public game categories.
+- name: list_gameplays
+  maps_to: GET /v1/gameplays
+  source_operation: openapi/versusgame-openapi-original.json#GameplaysController_list
+  description: List the authenticated user's gameplays.
+- name: create_gameplay
+  maps_to: POST /v1/gameplays
+  source_operation: openapi/versusgame-openapi-original.json#GameplaysController_create
+  description: Place a prediction on a game. Requires an x-idempotency-key.
+- name: claim_gameplay_reward
+  maps_to: POST /v1/gameplays/{id}/claim_reward
+  source_operation: openapi/versusgame-openapi-original.json#GameplaysController_claimReward
+  description: Claim the reward for a settled winning gameplay. Requires an x-idempotency-key.
+- name: get_wallet_balance
+  maps_to: GET /v1/wallets/account-balance
+  source_operation: openapi/versusgame-openapi-original.json#WalletsController_getAccountBalance
+  description: Read the authenticated user's coin/ticket balance.
+- name: claim_daily_gift
+  maps_to: POST /v1/wallets/claim-daily-gift
+  source_operation: openapi/versusgame-openapi-original.json#WalletsController_claimDailyGift
+  description: Claim the daily wallet gift.
+- name: list_ledger
+  maps_to: GET /v1/ledger
+  source_operation: openapi/versusgame-openapi-original.json#LedgerController_list
+  description: List the authenticated user's ledger entries.
+- name: list_active_leaderboards
+  maps_to: GET /v1/leaderboards/activeLeaderboards
+  source_operation: openapi/versusgame-openapi-original.json#LeaderboardsController_activeLeaderboards
+  description: List currently running leaderboards.
+- name: get_leaderboard_top_n
+  maps_to: GET /v1/leaderboards/{leaderboardId}/top/{topN}
+  source_operation: openapi/versusgame-openapi-original.json#LeaderboardsController_getLeaderboardTopN
+  description: Read the top N players on a leaderboard.
+- name: get_leaderboard_points
+  maps_to: GET /v1/leaderboards/points
+  source_operation: openapi/versusgame-openapi-original.json#LeaderboardsController_leaderboardPointsList
+  description: Read the authenticated user's leaderboard points.
+- name: get_current_daily_gameset
+  maps_to: GET /gameset/plays/gamesets/current-daily-id
+  source_operation: openapi/versusgame-openapi-original.json#GameSetPlaysController_getCurrentDailyGameSetId
+  description: Get the id of the current daily game set.
+- name: get_gameset_top_players
+  maps_to: GET /gameset/plays/gamesets/{gameSetId}/top-players
+  source_operation: openapi/versusgame-openapi-original.json#GameSetPlaysController_topPlayersForGameSet
+  description: Cursor-paginated leaderboard for one game set.
+- name: record_gameset_completed
+  maps_to: POST /gameset/plays/attempts/completed
+  source_operation: openapi/versusgame-openapi-original.json#GameSetPlaysController_recordGameSetCompleted
+  description: Record the completion of a game set attempt.
+- name: list_widgets
+  maps_to: GET /v1/creator/widgets
+  source_operation: openapi/versusgame-openapi-original.json#WidgetsCreatorController_list
+  description: List the authenticated creator's embeddable widgets.
+- name: create_widget
+  maps_to: POST /v1/creator/widgets
+  source_operation: openapi/versusgame-openapi-original.json#WidgetsCreatorController_create
+  description: Create an embeddable widget.
+- name: get_widget
+  maps_to: GET /v2/widgets/{widgetId}
+  source_operation: openapi/versusgame-openapi-original.json#WidgetsControllerV2_getWidgetByIdV2
+  description: Resolve a widget for rendering on a partner page.
+- name: list_playlists
+  maps_to: GET /v1/playlists
+  source_operation: openapi/versusgame-openapi-original.json#PlaylistsController_list
+  description: List public playlists.
+- name: create_playlist
+  maps_to: POST /v1/creator/playlists
+  source_operation: openapi/versusgame-openapi-original.json#PlaylistsCreatorController_create
+  description: Create a creator playlist.
+- name: get_profile
+  maps_to: GET /v1/profiles
+  source_operation: openapi/versusgame-openapi-original.json#ProfilesController_me
+  description: Read the authenticated user's profile.
+- name: check_username_available
+  maps_to: POST /v1/profiles/username_available
+  source_operation: openapi/versusgame-openapi-original.json#ProfilesController_usernameAvailable
+  description: Check whether a username is free.
+- name: list_notifications
+  maps_to: GET /v1/notifications
+  source_operation: openapi/versusgame-openapi-original.json#NotificationsController_list
+  description: List the authenticated user's notifications.
+- name: list_products
+  maps_to: GET /v1/products
+  source_operation: openapi/versusgame-openapi-original.json#ProductsController_list
+  description: List purchasable products (ticket/coin bundles).
+- name: create_article_draft_games
+  maps_to: POST /v2/autogame/article
+  source_operation: openapi/versusgame-openapi-original.json#ArticleControllerV2_createArticle_v2
+  description: Submit an article URL to the autogame AI pipeline to generate prediction games from it.
+excluded_from_candidate_set:
+  reason: >-
+    /v1/admin/*, /superadmin/*, /internal/* and the raw autogame model-proxy operations (OpenAI chat
+    completions, Google search, ElevenLabs/Polly speech, Remotion render, scraper, proxy) are
+    deliberately excluded - they are privileged back-office or vendor-passthrough surfaces, not agent
+    tools. See agentic-access/versusgame-agentic-access.yml for the per-operation execution contracts.
