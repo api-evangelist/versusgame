@@ -32,31 +32,388 @@ tags:
 - ai-content-generation
 - payments
 apis:
-- name: Versusgame API
-  description: >-
-    Production REST API for the Versus interactive gaming platform. 239 operations across 190 paths covering
-    authentication (email/password plus Apple, Google, Facebook and Microsoft social login), games and gameplays,
-    gamesets and gameset plays, leaderboards and prize awards, creator tooling (games, playlists, widgets, custom
-    URLs), embeddable widget delivery, categories, products, assets, keyframes, wallets and ledger, Stripe and
-    GCOW payments/payouts, meter ads, partner domains, notifications, profiles and personal information, plus the
-    "autogame" AI pipeline (article ingestion, OpenAI chat completions, Google search, ElevenLabs/Polly speech,
-    Remotion rendering). Bearer JWT for user/creator/admin calls and an x-api-key header for internal
-    service-to-service calls. Twelve write operations require an x-idempotency-key.
+- aid: versusgame:versusgame-achievements-api
+  name: VersusGame Achievements API
+  description: The achievements API from VersusGame — 1 operation(s) for achievements.
   humanURL: https://api.versusgame.com/api
   baseURL: https://api.versusgame.com
   tags:
-  - gaming
-  - prediction-games
-  - gamification
-  - leaderboards
-  - widgets
-  - creator-economy
-  - payments
-  - wallets
-  - ai-content-generation
+  - achievements
   properties:
   - type: OpenAPI
-    url: openapi/versusgame-openapi-original.json
+    url: openapi/versusgame-achievements-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-app-api
+  name: VersusGame App API
+  description: The App API from VersusGame — 1 operation(s) for app.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - App
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-app-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-assets-api
+  name: VersusGame Assets API
+  description: The assets API from VersusGame — 4 operation(s) for assets.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - assets
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-assets-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-auth-api
+  name: VersusGame Auth API
+  description: The auth API from VersusGame — 30 operation(s) for auth.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - auth
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-auth-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-autogame-api
+  name: VersusGame Autogame API
+  description: The autogame API from VersusGame — 27 operation(s) for autogame.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - autogame
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-autogame-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-autogame-article-v2-api
+  name: VersusGame Autogame/article/v2 API
+  description: The autogame/article/v2 API from VersusGame — 10 operation(s) for autogame/article/v2.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - autogame/article/v2
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-autogame-article-v2-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-buddy-list-api
+  name: VersusGame Buddy List API
+  description: The buddy-list API from VersusGame — 4 operation(s) for buddy-list.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - buddy-list
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-buddy-list-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-categories-api
+  name: VersusGame Categories API
+  description: The categories API from VersusGame — 3 operation(s) for categories.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - categories
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-categories-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-creators-api
+  name: VersusGame Creators API
+  description: The creators API from VersusGame — 3 operation(s) for creators.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - creators
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-creators-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-custom-urls-api
+  name: VersusGame Custom URLS API
+  description: The custom-urls API from VersusGame — 5 operation(s) for custom-urls.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - custom-urls
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-custom-urls-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-cuts-api
+  name: VersusGame Cuts API
+  description: The cuts API from VersusGame — 5 operation(s) for cuts.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - cuts
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-cuts-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-gameplays-api
+  name: VersusGame Gameplays API
+  description: The gameplays API from VersusGame — 3 operation(s) for gameplays.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - gameplays
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-gameplays-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-games-api
+  name: VersusGame Games API
+  description: The games API from VersusGame — 12 operation(s) for games.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - games
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-games-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-gameset-plays-api
+  name: VersusGame Gameset Plays API
+  description: The gameset-plays API from VersusGame — 8 operation(s) for gameset-plays.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - gameset-plays
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-gameset-plays-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-gamesets-api
+  name: VersusGame Gamesets API
+  description: The gamesets API from VersusGame — 3 operation(s) for gamesets.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - gamesets
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-gamesets-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-health-api
+  name: VersusGame Health API
+  description: The Health API from VersusGame — 1 operation(s) for health.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-health-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-internal-api
+  name: VersusGame Internal API
+  description: The internal API from VersusGame — 2 operation(s) for internal.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - internal
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-internal-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-invite-api
+  name: VersusGame Invite API
+  description: The Invite API from VersusGame — 1 operation(s) for invite.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - Invite
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-invite-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-keyframes-api
+  name: VersusGame Keyframes API
+  description: The keyframes API from VersusGame — 3 operation(s) for keyframes.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - keyframes
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-keyframes-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-leaderboards-api
+  name: VersusGame Leaderboards API
+  description: The leaderboards API from VersusGame — 16 operation(s) for leaderboards.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - leaderboards
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-leaderboards-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-ledger-api
+  name: VersusGame Ledger API
+  description: The ledger API from VersusGame — 2 operation(s) for ledger.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - ledger
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-ledger-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-legal-api
+  name: VersusGame Legal API
+  description: The Legal API from VersusGame — 5 operation(s) for legal.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - Legal
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-legal-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-meter-ads-api
+  name: VersusGame Meter Ads API
+  description: The meter-ads API from VersusGame — 3 operation(s) for meter-ads.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - meter-ads
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-meter-ads-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-notifications-api
+  name: VersusGame Notifications API
+  description: The notifications API from VersusGame — 2 operation(s) for notifications.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-notifications-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-partner-domain-api
+  name: VersusGame Partner Domain API
+  description: The partner-domain API from VersusGame — 3 operation(s) for partner-domain.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - partner-domain
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-partner-domain-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-payments-api
+  name: VersusGame Payments API
+  description: The payments API from VersusGame — 10 operation(s) for payments.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - payments
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-payments-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-personal-information-api
+  name: VersusGame Personal Information API
+  description: The personal-information API from VersusGame — 1 operation(s) for personal-information.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - personal-information
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-personal-information-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-playlists-api
+  name: VersusGame Playlists API
+  description: The playlists API from VersusGame — 4 operation(s) for playlists.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - playlists
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-playlists-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-products-api
+  name: VersusGame Products API
+  description: The products API from VersusGame — 3 operation(s) for products.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - products
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-products-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-profiles-api
+  name: VersusGame Profiles API
+  description: The profiles API from VersusGame — 5 operation(s) for profiles.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-profiles-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-wallets-api
+  name: VersusGame Wallets API
+  description: The wallets API from VersusGame — 5 operation(s) for wallets.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - wallets
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-wallets-api-openapi.yml
+  - type: APIReference
+    url: https://api.versusgame.com/api
+- aid: versusgame:versusgame-widgets-api
+  name: VersusGame Widgets API
+  description: The widgets API from VersusGame — 5 operation(s) for widgets.
+  humanURL: https://api.versusgame.com/api
+  baseURL: https://api.versusgame.com
+  tags:
+  - widgets
+  properties:
+  - type: OpenAPI
+    url: openapi/versusgame-widgets-api-openapi.yml
   - type: APIReference
     url: https://api.versusgame.com/api
 maintainers:
@@ -65,6 +422,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/versusgame-mcp.yml
 - type: AgenticAccess
   url: agentic-access/versusgame-agentic-access.yml
 - type: DomainSecurity
