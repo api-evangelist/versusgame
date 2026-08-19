@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Versusgame Meter Ads API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "meter-ads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active meter ads by partner ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/meter-ads/active",
+            "params": [
+              {
+                "name": "partnerId",
+                "value": "",
+                "type": "query",
+                "description": "Partner ID to filter active meter ads. Falls back to \"default\" if not provided"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns an array of active meter ads for a given partner ID. If no partner ID is provided, the default partner ID is used. Active means that the status is \"published\", the start date is in the past, and the end date is in the future."
+        },
+        {
+          "info": {
+            "name": "List meter ads, filtered by search terms and sort options.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/admin/meter-ads",
+            "params": [
+              {
+                "name": "partnerId",
+                "value": "",
+                "type": "query",
+                "description": "Partner ID to filter by"
+              },
+              {
+                "name": "questionText",
+                "value": "",
+                "type": "query",
+                "description": "Will do a partial case-insensitive match on question text"
+              },
+              {
+                "name": "marketingText",
+                "value": "",
+                "type": "query",
+                "description": "Will do a partial case-insensitive match on marketing text"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Provide a value and comparison operator to filter by start time Unix timestamp in milliseconds"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Provide a value and comparison operator to filter by end time Unix timestamp in milliseconds"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Dictionary of property names to sort direction (ASC or DESC)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-based); the default is 1"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page; the default is 20"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List meter ads, filtered by search terms and sort options."
+        },
+        {
+          "info": {
+            "name": "Create a new MeterAd",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/admin/meter-ads",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new MeterAd"
+        },
+        {
+          "info": {
+            "name": "Get a meter ad by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/admin/meter-ads/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a meter ad by ID"
+        },
+        {
+          "info": {
+            "name": "Update a meter ad",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/admin/meter-ads/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a meter ad"
+        },
+        {
+          "info": {
+            "name": "Delete a meter ad",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/admin/meter-ads/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a meter ad"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

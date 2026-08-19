@@ -1,0 +1,590 @@
+{
+  "item": [
+    {
+      "id": "a8becbf9-281d-421a-b1b7-30dc1acb5bcd",
+      "name": "partner-domain",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e698d55-42bd-43c3-976d-cc8515b68f3b",
+          "name": "Partner Domain Controller create",
+          "request": {
+            "name": "Partner Domain Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "partner-domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-user-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"domain\": \"<string>\",\n  \"articleUrlRules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"indexPagesRules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enableAutogame\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9f88c4d-a745-4d9b-8da3-e282b62dce0c",
+              "name": "Creates a new partner Domain",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "partner-domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-user-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain\": \"<string>\",\n  \"articleUrlRules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"indexPagesRules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enableAutogame\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"domain\": \"string\",\n  \"creatorId\": \"string\",\n  \"creator\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"1951-04-28T23:01:42.764Z\",\n    \"updatedAt\": \"2004-05-09T03:43:36.133Z\"\n  },\n  \"createdAt\": \"1949-01-25T23:51:02.194Z\",\n  \"updatedAt\": \"1985-10-03T19:58:55.606Z\",\n  \"articleUrlRules\": [\n    \"string\",\n    \"string\"\n  ],\n  \"indexPagesRules\": [\n    \"string\",\n    \"string\"\n  ],\n  \"enableAutogame\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b725b639-e616-4646-b0c5-8ded83f57a6d",
+          "name": "Partner Domain Controller query",
+          "request": {
+            "name": "Partner Domain Controller query",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "partner-domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creatorId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1c65304a-1d98-4df8-9026-44e2871e2060",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "partner-domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creatorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"domain\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1954-09-05T12:09:03.420Z\",\n        \"updatedAt\": \"2016-02-02T02:01:11.285Z\"\n      },\n      \"createdAt\": \"2013-10-04T04:19:45.207Z\",\n      \"updatedAt\": \"1959-11-11T08:10:55.540Z\",\n      \"articleUrlRules\": [\n        \"string\",\n        \"string\"\n      ],\n      \"indexPagesRules\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enableAutogame\": true\n    },\n    {\n      \"id\": \"string\",\n      \"domain\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1959-02-26T18:04:42.928Z\",\n        \"updatedAt\": \"1956-05-25T10:05:37.120Z\"\n      },\n      \"createdAt\": \"2008-10-16T10:33:45.904Z\",\n      \"updatedAt\": \"2025-06-19T07:51:03.721Z\",\n      \"articleUrlRules\": [\n        \"string\",\n        \"string\"\n      ],\n      \"indexPagesRules\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enableAutogame\": false\n    }\n  ],\n  \"total\": 9072.114264094495\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f50c402d-4cce-4a5c-8ff6-344b489ea9fd",
+          "name": "Partner Domain Controller update",
+          "request": {
+            "name": "Partner Domain Controller update",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "partner-domain",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"articleUrlRules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"indexPagesRules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enableAutogame\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "513da71b-f606-4d75-b0d0-78bf6f9d5a56",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "partner-domain",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"articleUrlRules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"indexPagesRules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enableAutogame\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"domain\": \"string\",\n  \"creatorId\": \"string\",\n  \"creator\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"1978-08-30T05:26:11.411Z\",\n    \"updatedAt\": \"1988-10-29T22:25:42.965Z\"\n  },\n  \"createdAt\": \"1998-01-08T20:54:45.796Z\",\n  \"updatedAt\": \"1950-11-25T05:22:25.256Z\",\n  \"articleUrlRules\": [\n    \"string\",\n    \"string\"\n  ],\n  \"indexPagesRules\": [\n    \"string\",\n    \"string\"\n  ],\n  \"enableAutogame\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "590e8911-8d37-48a1-ad77-f847b606e149",
+          "name": "Partner Domain Controller delete",
+          "request": {
+            "name": "Partner Domain Controller delete",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "partner-domain",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f2568ce6-3c29-4e93-b0c8-4cb9fe7eaf0c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "partner-domain",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4a6475f-386f-47b0-aff9-6ca37036d8b2",
+          "name": "Partner Domain Controller by Domain",
+          "request": {
+            "name": "Partner Domain Controller by Domain",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "partner-domain",
+                ":domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domain",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "29d7d639-ee94-4c5f-a0f9-932dd9d5262e",
+              "name": "Gets a partner Domain by domain",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "partner-domain",
+                    ":domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"domain\": \"string\",\n  \"creatorId\": \"string\",\n  \"creator\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"1978-08-30T05:26:11.411Z\",\n    \"updatedAt\": \"1988-10-29T22:25:42.965Z\"\n  },\n  \"createdAt\": \"1998-01-08T20:54:45.796Z\",\n  \"updatedAt\": \"1950-11-25T05:22:25.256Z\",\n  \"articleUrlRules\": [\n    \"string\",\n    \"string\"\n  ],\n  \"indexPagesRules\": [\n    \"string\",\n    \"string\"\n  ],\n  \"enableAutogame\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "996decb8-bf8b-4f89-b43a-6fe256394542",
+    "name": "Versusgame Partner Domain API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

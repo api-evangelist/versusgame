@@ -1,0 +1,1196 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Leaderboards API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: leaderboards
+paths:
+  /v1/admin/leaderboards:
+    post:
+      operationId: LeaderboardsAdminController_create
+      parameters:
+      - name: x-idempotency-key
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLeaderboardDto'
+      responses:
+        '201':
+          description: New Leader Board
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardAdmin'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+    get:
+      operationId: LeaderboardsAdminController_list
+      parameters:
+      - name: startDateComparison
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/startDateComparison'
+      - name: endDateComparison
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/endDateComparison'
+      - name: prizeDrawingDateComparison
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/prizeDrawingDateComparison'
+      - name: league
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/league'
+      - name: state
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/state'
+      - name: gameplaysThresholdIsMet
+        required: false
+        in: query
+        description: If true, only leaderboards with gameplays at or higher than the threshold are returned.
+          If false, only leaderboards with gameplays below the threshold are returned. If undefined, all
+          leaderboards are returned.
+        schema:
+          type: boolean
+      - name: startDate
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: prizeDrawingDate
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: distributorId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: isVerified
+        required: false
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of Leaderboard, filtered by query params
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboards'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/{leaderboardId}:
+    patch:
+      operationId: LeaderboardsAdminController_update
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLeaderboardDto'
+      responses:
+        '200':
+          description: Updated Leaderboard
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardAdmin'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+    delete:
+      operationId: LeaderboardsAdminController_delete
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: version
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Delete Leaderboard
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+    get:
+      operationId: LeaderboardsAdminController_byId
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Leaderboard
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardAdmin'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/{leaderboardId}/award-prizes:
+    post:
+      operationId: LeaderboardsAdminController_awardPrizes
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AwardLeaderboardDto'
+      responses:
+        '200':
+          description: Allow an Admin to manually trigger a Leaderboard Prize Award
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardAdmin'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/{leaderboardId}/archive:
+    post:
+      operationId: LeaderboardsAdminController_archive
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AwardLeaderboardDto'
+      responses:
+        '200':
+          description: Allow an Admin to manually trigger a Leaderboard to be archived
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardAdmin'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/points:
+    get:
+      operationId: LeaderboardsAdminController_leaderboardPointsList
+      parameters:
+      - name: pointsComparison
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/pointsComparison'
+      - name: leaderboardId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: userId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: points
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Get List of Leaderboard Points
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboardPoints'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/{leaderboardId}/points/{userId}:
+    get:
+      operationId: LeaderboardsAdminController_pointsByUserId
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get User Points in Leaderboard
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardPoints'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/{leaderboardId}/points/{userId}/top/{topN}:
+    get:
+      operationId: LeaderboardsAdminController_statisticsByUserId
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: topN
+        required: true
+        in: path
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Get Leaderboard User Ranking, Returns Admin Values like UserId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardStatisticsEntity'
+        '400':
+          description: ''
+        '404':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/{leaderboardId}/top/{topN}:
+    get:
+      operationId: LeaderboardsAdminController_topThree
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: topN
+        required: true
+        in: path
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Get Leaderboard Top :N Number,  Returns Admin Values like UserId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardStatisticsEntity'
+        '400':
+          description: ''
+        '404':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/{leaderboardId}/eligible-players-list:
+    get:
+      operationId: LeaderboardsAdminController_eligiblePlayersList
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'DEPRECATED: Please use players-list instead'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboardEligibleUsers'
+        '400':
+          description: ''
+        '404':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/{leaderboardId}/players-list:
+    get:
+      operationId: LeaderboardsAdminController_playersList
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: pickCount
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Get all Registered players for a given Leaderboard, sorted by points.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboardPlayers'
+        '400':
+          description: ''
+        '404':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/admin/leaderboards/ledger/{userId}:
+    get:
+      operationId: LeaderboardsAdminController_ledgerByUserId
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: leaderboardId
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Leaderboard Ledger in Leaderboard
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboardPointsLedger'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/leaderboards/activeLeaderboards:
+    get:
+      operationId: LeaderboardsController_activeLeaderboards
+      parameters:
+      - name: distributorId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: at
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'List Active Leaderboards '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboards'
+      tags:
+      - leaderboards
+  /v1/leaderboards/previousLeaderboards:
+    get:
+      operationId: LeaderboardsController_previousLeaderboards
+      parameters:
+      - name: distributorId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: start
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: end
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'List Previous Leaderboards '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboards'
+      tags:
+      - leaderboards
+  /v1/leaderboards/points:
+    get:
+      operationId: LeaderboardsController_leaderboardPointsList
+      parameters:
+      - name: pointsComparison
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/pointsComparison'
+      - name: leaderboardId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: userId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: points
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Get List of Leaderboard Points
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardPoints'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/leaderboards/{leaderboardId}:
+    get:
+      operationId: LeaderboardsController_byId
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Leaderboard
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Leaderboard'
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+  /v1/leaderboards/{leaderboardId}/top/{topN}:
+    get:
+      operationId: LeaderboardsController_getLeaderboardTopN
+      parameters:
+      - name: leaderboardId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: topN
+        required: true
+        in: path
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Get Leaderboard Top N Positions, Returns User Data if Logged In
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardStatisticsEntity'
+        '404':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - leaderboards
+components:
+  schemas:
+    LeaderboardLeague:
+      type: string
+      enum:
+      - level1
+      - level2
+      - level3
+      - level4
+    startDateComparison:
+      type: string
+      enum:
+      - gt
+      - gte
+      - lt
+      - lte
+      - eq
+      - ne
+    league:
+      type: string
+      enum:
+      - level1
+      - level2
+      - level3
+      - level4
+    LeaderboardEligibleUsers:
+      type: object
+      properties:
+        userId:
+          type: string
+        points:
+          type: number
+        email:
+          type: string
+        username:
+          type: string
+        emailVerified:
+          type: boolean
+      required:
+      - userId
+      - points
+      - email
+      - username
+      - emailVerified
+    Leaderboard:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/LeaderboardState'
+        league:
+          allOf:
+          - $ref: '#/components/schemas/LeaderboardLeague'
+        id:
+          type: string
+        prizeName:
+          type: string
+        prizeType:
+          type: string
+        prizeValue:
+          type: number
+        imageAssetId:
+          type: string
+        imageAssetUrl:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        prizeDrawingDate:
+          type: string
+        pointThreshold:
+          type: number
+        numberOfPrizes:
+          type: number
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        distributorId:
+          type: string
+        version:
+          type: number
+        isVerified:
+          type: boolean
+        prizeNameShort:
+          type: string
+        imageSmallAssetId:
+          type: string
+        imageSmallAssetUrl:
+          type: string
+        imageIconAssetId:
+          type: string
+        imageIconAssetUrl:
+          type: string
+        prizeTitle:
+          type: string
+        prizeShortTitle:
+          type: string
+        gameplays:
+          type: number
+        gameplaysThreshold:
+          type: number
+      required:
+      - state
+      - league
+      - id
+      - prizeName
+      - prizeType
+      - prizeValue
+      - imageAssetId
+      - startDate
+      - endDate
+      - prizeDrawingDate
+      - pointThreshold
+      - numberOfPrizes
+      - createdAt
+      - updatedAt
+      - distributorId
+      - version
+      - prizeTitle
+      - prizeShortTitle
+      - gameplays
+    ListLeaderboardPoints:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaderboardPoints'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    ListLeaderboards:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaderboardAdmin'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    LeaderboardState:
+      type: string
+      enum:
+      - OPEN
+      - FULL
+      - AWARDING
+      - ARCHIVED
+    LeaderboardPoints:
+      type: object
+      properties:
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/FundsUpdatedReasons'
+        points:
+          type: number
+        leaderboardId:
+          type: string
+        userId:
+          type: string
+        updatedAt:
+          type: string
+        distributorId:
+          type: string
+        version:
+          type: number
+        gamesDeclared:
+          type: number
+        gamesCorrectAnswers:
+          type: number
+      required:
+      - reason
+      - points
+      - leaderboardId
+      - userId
+      - updatedAt
+      - distributorId
+      - version
+      - gamesDeclared
+      - gamesCorrectAnswers
+    FundsUpdatedReasons:
+      type: string
+      enum:
+      - free_gift
+      - host_cut
+      - referrer_cut
+      - parent_cut
+      - transaction_voided
+      - game_played
+      - game_outcome
+      - pending_outcome
+      - purchase
+      - redeem
+      - refund
+      - payout
+      - admin_update
+      - distributor_cut
+      - achievement
+    AwardLeaderboardDto:
+      type: object
+      properties:
+        version:
+          type: number
+      required:
+      - version
+    UpdateLeaderboardDto:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/LeaderboardState'
+        league:
+          allOf:
+          - $ref: '#/components/schemas/LeaderboardLeague'
+        imageAssetId:
+          type: string
+        distributorId:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        prizeDrawingDate:
+          type: string
+        pointThreshold:
+          type: number
+          minimum: 1
+          maximum: 5000
+        numberOfPrizes:
+          type: number
+          minimum: 1
+        prizeValue:
+          type: number
+        version:
+          type: number
+        isVerified:
+          type: boolean
+        prizeNameShort:
+          type: string
+        imageSmallAssetId:
+          type: string
+        imageIconAssetId:
+          type: string
+        prizeTitle:
+          type: string
+        prizeShortTitle:
+          type: string
+        maxUsersThreshold:
+          type: number
+        gameplaysThreshold:
+          type: number
+        revenueThreshold:
+          type: number
+        override:
+          type: boolean
+      required:
+      - version
+    LeaderboardPlayer:
+      type: object
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        emailVerified:
+          type: boolean
+        leaderboardId:
+          type: string
+        points:
+          type: number
+        gamesDeclared:
+          type: number
+        gamesCorrectAnswers:
+          type: number
+      required:
+      - userId
+      - email
+      - username
+      - emailVerified
+      - leaderboardId
+      - points
+      - gamesDeclared
+      - gamesCorrectAnswers
+    LeaderboardStatisticsEntity:
+      type: object
+      properties:
+        leaderboardId:
+          type: string
+        points:
+          type: number
+        userId:
+          type: string
+        username:
+          type: string
+        rank:
+          type: number
+        profileColor:
+          type: string
+        avatar:
+          type: string
+        topN:
+          type: array
+          items:
+            $ref: '#/components/schemas/RankedUsernamesEntity'
+        neighbors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RankedUsernamesEntity'
+      required:
+      - leaderboardId
+      - userId
+      - username
+    prizeDrawingDateComparison:
+      type: string
+      enum:
+      - gt
+      - gte
+      - lt
+      - lte
+      - eq
+      - ne
+    LeaderboardAdmin:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/LeaderboardState'
+        league:
+          allOf:
+          - $ref: '#/components/schemas/LeaderboardLeague'
+        id:
+          type: string
+        prizeName:
+          type: string
+        prizeType:
+          type: string
+        prizeValue:
+          type: number
+        imageAssetId:
+          type: string
+        imageAssetUrl:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        prizeDrawingDate:
+          type: string
+        pointThreshold:
+          type: number
+        numberOfPrizes:
+          type: number
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        distributorId:
+          type: string
+        version:
+          type: number
+        isVerified:
+          type: boolean
+        prizeNameShort:
+          type: string
+        imageSmallAssetId:
+          type: string
+        imageSmallAssetUrl:
+          type: string
+        imageIconAssetId:
+          type: string
+        imageIconAssetUrl:
+          type: string
+        prizeTitle:
+          type: string
+        prizeShortTitle:
+          type: string
+        maxUsersThreshold:
+          type: number
+        playerCount:
+          type: number
+        gameplays:
+          type: number
+        gameplaysThreshold:
+          type: number
+        revenueThreshold:
+          type: number
+      required:
+      - state
+      - league
+      - id
+      - prizeName
+      - prizeType
+      - prizeValue
+      - imageAssetId
+      - startDate
+      - endDate
+      - prizeDrawingDate
+      - pointThreshold
+      - numberOfPrizes
+      - createdAt
+      - updatedAt
+      - distributorId
+      - version
+      - prizeTitle
+      - prizeShortTitle
+      - maxUsersThreshold
+      - playerCount
+      - gameplays
+      - revenueThreshold
+    ListLeaderboardPointsLedger:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaderboardPointsLedger'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    RankedUsernamesEntity:
+      type: object
+      properties:
+        userId:
+          type: string
+        points:
+          type: number
+        rank:
+          type: number
+        username:
+          type: string
+        profileColor:
+          type: string
+        avatar:
+          type: string
+      required:
+      - userId
+      - points
+      - rank
+    CreateLeaderboardDto:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/LeaderboardState'
+        league:
+          allOf:
+          - $ref: '#/components/schemas/LeaderboardLeague'
+        imageAssetId:
+          type: string
+        distributorId:
+          type: string
+        prizeName:
+          type: string
+        prizeType:
+          type: string
+        prizeValue:
+          type: number
+        startDate:
+          type: string
+        endDate:
+          type: string
+        prizeDrawingDate:
+          type: string
+        pointThreshold:
+          type: number
+          minimum: 1
+          maximum: 5000
+        numberOfPrizes:
+          type: number
+          minimum: 1
+        isVerified:
+          type: boolean
+        prizeNameShort:
+          type: string
+        imageSmallAssetId:
+          type: string
+        imageIconAssetId:
+          type: string
+        prizeTitle:
+          type: string
+        prizeShortTitle:
+          type: string
+        maxUsersThreshold:
+          type: number
+        gameplaysThreshold:
+          type: number
+        revenueThreshold:
+          type: number
+      required:
+      - league
+      - imageAssetId
+      - distributorId
+      - prizeName
+      - prizeType
+      - prizeValue
+      - startDate
+      - endDate
+      - prizeDrawingDate
+      - pointThreshold
+      - numberOfPrizes
+      - prizeTitle
+      - prizeShortTitle
+      - maxUsersThreshold
+      - gameplaysThreshold
+    pointsComparison:
+      type: string
+      enum:
+      - gt
+      - gte
+      - lt
+      - lte
+      - eq
+      - ne
+    state:
+      type: string
+      enum:
+      - OPEN
+      - FULL
+      - AWARDING
+      - ARCHIVED
+    LeaderboardPointsLedger:
+      type: object
+      properties:
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/FundsUpdatedReasons'
+        userId:
+          type: string
+        leaderboardId:
+          type: string
+        points:
+          type: number
+      required:
+      - reason
+      - userId
+      - leaderboardId
+      - points
+    ListLeaderboardPlayers:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaderboardPlayer'
+        total:
+          type: number
+        next:
+          type: string
+      required:
+      - items
+      - total
+    endDateComparison:
+      type: string
+      enum:
+      - gt
+      - gte
+      - lt
+      - lte
+      - eq
+      - ne
+    ListLeaderboardEligibleUsers:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaderboardEligibleUsers'
+        next:
+          type: string
+      required:
+      - items
+      - next
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

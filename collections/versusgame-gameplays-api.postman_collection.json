@@ -1,0 +1,601 @@
+{
+  "item": [
+    {
+      "id": "e6f37f6e-30d8-40e0-8c1c-159fd01c4246",
+      "name": "gameplays",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf615308-33d0-4293-9431-8f20a99428fe",
+          "name": "Gameplays Controller list",
+          "request": {
+            "name": "Gameplays Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "gameplays"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "gameId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dfcbc3e6-915b-42e0-97ab-cb9dcc78f90c",
+              "name": "List Game Plays Filtered By Status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "gameplays"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"gameType\": \"SURVEY\",\n      \"state\": \"canceled\",\n      \"side\": \"A\",\n      \"ticketType\": \"free\",\n      \"game\": {\n        \"audioUrl\": \"string\",\n        \"videoUrls\": {\n          \"hls\": \"string\",\n          \"mp4360\": \"string\",\n          \"mp4540\": \"string\",\n          \"mp4720\": \"string\",\n          \"poster\": \"string\"\n        },\n        \"questionVideoUrls\": {\n          \"hls\": \"string\",\n          \"mp4360\": \"string\",\n          \"mp4540\": \"string\",\n          \"mp4720\": \"string\",\n          \"poster\": \"string\"\n        },\n        \"landscapeVideoUrls\": {\n          \"hls\": \"string\",\n          \"mp4360\": \"string\",\n          \"mp4540\": \"string\",\n          \"mp4720\": \"string\",\n          \"poster\": \"string\"\n        },\n        \"resultUrls\": {\n          \"hls\": \"string\",\n          \"mp4360\": \"string\",\n          \"mp4540\": \"string\",\n          \"mp4720\": \"string\",\n          \"poster\": \"string\"\n        },\n        \"state\": \"processing_payouts\",\n        \"language\": \"en-us\",\n        \"gameType\": \"POLL\",\n        \"id\": \"string\",\n        \"creatorId\": \"string\",\n        \"creator\": {\n          \"avatar\": \"string\",\n          \"id\": \"string\",\n          \"partnerName\": \"string\",\n          \"avatarAssetId\": \"string\",\n          \"profileColor\": \"string\",\n          \"userName\": \"string\",\n          \"createdAt\": \"1968-12-05T02:18:27.650Z\",\n          \"updatedAt\": \"1958-08-04T15:08:39.820Z\"\n        },\n        \"startTime\": \"2003-04-28T17:23:55.328Z\",\n        \"endTime\": \"2022-08-19T22:13:49.209Z\",\n        \"lastJoinTime\": \"1989-04-27T00:37:31.968Z\",\n        \"gameTitle\": \"string\",\n        \"sourceUrl\": \"string\",\n        \"sideA\": \"string\",\n        \"sideB\": \"string\",\n        \"text\": \"string\",\n        \"categoryId\": \"string\",\n        \"category\": {\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": \"string\",\n          \"categoryName\": \"string\",\n          \"createdAt\": \"string\",\n          \"updatedAt\": \"string\",\n          \"deletedAt\": \"string\",\n          \"sticker\": \"string\",\n          \"icon\": \"string\"\n        },\n        \"isAd\": false,\n        \"createdAt\": \"1965-06-17T18:30:50.483Z\",\n        \"updatedAt\": \"1975-01-06T20:06:19.141Z\",\n        \"version\": 2193.9280850532496,\n        \"orientation\": \"portrait\",\n        \"correctAnswer\": \"B\",\n        \"videoAssetId\": \"string\",\n        \"questionVideoAssetId\": \"string\",\n        \"landscapeVideoAssetId\": \"string\",\n        \"audioAssetId\": \"string\",\n        \"resultAssetId\": \"string\",\n        \"isPrivate\": false,\n        \"bingSearch\": \"string\",\n        \"bingSearchClaim\": \"string\",\n        \"metadata\": {},\n        \"urls\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"gameId\": \"string\",\n      \"quantity\": 3023.215616254418,\n      \"matched\": 5403.405537863553,\n      \"createdAt\": \"1966-01-22T17:35:33.939Z\",\n      \"opponents\": {},\n      \"returnUrl\": \"string\",\n      \"rewardType\": \"microsoft\",\n      \"achievements\": [\n        {\n          \"id\": \"string\",\n          \"userId\": \"string\",\n          \"createdAt\": \"1960-05-21T23:14:46.920Z\",\n          \"expireAt\": \"1959-07-02T09:53:28.763Z\",\n          \"achievementId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"userId\": \"string\",\n          \"createdAt\": \"1991-04-28T13:48:34.693Z\",\n          \"expireAt\": \"1989-10-24T14:57:17.029Z\",\n          \"achievementId\": \"string\"\n        }\n      ],\n      \"rewardClaimed\": false,\n      \"sideAPercent\": 5235.483835570853,\n      \"majorityBonusWon\": false,\n      \"newLeague\": \"level3\"\n    },\n    {\n      \"gameType\": \"INSTANT_POLL\",\n      \"state\": \"declared_winner\",\n      \"side\": \"B\",\n      \"ticketType\": \"black\",\n      \"game\": {\n        \"audioUrl\": \"string\",\n        \"videoUrls\": {\n          \"hls\": \"string\",\n          \"mp4360\": \"string\",\n          \"mp4540\": \"string\",\n          \"mp4720\": \"string\",\n          \"poster\": \"string\"\n        },\n        \"questionVideoUrls\": {\n          \"hls\": \"string\",\n          \"mp4360\": \"string\",\n          \"mp4540\": \"string\",\n          \"mp4720\": \"string\",\n          \"poster\": \"string\"\n        },\n        \"landscapeVideoUrls\": {\n          \"hls\": \"string\",\n          \"mp4360\": \"string\",\n          \"mp4540\": \"string\",\n          \"mp4720\": \"string\",\n          \"poster\": \"string\"\n        },\n        \"resultUrls\": {\n          \"hls\": \"string\",\n          \"mp4360\": \"string\",\n          \"mp4540\": \"string\",\n          \"mp4720\": \"string\",\n          \"poster\": \"string\"\n        },\n        \"state\": \"active\",\n        \"language\": \"es-mx\",\n        \"gameType\": \"THIS_THAT\",\n        \"id\": \"string\",\n        \"creatorId\": \"string\",\n        \"creator\": {\n          \"avatar\": \"string\",\n          \"id\": \"string\",\n          \"partnerName\": \"string\",\n          \"avatarAssetId\": \"string\",\n          \"profileColor\": \"string\",\n          \"userName\": \"string\",\n          \"createdAt\": \"1961-03-26T20:03:35.876Z\",\n          \"updatedAt\": \"2017-09-15T03:54:52.070Z\"\n        },\n        \"startTime\": \"1963-06-22T09:26:31.188Z\",\n        \"endTime\": \"1981-06-23T13:45:56.339Z\",\n        \"lastJoinTime\": \"2020-09-06T06:54:03.977Z\",\n        \"gameTitle\": \"string\",\n        \"sourceUrl\": \"string\",\n        \"sideA\": \"string\",\n        \"sideB\": \"string\",\n        \"text\": \"string\",\n        \"categoryId\": \"string\",\n        \"category\": {\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": \"string\",\n          \"categoryName\": \"string\",\n          \"createdAt\": \"string\",\n          \"updatedAt\": \"string\",\n          \"deletedAt\": \"string\",\n          \"sticker\": \"string\",\n          \"icon\": \"string\"\n        },\n        \"isAd\": true,\n        \"createdAt\": \"2013-01-10T07:51:08.911Z\",\n        \"updatedAt\": \"2016-11-18T14:34:46.116Z\",\n        \"version\": 2641.7648317176613,\n        \"orientation\": \"portrait\",\n        \"correctAnswer\": \"A\",\n        \"videoAssetId\": \"string\",\n        \"questionVideoAssetId\": \"string\",\n        \"landscapeVideoAssetId\": \"string\",\n        \"audioAssetId\": \"string\",\n        \"resultAssetId\": \"string\",\n        \"isPrivate\": false,\n        \"bingSearch\": \"string\",\n        \"bingSearchClaim\": \"string\",\n        \"metadata\": {},\n        \"urls\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"gameId\": \"string\",\n      \"quantity\": 4705.620311444023,\n      \"matched\": 8094.16782174467,\n      \"createdAt\": \"1979-10-07T18:40:53.555Z\",\n      \"opponents\": {},\n      \"returnUrl\": \"string\",\n      \"rewardType\": \"microsoft\",\n      \"achievements\": [\n        {\n          \"id\": \"string\",\n          \"userId\": \"string\",\n          \"createdAt\": \"1966-02-14T12:44:01.324Z\",\n          \"expireAt\": \"2014-11-06T12:01:12.927Z\",\n          \"achievementId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"userId\": \"string\",\n          \"createdAt\": \"2004-07-14T11:59:39.184Z\",\n          \"expireAt\": \"1949-11-29T23:05:22.150Z\",\n          \"achievementId\": \"string\"\n        }\n      ],\n      \"rewardClaimed\": true,\n      \"sideAPercent\": 2039.8742973964079,\n      \"majorityBonusWon\": true,\n      \"newLeague\": \"level4\"\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b41e1394-972a-4979-93a7-f262c2458f3f",
+          "name": "Gameplays Controller create",
+          "request": {
+            "name": "Gameplays Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "gameplays"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-idempotency-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ticketType\": \"<string>\",\n  \"side\": \"<string>\",\n  \"gameId\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"widgetId\": \"<string>\",\n  \"returnUrl\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"rewardType\": \"<string>\",\n  \"gameSetAttempt\": 1,\n  \"gameSetIsComplete\": false,\n  \"correctAnswerStreakDidEnd\": false,\n  \"points\": \"<number>\",\n  \"gameSetId\": \"<string>\",\n  \"shareCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f14525f-c791-48a8-ab77-6d6db930eb42",
+              "name": "Creates a Game Play",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "gameplays"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ticketType\": \"<string>\",\n  \"side\": \"<string>\",\n  \"gameId\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"widgetId\": \"<string>\",\n  \"returnUrl\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"rewardType\": \"<string>\",\n  \"gameSetAttempt\": 1,\n  \"gameSetIsComplete\": false,\n  \"correctAnswerStreakDidEnd\": false,\n  \"points\": \"<number>\",\n  \"gameSetId\": \"<string>\",\n  \"shareCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gameType\": \"TRIVIA\",\n  \"state\": \"matched\",\n  \"side\": \"<string>\",\n  \"ticketType\": \"<string>\",\n  \"game\": {\n    \"audioUrl\": \"string\",\n    \"videoUrls\": {\n      \"hls\": \"string\",\n      \"mp4360\": \"string\",\n      \"mp4540\": \"string\",\n      \"mp4720\": \"string\",\n      \"poster\": \"string\"\n    },\n    \"questionVideoUrls\": {\n      \"hls\": \"string\",\n      \"mp4360\": \"string\",\n      \"mp4540\": \"string\",\n      \"mp4720\": \"string\",\n      \"poster\": \"string\"\n    },\n    \"landscapeVideoUrls\": {\n      \"hls\": \"string\",\n      \"mp4360\": \"string\",\n      \"mp4540\": \"string\",\n      \"mp4720\": \"string\",\n      \"poster\": \"string\"\n    },\n    \"resultUrls\": {\n      \"hls\": \"string\",\n      \"mp4360\": \"string\",\n      \"mp4540\": \"string\",\n      \"mp4720\": \"string\",\n      \"poster\": \"string\"\n    },\n    \"state\": \"quarantined\",\n    \"language\": \"es-mx\",\n    \"gameType\": \"SURVEY\",\n    \"id\": \"string\",\n    \"creatorId\": \"string\",\n    \"creator\": {\n      \"avatar\": \"string\",\n      \"id\": \"string\",\n      \"partnerName\": \"string\",\n      \"avatarAssetId\": \"string\",\n      \"profileColor\": \"string\",\n      \"userName\": \"string\",\n      \"createdAt\": \"1981-08-24T22:11:08.433Z\",\n      \"updatedAt\": \"2001-08-23T22:03:16.943Z\"\n    },\n    \"startTime\": \"1954-02-05T23:50:28.742Z\",\n    \"endTime\": \"1973-09-13T02:20:23.736Z\",\n    \"lastJoinTime\": \"2009-08-24T20:15:22.781Z\",\n    \"gameTitle\": \"string\",\n    \"sourceUrl\": \"string\",\n    \"sideA\": \"string\",\n    \"sideB\": \"string\",\n    \"text\": \"string\",\n    \"categoryId\": \"string\",\n    \"category\": {\n      \"language\": \"en-us\",\n      \"id\": \"string\",\n      \"categoryName\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"deletedAt\": \"string\",\n      \"sticker\": \"string\",\n      \"icon\": \"string\"\n    },\n    \"isAd\": true,\n    \"createdAt\": \"1999-12-07T05:00:03.264Z\",\n    \"updatedAt\": \"1984-06-19T00:50:06.519Z\",\n    \"version\": 7403.1418002246555,\n    \"orientation\": \"landscape\",\n    \"correctAnswer\": \"<string>\",\n    \"videoAssetId\": \"string\",\n    \"questionVideoAssetId\": \"string\",\n    \"landscapeVideoAssetId\": \"string\",\n    \"audioAssetId\": \"string\",\n    \"resultAssetId\": \"string\",\n    \"isPrivate\": true,\n    \"bingSearch\": \"string\",\n    \"bingSearchClaim\": \"string\",\n    \"metadata\": {},\n    \"urls\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"gameId\": \"string\",\n  \"quantity\": 6443.925671978193,\n  \"matched\": 5552.543236336202,\n  \"createdAt\": \"2001-09-23T02:54:32.701Z\",\n  \"opponents\": {},\n  \"returnUrl\": \"string\",\n  \"rewardType\": \"<string>\",\n  \"achievements\": [\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"1990-04-05T01:15:49.619Z\",\n      \"expireAt\": \"1961-11-26T04:11:44.882Z\",\n      \"achievementId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"2019-06-02T04:43:44.291Z\",\n      \"expireAt\": \"2008-05-31T18:42:57.808Z\",\n      \"achievementId\": \"string\"\n    }\n  ],\n  \"rewardClaimed\": false,\n  \"sideAPercent\": 4954.448082674402,\n  \"majorityBonusWon\": false,\n  \"newLeague\": \"level1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed80373f-edac-4c2c-8173-837a49c529cf",
+          "name": "Gameplays Controller claim Reward",
+          "request": {
+            "name": "Gameplays Controller claim Reward",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "gameplays",
+                ":id",
+                "claim_reward"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-idempotency-key",
+                "value": "<string>"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6bf95978-a923-4424-b964-9ea5f7d9e618",
+              "name": "Claims a Game Play reward",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "gameplays",
+                    ":id",
+                    "claim_reward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-idempotency-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b3423ea-9857-43f2-9291-932a75d22aee",
+          "name": "Gameplays Controller by Id",
+          "request": {
+            "name": "Gameplays Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "gameplays",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6aa5b3f1-ca29-4382-bb2d-eeca07d37c35",
+              "name": "Gets a Game Play by ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "gameplays",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gameType\": \"TRIVIA\",\n  \"state\": \"matched\",\n  \"side\": \"<string>\",\n  \"ticketType\": \"<string>\",\n  \"game\": {\n    \"audioUrl\": \"string\",\n    \"videoUrls\": {\n      \"hls\": \"string\",\n      \"mp4360\": \"string\",\n      \"mp4540\": \"string\",\n      \"mp4720\": \"string\",\n      \"poster\": \"string\"\n    },\n    \"questionVideoUrls\": {\n      \"hls\": \"string\",\n      \"mp4360\": \"string\",\n      \"mp4540\": \"string\",\n      \"mp4720\": \"string\",\n      \"poster\": \"string\"\n    },\n    \"landscapeVideoUrls\": {\n      \"hls\": \"string\",\n      \"mp4360\": \"string\",\n      \"mp4540\": \"string\",\n      \"mp4720\": \"string\",\n      \"poster\": \"string\"\n    },\n    \"resultUrls\": {\n      \"hls\": \"string\",\n      \"mp4360\": \"string\",\n      \"mp4540\": \"string\",\n      \"mp4720\": \"string\",\n      \"poster\": \"string\"\n    },\n    \"state\": \"quarantined\",\n    \"language\": \"es-mx\",\n    \"gameType\": \"SURVEY\",\n    \"id\": \"string\",\n    \"creatorId\": \"string\",\n    \"creator\": {\n      \"avatar\": \"string\",\n      \"id\": \"string\",\n      \"partnerName\": \"string\",\n      \"avatarAssetId\": \"string\",\n      \"profileColor\": \"string\",\n      \"userName\": \"string\",\n      \"createdAt\": \"1981-08-24T22:11:08.433Z\",\n      \"updatedAt\": \"2001-08-23T22:03:16.943Z\"\n    },\n    \"startTime\": \"1954-02-05T23:50:28.742Z\",\n    \"endTime\": \"1973-09-13T02:20:23.736Z\",\n    \"lastJoinTime\": \"2009-08-24T20:15:22.781Z\",\n    \"gameTitle\": \"string\",\n    \"sourceUrl\": \"string\",\n    \"sideA\": \"string\",\n    \"sideB\": \"string\",\n    \"text\": \"string\",\n    \"categoryId\": \"string\",\n    \"category\": {\n      \"language\": \"en-us\",\n      \"id\": \"string\",\n      \"categoryName\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"deletedAt\": \"string\",\n      \"sticker\": \"string\",\n      \"icon\": \"string\"\n    },\n    \"isAd\": true,\n    \"createdAt\": \"1999-12-07T05:00:03.264Z\",\n    \"updatedAt\": \"1984-06-19T00:50:06.519Z\",\n    \"version\": 7403.1418002246555,\n    \"orientation\": \"landscape\",\n    \"correctAnswer\": \"<string>\",\n    \"videoAssetId\": \"string\",\n    \"questionVideoAssetId\": \"string\",\n    \"landscapeVideoAssetId\": \"string\",\n    \"audioAssetId\": \"string\",\n    \"resultAssetId\": \"string\",\n    \"isPrivate\": true,\n    \"bingSearch\": \"string\",\n    \"bingSearchClaim\": \"string\",\n    \"metadata\": {},\n    \"urls\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"gameId\": \"string\",\n  \"quantity\": 6443.925671978193,\n  \"matched\": 5552.543236336202,\n  \"createdAt\": \"2001-09-23T02:54:32.701Z\",\n  \"opponents\": {},\n  \"returnUrl\": \"string\",\n  \"rewardType\": \"<string>\",\n  \"achievements\": [\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"1990-04-05T01:15:49.619Z\",\n      \"expireAt\": \"1961-11-26T04:11:44.882Z\",\n      \"achievementId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"2019-06-02T04:43:44.291Z\",\n      \"expireAt\": \"2008-05-31T18:42:57.808Z\",\n      \"achievementId\": \"string\"\n    }\n  ],\n  \"rewardClaimed\": false,\n  \"sideAPercent\": 4954.448082674402,\n  \"majorityBonusWon\": false,\n  \"newLeague\": \"level1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f705c57f-52d5-4515-83c4-b12efef32434",
+          "name": "Gameplays Controller cancel",
+          "request": {
+            "name": "Gameplays Controller cancel",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "gameplays",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-idempotency-key",
+                "value": "<string>"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a9cd7be-1d26-4ca9-9c1b-fec102728a2d",
+              "name": "Cancels a Game Play",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "gameplays",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-idempotency-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b51a101e-f7e0-4617-8a90-3fee97a08513",
+    "name": "Versusgame Gameplays API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

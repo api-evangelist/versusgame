@@ -1,0 +1,129 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Internal API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: internal
+paths:
+  /internal/user/info:
+    get:
+      operationId: InternalController_userInfo
+      parameters:
+      - name: token
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+      security:
+      - x-api-key: []
+      tags:
+      - internal
+  /internal/users/find:
+    post:
+      operationId: InternalController_FindUsers
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindUserslDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Profile'
+      security:
+      - x-api-key: []
+      tags:
+      - internal
+components:
+  schemas:
+    FindUserslDto:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+      required:
+      - userIds
+    UserInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        emailVerified:
+          type: boolean
+        roles:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: number
+        updatedAt:
+          type: number
+        blocked:
+          type: boolean
+        deletedAt:
+          type: number
+        language:
+          type: string
+        profile:
+          $ref: '#/components/schemas/Profile'
+      required:
+      - id
+      - emailVerified
+      - roles
+      - createdAt
+      - updatedAt
+    Profile:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - avatar
+      - id
+      - username
+      - profileColor
+      - createdAt
+      - updatedAt
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

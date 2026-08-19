@@ -1,0 +1,588 @@
+{
+  "item": [
+    {
+      "id": "f71a69eb-4f06-40fc-a962-21c5368320b0",
+      "name": "wallets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a67db00-6cc7-45a7-a6eb-5e036919e3b4",
+          "name": "Wallets Controller get Account Balance",
+          "request": {
+            "name": "Wallets Controller get Account Balance",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "wallets",
+                "account-balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3968b288-671f-4eae-b724-a7a9f4c97841",
+              "name": "The account balance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "wallets",
+                    "account-balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"coins\": 442.71230970881703,\n  \"pendingCoins\": 6981.153697114691,\n  \"whiteTickets\": 6.0291009785562455,\n  \"blackTickets\": 5276.686217780596,\n  \"grayTickets\": 5805.18413632377,\n  \"points\": 9513.386723019235,\n  \"createdAt\": \"1953-06-22T13:35:22.075Z\",\n  \"updatedAt\": \"1967-09-26T12:59:03.281Z\",\n  \"version\": 3653.39654908294,\n  \"canCollectFreeGift\": true,\n  \"gamesDeclared\": 7624.254443802017,\n  \"gamesCorrectAnswers\": 4944.939934100737,\n  \"achievements\": [\n    \"string\",\n    \"string\"\n  ],\n  \"currentLeague\": \"level4\",\n  \"gamePlaysSinceDemotion\": 4045.641536983129,\n  \"lifetimeGamesPlayed\": 4051.334505722226,\n  \"emailVerified\": true,\n  \"referralCount\": 5078.113851170819,\n  \"dailySetCounts\": {\n    \"totalCompleted\": 0,\n    \"totalWins\": 0,\n    \"totalLosses\": 0,\n    \"totalTies\": 0\n  },\n  \"leagues\": [\n    {\n      \"name\": \"string\",\n      \"leaderboardId\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"leaderboardId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7d8f54c-1b5a-459f-b692-0d2e3971680d",
+          "name": "Wallets Controller claim Daily Gift",
+          "request": {
+            "name": "Wallets Controller claim Daily Gift",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "wallets",
+                "claim-daily-gift"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1ab56b95-7e52-4e20-a845-488513b55649",
+              "name": "Claim Daily Gift Tickets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "wallets",
+                    "claim-daily-gift"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": 4362.053530674638\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6d5d626-6f86-4d3b-8f64-c86f30f404c3",
+          "name": "Admin Controller update User Wallet",
+          "request": {
+            "name": "Admin Controller update User Wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "wallets",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"funds\": [\n    {\n      \"type\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"walletVersion\": \"<number>\",\n  \"adminDescription\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"gameCorrectAnswer\": \"<boolean>\",\n  \"gameDeclared\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d302276-d16d-4ea9-9d6f-3fd9eb412bea",
+              "name": "Updated User Wallet via Admin Controls",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "wallets",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"funds\": [\n    {\n      \"type\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"walletVersion\": \"<number>\",\n  \"adminDescription\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"gameCorrectAnswer\": \"<boolean>\",\n  \"gameDeclared\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"updatedAt\": \"1991-11-18T05:06:37.654Z\",\n  \"version\": 296.2510058319723\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b275e2a-b86c-414b-966c-0038a4f8eff7",
+          "name": "Admin Controller demote User Wallet",
+          "request": {
+            "name": "Admin Controller demote User Wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "wallets",
+                ":userId",
+                "demote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distributorId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a241f523-7989-4573-aa9a-143e3059bbae",
+              "name": "Demotes User Wallet via Admin Controls",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "wallets",
+                    ":userId",
+                    "demote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distributorId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"coins\": 6146.812168415615,\n  \"pendingCoins\": 2981.0647375652034,\n  \"whiteTickets\": 9771.183708009583,\n  \"blackTickets\": 9482.740899850822,\n  \"grayTickets\": 1361.0954888172255,\n  \"points\": 2389.2755786456123,\n  \"createdAt\": \"1985-01-01T15:18:07.538Z\",\n  \"updatedAt\": \"2015-04-07T14:21:53.857Z\",\n  \"version\": 654.3937508730057,\n  \"canCollectFreeGift\": false,\n  \"gamesDeclared\": 5688.800071533763,\n  \"gamesCorrectAnswers\": 8107.5114986579,\n  \"achievements\": [\n    \"string\",\n    \"string\"\n  ],\n  \"currentLeague\": \"level4\",\n  \"gamePlaysSinceDemotion\": 1138.2271230350848,\n  \"lifetimeGamesPlayed\": 1643.508480143645,\n  \"emailVerified\": false,\n  \"referralCount\": 7721.1816326640555,\n  \"dailySetCounts\": {\n    \"totalCompleted\": 0,\n    \"totalWins\": 0,\n    \"totalLosses\": 0,\n    \"totalTies\": 0\n  },\n  \"leagues\": [\n    {\n      \"name\": \"string\",\n      \"leaderboardId\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"leaderboardId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7565a0d9-9314-47ac-89ea-96c32e06562d",
+          "name": "Admin Controller promote User Wallet",
+          "request": {
+            "name": "Admin Controller promote User Wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "wallets",
+                ":userId",
+                "promote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"leaderboardLeague\": \"<string>\",\n  \"distributorId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30ad0df0-a341-4939-b236-4b7223d572c2",
+              "name": "Promotes User Wallet via Admin Controls",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "wallets",
+                    ":userId",
+                    "promote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leaderboardLeague\": \"<string>\",\n  \"distributorId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"coins\": 6146.812168415615,\n  \"pendingCoins\": 2981.0647375652034,\n  \"whiteTickets\": 9771.183708009583,\n  \"blackTickets\": 9482.740899850822,\n  \"grayTickets\": 1361.0954888172255,\n  \"points\": 2389.2755786456123,\n  \"createdAt\": \"1985-01-01T15:18:07.538Z\",\n  \"updatedAt\": \"2015-04-07T14:21:53.857Z\",\n  \"version\": 654.3937508730057,\n  \"canCollectFreeGift\": false,\n  \"gamesDeclared\": 5688.800071533763,\n  \"gamesCorrectAnswers\": 8107.5114986579,\n  \"achievements\": [\n    \"string\",\n    \"string\"\n  ],\n  \"currentLeague\": \"level4\",\n  \"gamePlaysSinceDemotion\": 1138.2271230350848,\n  \"lifetimeGamesPlayed\": 1643.508480143645,\n  \"emailVerified\": false,\n  \"referralCount\": 7721.1816326640555,\n  \"dailySetCounts\": {\n    \"totalCompleted\": 0,\n    \"totalWins\": 0,\n    \"totalLosses\": 0,\n    \"totalTies\": 0\n  },\n  \"leagues\": [\n    {\n      \"name\": \"string\",\n      \"leaderboardId\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"leaderboardId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f20f2a89-2320-4c1c-bd63-e81fabf44a11",
+    "name": "Versusgame Wallets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

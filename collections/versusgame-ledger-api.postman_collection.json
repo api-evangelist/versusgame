@@ -1,0 +1,326 @@
+{
+  "item": [
+    {
+      "id": "970b3365-f5f3-4051-9c94-3aaefab22941",
+      "name": "ledger",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be8f3b99-21a5-43f8-9055-609038dcc5d7",
+          "name": "Ledger Controller list",
+          "request": {
+            "name": "Ledger Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "ledger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reasons",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reasons",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a5b1078a-00da-4e10-a8cb-488298997c1e",
+              "name": "List user's transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ledger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reasons",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reasons",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"reason\": \"<string>\",\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"1966-12-21T19:09:39.234Z\",\n      \"funds\": [\n        {\n          \"type\": \"free\",\n          \"amount\": 505.9707535421276\n        },\n        {\n          \"type\": \"coin\",\n          \"amount\": 3769.8288532937663\n        }\n      ]\n    },\n    {\n      \"reason\": \"<string>\",\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"2012-11-26T16:58:38.023Z\",\n      \"funds\": [\n        {\n          \"type\": \"pending_coin\",\n          \"amount\": 1523.3707789569196\n        },\n        {\n          \"type\": \"free\",\n          \"amount\": 5733.804631793277\n        }\n      ]\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80ae54aa-929a-4582-9c2b-ecd2f7d409f3",
+          "name": "Ledger Admin Controller list",
+          "request": {
+            "name": "Ledger Admin Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "ledger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reasons",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reasons",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "63204c6b-abf7-4b2e-ac03-a35f16216539",
+              "name": "List user's transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "ledger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reasons",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reasons",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"reason\": \"<string>\",\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"1965-01-23T23:18:54.223Z\",\n      \"funds\": [\n        {\n          \"type\": \"coin\",\n          \"amount\": 9646.822003062454\n        },\n        {\n          \"type\": \"point\",\n          \"amount\": 3597.7641176403686\n        }\n      ]\n    },\n    {\n      \"reason\": \"<string>\",\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"2008-12-02T11:06:25.674Z\",\n      \"funds\": [\n        {\n          \"type\": \"coin\",\n          \"amount\": 9812.444083011667\n        },\n        {\n          \"type\": \"black\",\n          \"amount\": 2606.0558080732667\n        }\n      ]\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "42bc9197-df22-455f-bc4a-1f337223aec3",
+    "name": "Versusgame Ledger API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

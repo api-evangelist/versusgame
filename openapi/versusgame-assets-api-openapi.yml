@@ -1,0 +1,266 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Assets API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: assets
+paths:
+  /v1/admin/assets:
+    get:
+      operationId: AssetAdminController_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/AssetSearchFindAllDto2'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of assets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAsset'
+      security:
+      - access-token: []
+      tags:
+      - assets
+  /v1/admin/assets/{assetId}:
+    get:
+      operationId: AssetAdminController_byId
+      parameters:
+      - name: assetId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Asset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+      security:
+      - access-token: []
+      tags:
+      - assets
+  /v1/assets:
+    post:
+      operationId: AssetsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssetDto'
+      responses:
+        '201':
+          description: New Asset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+      security:
+      - access-token: []
+      tags:
+      - assets
+  /v1/assets/{assetId}:
+    get:
+      operationId: AssetsController_get
+      parameters:
+      - name: assetId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+      security:
+      - access-token: []
+      tags:
+      - assets
+    delete:
+      operationId: AssetsController_delete
+      parameters:
+      - name: assetId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Delete Asset
+      security:
+      - access-token: []
+      tags:
+      - assets
+components:
+  schemas:
+    CreateAssetDto:
+      type: object
+      properties:
+        name:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: number
+          minimum: 1
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - name
+      - mimeType
+      - size
+      - width
+      - height
+    ListAsset:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    AssetSearchFindAllDto2:
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/AssetSearchFindAllDto'
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    JobStatus:
+      type: string
+      enum:
+      - created
+      - processing
+      - complete
+      - error
+    Asset:
+      type: object
+      properties:
+        jobStatus:
+          allOf:
+          - $ref: '#/components/schemas/JobStatus'
+        isVideo:
+          type: boolean
+        isAudio:
+          type: boolean
+        isImage:
+          type: boolean
+        videoUrl:
+          $ref: '#/components/schemas/VideoUrls'
+        imageUrl:
+          type: string
+        audioUrl:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+        errorCode:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        uploadSignedUrl:
+          type: string
+      required:
+      - jobStatus
+      - isVideo
+      - isAudio
+      - isImage
+      - videoUrl
+      - imageUrl
+      - audioUrl
+      - id
+      - name
+      - mimeType
+      - size
+      - width
+      - height
+      - errorCode
+      - userId
+      - createdAt
+      - updatedAt
+      - deletedAt
+    AssetSearchFindAllDto:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        ids:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

@@ -1,0 +1,86 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Legal API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: Legal
+paths:
+  /privacy-policy/{language}:
+    get:
+      operationId: LegalController_privacy
+      parameters:
+      - name: language
+        required: true
+        in: path
+        schema: {}
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Legal
+  /rules/{language}:
+    get:
+      operationId: LegalController_rules
+      parameters:
+      - name: language
+        required: true
+        in: path
+        schema: {}
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Legal
+  /tos/{language}:
+    get:
+      operationId: LegalController_tos
+      parameters:
+      - name: language
+        required: true
+        in: path
+        schema: {}
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Legal
+  /promotional-rules/{language}:
+    get:
+      operationId: LegalController_promotional
+      parameters:
+      - name: language
+        required: true
+        in: path
+        schema: {}
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Legal
+  /business-service-terms/{language}:
+    get:
+      operationId: LegalController_businessServiceTerms
+      parameters:
+      - name: language
+        required: true
+        in: path
+        schema: {}
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Legal
+components:
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

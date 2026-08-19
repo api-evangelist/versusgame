@@ -1,0 +1,457 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Meter Ads API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: meter-ads
+paths:
+  /v1/meter-ads/active:
+    get:
+      description: Returns an array of active meter ads for a given partner ID. If no partner ID is provided,
+        the default partner ID is used. Active means that the status is "published", the start date is
+        in the past, and the end date is in the future.
+      operationId: MeterAdsController_listActive_v1
+      parameters:
+      - name: partnerId
+        required: false
+        in: query
+        description: Partner ID to filter active meter ads. Falls back to "default" if not provided
+        schema:
+          type: string
+      - name: url
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of MeterAd entities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MeterAd'
+      summary: List active meter ads by partner ID
+      tags:
+      - meter-ads
+  /v1/admin/meter-ads:
+    post:
+      operationId: MeterAdsAdminController_create_v1
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMeterAdDto'
+      responses:
+        '201':
+          description: A MeterAd entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeterAd'
+      security:
+      - access-token: []
+      summary: Create a new MeterAd
+      tags:
+      - meter-ads
+    get:
+      operationId: MeterAdsAdminController_list_v1
+      parameters:
+      - name: partnerId
+        required: false
+        in: query
+        description: Partner ID to filter by
+        schema:
+          type: string
+      - name: questionText
+        required: false
+        in: query
+        description: Will do a partial case-insensitive match on question text
+        schema:
+          type: string
+      - name: marketingText
+        required: false
+        in: query
+        description: Will do a partial case-insensitive match on marketing text
+        schema:
+          type: string
+      - name: status
+        required: false
+        in: query
+        schema:
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - CANCELLED
+          type: string
+      - name: startTime
+        required: false
+        in: query
+        description: Provide a value and comparison operator to filter by start time Unix timestamp in
+          milliseconds
+        schema:
+          $ref: '#/components/schemas/TimeComparison'
+      - name: endTime
+        required: false
+        in: query
+        description: Provide a value and comparison operator to filter by end time Unix timestamp in milliseconds
+        schema:
+          $ref: '#/components/schemas/TimeComparison'
+      - name: sort
+        required: false
+        in: query
+        description: Dictionary of property names to sort direction (ASC or DESC)
+        schema:
+          $ref: '#/components/schemas/SortOptionsDto'
+      - name: page
+        required: false
+        in: query
+        description: Page number (1-based); the default is 1
+        schema:
+          minimum: 1
+          default: 1
+          type: number
+      - name: pageSize
+        required: false
+        in: query
+        description: Number of items per page; the default is 20
+        schema:
+          minimum: 1
+          default: 20
+          type: number
+      responses:
+        '200':
+          description: A paginated list of MeterAd entities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMeterAdsDto'
+      security:
+      - access-token: []
+      summary: List meter ads, filtered by search terms and sort options.
+      tags:
+      - meter-ads
+  /v1/admin/meter-ads/{id}:
+    get:
+      operationId: MeterAdsAdminController_byId_v1
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A meter ad entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeterAd'
+      security:
+      - access-token: []
+      summary: Get a meter ad by ID
+      tags:
+      - meter-ads
+    patch:
+      operationId: MeterAdsAdminController_update_v1
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMeterAdDto'
+      responses:
+        '200':
+          description: The updated meter ad entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeterAd'
+      security:
+      - access-token: []
+      summary: Update a meter ad
+      tags:
+      - meter-ads
+    delete:
+      operationId: MeterAdsAdminController_delete_v1
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The meter ad has been successfully deleted
+      security:
+      - access-token: []
+      summary: Delete a meter ad
+      tags:
+      - meter-ads
+components:
+  schemas:
+    MeterAd:
+      type: object
+      properties:
+        id:
+          type: string
+        partnerId:
+          type: string
+        startTime:
+          type: number
+          description: Unix timestamp in milliseconds
+        endTime:
+          type: number
+          description: Unix timestamp in milliseconds
+        questionText:
+          type: string
+        marketingText:
+          type: string
+        sideA:
+          type: object
+          properties:
+            label:
+              type: string
+              description: Label for side A
+            percentage:
+              type: number
+              description: Percentage allocated to side A (0-100)
+            assetUrl:
+              type: string
+              description: URL to the asset for side A
+          required:
+          - label
+          - percentage
+          - assetUrl
+        sideB:
+          type: object
+          properties:
+            label:
+              type: string
+              description: Label for side B
+            percentage:
+              type: number
+              description: Percentage allocated to side B (0-100)
+            assetUrl:
+              type: string
+              description: URL to the asset for side B
+          required:
+          - label
+          - percentage
+          - assetUrl
+        status:
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - CANCELLED
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+          description: Unix Timestamp in milliseconds of when the record was created
+        updatedAt:
+          format: date-time
+          type: string
+          description: Unix Timestamp in milliseconds of when the record was last updated
+        url:
+          type: string
+      required:
+      - id
+      - partnerId
+      - startTime
+      - endTime
+      - questionText
+      - status
+      - createdAt
+      - updatedAt
+      - url
+    AdSideDto:
+      type: object
+      properties:
+        label:
+          type: string
+        percentage:
+          type: number
+          minimum: 0
+        assetUrl:
+          type: string
+          format: uri
+      required:
+      - label
+      - percentage
+      - assetUrl
+    TimeComparison:
+      type: object
+      properties:
+        value:
+          type: number
+          minimum: 0
+          description: Unix timestamp in milliseconds
+          example: 1643673600000
+        operator:
+          enum:
+          - eq
+          - gt
+          - gte
+          - lt
+          - lte
+          - neq
+          type: string
+          description: Comparison operator to apply
+          example: gte
+      required:
+      - value
+      - operator
+    PaginatedMeterAdsDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeterAd'
+        total:
+          type: number
+        page:
+          type: number
+        pageSize:
+          type: number
+        pageCount:
+          type: number
+      required:
+      - items
+      - total
+      - page
+      - pageSize
+      - pageCount
+    CreateMeterAdDto:
+      type: object
+      properties:
+        partnerId:
+          type: string
+        startTime:
+          type: number
+          minimum: 1
+          description: Unix timestamp in milliseconds
+        endTime:
+          type: number
+          description: Unix timestamp in milliseconds
+        questionText:
+          type: string
+        marketingText:
+          type: string
+          description: Frontend will supply a default if not provided
+        sideA:
+          $ref: '#/components/schemas/AdSideDto'
+        sideB:
+          $ref: '#/components/schemas/AdSideDto'
+        status:
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - CANCELLED
+          type: string
+        url:
+          type: string
+      required:
+      - partnerId
+      - startTime
+      - endTime
+      - questionText
+      - sideA
+      - sideB
+      - status
+    SortOptionsDto:
+      type: object
+      properties:
+        status:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for status
+        partnerId:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for partnerId
+        startTime:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for startTime
+        endTime:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for endTime
+        questionText:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for questionText
+        marketingText:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for marketingText
+    UpdateMeterAdDto:
+      type: object
+      properties:
+        partnerId:
+          type: string
+        startTime:
+          type: number
+        endTime:
+          type: number
+        questionText:
+          type: string
+        marketingText:
+          type: string
+        sideA:
+          $ref: '#/components/schemas/UpdateAdSideDto'
+        sideB:
+          $ref: '#/components/schemas/UpdateAdSideDto'
+        status:
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - CANCELLED
+          type: string
+        url:
+          type: string
+    UpdateAdSideDto:
+      type: object
+      properties:
+        label:
+          type: string
+        percentage:
+          type: number
+        assetUrl:
+          type: string
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

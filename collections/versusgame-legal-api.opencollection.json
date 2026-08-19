@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Versusgame Legal API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Legal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "LegalController_privacy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/privacy-policy/:language",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "LegalController_rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rules/:language",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "LegalController_tos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tos/:language",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "LegalController_promotional",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/promotional-rules/:language",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "LegalController_businessServiceTerms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/business-service-terms/:language",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

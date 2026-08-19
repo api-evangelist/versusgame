@@ -1,0 +1,2278 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Autogame API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: autogame
+paths:
+  /autogame/upload:
+    post:
+      operationId: AutogameController_createUpload
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUploadDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/polly/voice:
+    post:
+      operationId: PollyController_voice
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SynthesizeSpeechDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            audio/mp3:
+              schema:
+                type: string
+                format: binary
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/polly/voice-asset:
+    post:
+      operationId: PollyController_voiceAsset
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePollyAssetDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/polly/speech_marks:
+    post:
+      operationId: PollyController_speechMarks
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SynthesizeSpeechDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSpeechMark'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/polly:
+    get:
+      operationId: PollyController_describeVoices
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVoices'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/google_search:
+    get:
+      operationId: GoogleSearchController_search
+      parameters:
+      - name: c2coff
+        required: false
+        in: query
+        description: 'Enables or disables [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/json_api_reference#chineseSearch).
+          The default value for this parameter is 0 (zero), meaning that the feature is enabled. Supported
+          values are: * `1`: Disabled * `0`: Enabled (default)'
+        schema:
+          type: string
+      - name: cr
+        required: false
+        in: query
+        description: 'Restricts search results to documents originating in a particular country. You may
+          use [Boolean operators](https://developers.google.com/custom-search/docs/json_api_reference#booleanOperators)
+          in the cr parameter''s value. Google Search determines the country of a document by analyzing:
+          * the top-level domain (TLD) of the document''s URL * the geographic location of the Web server''s
+          IP address See the [Country Parameter Values](https://developers.google.com/custom-search/docs/json_api_reference#countryCollections)
+          page for a list of valid values for this parameter.'
+        schema:
+          type: string
+      - name: cx
+        required: false
+        in: query
+        description: The Programmable Search Engine ID to use for this request.
+        schema:
+          type: string
+      - name: dateRestrict
+        required: false
+        in: query
+        description: 'Restricts results to URLs based on date. Supported values include: * `d[number]`:
+          requests results from the specified number of past days. * `w[number]`: requests results from
+          the specified number of past weeks. * `m[number]`: requests results from the specified number
+          of past months. * `y[number]`: requests results from the specified number of past years.'
+        schema:
+          type: string
+      - name: exactTerms
+        required: false
+        in: query
+        description: Identifies a phrase that all documents in the search results must contain.
+        schema:
+          type: string
+      - name: excludeTerms
+        required: false
+        in: query
+        description: Identifies a word or phrase that should not appear in any documents in the search
+          results.
+        schema:
+          type: string
+      - name: fileType
+        required: false
+        in: query
+        description: Restricts results to files of a specified extension. A list of file types indexable
+          by Google can be found in Search Console [Help Center](https://support.google.com/webmasters/answer/35287).
+        schema:
+          type: string
+      - name: filter
+        required: false
+        in: query
+        description: 'Controls turning on or off the duplicate content filter. * See [Automatic Filtering](https://developers.google.com/custom-search/docs/json_api_reference#automaticFiltering)
+          for more information about Google''s search results filters. Note that host crowding filtering
+          applies only to multi-site searches. * By default, Google applies filtering to all search results
+          to improve the quality of those results. Acceptable values are: * `0`: Turns off duplicate content
+          filter. * `1`: Turns on duplicate content filter.'
+        schema:
+          type: string
+      - name: gl
+        required: false
+        in: query
+        description: Geolocation of end user. * The `gl` parameter value is a two-letter country code.
+          The `gl` parameter boosts search results whose country of origin matches the parameter value.
+          See the [Country Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes)
+          page for a list of valid values. * Specifying a `gl` parameter value should lead to more relevant
+          results. This is particularly true for international customers and, even more specifically,
+          for customers in English- speaking countries other than the United States.
+        schema:
+          type: string
+      - name: googlehost
+        required: false
+        in: query
+        description: '**Deprecated**. Use the `gl` parameter for a similar effect. The local Google domain
+          (for example, google.com, google.de, or google.fr) to use to perform the search.'
+        schema:
+          type: string
+      - name: highRange
+        required: false
+        in: query
+        description: Specifies the ending value for a search range. * Use `lowRange` and `highRange` to
+          append an inclusive search range of `lowRange...highRange` to the query.
+        schema:
+          type: string
+      - name: hl
+        required: false
+        in: query
+        description: Sets the user interface language. * Explicitly setting this parameter improves the
+          performance and the quality of your search results. * See the [Interface Languages](https://developers.google.com/custom-search/docs/json_api_reference#wsInterfaceLanguages)
+          section of [Internationalizing Queries and Results Presentation](https://developers.google.com/custom-search/docs/json_api_reference#wsInternationalizing)
+          for more information, and [Supported Interface Languages](https://developers.google.com/custom-search/docs/json_api_reference#interfaceLanguages)
+          for a list of supported languages.
+        schema:
+          type: string
+      - name: hq
+        required: false
+        in: query
+        description: Appends the specified query terms to the query, as if they were combined with a logical
+          AND operator.
+        schema:
+          type: string
+      - name: imgColorType
+        required: false
+        in: query
+        description: 'Returns black and white, grayscale, transparent, or color images. Acceptable values
+          are: * `"color"` * `"gray"` * `"mono"`: black and white * `"trans"`: transparent background'
+        schema:
+          type: string
+      - name: imgDominantColor
+        required: false
+        in: query
+        description: 'Returns images of a specific dominant color. Acceptable values are: * `"black"`
+          * `"blue"` * `"brown"` * `"gray"` * `"green"` * `"orange"` * `"pink"` * `"purple"` * `"red"`
+          * `"teal"` * `"white"` * `"yellow"`'
+        schema:
+          type: string
+      - name: imgSize
+        required: false
+        in: query
+        description: 'Returns images of a specified size. Acceptable values are: * `"huge"` * `"icon"`
+          * `"large"` * `"medium"` * `"small"` * `"xlarge"` * `"xxlarge"`'
+        schema:
+          type: string
+      - name: imgType
+        required: false
+        in: query
+        description: 'Returns images of a type. Acceptable values are: * `"clipart"` * `"face"` * `"lineart"`
+          * `"stock"` * `"photo"` * `"animated"`'
+        schema:
+          type: string
+      - name: linkSite
+        required: false
+        in: query
+        description: Specifies that all search results should contain a link to a particular URL.
+        schema:
+          type: string
+      - name: lowRange
+        required: false
+        in: query
+        description: Specifies the starting value for a search range. Use `lowRange` and `highRange` to
+          append an inclusive search range of `lowRange...highRange` to the query.
+        schema:
+          type: string
+      - name: lr
+        required: false
+        in: query
+        description: 'Restricts the search to documents written in a particular language (e.g., `lr=lang_ja`).
+          Acceptable values are: * `"lang_ar"`: Arabic * `"lang_bg"`: Bulgarian * `"lang_ca"`: Catalan
+          * `"lang_cs"`: Czech * `"lang_da"`: Danish * `"lang_de"`: German * `"lang_el"`: Greek * `"lang_en"`:
+          English * `"lang_es"`: Spanish * `"lang_et"`: Estonian * `"lang_fi"`: Finnish * `"lang_fr"`:
+          French * `"lang_hr"`: Croatian * `"lang_hu"`: Hungarian * `"lang_id"`: Indonesian * `"lang_is"`:
+          Icelandic * `"lang_it"`: Italian * `"lang_iw"`: Hebrew * `"lang_ja"`: Japanese * `"lang_ko"`:
+          Korean * `"lang_lt"`: Lithuanian * `"lang_lv"`: Latvian * `"lang_nl"`: Dutch * `"lang_no"`:
+          Norwegian * `"lang_pl"`: Polish * `"lang_pt"`: Portuguese * `"lang_ro"`: Romanian * `"lang_ru"`:
+          Russian * `"lang_sk"`: Slovak * `"lang_sl"`: Slovenian * `"lang_sr"`: Serbian * `"lang_sv"`:
+          Swedish * `"lang_tr"`: Turkish * `"lang_zh-CN"`: Chinese (Simplified) * `"lang_zh-TW"`: Chinese
+          (Traditional)'
+        schema:
+          type: string
+      - name: num
+        required: false
+        in: query
+        description: Number of search results to return. * Valid values are integers between 1 and 10,
+          inclusive.
+        schema:
+          type: number
+      - name: orTerms
+        required: false
+        in: query
+        description: Provides additional search terms to check for in a document, where each document
+          in the search results must contain at least one of the additional search terms.
+        schema:
+          type: string
+      - name: q
+        required: true
+        in: query
+        description: Query
+        schema:
+          type: string
+      - name: relatedSite
+        required: false
+        in: query
+        description: Specifies that all search results should be pages that are related to the specified
+          URL.
+        schema:
+          type: string
+      - name: rights
+        required: false
+        in: query
+        description: 'Filters based on licensing. Supported values include: `cc_publicdomain`, `cc_attribute`,
+          `cc_sharealike`, `cc_noncommercial`, `cc_nonderived` and combinations of these. See [typical
+          combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).'
+        schema:
+          type: string
+      - name: safe
+        required: false
+        in: query
+        description: 'Search safety level. Acceptable values are: * `"active"`: Enables SafeSearch filtering.
+          * `"off"`: Disables SafeSearch filtering. (default)'
+        schema:
+          type: string
+      - name: searchType
+        required: false
+        in: query
+        description: 'Specifies the search type: `image`. If unspecified, results are limited to webpages.
+          Acceptable values are: * `"image"`: custom image search.'
+        schema:
+          type: string
+      - name: siteSearch
+        required: false
+        in: query
+        description: Specifies a given site which should always be included or excluded from results (see
+          `siteSearchFilter` parameter, below).
+        schema:
+          type: string
+      - name: siteSearchFilter
+        required: false
+        in: query
+        description: 'Controls whether to include or exclude results from the site named in the `siteSearch`
+          parameter. Acceptable values are: * `"e"`: exclude * `"i"`: include'
+        schema:
+          type: string
+      - name: sort
+        required: false
+        in: query
+        description: 'The sort expression to apply to the results. The sort parameter specifies that the
+          results be sorted according to the specified expression i.e. sort by date. [Example: sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).'
+        schema:
+          type: string
+      - name: start
+        required: false
+        in: query
+        description: 'The index of the first result to return. The default number of results per page
+          is 10, so `&start=11` would start at the top of the second page of results. **Note**: The JSON
+          API will never return more than 100 results, even if more than 100 documents match the query,
+          so setting the sum of `start + num` to a number greater than 100 will produce an error. Also
+          note that the maximum value for `num` is 10.'
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleSearch'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+    post:
+      operationId: GoogleSearchController_insert
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsertRawSearchDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleSearch'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/google_search/{id}:
+    get:
+      operationId: GoogleSearchController_byId
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleSearch'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/openai/chat_completions:
+    post:
+      operationId: OpenAIController_chatCompletionCreate
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionsDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/scraper:
+    get:
+      operationId: ScraperController_scrape
+      parameters:
+      - name: url
+        required: true
+        in: query
+        schema:
+          format: uri
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParsedDocument'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/proxy:
+    get:
+      operationId: ProxyController_proxy
+      parameters:
+      - name: url
+        required: true
+        in: query
+        schema:
+          format: uri
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/remotion/render:
+    post:
+      operationId: RemotionController_render
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenderDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/chat-history:
+    post:
+      operationId: ChatHistoryController_createChatHistory
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateChatHistoryDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatHistory'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+    get:
+      operationId: ChatHistoryController_listChatHistories
+      parameters:
+      - name: creatorId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: gameCreated
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatHistoryList'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/chat-history/{id}:
+    get:
+      operationId: ChatHistoryController_GetChatHistoryById
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatHistory'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+    patch:
+      operationId: ChatHistoryController_updateChatHistory
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateChatHistoryDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatHistory'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article:
+    post:
+      operationId: ArticleController_createArticle
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateArticleDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article/drafts/{id}/game_index/{gameIndex}:
+    get:
+      operationId: ArticleController_draftById
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: gameIndex
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameDraft'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article/drafts:
+    get:
+      operationId: ArticleController_listGameDrafts
+      parameters:
+      - name: state
+        required: true
+        in: query
+        schema:
+          $ref: '#/components/schemas/GameDraftState'
+      - name: gameType
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/GameType'
+      - name: id
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: text
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: gameIndex
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: userId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: systemMessageNames
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: lock
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: articleId
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGameDraft'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article/drafts/versions:
+    get:
+      operationId: ArticleController_listGameDraftVersions
+      parameters:
+      - name: id
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: userId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGameDraftVersion'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article/drafts/{id}:
+    post:
+      operationId: ArticleController_createDraft
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: version
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDraftDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameDraft'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article/drafts/{id}/game_index/{gameIndex}/set_state:
+    post:
+      operationId: ArticleController_setState
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: gameIndex
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetStateDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article/drafts/{id}/game_index/{gameIndex}/version:
+    post:
+      operationId: ArticleController_newVersion
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: gameIndex
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewVersionDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article/{id}:
+    get:
+      operationId: ArticleController_articleById
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/article/drafts/{id}/game_index/{gameIndex}/game:
+    post:
+      operationId: ArticleController_createGame
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: gameIndex
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-idempotency-key
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGameDto'
+      responses:
+        '201':
+          description: Creates a new game
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameEntity'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/game:
+    post:
+      operationId: AutogameGameController_createGame
+      parameters:
+      - name: creatorId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: idempotencyKey
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: skipRelevanceCheck
+        required: false
+        in: query
+        schema:
+          type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGameDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/elevenlabs/voice:
+    post:
+      operationId: ElevenLabsController_voice
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceGenerationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            audio/mp3:
+              schema:
+                type: string
+                format: binary
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/elevenlabs/voice-asset:
+    post:
+      operationId: ElevenLabsController_voiceAsset
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVoiceAssetDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/elevenlabs/speech_marks:
+    post:
+      operationId: ElevenLabsController_speechMarks
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceGenerationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioResponse'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+  /autogame/elevenlabs:
+    get:
+      operationId: ElevenLabsController_describeVoices
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ElevenLabsVoiceList'
+      security:
+      - access-token: []
+      tags:
+      - autogame
+components:
+  schemas:
+    CreateDraftDto:
+      type: object
+      properties:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        url:
+          type: string
+      required:
+      - gameType
+      - gameDetail
+      - systemMessage
+      - systemMessageName
+      - url
+    GameDraftState:
+      type: string
+      enum:
+      - sqa-to-review
+      - video-to-review
+      - video-ready
+      - approved
+      - rejected
+      - published
+    StatsEntity:
+      type: object
+      properties:
+        sideA:
+          $ref: '#/components/schemas/SideStatsEntity'
+        sideB:
+          $ref: '#/components/schemas/SideStatsEntity'
+      required:
+      - sideA
+      - sideB
+    RenderDto:
+      type: object
+      properties:
+        compositionId:
+          type: string
+        inputProps:
+          type: object
+        fps:
+          type: number
+          minimum: 30
+          maximum: 60
+        durationInFrames:
+          type: number
+          minimum: 1
+        width:
+          type: number
+          minimum: 1
+        height:
+          type: number
+          minimum: 1
+        bundleBuildId:
+          type: string
+      required:
+      - compositionId
+      - inputProps
+      - fps
+      - durationInFrames
+      - width
+      - height
+      - bundleBuildId
+    CreateVoiceAssetDto:
+      type: object
+      properties:
+        syntesizedSpeech:
+          $ref: '#/components/schemas/VoiceGenerationDto'
+        name:
+          type: string
+        userId:
+          type: string
+      required:
+      - syntesizedSpeech
+      - name
+      - userId
+    Overlay:
+      type: object
+      properties:
+        start_chunk:
+          type: number
+        end_chunk:
+          type: number
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - start_chunk
+      - end_chunk
+      - images_query
+      - image_type
+      - image_search
+    Question:
+      type: object
+      properties:
+        text:
+          type: string
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - text
+      - images_query
+      - image_type
+      - image_search
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    Synopsis:
+      type: object
+      properties:
+        text:
+          type: string
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - text
+      - images_query
+      - image_type
+      - image_search
+    ElevenLabsVoiceList:
+      type: object
+      properties:
+        total:
+          type: number
+        voices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ElevenLabsVoice'
+      required:
+      - total
+      - voices
+    ChatHistoryList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatHistory'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    ParsedDocument:
+      type: object
+      properties:
+        title:
+          type: string
+          description: article title
+        content:
+          type: string
+          description: HTML string of processed article content
+        textContent:
+          type: string
+          description: text content of the article, with all the HTML tags removed
+        length:
+          type: number
+          description: length of an article, in characters
+        excerpt:
+          type: string
+          description: article description, or short excerpt from the content
+        byline:
+          type: string
+          description: author metadata
+        dir:
+          type: string
+          description: content direction
+        siteName:
+          type: string
+          description: name of the site
+        lang:
+          type: string
+          description: content language
+        linkData:
+          description: linkData from content
+          type: array
+          items:
+            type: object
+        publishedDate:
+          format: date-time
+          type: string
+        isArticle:
+          type: boolean
+        recent:
+          type: boolean
+      required:
+      - title
+      - content
+      - textContent
+      - length
+      - excerpt
+      - byline
+      - dir
+      - siteName
+      - lang
+    SlushingEntity:
+      type: object
+      properties:
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        blackTicketsGameplays:
+          type: number
+      required:
+      - whiteTickets
+      - blackTickets
+      - blackTicketsGameplays
+    ChatCompletionsDto:
+      type: object
+      properties:
+        model:
+          type: string
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageDto'
+        frequency_penalty:
+          type: number
+        function_call:
+          type: object
+        logit_bias:
+          type: object
+        max_tokens:
+          type: number
+        n:
+          type: number
+        presence_penalty:
+          type: number
+        response_format:
+          type: object
+        seed:
+          type: number
+        stop:
+          type: object
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+        tool_choice:
+          type: object
+        tools:
+          type: object
+        top_p:
+          type: number
+        user:
+          type: string
+      required:
+      - model
+      - messages
+    ImageSearch:
+      type: object
+      properties:
+        searchId:
+          type: string
+        selected:
+          type: number
+      required:
+      - searchId
+      - selected
+    SpeechMark:
+      type: object
+      properties:
+        time:
+          type: number
+        type:
+          type: string
+        start:
+          type: number
+        end:
+          type: number
+        value:
+          type: string
+      required:
+      - time
+      - type
+      - start
+      - end
+      - value
+    SideStatsEntity:
+      type: object
+      properties:
+        whiteTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        blackTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        freeTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+      required:
+      - whiteTickets
+      - blackTickets
+      - freeTickets
+    SetStateDto:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        lock:
+          type: number
+          minimum: 0
+      required:
+      - version
+    SynthesizeSpeechDto:
+      type: object
+      properties:
+        engine:
+          type: string
+        text:
+          type: string
+        languageCode:
+          type: string
+        voiceId:
+          type: string
+      required:
+      - engine
+      - text
+      - languageCode
+      - voiceId
+    ListGameDraft:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraft'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    CreateUploadDto:
+      type: object
+      properties:
+        extension:
+          type: string
+      required:
+      - extension
+    GameDraftVersion:
+      type: object
+      properties:
+        id:
+          type: string
+        gameIndex:
+          type: string
+        userId:
+          type: string
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+        version:
+          type: number
+        createdAt:
+          type: string
+      required:
+      - id
+      - gameIndex
+      - gameDetail
+      - manualOverrides
+      - version
+      - createdAt
+    ChatHistory:
+      type: object
+      properties:
+        id:
+          type: string
+        creatorId:
+          type: string
+        name:
+          type: string
+        history:
+          type: object
+        gameId:
+          type: string
+        messageVersion:
+          type: number
+        version:
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - creatorId
+      - name
+      - history
+      - gameId
+      - messageVersion
+      - version
+      - createdAt
+      - updatedAt
+    ElevenLabsVoice:
+      type: object
+      properties:
+        voice_id:
+          type: string
+        name:
+          type: string
+        samples:
+          type: array
+          items:
+            type: object
+        category:
+          type: string
+        fine_tuning:
+          type: object
+        labels:
+          type: object
+        description:
+          type: string
+        preview_url:
+          type: string
+        available_for_tiers:
+          type: array
+          items:
+            type: string
+        settings:
+          type: object
+        sharing:
+          type: object
+        high_quality_base_model_ids:
+          type: array
+          items:
+            type: string
+        safety_control:
+          type: object
+        voice_verification:
+          type: object
+        owner_id:
+          type: string
+        permission_on_resource:
+          type: string
+        is_legacy:
+          type: boolean
+      required:
+      - voice_id
+    UpdateChatHistoryDto:
+      type: object
+      properties:
+        history:
+          type: object
+        name:
+          type: string
+        gameId:
+          type: string
+        messageVersion:
+          type: number
+        version:
+          type: number
+      required:
+      - version
+    MessageDto:
+      type: object
+      properties:
+        role:
+          type: object
+        content:
+          type: string
+        tool_calls:
+          type: object
+        tool_call_id:
+          type: string
+        name:
+          type: string
+      required:
+      - role
+      - content
+    GameEntity:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameStates'
+        winningSide:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        stats:
+          $ref: '#/components/schemas/StatsEntity'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        id:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        version:
+          type: number
+        startTime:
+          type: string
+        lastJoinTime:
+          type: string
+        endTime:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        slushing:
+          $ref: '#/components/schemas/SlushingEntity'
+        resultChanged:
+          type: boolean
+        hostEarnings:
+          type: number
+        isPendingResult:
+          type: boolean
+        isFinalResult:
+          type: boolean
+        votePercentageSideA:
+          type: number
+        votePercentageSideB:
+          type: number
+        gameTitle:
+          type: string
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        questionVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        landscapeVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        sideA:
+          type: string
+        sideB:
+          type: string
+        sourceUrl:
+          type: string
+        text:
+          type: string
+        videoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        resultUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        categoryId:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        urls:
+          type: array
+          items:
+            type: string
+        audioAssetId:
+          type: string
+      required:
+      - state
+      - gameType
+      - language
+      - id
+      - creatorId
+      - creator
+      - version
+      - startTime
+      - lastJoinTime
+      - endTime
+      - createdAt
+      - updatedAt
+      - hostEarnings
+      - isPendingResult
+      - isFinalResult
+      - votePercentageSideA
+      - votePercentageSideB
+      - gameTitle
+      - isAd
+      - isPrivate
+      - bingSearch
+      - sideA
+      - sideB
+      - sourceUrl
+      - text
+      - categoryId
+      - category
+    GameDetail:
+      type: object
+      properties:
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        synopsis:
+          type: array
+          items:
+            $ref: '#/components/schemas/Synopsis'
+        overlays:
+          type: array
+          items:
+            $ref: '#/components/schemas/Overlay'
+        question:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answers'
+      required:
+      - synopsis
+      - overlays
+      - question
+      - answers
+    CreatePollyAssetDto:
+      type: object
+      properties:
+        syntesizedSpeech:
+          $ref: '#/components/schemas/SynthesizeSpeechDto'
+        name:
+          type: string
+        userId:
+          type: string
+      required:
+      - syntesizedSpeech
+      - name
+      - userId
+    ListSpeechMark:
+      type: object
+      properties:
+        speechMarks:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeechMark'
+      required:
+      - speechMarks
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    Article:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        rawOpenAiChat:
+          type: array
+          items:
+            type: object
+        hostName:
+          type: string
+        partnerId:
+          type: string
+        sourceType:
+          enum:
+          - widget
+          - manual
+          - blob
+          type: string
+      required:
+      - id
+      - url
+      - createdAt
+      - updatedAt
+      - rawOpenAiChat
+      - hostName
+      - partnerId
+    Upload:
+      type: object
+      properties:
+        uploadUrl:
+          type: string
+        resourceUrl:
+          type: string
+      required:
+      - uploadUrl
+      - resourceUrl
+    SideStatsByTicketTypeEntity:
+      type: object
+      properties:
+        gameplays:
+          type: number
+        tickets:
+          type: number
+        matched:
+          type: number
+      required:
+      - gameplays
+      - tickets
+      - matched
+    VoiceGenerationDto:
+      type: object
+      properties:
+        text:
+          type: string
+        languageCode:
+          type: string
+          default: en
+        voiceId:
+          type: string
+          default: Brian
+        stability:
+          type: number
+          default: 0.5
+        similarityBoost:
+          type: number
+          default: 0.75
+      required:
+      - text
+      - languageCode
+      - voiceId
+      - stability
+      - similarityBoost
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    InsertRawSearchDto:
+      type: object
+      properties:
+        searchInformation:
+          $ref: '#/components/schemas/SearchInformation'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Items'
+      required:
+      - items
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    JobStatus:
+      type: string
+      enum:
+      - created
+      - processing
+      - complete
+      - error
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    Asset:
+      type: object
+      properties:
+        jobStatus:
+          allOf:
+          - $ref: '#/components/schemas/JobStatus'
+        isVideo:
+          type: boolean
+        isAudio:
+          type: boolean
+        isImage:
+          type: boolean
+        videoUrl:
+          $ref: '#/components/schemas/VideoUrls'
+        imageUrl:
+          type: string
+        audioUrl:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+        errorCode:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        uploadSignedUrl:
+          type: string
+      required:
+      - jobStatus
+      - isVideo
+      - isAudio
+      - isImage
+      - videoUrl
+      - imageUrl
+      - audioUrl
+      - id
+      - name
+      - mimeType
+      - size
+      - width
+      - height
+      - errorCode
+      - userId
+      - createdAt
+      - updatedAt
+      - deletedAt
+    ListGameDraftVersion:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftVersion'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    GameDraft:
+      type: object
+      properties:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        id:
+          type: string
+        gameIndex:
+          type: string
+        lock:
+          type: number
+        userId:
+          type: string
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        url:
+          type: string
+      required:
+      - gameType
+      - state
+      - id
+      - gameIndex
+      - lock
+      - gameDetail
+      - manualOverrides
+      - version
+      - gameIds
+      - createdAt
+      - updatedAt
+      - systemMessage
+      - systemMessageName
+      - url
+    GoogleSearchResult:
+      type: object
+      properties:
+        searchInformation:
+          $ref: '#/components/schemas/SearchInformation'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Items'
+      required:
+      - items
+    GoogleSearch:
+      type: object
+      properties:
+        id:
+          type: string
+        result:
+          $ref: '#/components/schemas/GoogleSearchResult'
+      required:
+      - id
+      - result
+    Image:
+      type: object
+      properties:
+        byteSize:
+          type: number
+        contextLink:
+          type: string
+        height:
+          type: number
+        thumbnailHeight:
+          type: number
+        thumbnailLink:
+          type: string
+        thumbnailWidth:
+          type: number
+        width:
+          type: number
+    NewVersionDto:
+      type: object
+      properties:
+        version:
+          type: number
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+      required:
+      - version
+      - gameDetail
+      - manualOverrides
+    Items:
+      type: object
+      properties:
+        link:
+          type: string
+        fileFormat:
+          type: string
+        title:
+          type: string
+        htmlTitle:
+          type: string
+        displayLink:
+          type: string
+        mime:
+          type: string
+        image:
+          $ref: '#/components/schemas/Image'
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    AudioResponse:
+      type: object
+      properties:
+        audio_base64:
+          type: string
+        alignment:
+          type: object
+          properties:
+            characters:
+              type: array
+              items:
+                type: string
+            character_start_times_seconds:
+              type: array
+              items:
+                type: number
+            character_end_times_seconds:
+              type: array
+              items:
+                type: number
+          required:
+          - characters
+          - character_start_times_seconds
+          - character_end_times_seconds
+        normalized_alignment:
+          type: object
+          properties:
+            characters:
+              type: array
+              items:
+                type: string
+            character_start_times_seconds:
+              type: array
+              items:
+                type: number
+            character_end_times_seconds:
+              type: array
+              items:
+                type: number
+          required:
+          - characters
+          - character_start_times_seconds
+          - character_end_times_seconds
+      required:
+      - audio_base64
+      - alignment
+      - normalized_alignment
+    Answers:
+      type: object
+      properties:
+        text:
+          type: string
+      required:
+      - text
+    Voice:
+      type: object
+      properties:
+        gender:
+          type: string
+        id:
+          type: string
+        languageCode:
+          type: string
+        languageName:
+          type: string
+        name:
+          type: string
+        additionalLanguageCodes:
+          type: array
+          items:
+            type: string
+        supportedEngines:
+          type: array
+          items:
+            type: string
+      required:
+      - gender
+      - id
+      - languageCode
+      - languageName
+      - name
+      - additionalLanguageCodes
+      - supportedEngines
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    SearchInformation:
+      type: object
+      properties:
+        totalResults:
+          type: string
+    CreateGameDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        startTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        categoryId:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        text:
+          type: string
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        urls:
+          type: array
+          items:
+            type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+      required:
+      - language
+      - gameType
+      - startTime
+      - lastJoinTime
+      - endTime
+      - gameTitle
+      - sourceUrl
+      - categoryId
+      - sideA
+      - sideB
+      - text
+      - isAd
+    ListVoices:
+      type: object
+      properties:
+        total:
+          type: number
+        voices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Voice'
+      required:
+      - total
+      - voices
+    CreateArticleDto:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    CreateChatHistoryDto:
+      type: object
+      properties:
+        name:
+          type: string
+        history:
+          type: object
+        gameId:
+          type: string
+        messageVersion:
+          type: number
+      required:
+      - name
+      - history
+      - messageVersion
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

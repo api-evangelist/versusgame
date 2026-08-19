@@ -1,0 +1,1122 @@
+{
+  "item": [
+    {
+      "id": "9d7c8418-399d-45e9-82ed-ecc54d9d2845",
+      "name": "payments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ee73efd-1287-48a7-b453-5b10bf61757c",
+          "name": "Payments Controller make Business Payout",
+          "request": {
+            "name": "Payments Controller make Business Payout",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "payout",
+                "business"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"coins\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28d546b8-0bb8-4789-a676-899087a39128",
+              "name": "Confirmation of Business Payout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "payout",
+                    "business"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"coins\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"coins\": 1916.303740795563,\n  \"paymentPeriod\": \"string\",\n  \"createdAt\": \"1964-11-21T20:39:06.533Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c24ef115-d540-482d-b09d-42d94d5199ba",
+          "name": "Payments Controller gcow Payout",
+          "request": {
+            "name": "Payments Controller gcow Payout",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "payout",
+                "gcow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-idempotency-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"coins\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "068fa8a6-9e50-4f46-a98d-12989c293b4d",
+              "name": "Gcow payout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "payout",
+                    "gcow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"coins\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"coins\": 1340.4718828041662,\n  \"createdAt\": \"1990-01-21T09:04:33.611Z\",\n  \"idempotencyKey\": \"string\",\n  \"authorizationId\": \"string\",\n  \"errored\": false,\n  \"successful\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "141facbf-7386-4a0e-bfc2-4d8b9581dc3a",
+          "name": "Payments Controller gcow Payout By Id",
+          "request": {
+            "name": "Payments Controller gcow Payout By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "payout",
+                "gcow",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "413c8fc4-8318-4b52-ac48-085f25aa43f0",
+              "name": "Gcow payout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "payout",
+                    "gcow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"coins\": 1340.4718828041662,\n  \"createdAt\": \"1990-01-21T09:04:33.611Z\",\n  \"idempotencyKey\": \"string\",\n  \"authorizationId\": \"string\",\n  \"errored\": false,\n  \"successful\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8954fe64-c05a-4870-ab0f-645733ca5187",
+          "name": "Payments Controller gcow Callback",
+          "request": {
+            "name": "Payments Controller gcow Callback",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "callback",
+                "gcow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"app_id\": \"<string>\",\n  \"customer_email\": \"<string>\",\n  \"created_at\": \"<number>\",\n  \"amount\": \"<string>\",\n  \"currency_code\": \"<string>\",\n  \"url\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"sign\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f9ced14-56d7-41d3-b846-b8c3f236b8e4",
+              "name": "Gcow callback",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "callback",
+                    "gcow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_id\": \"<string>\",\n  \"customer_email\": \"<string>\",\n  \"created_at\": \"<number>\",\n  \"amount\": \"<string>\",\n  \"currency_code\": \"<string>\",\n  \"url\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"sign\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90ebaf9c-6982-4d65-8865-e1eb7a115873",
+          "name": "Payments Controller create",
+          "request": {
+            "name": "Payments Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "stripe",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-idempotency-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e2a7fb8-cded-417e-9724-aa4c235381ab",
+              "name": "Stripe ClientSecret",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "stripe",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"paymentStatus\": \"success\",\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"productId\": \"string\",\n  \"product\": {\n    \"language\": \"es-mx\",\n    \"id\": \"string\",\n    \"productName\": \"string\",\n    \"productDescription\": \"string\",\n    \"whiteTickets\": 6219.51510524524,\n    \"blackTickets\": 3506.410824106341,\n    \"amount\": 9568.563517971603,\n    \"mostPopular\": false,\n    \"createdAt\": \"2013-02-20T02:49:45.898Z\",\n    \"deletedAt\": \"1991-06-20T18:28:28.900Z\"\n  },\n  \"idempotencyKey\": \"string\",\n  \"clientSecret\": \"string\",\n  \"ip\": \"string\",\n  \"createdAt\": \"2013-03-23T03:53:58.779Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43add83b-44da-45c3-9db4-3c9b9556d680",
+          "name": "Payments Controller by Id",
+          "request": {
+            "name": "Payments Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "stripe",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4ce2841-51f9-45d1-9cf0-a2ddfcd55ac2",
+              "name": "Get Payment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "stripe",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"paymentStatus\": \"success\",\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"productId\": \"string\",\n  \"product\": {\n    \"language\": \"es-mx\",\n    \"id\": \"string\",\n    \"productName\": \"string\",\n    \"productDescription\": \"string\",\n    \"whiteTickets\": 6219.51510524524,\n    \"blackTickets\": 3506.410824106341,\n    \"amount\": 9568.563517971603,\n    \"mostPopular\": false,\n    \"createdAt\": \"2013-02-20T02:49:45.898Z\",\n    \"deletedAt\": \"1991-06-20T18:28:28.900Z\"\n  },\n  \"idempotencyKey\": \"string\",\n  \"clientSecret\": \"string\",\n  \"ip\": \"string\",\n  \"createdAt\": \"2013-03-23T03:53:58.779Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89d180e7-42c6-4065-bf58-c039f01251b6",
+          "name": "Payments Controller stripe Callback",
+          "request": {
+            "name": "Payments Controller stripe Callback",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "callback",
+                "stripe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "stripe-signature",
+                "value": "<string>"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49f11e08-c626-4c3b-b0c5-321fe951cf80",
+              "name": "Stripe callback",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "callback",
+                    "stripe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "stripe-signature",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d5a572e-5153-47c0-a036-543c0b596380",
+          "name": "Payments Controller buy Tickets With Coin",
+          "request": {
+            "name": "Payments Controller buy Tickets With Coin",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "buy-ticket-bundle-coin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99a82411-8abb-4276-8f1e-2e30236a3c60",
+              "name": "Purchase tickets with coins",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "buy-ticket-bundle-coin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product_id\": \"1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea9d60e1-0061-445d-9fca-8be1a1870a20",
+          "name": "Business Admin Controller list Business",
+          "request": {
+            "name": "Business Admin Controller list Business",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "payout",
+                "business"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_expand",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "paymentPeriod",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c51c59ca-1119-4397-a878-8557bc2a4bd2",
+              "name": "List of Business Payouts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "payout",
+                    "business"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paymentPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"profile\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1990-11-10T14:27:35.214Z\",\n        \"updatedAt\": \"1974-11-22T19:43:13.322Z\"\n      },\n      \"balance\": {\n        \"id\": \"string\",\n        \"coins\": 2187.2705828121607,\n        \"pendingCoins\": 8265.135997257024,\n        \"whiteTickets\": 5867.994912250213,\n        \"blackTickets\": 1086.1475592573888,\n        \"grayTickets\": 9155.84778911647,\n        \"points\": 2465.0891568084035,\n        \"createdAt\": \"2006-12-27T22:57:02.730Z\",\n        \"updatedAt\": \"1960-09-14T07:19:50.555Z\",\n        \"version\": 3615.7377268750015,\n        \"canCollectFreeGift\": false,\n        \"gamesDeclared\": 9800.320221584056,\n        \"gamesCorrectAnswers\": 7722.895034934435,\n        \"achievements\": [\n          \"string\",\n          \"string\"\n        ],\n        \"currentLeague\": \"level2\",\n        \"gamePlaysSinceDemotion\": 995.1186267905842,\n        \"lifetimeGamesPlayed\": 6413.342113247336,\n        \"emailVerified\": true,\n        \"referralCount\": 4729.784743219327,\n        \"dailySetCounts\": {\n          \"totalCompleted\": 0,\n          \"totalWins\": 0,\n          \"totalLosses\": 0,\n          \"totalTies\": 0\n        },\n        \"leagues\": [\n          {\n            \"name\": \"string\",\n            \"leaderboardId\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"leaderboardId\": \"string\"\n          }\n        ]\n      },\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"coins\": 5020.842931361856,\n      \"paymentPeriod\": \"string\",\n      \"createdAt\": \"string\"\n    },\n    {\n      \"profile\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"2005-01-12T16:04:31.702Z\",\n        \"updatedAt\": \"1980-08-06T10:18:53.532Z\"\n      },\n      \"balance\": {\n        \"id\": \"string\",\n        \"coins\": 9439.453510013933,\n        \"pendingCoins\": 5458.5779520628375,\n        \"whiteTickets\": 1524.2603560388434,\n        \"blackTickets\": 5449.672353806592,\n        \"grayTickets\": 2112.8102439226905,\n        \"points\": 1829.6991804072582,\n        \"createdAt\": \"1961-11-01T20:25:38.079Z\",\n        \"updatedAt\": \"1991-07-14T16:05:11.546Z\",\n        \"version\": 7324.190485704398,\n        \"canCollectFreeGift\": true,\n        \"gamesDeclared\": 4341.042999728262,\n        \"gamesCorrectAnswers\": 116.79640470209085,\n        \"achievements\": [\n          \"string\",\n          \"string\"\n        ],\n        \"currentLeague\": \"level2\",\n        \"gamePlaysSinceDemotion\": 7581.602992458838,\n        \"lifetimeGamesPlayed\": 8974.364379272109,\n        \"emailVerified\": true,\n        \"referralCount\": 1831.3592039793102,\n        \"dailySetCounts\": {\n          \"totalCompleted\": 0,\n          \"totalWins\": 0,\n          \"totalLosses\": 0,\n          \"totalTies\": 0\n        },\n        \"leagues\": [\n          {\n            \"name\": \"string\",\n            \"leaderboardId\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"leaderboardId\": \"string\"\n          }\n        ]\n      },\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"coins\": 7231.642772209699,\n      \"paymentPeriod\": \"string\",\n      \"createdAt\": \"string\"\n    }\n  ],\n  \"total\": 6515.64987538435\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ba3a34e-0bd9-44aa-89c5-7abf905a9c9e",
+          "name": "Business Admin Controller business By Id",
+          "request": {
+            "name": "Business Admin Controller business By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "payout",
+                "business",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3e30d691-c118-4df5-8d0c-ca94b3adee78",
+              "name": "Get Business",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "payout",
+                    "business",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"coins\": 1916.303740795563,\n  \"paymentPeriod\": \"string\",\n  \"createdAt\": \"1964-11-21T20:39:06.533Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "61be7087-02de-4dec-9651-d512962ced11",
+    "name": "Versusgame Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

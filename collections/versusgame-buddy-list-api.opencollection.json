@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Versusgame Buddy List API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "buddy-list",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new buddy list invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/buddy-list/invitations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new buddy list invitation"
+        },
+        {
+          "info": {
+            "name": "Get a buddy list invitation context object by share code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/buddy-list/invitations/:shareCode",
+            "params": [
+              {
+                "name": "shareCode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a buddy list invitation context object by share code"
+        },
+        {
+          "info": {
+            "name": "Redirects to a buddy list invitation deep link URL for the given share code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/buddy-list/invitations/:shareCode/redirect",
+            "params": [
+              {
+                "name": "shareCode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Redirects to a buddy list invitation deep link URL for the given share code"
+        },
+        {
+          "info": {
+            "name": "Record a new buddy list referral on successful registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/buddy-list/referrals"
+          },
+          "docs": "Triggered when a new player registers after following a buddy list invitation link."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

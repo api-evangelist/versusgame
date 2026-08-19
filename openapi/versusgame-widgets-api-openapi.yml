@@ -1,0 +1,788 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Widgets API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: widgets
+paths:
+  /v1/widgets/{widgetId}:
+    get:
+      operationId: WidgetsController_getWidgetById
+      parameters:
+      - name: widgetId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-app-referrer
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Widget By Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+      security:
+      - access-token: []
+      tags:
+      - widgets
+  /v2/widgets/{widgetId}:
+    get:
+      operationId: WidgetsControllerV2_getWidgetByIdV2
+      parameters:
+      - name: widgetId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-app-referrer
+        required: true
+        in: header
+        schema:
+          type: string
+      - name: text
+        required: false
+        in: query
+        description: game text to search
+        schema:
+          type: string
+      - name: categoryIds
+        required: false
+        in: query
+        description: categoryIds the game should belong to
+        schema:
+          type: array
+          items:
+            type: string
+      - name: preferCategoryIds
+        required: false
+        in: query
+        description: categoryIds the game should preferably belong to
+        schema:
+          type: array
+          items:
+            type: string
+      - name: excludeCategoryIds
+        required: false
+        in: query
+        description: categoryIds the game should not belong to
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Widget By Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+      security:
+      - access-token: []
+      tags:
+      - widgets
+    post:
+      operationId: WidgetsControllerV2_getWidgetByIdContextV2
+      parameters:
+      - name: widgetId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindWidgetTextDtoV2'
+      responses:
+        '200':
+          description: Widget By Id with context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+      security:
+      - access-token: []
+      tags:
+      - widgets
+  /v2/widgets/tvt/{widgetId}:
+    post:
+      description: Get a Widget By Id with the desired categoryIds. Only games that belong to the specified
+        categoryIds for the partner associated with the widget will be returned.
+      operationId: WidgetsControllerV2_getWidgetByIdForTVT
+      parameters:
+      - name: widgetId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindWidgetForTVTDto'
+      responses:
+        '200':
+          description: A response object containing a Widget for This-vs-That and a cursor for pagination
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWidgetTVTResponseDto'
+      security:
+      - access-token: []
+      summary: Get a Widget for This-vs-That
+      tags:
+      - widgets
+  /v1/creator/widgets:
+    post:
+      operationId: WidgetsCreatorController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWidgetDto'
+      responses:
+        '201':
+          description: New Widget
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+      security:
+      - access-token: []
+      tags:
+      - widgets
+    get:
+      operationId: WidgetsCreatorController_list
+      parameters:
+      - name: _expand
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/WidgetExpand'
+      - name: expand
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/WidgetExpand'
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchWidgetDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortWidgetDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: articleUrl
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Widgets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWidgets'
+      security:
+      - access-token: []
+      tags:
+      - widgets
+  /v1/creator/widgets/{widgetId}:
+    patch:
+      operationId: WidgetsCreatorController_update
+      parameters:
+      - name: widgetId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWidgetDto'
+      responses:
+        '204':
+          description: Updated Widget
+      security:
+      - access-token: []
+      tags:
+      - widgets
+    delete:
+      operationId: WidgetsCreatorController_delete
+      parameters:
+      - name: widgetId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Deleted Widget
+      security:
+      - access-token: []
+      tags:
+      - widgets
+    get:
+      operationId: WidgetsCreatorController_getWidget
+      parameters:
+      - name: widgetId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: _expand
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/WidgetExpand'
+      - name: expand
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/WidgetExpand'
+      - name: articleUrl
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+      security:
+      - access-token: []
+      tags:
+      - widgets
+components:
+  schemas:
+    SearchWidgetDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        creatorId:
+          type: string
+        name:
+          type: string
+        PlaylistId:
+          type: string
+    FindWidgetForTVTDto:
+      type: object
+      properties:
+        categoryIds:
+          type: array
+          items:
+            type: string
+          description: List of category IDs to use for game selection
+        requestedGameCount:
+          type: number
+          default: 20
+          minimum: 0
+          maximum: 100
+          description: Number of games to return
+        cursor:
+          type: string
+          description: Cursor for pagination
+      required:
+      - categoryIds
+    FindWidgetTextDtoV2:
+      type: object
+      properties:
+        distance:
+          type: number
+        text:
+          type: string
+        categoryIds:
+          type: array
+          items:
+            type: string
+        preferCategoryIds:
+          type: array
+          items:
+            type: string
+        excludeCategoryIds:
+          type: array
+          items:
+            type: string
+        context:
+          type: object
+        size:
+          type: number
+          minimum: 0
+          maximum: 500
+      required:
+      - context
+    UpdateWidgetDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        name:
+          type: string
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    SortWidgetDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        name:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    GameSet:
+      type: object
+      properties:
+        id:
+          type: string
+        partnerId:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Creator'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+      required:
+      - id
+      - partner
+      - createdAt
+      - updatedAt
+      - startTime
+      - endTime
+      - deletedAt
+      - games
+    Widget:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        id:
+          type: string
+        name:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        playlistId:
+          type: string
+        playlist:
+          $ref: '#/components/schemas/Playlist'
+        deletedAt:
+          format: date-time
+          type: string
+      required:
+      - type
+      - id
+      - name
+      - creatorId
+      - creator
+      - playlistId
+      - playlist
+      - deletedAt
+    Playlist:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameSet:
+          $ref: '#/components/schemas/GameSet'
+        id:
+          type: string
+        totalGames:
+          type: number
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        widgets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Widget'
+        gamesOrder:
+          type: array
+          items:
+            type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofilledGames:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofillCategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        autofillCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofillExcludedCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofill:
+          type: boolean
+      required:
+      - language
+      - id
+      - totalGames
+      - creatorId
+      - creator
+      - widgets
+      - games
+      - autofilledGames
+      - autofill
+    CreateWidgetDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        playlistId:
+          type: string
+        name:
+          type: string
+      required:
+      - type
+      - playlistId
+      - name
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    Game:
+      type: object
+      properties:
+        audioUrl:
+          type: string
+        videoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        questionVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        landscapeVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        resultUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameStates'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        id:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+        resultAssetId:
+          type: string
+        text:
+          type: string
+        categoryId:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        urls:
+          type: array
+          items:
+            type: string
+      required:
+      - audioUrl
+      - videoUrls
+      - questionVideoUrls
+      - landscapeVideoUrls
+      - resultUrls
+      - state
+      - language
+      - gameType
+      - id
+      - creatorId
+      - creator
+      - startTime
+      - endTime
+      - lastJoinTime
+      - gameTitle
+      - sourceUrl
+      - sideA
+      - sideB
+      - text
+      - categoryId
+      - category
+      - isAd
+      - createdAt
+      - updatedAt
+      - version
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    ListWidgets:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Widget'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    GetWidgetTVTResponseDto:
+      type: object
+      properties:
+        widget:
+          $ref: '#/components/schemas/Widget'
+        cursor:
+          type: string
+          description: Cursor for pagination will be returned if there are more results
+      required:
+      - widget
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    WidgetExpand:
+      type: string
+      enum:
+      - creator
+      - playlist
+    WidgetTypes:
+      type: string
+      enum:
+      - inline
+      - expanding
+      - mobile-expanding
+      - docked
+      - carousel
+      - sidebar
+      - playlist
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

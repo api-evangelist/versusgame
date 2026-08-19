@@ -1,0 +1,554 @@
+{
+  "item": [
+    {
+      "id": "1183d19d-80bc-4d9d-bddd-863f372f48b2",
+      "name": "assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4c6fee3-983c-4ff6-ae61-94af69b80f0d",
+          "name": "Asset Admin Controller list",
+          "request": {
+            "name": "Asset Admin Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "{\"userIds\":[\"<string>\",\"<string>\"],\"ids\":[\"<string>\",\"<string>\"]}"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b738d05b-ef6e-4ec5-a83c-30f50163711c",
+              "name": "List of assets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"jobStatus\": \"complete\",\n      \"isVideo\": true,\n      \"isAudio\": true,\n      \"isImage\": true,\n      \"videoUrl\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"imageUrl\": \"string\",\n      \"audioUrl\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"mimeType\": \"string\",\n      \"size\": 2686.9354817863946,\n      \"width\": 3400.486544924759,\n      \"height\": 3600.768992435955,\n      \"errorCode\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"1970-12-05T13:36:53.516Z\",\n      \"updatedAt\": \"1962-01-19T14:02:10.735Z\",\n      \"deletedAt\": \"1993-06-27T08:30:10.310Z\",\n      \"uploadSignedUrl\": \"string\"\n    },\n    {\n      \"jobStatus\": \"error\",\n      \"isVideo\": false,\n      \"isAudio\": true,\n      \"isImage\": true,\n      \"videoUrl\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"imageUrl\": \"string\",\n      \"audioUrl\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"mimeType\": \"string\",\n      \"size\": 4854.803720399677,\n      \"width\": 4783.937708330122,\n      \"height\": 3046.828902060398,\n      \"errorCode\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"2017-11-26T08:47:35.756Z\",\n      \"updatedAt\": \"2020-01-24T06:06:22.638Z\",\n      \"deletedAt\": \"1998-04-02T09:48:18.810Z\",\n      \"uploadSignedUrl\": \"string\"\n    }\n  ],\n  \"total\": 3142.467297470358\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bb6a2fd-d304-47d0-96e8-bf6a132a4292",
+          "name": "Asset Admin Controller by Id",
+          "request": {
+            "name": "Asset Admin Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "assets",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a2e675a7-a8f2-4c26-b768-02f9bd1e09f0",
+              "name": "Get Asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "assets",
+                    ":assetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobStatus\": \"processing\",\n  \"isVideo\": false,\n  \"isAudio\": false,\n  \"isImage\": false,\n  \"videoUrl\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"imageUrl\": \"string\",\n  \"audioUrl\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"mimeType\": \"string\",\n  \"size\": 9659.664508892489,\n  \"width\": 5974.56223262914,\n  \"height\": 4498.727964530128,\n  \"errorCode\": \"string\",\n  \"userId\": \"string\",\n  \"createdAt\": \"2012-08-30T16:06:24.738Z\",\n  \"updatedAt\": \"1965-04-19T23:10:13.029Z\",\n  \"deletedAt\": \"1970-10-31T20:38:25.588Z\",\n  \"uploadSignedUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08f0fc41-0b58-43ee-a5f9-2ee59c162faf",
+          "name": "Assets Controller create",
+          "request": {
+            "name": "Assets Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"size\": \"<number>\",\n  \"width\": \"<number>\",\n  \"height\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "454a6ca1-7cc0-4129-989f-e52b6daed2a2",
+              "name": "New Asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"size\": \"<number>\",\n  \"width\": \"<number>\",\n  \"height\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobStatus\": \"processing\",\n  \"isVideo\": false,\n  \"isAudio\": false,\n  \"isImage\": false,\n  \"videoUrl\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"imageUrl\": \"string\",\n  \"audioUrl\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"mimeType\": \"string\",\n  \"size\": 9659.664508892489,\n  \"width\": 5974.56223262914,\n  \"height\": 4498.727964530128,\n  \"errorCode\": \"string\",\n  \"userId\": \"string\",\n  \"createdAt\": \"2012-08-30T16:06:24.738Z\",\n  \"updatedAt\": \"1965-04-19T23:10:13.029Z\",\n  \"deletedAt\": \"1970-10-31T20:38:25.588Z\",\n  \"uploadSignedUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10753234-4594-4e53-b2c8-ea88b63a8581",
+          "name": "Assets Controller get",
+          "request": {
+            "name": "Assets Controller get",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "assets",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5aa04b01-53a5-483e-bb9e-a49585673d3d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "assets",
+                    ":assetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobStatus\": \"processing\",\n  \"isVideo\": false,\n  \"isAudio\": false,\n  \"isImage\": false,\n  \"videoUrl\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"imageUrl\": \"string\",\n  \"audioUrl\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"mimeType\": \"string\",\n  \"size\": 9659.664508892489,\n  \"width\": 5974.56223262914,\n  \"height\": 4498.727964530128,\n  \"errorCode\": \"string\",\n  \"userId\": \"string\",\n  \"createdAt\": \"2012-08-30T16:06:24.738Z\",\n  \"updatedAt\": \"1965-04-19T23:10:13.029Z\",\n  \"deletedAt\": \"1970-10-31T20:38:25.588Z\",\n  \"uploadSignedUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "673265d9-1c2b-4ac5-aeb9-7bbed7dd5c0a",
+          "name": "Assets Controller delete",
+          "request": {
+            "name": "Assets Controller delete",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "assets",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94b6d114-ca6a-428f-af16-884815f99cb2",
+              "name": "Delete Asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "assets",
+                    ":assetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b56b2766-cde3-46fe-950f-dfd7b28964e1",
+    "name": "Versusgame Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

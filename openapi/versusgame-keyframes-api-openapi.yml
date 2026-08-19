@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Keyframes API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: keyframes
+paths:
+  /v1/keyframes:
+    post:
+      operationId: KeyFrameController_create_v1
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateKeyFrameDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateKeyFrameResponse'
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateKeyFrameResponse'
+      security:
+      - access-token: []
+      tags:
+      - keyframes
+  /v1/keyframes/batch:
+    post:
+      operationId: KeyFrameController_createBatch_v1
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreateKeyFrameResponse'
+      security:
+      - access-token: []
+      tags:
+      - keyframes
+  /v1/keyframes/search:
+    post:
+      operationId: KeyFrameController_imageSearch_v1
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SearchKeyFramesDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchKeyFrameResponse'
+      tags:
+      - keyframes
+components:
+  schemas:
+    File:
+      type: object
+      properties: {}
+    SearchKeyFramesDto:
+      type: object
+      properties:
+        mediaId:
+          type: string
+        description:
+          type: string
+        embedding:
+          type: array
+          items:
+            type: number
+        image:
+          format: Binary
+          allOf:
+          - $ref: '#/components/schemas/File'
+    CreateKeyFrameDto:
+      type: object
+      properties:
+        mediaId:
+          type: string
+        description:
+          type: string
+        keyFrameIndex:
+          type: number
+        timestamp:
+          type: number
+        embedding:
+          type: array
+          items:
+            type: number
+        image:
+          format: Binary
+          allOf:
+          - $ref: '#/components/schemas/File'
+      required:
+      - mediaId
+      - keyFrameIndex
+      - timestamp
+    SearchKeyFrameResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyFrameEntity'
+        scores:
+          type: array
+          items:
+            type: number
+        total:
+          type: number
+      required:
+      - items
+      - scores
+      - total
+    KeyFrameEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        mediaId:
+          type: string
+        createdAt:
+          type: number
+        timestamp:
+          type: number
+        description:
+          type: string
+        keyFrameIndex:
+          type: number
+        embedding:
+          type: array
+          items:
+            type: number
+      required:
+      - id
+      - mediaId
+      - timestamp
+      - description
+      - keyFrameIndex
+      - embedding
+    CreateKeyFrameResponse:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

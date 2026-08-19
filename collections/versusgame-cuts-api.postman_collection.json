@@ -1,0 +1,758 @@
+{
+  "item": [
+    {
+      "id": "d0133754-6098-426b-af05-322dfb3ab139",
+      "name": "cuts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed02469f-08e7-4854-93c5-6cab2421f2f3",
+          "name": "Cuts Admin Controller get Global Cuts",
+          "request": {
+            "name": "Cuts Admin Controller get Global Cuts",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "cuts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d38e681c-7664-4531-a36c-b2e5d252be0a",
+              "name": "Global cuts configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "cuts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionFeePercentage\": 5803.709596147005,\n  \"rakePercentage\": 5679.801045168991,\n  \"defaultDistributorCutPercentage\": 2710.783777031316,\n  \"defaultCreatorCutPercentage\": 3748.0400439391947,\n  \"updatedAt\": \"string\",\n  \"version\": 6296.207302992638\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "361e1a56-8201-4b64-a3d1-8507e59db4c4",
+          "name": "Cuts Admin Controller update Global Cuts",
+          "request": {
+            "name": "Cuts Admin Controller update Global Cuts",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "cuts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionFeePercentage\": \"<number>\",\n  \"rakePercentage\": \"<number>\",\n  \"defaultDistributorCutPercentage\": \"<number>\",\n  \"defaultCreatorCutPercentage\": \"<number>\",\n  \"version\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3642357d-6a39-4e5a-84e4-afab633f9222",
+              "name": "Updated global cuts configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "cuts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionFeePercentage\": \"<number>\",\n  \"rakePercentage\": \"<number>\",\n  \"defaultDistributorCutPercentage\": \"<number>\",\n  \"defaultCreatorCutPercentage\": \"<number>\",\n  \"version\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5b7668e-6462-4950-a8da-c7d75ce03fb4",
+          "name": "Cuts Admin Controller get Global Cuts History",
+          "request": {
+            "name": "Cuts Admin Controller get Global Cuts History",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "cuts",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "17d57c46-9f7b-43bd-9450-207a318e8d36",
+              "name": "Global cuts history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "cuts",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"updatedBy\": \"string\",\n      \"after\": {\n        \"transactionFeePercentage\": 7799.961291873439,\n        \"rakePercentage\": 5346.002295368373,\n        \"defaultDistributorCutPercentage\": 9326.824087843088,\n        \"defaultCreatorCutPercentage\": 8257.212601943484,\n        \"updatedAt\": \"string\",\n        \"version\": 8808.201850683246\n      }\n    },\n    {\n      \"updatedBy\": \"string\",\n      \"after\": {\n        \"transactionFeePercentage\": 31.711835902233922,\n        \"rakePercentage\": 9160.546954928917,\n        \"defaultDistributorCutPercentage\": 9985.612266429844,\n        \"defaultCreatorCutPercentage\": 4034.6450635168,\n        \"updatedAt\": \"string\",\n        \"version\": 1025.961861782223\n      }\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e08cbfdc-4f71-4ae6-bb27-5a8bdba8fba8",
+          "name": "Cuts Admin Controller get User Cuts",
+          "request": {
+            "name": "Cuts Admin Controller get User Cuts",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "cuts",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ae3a23d0-343d-4fdb-8232-8dcb29b95824",
+              "name": "Get cuts configuration for a user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "cuts",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": 2082.5066794476256,\n  \"userId\": \"string\",\n  \"distributorCutPercentage\": 267.80458157149246,\n  \"creatorCutPercentage\": 1099.3521943917706,\n  \"parents\": [\n    {\n      \"userId\": \"string\",\n      \"cutPercentage\": 3354.8935355529206,\n      \"userName\": \"string\",\n      \"type\": \"general\",\n      \"description\": \"string\"\n    },\n    {\n      \"userId\": \"string\",\n      \"cutPercentage\": 9735.598546421039,\n      \"userName\": \"string\",\n      \"type\": \"general\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a85d1425-4618-4bb6-af04-bf4c7f161a72",
+          "name": "Cuts Admin Controller update User Cuts",
+          "request": {
+            "name": "Cuts Admin Controller update User Cuts",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "cuts",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"creatorCutPercentage\": \"<number>\",\n  \"parents\": [\n    {\n      \"userId\": \"<string>\",\n      \"cutPercentage\": \"<number>\",\n      \"type\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"userId\": \"<string>\",\n      \"cutPercentage\": \"<number>\",\n      \"type\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"version\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9b7720c-9717-4112-88b9-fdcd2f37d7d6",
+              "name": "Updated cuts configuration for a user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "cuts",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"creatorCutPercentage\": \"<number>\",\n  \"parents\": [\n    {\n      \"userId\": \"<string>\",\n      \"cutPercentage\": \"<number>\",\n      \"type\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"userId\": \"<string>\",\n      \"cutPercentage\": \"<number>\",\n      \"type\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"version\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "babdabb7-dd0b-4000-9a10-a5fa63deaaab",
+          "name": "Cuts Admin Controller update User Distribution Cuts",
+          "request": {
+            "name": "Cuts Admin Controller update User Distribution Cuts",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "cuts",
+                ":userId",
+                "distributor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"distributorCutPercentage\": \"<number>\",\n  \"version\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc34fbb4-af02-458a-a555-699b8ece2dff",
+              "name": "Updated distribution cuts configuration for a user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "cuts",
+                    ":userId",
+                    "distributor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"distributorCutPercentage\": \"<number>\",\n  \"version\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87d1f78b-1d12-4009-ba49-60db11989467",
+          "name": "Cuts Admin Controller get User Cuts History",
+          "request": {
+            "name": "Cuts Admin Controller get User Cuts History",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "cuts",
+                ":userId",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e828d7f0-2afc-470f-87e6-c8710a585c71",
+              "name": "User cuts history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "cuts",
+                    ":userId",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"userId\": \"string\",\n      \"updatedBy\": \"string\",\n      \"after\": {\n        \"version\": 3519.14610839185,\n        \"userId\": \"string\",\n        \"distributorCutPercentage\": 56.338652376471956,\n        \"creatorCutPercentage\": 6596.5607887361475,\n        \"parents\": [\n          {\n            \"userId\": \"string\",\n            \"cutPercentage\": 7703.672818980658,\n            \"userName\": \"string\",\n            \"type\": \"general\",\n            \"description\": \"string\"\n          },\n          {\n            \"userId\": \"string\",\n            \"cutPercentage\": 5122.397224345099,\n            \"userName\": \"string\",\n            \"type\": \"general\",\n            \"description\": \"string\"\n          }\n        ]\n      },\n      \"createdAt\": 5999.028086036281\n    },\n    {\n      \"userId\": \"string\",\n      \"updatedBy\": \"string\",\n      \"after\": {\n        \"version\": 6105.663368364315,\n        \"userId\": \"string\",\n        \"distributorCutPercentage\": 6851.103153069371,\n        \"creatorCutPercentage\": 7106.879709696966,\n        \"parents\": [\n          {\n            \"userId\": \"string\",\n            \"cutPercentage\": 7514.072735173359,\n            \"userName\": \"string\",\n            \"type\": \"general\",\n            \"description\": \"string\"\n          },\n          {\n            \"userId\": \"string\",\n            \"cutPercentage\": 8177.6626313100205,\n            \"userName\": \"string\",\n            \"type\": \"general\",\n            \"description\": \"string\"\n          }\n        ]\n      },\n      \"createdAt\": 7665.821810409008\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6e5d890f-2686-455e-86d8-54677c8954c8",
+    "name": "Versusgame Cuts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

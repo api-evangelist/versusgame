@@ -1,0 +1,722 @@
+{
+  "item": [
+    {
+      "id": "fe445804-3fcf-454e-b490-f7f14284828f",
+      "name": "gamesets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "916b3bd9-21b5-4b26-bc7e-36b35974c87d",
+          "name": "Game Sets Controller create",
+          "request": {
+            "name": "Game Sets Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "gamesets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partnerId\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"games\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44f16591-afa8-48cb-8638-7071dcafb144",
+              "name": "Creates a new game set",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "gamesets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"games\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partner\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"1972-05-25T19:55:04.483Z\",\n    \"updatedAt\": \"1982-09-18T17:31:30.909Z\"\n  },\n  \"createdAt\": \"1998-07-16T23:21:30.296Z\",\n  \"updatedAt\": \"2002-07-08T02:32:08.536Z\",\n  \"startTime\": \"1967-07-29T01:53:00.827Z\",\n  \"endTime\": \"1991-01-27T05:32:54.360Z\",\n  \"deletedAt\": \"1957-10-23T07:32:56.006Z\",\n  \"games\": [\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"refunded\",\n      \"language\": \"es-mx\",\n      \"gameType\": \"PREDICTION\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1956-12-23T20:20:14.058Z\",\n        \"updatedAt\": \"1989-11-27T15:20:50.622Z\"\n      },\n      \"startTime\": \"1999-08-04T06:20:19.734Z\",\n      \"endTime\": \"2016-07-16T09:08:40.107Z\",\n      \"lastJoinTime\": \"2026-06-27T12:10:26.761Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"en-us\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": false,\n      \"createdAt\": \"1992-12-17T23:22:56.801Z\",\n      \"updatedAt\": \"1996-12-28T03:07:56.571Z\",\n      \"version\": 7653.421822035444,\n      \"orientation\": \"landscape\",\n      \"correctAnswer\": \"B\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": false,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"active\",\n      \"language\": \"en-us\",\n      \"gameType\": \"POLL\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"2004-07-29T00:51:04.434Z\",\n        \"updatedAt\": \"1954-10-24T06:01:13.833Z\"\n      },\n      \"startTime\": \"1994-05-21T01:04:26.027Z\",\n      \"endTime\": \"1998-04-08T01:42:13.254Z\",\n      \"lastJoinTime\": \"1959-06-14T09:46:57.096Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"en-us\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": false,\n      \"createdAt\": \"2016-06-15T03:36:35.390Z\",\n      \"updatedAt\": \"1992-08-10T04:05:59.847Z\",\n      \"version\": 4310.005395543911,\n      \"orientation\": \"portrait\",\n      \"correctAnswer\": \"B\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"partnerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "017484a7-08dd-41a8-9a55-a6c8cc996d7a",
+          "name": "Game Sets Controller query",
+          "request": {
+            "name": "Game Sets Controller query",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "gamesets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sortStartTime",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortEndTime",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "partnerId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eb66efa2-513c-4856-bd8f-de8646979868",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "gamesets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sortStartTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortEndTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "partnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"partner\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1980-12-07T05:52:30.348Z\",\n        \"updatedAt\": \"1976-06-12T19:04:59.784Z\"\n      },\n      \"createdAt\": \"2018-04-02T05:53:15.478Z\",\n      \"updatedAt\": \"1968-05-06T11:46:29.140Z\",\n      \"startTime\": \"1997-09-24T02:38:28.526Z\",\n      \"endTime\": \"1970-06-14T13:37:41.070Z\",\n      \"deletedAt\": \"2021-07-15T13:12:52.182Z\",\n      \"games\": [\n        {\n          \"audioUrl\": \"string\",\n          \"videoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"questionVideoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"landscapeVideoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"resultUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"state\": \"new\",\n          \"language\": \"en-us\",\n          \"gameType\": \"THIS_THAT\",\n          \"id\": \"string\",\n          \"creatorId\": \"string\",\n          \"creator\": {\n            \"avatar\": \"string\",\n            \"id\": \"string\",\n            \"partnerName\": \"string\",\n            \"avatarAssetId\": \"string\",\n            \"profileColor\": \"string\",\n            \"userName\": \"string\",\n            \"createdAt\": \"1992-03-10T19:40:49.499Z\",\n            \"updatedAt\": \"1952-01-02T02:14:05.202Z\"\n          },\n          \"startTime\": \"2004-10-26T22:28:21.372Z\",\n          \"endTime\": \"1991-06-22T10:34:13.187Z\",\n          \"lastJoinTime\": \"1976-09-22T15:54:33.388Z\",\n          \"gameTitle\": \"string\",\n          \"sourceUrl\": \"string\",\n          \"sideA\": \"string\",\n          \"sideB\": \"string\",\n          \"text\": \"string\",\n          \"categoryId\": \"string\",\n          \"category\": {\n            \"language\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"categoryName\": \"string\",\n            \"createdAt\": \"string\",\n            \"updatedAt\": \"string\",\n            \"deletedAt\": \"string\",\n            \"sticker\": \"string\",\n            \"icon\": \"string\"\n          },\n          \"isAd\": false,\n          \"createdAt\": \"1974-08-09T17:12:32.469Z\",\n          \"updatedAt\": \"1969-05-01T00:55:13.880Z\",\n          \"version\": 2202.108953871126,\n          \"orientation\": \"portrait\",\n          \"correctAnswer\": \"B\",\n          \"videoAssetId\": \"string\",\n          \"questionVideoAssetId\": \"string\",\n          \"landscapeVideoAssetId\": \"string\",\n          \"audioAssetId\": \"string\",\n          \"resultAssetId\": \"string\",\n          \"isPrivate\": true,\n          \"bingSearch\": \"string\",\n          \"bingSearchClaim\": \"string\",\n          \"metadata\": {},\n          \"urls\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"audioUrl\": \"string\",\n          \"videoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"questionVideoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"landscapeVideoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"resultUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"state\": \"processing_payouts\",\n          \"language\": \"en-us\",\n          \"gameType\": \"SURVEY\",\n          \"id\": \"string\",\n          \"creatorId\": \"string\",\n          \"creator\": {\n            \"avatar\": \"string\",\n            \"id\": \"string\",\n            \"partnerName\": \"string\",\n            \"avatarAssetId\": \"string\",\n            \"profileColor\": \"string\",\n            \"userName\": \"string\",\n            \"createdAt\": \"1982-07-25T06:54:31.586Z\",\n            \"updatedAt\": \"1962-03-30T20:04:17.015Z\"\n          },\n          \"startTime\": \"2009-12-07T19:02:08.995Z\",\n          \"endTime\": \"1983-05-17T17:14:35.389Z\",\n          \"lastJoinTime\": \"1977-06-13T21:57:58.784Z\",\n          \"gameTitle\": \"string\",\n          \"sourceUrl\": \"string\",\n          \"sideA\": \"string\",\n          \"sideB\": \"string\",\n          \"text\": \"string\",\n          \"categoryId\": \"string\",\n          \"category\": {\n            \"language\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"categoryName\": \"string\",\n            \"createdAt\": \"string\",\n            \"updatedAt\": \"string\",\n            \"deletedAt\": \"string\",\n            \"sticker\": \"string\",\n            \"icon\": \"string\"\n          },\n          \"isAd\": false,\n          \"createdAt\": \"1998-08-30T09:36:40.812Z\",\n          \"updatedAt\": \"1956-09-09T21:50:42.307Z\",\n          \"version\": 2765.2637073809237,\n          \"orientation\": \"portrait\",\n          \"correctAnswer\": \"B\",\n          \"videoAssetId\": \"string\",\n          \"questionVideoAssetId\": \"string\",\n          \"landscapeVideoAssetId\": \"string\",\n          \"audioAssetId\": \"string\",\n          \"resultAssetId\": \"string\",\n          \"isPrivate\": true,\n          \"bingSearch\": \"string\",\n          \"bingSearchClaim\": \"string\",\n          \"metadata\": {},\n          \"urls\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"partnerId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"partner\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1999-09-08T02:51:09.632Z\",\n        \"updatedAt\": \"2023-07-24T23:56:42.643Z\"\n      },\n      \"createdAt\": \"2006-10-26T07:29:57.207Z\",\n      \"updatedAt\": \"1998-03-12T14:21:46.774Z\",\n      \"startTime\": \"2020-03-15T06:17:01.739Z\",\n      \"endTime\": \"2006-03-29T10:15:02.083Z\",\n      \"deletedAt\": \"1988-08-21T09:21:25.678Z\",\n      \"games\": [\n        {\n          \"audioUrl\": \"string\",\n          \"videoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"questionVideoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"landscapeVideoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"resultUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"state\": \"changing_game_result\",\n          \"language\": \"en-us\",\n          \"gameType\": \"THIS_THAT\",\n          \"id\": \"string\",\n          \"creatorId\": \"string\",\n          \"creator\": {\n            \"avatar\": \"string\",\n            \"id\": \"string\",\n            \"partnerName\": \"string\",\n            \"avatarAssetId\": \"string\",\n            \"profileColor\": \"string\",\n            \"userName\": \"string\",\n            \"createdAt\": \"1992-12-04T04:38:03.488Z\",\n            \"updatedAt\": \"1962-05-25T17:20:50.778Z\"\n          },\n          \"startTime\": \"1964-11-28T01:02:44.213Z\",\n          \"endTime\": \"1949-04-18T09:07:06.284Z\",\n          \"lastJoinTime\": \"1968-03-24T04:41:02.937Z\",\n          \"gameTitle\": \"string\",\n          \"sourceUrl\": \"string\",\n          \"sideA\": \"string\",\n          \"sideB\": \"string\",\n          \"text\": \"string\",\n          \"categoryId\": \"string\",\n          \"category\": {\n            \"language\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"categoryName\": \"string\",\n            \"createdAt\": \"string\",\n            \"updatedAt\": \"string\",\n            \"deletedAt\": \"string\",\n            \"sticker\": \"string\",\n            \"icon\": \"string\"\n          },\n          \"isAd\": false,\n          \"createdAt\": \"1969-07-07T21:35:42.144Z\",\n          \"updatedAt\": \"1954-09-19T20:02:11.913Z\",\n          \"version\": 9604.247353270708,\n          \"orientation\": \"landscape\",\n          \"correctAnswer\": \"A\",\n          \"videoAssetId\": \"string\",\n          \"questionVideoAssetId\": \"string\",\n          \"landscapeVideoAssetId\": \"string\",\n          \"audioAssetId\": \"string\",\n          \"resultAssetId\": \"string\",\n          \"isPrivate\": false,\n          \"bingSearch\": \"string\",\n          \"bingSearchClaim\": \"string\",\n          \"metadata\": {},\n          \"urls\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"audioUrl\": \"string\",\n          \"videoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"questionVideoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"landscapeVideoUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"resultUrls\": {\n            \"hls\": \"string\",\n            \"mp4360\": \"string\",\n            \"mp4540\": \"string\",\n            \"mp4720\": \"string\",\n            \"poster\": \"string\"\n          },\n          \"state\": \"canceled\",\n          \"language\": \"es-mx\",\n          \"gameType\": \"THIS_THAT\",\n          \"id\": \"string\",\n          \"creatorId\": \"string\",\n          \"creator\": {\n            \"avatar\": \"string\",\n            \"id\": \"string\",\n            \"partnerName\": \"string\",\n            \"avatarAssetId\": \"string\",\n            \"profileColor\": \"string\",\n            \"userName\": \"string\",\n            \"createdAt\": \"1983-09-18T22:32:52.387Z\",\n            \"updatedAt\": \"1955-12-04T00:58:11.157Z\"\n          },\n          \"startTime\": \"1950-12-06T06:59:48.511Z\",\n          \"endTime\": \"1970-03-21T10:17:56.855Z\",\n          \"lastJoinTime\": \"1963-12-02T12:33:37.915Z\",\n          \"gameTitle\": \"string\",\n          \"sourceUrl\": \"string\",\n          \"sideA\": \"string\",\n          \"sideB\": \"string\",\n          \"text\": \"string\",\n          \"categoryId\": \"string\",\n          \"category\": {\n            \"language\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"categoryName\": \"string\",\n            \"createdAt\": \"string\",\n            \"updatedAt\": \"string\",\n            \"deletedAt\": \"string\",\n            \"sticker\": \"string\",\n            \"icon\": \"string\"\n          },\n          \"isAd\": true,\n          \"createdAt\": \"1950-11-10T20:52:02.437Z\",\n          \"updatedAt\": \"1986-09-20T09:27:46.875Z\",\n          \"version\": 2731.126546925069,\n          \"orientation\": \"landscape\",\n          \"correctAnswer\": \"A\",\n          \"videoAssetId\": \"string\",\n          \"questionVideoAssetId\": \"string\",\n          \"landscapeVideoAssetId\": \"string\",\n          \"audioAssetId\": \"string\",\n          \"resultAssetId\": \"string\",\n          \"isPrivate\": true,\n          \"bingSearch\": \"string\",\n          \"bingSearchClaim\": \"string\",\n          \"metadata\": {},\n          \"urls\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"partnerId\": \"string\"\n    }\n  ],\n  \"total\": 3242.268600816325\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2552e8ac-1fa7-4ff4-befd-53c12c719797",
+          "name": "Game Sets Controller by Id",
+          "request": {
+            "name": "Game Sets Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "gamesets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e2d46ec-892a-48f9-ba70-01fb5d3c4709",
+              "name": "gets a game set by id ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "gamesets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partner\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"2026-06-29T01:05:23.113Z\",\n    \"updatedAt\": \"1970-10-20T06:39:31.483Z\"\n  },\n  \"createdAt\": \"1948-02-01T07:26:38.136Z\",\n  \"updatedAt\": \"1990-10-15T14:52:32.392Z\",\n  \"startTime\": \"1997-10-13T03:13:21.092Z\",\n  \"endTime\": \"2021-05-15T22:09:08.946Z\",\n  \"deletedAt\": \"1994-09-23T10:11:53.047Z\",\n  \"games\": [\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"quarantined\",\n      \"language\": \"es-mx\",\n      \"gameType\": \"INSTANT_POLL\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"2022-07-05T16:30:49.260Z\",\n        \"updatedAt\": \"2025-12-07T03:31:20.655Z\"\n      },\n      \"startTime\": \"1988-06-01T19:41:56.362Z\",\n      \"endTime\": \"2023-10-22T01:43:41.144Z\",\n      \"lastJoinTime\": \"1998-06-13T10:06:04.064Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"es-mx\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": true,\n      \"createdAt\": \"1974-02-22T12:43:43.616Z\",\n      \"updatedAt\": \"2014-08-26T06:38:58.889Z\",\n      \"version\": 1791.2758801856398,\n      \"orientation\": \"portrait\",\n      \"correctAnswer\": \"B\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"refunded\",\n      \"language\": \"es-mx\",\n      \"gameType\": \"SURVEY\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1989-04-09T03:30:12.944Z\",\n        \"updatedAt\": \"1991-10-30T12:37:05.783Z\"\n      },\n      \"startTime\": \"1987-08-22T08:58:24.361Z\",\n      \"endTime\": \"2009-02-03T15:53:51.406Z\",\n      \"lastJoinTime\": \"1958-06-02T19:29:07.598Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"es-mx\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": true,\n      \"createdAt\": \"1985-11-01T19:47:44.157Z\",\n      \"updatedAt\": \"1978-03-13T19:03:04.924Z\",\n      \"version\": 3936.3389110801363,\n      \"orientation\": \"landscape\",\n      \"correctAnswer\": \"A\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"partnerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9867d7f-1e2b-4925-8225-659bf9cd5987",
+          "name": "Game Sets Controller update",
+          "request": {
+            "name": "Game Sets Controller update",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "gamesets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"games\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ca9de46-210a-4f54-a480-85dd3f67d3b0",
+              "name": "updates a game set",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "gamesets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"games\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partner\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"2026-06-29T01:05:23.113Z\",\n    \"updatedAt\": \"1970-10-20T06:39:31.483Z\"\n  },\n  \"createdAt\": \"1948-02-01T07:26:38.136Z\",\n  \"updatedAt\": \"1990-10-15T14:52:32.392Z\",\n  \"startTime\": \"1997-10-13T03:13:21.092Z\",\n  \"endTime\": \"2021-05-15T22:09:08.946Z\",\n  \"deletedAt\": \"1994-09-23T10:11:53.047Z\",\n  \"games\": [\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"quarantined\",\n      \"language\": \"es-mx\",\n      \"gameType\": \"INSTANT_POLL\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"2022-07-05T16:30:49.260Z\",\n        \"updatedAt\": \"2025-12-07T03:31:20.655Z\"\n      },\n      \"startTime\": \"1988-06-01T19:41:56.362Z\",\n      \"endTime\": \"2023-10-22T01:43:41.144Z\",\n      \"lastJoinTime\": \"1998-06-13T10:06:04.064Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"es-mx\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": true,\n      \"createdAt\": \"1974-02-22T12:43:43.616Z\",\n      \"updatedAt\": \"2014-08-26T06:38:58.889Z\",\n      \"version\": 1791.2758801856398,\n      \"orientation\": \"portrait\",\n      \"correctAnswer\": \"B\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"refunded\",\n      \"language\": \"es-mx\",\n      \"gameType\": \"SURVEY\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1989-04-09T03:30:12.944Z\",\n        \"updatedAt\": \"1991-10-30T12:37:05.783Z\"\n      },\n      \"startTime\": \"1987-08-22T08:58:24.361Z\",\n      \"endTime\": \"2009-02-03T15:53:51.406Z\",\n      \"lastJoinTime\": \"1958-06-02T19:29:07.598Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"es-mx\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": true,\n      \"createdAt\": \"1985-11-01T19:47:44.157Z\",\n      \"updatedAt\": \"1978-03-13T19:03:04.924Z\",\n      \"version\": 3936.3389110801363,\n      \"orientation\": \"landscape\",\n      \"correctAnswer\": \"A\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"partnerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38d6f3df-3313-4f04-a1ff-777cd3c67ec5",
+          "name": "Game Sets Controller delete",
+          "request": {
+            "name": "Game Sets Controller delete",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "gamesets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "982529a7-df19-4ae0-aec0-5b3519b5346d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "gamesets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a558d31-b7bd-42d8-a31b-971c151f26ee",
+          "name": "Game Sets Controller get Set",
+          "request": {
+            "name": "Game Sets Controller get Set",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "gamesets",
+                "partners",
+                ":partnerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "forDate",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partnerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e6997ea6-a198-4f2a-aaea-45407b59e85b",
+              "name": "gets a current game set by partner ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "gamesets",
+                    "partners",
+                    ":partnerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "forDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partnerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partner\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"2026-06-29T01:05:23.113Z\",\n    \"updatedAt\": \"1970-10-20T06:39:31.483Z\"\n  },\n  \"createdAt\": \"1948-02-01T07:26:38.136Z\",\n  \"updatedAt\": \"1990-10-15T14:52:32.392Z\",\n  \"startTime\": \"1997-10-13T03:13:21.092Z\",\n  \"endTime\": \"2021-05-15T22:09:08.946Z\",\n  \"deletedAt\": \"1994-09-23T10:11:53.047Z\",\n  \"games\": [\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"quarantined\",\n      \"language\": \"es-mx\",\n      \"gameType\": \"INSTANT_POLL\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"2022-07-05T16:30:49.260Z\",\n        \"updatedAt\": \"2025-12-07T03:31:20.655Z\"\n      },\n      \"startTime\": \"1988-06-01T19:41:56.362Z\",\n      \"endTime\": \"2023-10-22T01:43:41.144Z\",\n      \"lastJoinTime\": \"1998-06-13T10:06:04.064Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"es-mx\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": true,\n      \"createdAt\": \"1974-02-22T12:43:43.616Z\",\n      \"updatedAt\": \"2014-08-26T06:38:58.889Z\",\n      \"version\": 1791.2758801856398,\n      \"orientation\": \"portrait\",\n      \"correctAnswer\": \"B\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"refunded\",\n      \"language\": \"es-mx\",\n      \"gameType\": \"SURVEY\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"1989-04-09T03:30:12.944Z\",\n        \"updatedAt\": \"1991-10-30T12:37:05.783Z\"\n      },\n      \"startTime\": \"1987-08-22T08:58:24.361Z\",\n      \"endTime\": \"2009-02-03T15:53:51.406Z\",\n      \"lastJoinTime\": \"1958-06-02T19:29:07.598Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"es-mx\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": true,\n      \"createdAt\": \"1985-11-01T19:47:44.157Z\",\n      \"updatedAt\": \"1978-03-13T19:03:04.924Z\",\n      \"version\": 3936.3389110801363,\n      \"orientation\": \"landscape\",\n      \"correctAnswer\": \"A\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"partnerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "efa2a913-af63-4142-8c6c-1de6ffcc01ce",
+    "name": "Versusgame Gamesets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

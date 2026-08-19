@@ -1,0 +1,2935 @@
+{
+  "item": [
+    {
+      "id": "7aa55bf8-5ec5-47b3-8468-d5a36d199174",
+      "name": "leaderboards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6885e4b5-276c-4fa0-93b1-d2e7c93c17fd",
+          "name": "Leaderboards Admin Controller create",
+          "request": {
+            "name": "Leaderboards Admin Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-idempotency-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"league\": \"<string>\",\n  \"imageAssetId\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"prizeName\": \"<string>\",\n  \"prizeType\": \"<string>\",\n  \"prizeValue\": \"<number>\",\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"prizeDrawingDate\": \"<string>\",\n  \"pointThreshold\": \"<number>\",\n  \"numberOfPrizes\": \"<number>\",\n  \"prizeTitle\": \"<string>\",\n  \"prizeShortTitle\": \"<string>\",\n  \"maxUsersThreshold\": \"<number>\",\n  \"gameplaysThreshold\": \"<number>\",\n  \"state\": \"<string>\",\n  \"isVerified\": \"<boolean>\",\n  \"prizeNameShort\": \"<string>\",\n  \"imageSmallAssetId\": \"<string>\",\n  \"imageIconAssetId\": \"<string>\",\n  \"revenueThreshold\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a4f5374-3284-453e-acd5-556415177007",
+              "name": "New Leader Board",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"league\": \"<string>\",\n  \"imageAssetId\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"prizeName\": \"<string>\",\n  \"prizeType\": \"<string>\",\n  \"prizeValue\": \"<number>\",\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"prizeDrawingDate\": \"<string>\",\n  \"pointThreshold\": \"<number>\",\n  \"numberOfPrizes\": \"<number>\",\n  \"prizeTitle\": \"<string>\",\n  \"prizeShortTitle\": \"<string>\",\n  \"maxUsersThreshold\": \"<number>\",\n  \"gameplaysThreshold\": \"<number>\",\n  \"state\": \"<string>\",\n  \"isVerified\": \"<boolean>\",\n  \"prizeNameShort\": \"<string>\",\n  \"imageSmallAssetId\": \"<string>\",\n  \"imageIconAssetId\": \"<string>\",\n  \"revenueThreshold\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"<string>\",\n  \"league\": \"<string>\",\n  \"id\": \"string\",\n  \"prizeName\": \"string\",\n  \"prizeType\": \"string\",\n  \"prizeValue\": 948.1848724532615,\n  \"imageAssetId\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"prizeDrawingDate\": \"string\",\n  \"pointThreshold\": 9321.306714429293,\n  \"numberOfPrizes\": 7198.702491982594,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"distributorId\": \"string\",\n  \"version\": 6881.512987205186,\n  \"prizeTitle\": \"string\",\n  \"prizeShortTitle\": \"string\",\n  \"maxUsersThreshold\": 5680.441189007921,\n  \"playerCount\": 7377.803314120365,\n  \"gameplays\": 2609.9867406135468,\n  \"revenueThreshold\": 607.7447815177894,\n  \"imageAssetUrl\": \"string\",\n  \"isVerified\": true,\n  \"prizeNameShort\": \"string\",\n  \"imageSmallAssetId\": \"string\",\n  \"imageSmallAssetUrl\": \"string\",\n  \"imageIconAssetId\": \"string\",\n  \"imageIconAssetUrl\": \"string\",\n  \"gameplaysThreshold\": 2463.8892990795002\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57fd1d53-966f-4250-8e6d-658b7e099102",
+          "name": "Leaderboards Admin Controller list",
+          "request": {
+            "name": "Leaderboards Admin Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDateComparison",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDateComparison",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "prizeDrawingDateComparison",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "league",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "gameplaysThresholdIsMet",
+                  "value": "<boolean>",
+                  "description": "If true, only leaderboards with gameplays at or higher than the threshold are returned. If false, only leaderboards with gameplays below the threshold are returned. If undefined, all leaderboards are returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "prizeDrawingDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "distributorId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isVerified",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c8ea766f-685f-4759-9e2d-1e92900923b1",
+              "name": "List of Leaderboard, filtered by query params",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDateComparison",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDateComparison",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prizeDrawingDateComparison",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "league",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameplaysThresholdIsMet",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prizeDrawingDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "distributorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isVerified",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"state\": \"<string>\",\n      \"league\": \"<string>\",\n      \"id\": \"string\",\n      \"prizeName\": \"string\",\n      \"prizeType\": \"string\",\n      \"prizeValue\": 3722.2496850649213,\n      \"imageAssetId\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"prizeDrawingDate\": \"string\",\n      \"pointThreshold\": 80.59265301671003,\n      \"numberOfPrizes\": 3057.0945965347496,\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"distributorId\": \"string\",\n      \"version\": 2290.3539190797082,\n      \"prizeTitle\": \"string\",\n      \"prizeShortTitle\": \"string\",\n      \"maxUsersThreshold\": 9654.971236869445,\n      \"playerCount\": 3297.0712778603774,\n      \"gameplays\": 216.22865862204742,\n      \"revenueThreshold\": 5834.830242895763,\n      \"imageAssetUrl\": \"string\",\n      \"isVerified\": false,\n      \"prizeNameShort\": \"string\",\n      \"imageSmallAssetId\": \"string\",\n      \"imageSmallAssetUrl\": \"string\",\n      \"imageIconAssetId\": \"string\",\n      \"imageIconAssetUrl\": \"string\",\n      \"gameplaysThreshold\": 4705.615615843084\n    },\n    {\n      \"state\": \"<string>\",\n      \"league\": \"<string>\",\n      \"id\": \"string\",\n      \"prizeName\": \"string\",\n      \"prizeType\": \"string\",\n      \"prizeValue\": 4643.71379389532,\n      \"imageAssetId\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"prizeDrawingDate\": \"string\",\n      \"pointThreshold\": 7271.781965218062,\n      \"numberOfPrizes\": 2795.2670854775906,\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"distributorId\": \"string\",\n      \"version\": 3304.4837543748095,\n      \"prizeTitle\": \"string\",\n      \"prizeShortTitle\": \"string\",\n      \"maxUsersThreshold\": 9748.84517215773,\n      \"playerCount\": 8999.267252328442,\n      \"gameplays\": 6598.656332491802,\n      \"revenueThreshold\": 3525.294182024762,\n      \"imageAssetUrl\": \"string\",\n      \"isVerified\": true,\n      \"prizeNameShort\": \"string\",\n      \"imageSmallAssetId\": \"string\",\n      \"imageSmallAssetUrl\": \"string\",\n      \"imageIconAssetId\": \"string\",\n      \"imageIconAssetUrl\": \"string\",\n      \"gameplaysThreshold\": 715.2249024910195\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e00cc3a-9955-4e1a-a82f-be1162ae3845",
+          "name": "Leaderboards Admin Controller update",
+          "request": {
+            "name": "Leaderboards Admin Controller update",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<number>\",\n  \"state\": \"<string>\",\n  \"league\": \"<string>\",\n  \"imageAssetId\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"prizeDrawingDate\": \"<string>\",\n  \"pointThreshold\": \"<number>\",\n  \"numberOfPrizes\": \"<number>\",\n  \"prizeValue\": \"<number>\",\n  \"isVerified\": \"<boolean>\",\n  \"prizeNameShort\": \"<string>\",\n  \"imageSmallAssetId\": \"<string>\",\n  \"imageIconAssetId\": \"<string>\",\n  \"prizeTitle\": \"<string>\",\n  \"prizeShortTitle\": \"<string>\",\n  \"maxUsersThreshold\": \"<number>\",\n  \"gameplaysThreshold\": \"<number>\",\n  \"revenueThreshold\": \"<number>\",\n  \"override\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "995f0f9c-d134-4975-90f4-eb804fe5d3f9",
+              "name": "Updated Leaderboard",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<number>\",\n  \"state\": \"<string>\",\n  \"league\": \"<string>\",\n  \"imageAssetId\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"prizeDrawingDate\": \"<string>\",\n  \"pointThreshold\": \"<number>\",\n  \"numberOfPrizes\": \"<number>\",\n  \"prizeValue\": \"<number>\",\n  \"isVerified\": \"<boolean>\",\n  \"prizeNameShort\": \"<string>\",\n  \"imageSmallAssetId\": \"<string>\",\n  \"imageIconAssetId\": \"<string>\",\n  \"prizeTitle\": \"<string>\",\n  \"prizeShortTitle\": \"<string>\",\n  \"maxUsersThreshold\": \"<number>\",\n  \"gameplaysThreshold\": \"<number>\",\n  \"revenueThreshold\": \"<number>\",\n  \"override\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"<string>\",\n  \"league\": \"<string>\",\n  \"id\": \"string\",\n  \"prizeName\": \"string\",\n  \"prizeType\": \"string\",\n  \"prizeValue\": 948.1848724532615,\n  \"imageAssetId\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"prizeDrawingDate\": \"string\",\n  \"pointThreshold\": 9321.306714429293,\n  \"numberOfPrizes\": 7198.702491982594,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"distributorId\": \"string\",\n  \"version\": 6881.512987205186,\n  \"prizeTitle\": \"string\",\n  \"prizeShortTitle\": \"string\",\n  \"maxUsersThreshold\": 5680.441189007921,\n  \"playerCount\": 7377.803314120365,\n  \"gameplays\": 2609.9867406135468,\n  \"revenueThreshold\": 607.7447815177894,\n  \"imageAssetUrl\": \"string\",\n  \"isVerified\": true,\n  \"prizeNameShort\": \"string\",\n  \"imageSmallAssetId\": \"string\",\n  \"imageSmallAssetUrl\": \"string\",\n  \"imageIconAssetId\": \"string\",\n  \"imageIconAssetUrl\": \"string\",\n  \"gameplaysThreshold\": 2463.8892990795002\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5380a1a-6b7e-42d6-832b-286b3ec64c30",
+          "name": "Leaderboards Admin Controller delete",
+          "request": {
+            "name": "Leaderboards Admin Controller delete",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<number>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7aae9a80-4d75-449f-9c6a-bca355bc6336",
+              "name": "Delete Leaderboard",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e53743e9-3347-4ec2-9ddc-4f6981da3f85",
+          "name": "Leaderboards Admin Controller by Id",
+          "request": {
+            "name": "Leaderboards Admin Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8da8b930-2658-44cc-8837-ff2049ea6a2e",
+              "name": "Get Leaderboard",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"<string>\",\n  \"league\": \"<string>\",\n  \"id\": \"string\",\n  \"prizeName\": \"string\",\n  \"prizeType\": \"string\",\n  \"prizeValue\": 948.1848724532615,\n  \"imageAssetId\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"prizeDrawingDate\": \"string\",\n  \"pointThreshold\": 9321.306714429293,\n  \"numberOfPrizes\": 7198.702491982594,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"distributorId\": \"string\",\n  \"version\": 6881.512987205186,\n  \"prizeTitle\": \"string\",\n  \"prizeShortTitle\": \"string\",\n  \"maxUsersThreshold\": 5680.441189007921,\n  \"playerCount\": 7377.803314120365,\n  \"gameplays\": 2609.9867406135468,\n  \"revenueThreshold\": 607.7447815177894,\n  \"imageAssetUrl\": \"string\",\n  \"isVerified\": true,\n  \"prizeNameShort\": \"string\",\n  \"imageSmallAssetId\": \"string\",\n  \"imageSmallAssetUrl\": \"string\",\n  \"imageIconAssetId\": \"string\",\n  \"imageIconAssetUrl\": \"string\",\n  \"gameplaysThreshold\": 2463.8892990795002\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "186b384a-e396-40aa-b41b-2ff03814c7a5",
+          "name": "Leaderboards Admin Controller award Prizes",
+          "request": {
+            "name": "Leaderboards Admin Controller award Prizes",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId",
+                "award-prizes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c7d1d277-f8ff-4d69-ade8-f71058d85091",
+              "name": "Allow an Admin to manually trigger a Leaderboard Prize Award",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "award-prizes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"<string>\",\n  \"league\": \"<string>\",\n  \"id\": \"string\",\n  \"prizeName\": \"string\",\n  \"prizeType\": \"string\",\n  \"prizeValue\": 948.1848724532615,\n  \"imageAssetId\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"prizeDrawingDate\": \"string\",\n  \"pointThreshold\": 9321.306714429293,\n  \"numberOfPrizes\": 7198.702491982594,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"distributorId\": \"string\",\n  \"version\": 6881.512987205186,\n  \"prizeTitle\": \"string\",\n  \"prizeShortTitle\": \"string\",\n  \"maxUsersThreshold\": 5680.441189007921,\n  \"playerCount\": 7377.803314120365,\n  \"gameplays\": 2609.9867406135468,\n  \"revenueThreshold\": 607.7447815177894,\n  \"imageAssetUrl\": \"string\",\n  \"isVerified\": true,\n  \"prizeNameShort\": \"string\",\n  \"imageSmallAssetId\": \"string\",\n  \"imageSmallAssetUrl\": \"string\",\n  \"imageIconAssetId\": \"string\",\n  \"imageIconAssetUrl\": \"string\",\n  \"gameplaysThreshold\": 2463.8892990795002\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e849813-4114-49e1-9ad1-56a8e8f0a6f3",
+          "name": "Leaderboards Admin Controller archive",
+          "request": {
+            "name": "Leaderboards Admin Controller archive",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId",
+                "archive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0237ba9b-5c69-4bfa-a809-664fc6ee204f",
+              "name": "Allow an Admin to manually trigger a Leaderboard to be archived",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"<string>\",\n  \"league\": \"<string>\",\n  \"id\": \"string\",\n  \"prizeName\": \"string\",\n  \"prizeType\": \"string\",\n  \"prizeValue\": 948.1848724532615,\n  \"imageAssetId\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"prizeDrawingDate\": \"string\",\n  \"pointThreshold\": 9321.306714429293,\n  \"numberOfPrizes\": 7198.702491982594,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"distributorId\": \"string\",\n  \"version\": 6881.512987205186,\n  \"prizeTitle\": \"string\",\n  \"prizeShortTitle\": \"string\",\n  \"maxUsersThreshold\": 5680.441189007921,\n  \"playerCount\": 7377.803314120365,\n  \"gameplays\": 2609.9867406135468,\n  \"revenueThreshold\": 607.7447815177894,\n  \"imageAssetUrl\": \"string\",\n  \"isVerified\": true,\n  \"prizeNameShort\": \"string\",\n  \"imageSmallAssetId\": \"string\",\n  \"imageSmallAssetUrl\": \"string\",\n  \"imageIconAssetId\": \"string\",\n  \"imageIconAssetUrl\": \"string\",\n  \"gameplaysThreshold\": 2463.8892990795002\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64bebfea-a4cb-48ac-8624-0a46f057311c",
+          "name": "Leaderboards Admin Controller leaderboard Points List",
+          "request": {
+            "name": "Leaderboards Admin Controller leaderboard Points List",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                "points"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pointsComparison",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "leaderboardId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "points",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "303f1b1f-0477-47fc-842b-da8018b46f8f",
+              "name": "Get List of Leaderboard Points",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    "points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pointsComparison",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "leaderboardId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "points",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"reason\": \"free_gift\",\n      \"points\": 3642.136513242067,\n      \"leaderboardId\": \"string\",\n      \"userId\": \"string\",\n      \"updatedAt\": \"string\",\n      \"distributorId\": \"string\",\n      \"version\": 8120.8319018805605,\n      \"gamesDeclared\": 6092.588986682406,\n      \"gamesCorrectAnswers\": 9648.409154819316\n    },\n    {\n      \"reason\": \"referrer_cut\",\n      \"points\": 4517.119996862158,\n      \"leaderboardId\": \"string\",\n      \"userId\": \"string\",\n      \"updatedAt\": \"string\",\n      \"distributorId\": \"string\",\n      \"version\": 5052.869953920847,\n      \"gamesDeclared\": 4693.377053303024,\n      \"gamesCorrectAnswers\": 2183.9203837410414\n    }\n  ],\n  \"total\": 5429.991278506627\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5af50c5c-522f-43ca-99fe-2326aa48eab4",
+          "name": "Leaderboards Admin Controller points By User Id",
+          "request": {
+            "name": "Leaderboards Admin Controller points By User Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId",
+                "points",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "92b0d69a-a75a-445e-afc7-21e348ce04e3",
+              "name": "Get User Points in Leaderboard",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "points",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reason\": \"pending_outcome\",\n  \"points\": 8374.042939828134,\n  \"leaderboardId\": \"string\",\n  \"userId\": \"string\",\n  \"updatedAt\": \"string\",\n  \"distributorId\": \"string\",\n  \"version\": 2017.6930389185954,\n  \"gamesDeclared\": 3269.619038644065,\n  \"gamesCorrectAnswers\": 5698.399892232203\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2f02dc8-7fda-47a3-b10f-95972fd08e60",
+          "name": "Leaderboards Admin Controller statistics By User Id",
+          "request": {
+            "name": "Leaderboards Admin Controller statistics By User Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId",
+                "points",
+                ":userId",
+                "top",
+                ":topN"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "topN",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7819a4d6-600e-4729-ab27-96c12c5dbb37",
+              "name": "Get Leaderboard User Ranking, Returns Admin Values like UserId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "points",
+                    ":userId",
+                    "top",
+                    ":topN"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "topN",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaderboardId\": \"string\",\n  \"userId\": \"string\",\n  \"username\": \"string\",\n  \"points\": 3607.348586424759,\n  \"rank\": 7361.970256270305,\n  \"profileColor\": \"string\",\n  \"avatar\": \"string\",\n  \"topN\": [\n    {\n      \"userId\": \"string\",\n      \"points\": 3004.7705377634425,\n      \"rank\": 2916.8846491384347,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    },\n    {\n      \"userId\": \"string\",\n      \"points\": 5960.347046853966,\n      \"rank\": 4693.76419145282,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    }\n  ],\n  \"neighbors\": [\n    {\n      \"userId\": \"string\",\n      \"points\": 7011.983383777777,\n      \"rank\": 9983.03210304485,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    },\n    {\n      \"userId\": \"string\",\n      \"points\": 8952.642569123367,\n      \"rank\": 1308.9020905371174,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1513625-c1a8-43a9-a896-bd90fd0e097c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "points",
+                    ":userId",
+                    "top",
+                    ":topN"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "topN",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f0af763-793f-4efd-b94c-5473b57f6ab2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "points",
+                    ":userId",
+                    "top",
+                    ":topN"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "topN",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23dd766e-ced3-419a-8957-e0b3d3f94005",
+          "name": "Leaderboards Admin Controller top Three",
+          "request": {
+            "name": "Leaderboards Admin Controller top Three",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId",
+                "top",
+                ":topN"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "topN",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc9b1c94-5931-46f6-848d-54a760b07818",
+              "name": "Get Leaderboard Top :N Number,  Returns Admin Values like UserId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "top",
+                    ":topN"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "topN",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaderboardId\": \"string\",\n  \"userId\": \"string\",\n  \"username\": \"string\",\n  \"points\": 8405.511403869916,\n  \"rank\": 9771.143419095348,\n  \"profileColor\": \"string\",\n  \"avatar\": \"string\",\n  \"topN\": [\n    {\n      \"userId\": \"string\",\n      \"points\": 133.79616621536528,\n      \"rank\": 8813.745311584318,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    },\n    {\n      \"userId\": \"string\",\n      \"points\": 4735.71609983834,\n      \"rank\": 2745.748930423184,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    }\n  ],\n  \"neighbors\": [\n    {\n      \"userId\": \"string\",\n      \"points\": 921.8872670173716,\n      \"rank\": 8036.577996831748,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    },\n    {\n      \"userId\": \"string\",\n      \"points\": 8838.874966915862,\n      \"rank\": 5563.498766511801,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bfe6d2a-240c-40a6-89f7-04c385fc9626",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "top",
+                    ":topN"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "topN",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba097077-8a75-4366-9d2e-ca1a45b77b17",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "top",
+                    ":topN"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "topN",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec761d11-67ce-4a70-822e-08e7ebfa2089",
+          "name": "Leaderboards Admin Controller eligible Players List",
+          "request": {
+            "name": "Leaderboards Admin Controller eligible Players List",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId",
+                "eligible-players-list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a09d342c-6339-4204-8c52-de2b676620e5",
+              "name": "DEPRECATED: Please use players-list instead",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "eligible-players-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"userId\": \"string\",\n      \"points\": 4541.241883330612,\n      \"email\": \"string\",\n      \"username\": \"string\",\n      \"emailVerified\": true\n    },\n    {\n      \"userId\": \"string\",\n      \"points\": 1473.2312466380758,\n      \"email\": \"string\",\n      \"username\": \"string\",\n      \"emailVerified\": true\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7926dbd8-ae3a-41c2-8412-6c29f1ebee67",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "eligible-players-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e5cbdf1-8626-4b9b-a4c4-dc5d56a24b4a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "eligible-players-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ff54c17-8e39-4c89-81ef-e8419dd80c85",
+          "name": "Leaderboards Admin Controller players List",
+          "request": {
+            "name": "Leaderboards Admin Controller players List",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                ":leaderboardId",
+                "players-list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pickCount",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e01246a6-299e-464b-9bf2-2e7516bcd8b2",
+              "name": "Get all Registered players for a given Leaderboard, sorted by points.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "players-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pickCount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"userId\": \"string\",\n      \"email\": \"string\",\n      \"username\": \"string\",\n      \"emailVerified\": false,\n      \"leaderboardId\": \"string\",\n      \"points\": 5976.724116201586,\n      \"gamesDeclared\": 1916.843296951416,\n      \"gamesCorrectAnswers\": 2472.5025185687587\n    },\n    {\n      \"userId\": \"string\",\n      \"email\": \"string\",\n      \"username\": \"string\",\n      \"emailVerified\": false,\n      \"leaderboardId\": \"string\",\n      \"points\": 2052.8214460479976,\n      \"gamesDeclared\": 7664.852596505894,\n      \"gamesCorrectAnswers\": 2387.170287726186\n    }\n  ],\n  \"total\": 3987.939338325074,\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc2481ee-132d-49ac-b96f-170c34f84a30",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "players-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pickCount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e8aa11a-7821-44b9-903e-4b8821845c4b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "players-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pickCount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d817190d-830e-4cbe-88b0-ee8b20a6bb40",
+          "name": "Leaderboards Admin Controller ledger By User Id",
+          "request": {
+            "name": "Leaderboards Admin Controller ledger By User Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "leaderboards",
+                "ledger",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leaderboardId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "714fc6e5-4a7b-4bff-927e-04b67b7dbeab",
+              "name": "Get Leaderboard Ledger in Leaderboard",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "leaderboards",
+                    "ledger",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leaderboardId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"reason\": \"admin_update\",\n      \"userId\": \"string\",\n      \"leaderboardId\": \"string\",\n      \"points\": 9376.253599897917\n    },\n    {\n      \"reason\": \"refund\",\n      \"userId\": \"string\",\n      \"leaderboardId\": \"string\",\n      \"points\": 3367.410286602186\n    }\n  ],\n  \"total\": 4389.09863137193\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0c156ca-533c-47c3-a7a6-345c3db4d59e",
+          "name": "Leaderboards Controller active Leaderboards",
+          "request": {
+            "name": "Leaderboards Controller active Leaderboards",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "leaderboards",
+                "activeLeaderboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "distributorId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "at",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe1b99ec-27dc-4c57-908c-8260866435ce",
+              "name": "List Active Leaderboards ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "leaderboards",
+                    "activeLeaderboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "distributorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "at",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"state\": \"<string>\",\n      \"league\": \"<string>\",\n      \"id\": \"string\",\n      \"prizeName\": \"string\",\n      \"prizeType\": \"string\",\n      \"prizeValue\": 5793.784535511621,\n      \"imageAssetId\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"prizeDrawingDate\": \"string\",\n      \"pointThreshold\": 1337.864519220502,\n      \"numberOfPrizes\": 449.6592080152839,\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"distributorId\": \"string\",\n      \"version\": 7259.6564728873245,\n      \"prizeTitle\": \"string\",\n      \"prizeShortTitle\": \"string\",\n      \"maxUsersThreshold\": 8954.138007628488,\n      \"playerCount\": 3188.931229997003,\n      \"gameplays\": 4978.3963874958035,\n      \"revenueThreshold\": 252.13552048342413,\n      \"imageAssetUrl\": \"string\",\n      \"isVerified\": true,\n      \"prizeNameShort\": \"string\",\n      \"imageSmallAssetId\": \"string\",\n      \"imageSmallAssetUrl\": \"string\",\n      \"imageIconAssetId\": \"string\",\n      \"imageIconAssetUrl\": \"string\",\n      \"gameplaysThreshold\": 7640.22910589374\n    },\n    {\n      \"state\": \"<string>\",\n      \"league\": \"<string>\",\n      \"id\": \"string\",\n      \"prizeName\": \"string\",\n      \"prizeType\": \"string\",\n      \"prizeValue\": 8075.635380841183,\n      \"imageAssetId\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"prizeDrawingDate\": \"string\",\n      \"pointThreshold\": 5511.48275682888,\n      \"numberOfPrizes\": 5267.322583493645,\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"distributorId\": \"string\",\n      \"version\": 2461.0122276725942,\n      \"prizeTitle\": \"string\",\n      \"prizeShortTitle\": \"string\",\n      \"maxUsersThreshold\": 5370.770130862793,\n      \"playerCount\": 2529.433768033006,\n      \"gameplays\": 875.3625118422226,\n      \"revenueThreshold\": 6118.418672131671,\n      \"imageAssetUrl\": \"string\",\n      \"isVerified\": false,\n      \"prizeNameShort\": \"string\",\n      \"imageSmallAssetId\": \"string\",\n      \"imageSmallAssetUrl\": \"string\",\n      \"imageIconAssetId\": \"string\",\n      \"imageIconAssetUrl\": \"string\",\n      \"gameplaysThreshold\": 2387.1311941359686\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6646524-35eb-42dd-82da-fc631e3b916e",
+          "name": "Leaderboards Controller previous Leaderboards",
+          "request": {
+            "name": "Leaderboards Controller previous Leaderboards",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "leaderboards",
+                "previousLeaderboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "distributorId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc3931d8-154d-4600-9061-3ac8a5d65d6b",
+              "name": "List Previous Leaderboards ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "leaderboards",
+                    "previousLeaderboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "distributorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"state\": \"<string>\",\n      \"league\": \"<string>\",\n      \"id\": \"string\",\n      \"prizeName\": \"string\",\n      \"prizeType\": \"string\",\n      \"prizeValue\": 5793.784535511621,\n      \"imageAssetId\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"prizeDrawingDate\": \"string\",\n      \"pointThreshold\": 1337.864519220502,\n      \"numberOfPrizes\": 449.6592080152839,\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"distributorId\": \"string\",\n      \"version\": 7259.6564728873245,\n      \"prizeTitle\": \"string\",\n      \"prizeShortTitle\": \"string\",\n      \"maxUsersThreshold\": 8954.138007628488,\n      \"playerCount\": 3188.931229997003,\n      \"gameplays\": 4978.3963874958035,\n      \"revenueThreshold\": 252.13552048342413,\n      \"imageAssetUrl\": \"string\",\n      \"isVerified\": true,\n      \"prizeNameShort\": \"string\",\n      \"imageSmallAssetId\": \"string\",\n      \"imageSmallAssetUrl\": \"string\",\n      \"imageIconAssetId\": \"string\",\n      \"imageIconAssetUrl\": \"string\",\n      \"gameplaysThreshold\": 7640.22910589374\n    },\n    {\n      \"state\": \"<string>\",\n      \"league\": \"<string>\",\n      \"id\": \"string\",\n      \"prizeName\": \"string\",\n      \"prizeType\": \"string\",\n      \"prizeValue\": 8075.635380841183,\n      \"imageAssetId\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"prizeDrawingDate\": \"string\",\n      \"pointThreshold\": 5511.48275682888,\n      \"numberOfPrizes\": 5267.322583493645,\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"distributorId\": \"string\",\n      \"version\": 2461.0122276725942,\n      \"prizeTitle\": \"string\",\n      \"prizeShortTitle\": \"string\",\n      \"maxUsersThreshold\": 5370.770130862793,\n      \"playerCount\": 2529.433768033006,\n      \"gameplays\": 875.3625118422226,\n      \"revenueThreshold\": 6118.418672131671,\n      \"imageAssetUrl\": \"string\",\n      \"isVerified\": false,\n      \"prizeNameShort\": \"string\",\n      \"imageSmallAssetId\": \"string\",\n      \"imageSmallAssetUrl\": \"string\",\n      \"imageIconAssetId\": \"string\",\n      \"imageIconAssetUrl\": \"string\",\n      \"gameplaysThreshold\": 2387.1311941359686\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2e78bb7-0c22-4a8b-8182-cddf484fda35",
+          "name": "Leaderboards Controller leaderboard Points List",
+          "request": {
+            "name": "Leaderboards Controller leaderboard Points List",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "leaderboards",
+                "points"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pointsComparison",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "leaderboardId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "points",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "34332ed9-3776-42cc-a747-e677953fc757",
+              "name": "Get List of Leaderboard Points",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "leaderboards",
+                    "points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pointsComparison",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "leaderboardId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "points",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reason\": \"pending_outcome\",\n  \"points\": 8374.042939828134,\n  \"leaderboardId\": \"string\",\n  \"userId\": \"string\",\n  \"updatedAt\": \"string\",\n  \"distributorId\": \"string\",\n  \"version\": 2017.6930389185954,\n  \"gamesDeclared\": 3269.619038644065,\n  \"gamesCorrectAnswers\": 5698.399892232203\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d907a27-7017-4399-a77f-e5a5f758e4c4",
+          "name": "Leaderboards Controller by Id",
+          "request": {
+            "name": "Leaderboards Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "leaderboards",
+                ":leaderboardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2ec91359-41e1-436c-beb5-29d8979dee1c",
+              "name": "Get Leaderboard",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "leaderboards",
+                    ":leaderboardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"<string>\",\n  \"league\": \"<string>\",\n  \"id\": \"string\",\n  \"prizeName\": \"string\",\n  \"prizeType\": \"string\",\n  \"prizeValue\": 3712.6841410929114,\n  \"imageAssetId\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"prizeDrawingDate\": \"string\",\n  \"pointThreshold\": 4491.902619469288,\n  \"numberOfPrizes\": 652.1064707919744,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"distributorId\": \"string\",\n  \"version\": 8331.447627055779,\n  \"prizeTitle\": \"string\",\n  \"prizeShortTitle\": \"string\",\n  \"gameplays\": 5139.971802498925,\n  \"imageAssetUrl\": \"string\",\n  \"isVerified\": false,\n  \"prizeNameShort\": \"string\",\n  \"imageSmallAssetId\": \"string\",\n  \"imageSmallAssetUrl\": \"string\",\n  \"imageIconAssetId\": \"string\",\n  \"imageIconAssetUrl\": \"string\",\n  \"gameplaysThreshold\": 532.0268946764428\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76c82c73-c930-4124-a7bd-1daebf00547f",
+          "name": "Leaderboards Controller get Leaderboard Top N",
+          "request": {
+            "name": "Leaderboards Controller get Leaderboard Top N",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "leaderboards",
+                ":leaderboardId",
+                "top",
+                ":topN"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "topN",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2b6092a7-789e-43fa-9199-2e66a74cdee5",
+              "name": "Get Leaderboard Top N Positions, Returns User Data if Logged In",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "top",
+                    ":topN"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "topN",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaderboardId\": \"string\",\n  \"userId\": \"string\",\n  \"username\": \"string\",\n  \"points\": 8405.511403869916,\n  \"rank\": 9771.143419095348,\n  \"profileColor\": \"string\",\n  \"avatar\": \"string\",\n  \"topN\": [\n    {\n      \"userId\": \"string\",\n      \"points\": 133.79616621536528,\n      \"rank\": 8813.745311584318,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    },\n    {\n      \"userId\": \"string\",\n      \"points\": 4735.71609983834,\n      \"rank\": 2745.748930423184,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    }\n  ],\n  \"neighbors\": [\n    {\n      \"userId\": \"string\",\n      \"points\": 921.8872670173716,\n      \"rank\": 8036.577996831748,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    },\n    {\n      \"userId\": \"string\",\n      \"points\": 8838.874966915862,\n      \"rank\": 5563.498766511801,\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"avatar\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1d8b5c1-2f73-493c-b84f-dca3776b0431",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "leaderboards",
+                    ":leaderboardId",
+                    "top",
+                    ":topN"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "topN",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "40a38c37-b0b5-4ce5-b674-96b61c18b152",
+    "name": "Versusgame Leaderboards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

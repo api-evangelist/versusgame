@@ -1,0 +1,809 @@
+{
+  "item": [
+    {
+      "id": "06027dfb-795e-42a4-8d62-7ff30f1c20c9",
+      "name": "meter-ads",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "93432575-3fd1-4303-8155-3a8daa75091d",
+          "name": "List active meter ads by partner ID",
+          "request": {
+            "name": "List active meter ads by partner ID",
+            "description": {
+              "content": "Returns an array of active meter ads for a given partner ID. If no partner ID is provided, the default partner ID is used. Active means that the status is \"published\", the start date is in the past, and the end date is in the future.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "meter-ads",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partnerId",
+                  "value": "<string>",
+                  "description": "Partner ID to filter active meter ads. Falls back to \"default\" if not provided"
+                },
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45614689-9afb-4e13-b5eb-3dee2b18218e",
+              "name": "An array of MeterAd entities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "meter-ads",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"partnerId\": \"string\",\n    \"startTime\": 2427.1406600367072,\n    \"endTime\": 8429.40538725936,\n    \"questionText\": \"string\",\n    \"status\": \"CANCELLED\",\n    \"createdAt\": \"2021-08-29T20:14:12.649Z\",\n    \"updatedAt\": \"1987-06-03T08:42:00.387Z\",\n    \"url\": \"string\",\n    \"marketingText\": \"string\",\n    \"sideA\": {\n      \"label\": \"string\",\n      \"percentage\": 8062.333204976166,\n      \"assetUrl\": \"string\"\n    },\n    \"sideB\": {\n      \"label\": \"string\",\n      \"percentage\": 2851.2913849569845,\n      \"assetUrl\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"partnerId\": \"string\",\n    \"startTime\": 803.56527369425,\n    \"endTime\": 6200.324395187309,\n    \"questionText\": \"string\",\n    \"status\": \"PUBLISHED\",\n    \"createdAt\": \"1972-08-21T17:58:39.480Z\",\n    \"updatedAt\": \"2020-10-09T21:42:16.742Z\",\n    \"url\": \"string\",\n    \"marketingText\": \"string\",\n    \"sideA\": {\n      \"label\": \"string\",\n      \"percentage\": 8167.784530488647,\n      \"assetUrl\": \"string\"\n    },\n    \"sideB\": {\n      \"label\": \"string\",\n      \"percentage\": 9773.056696542912,\n      \"assetUrl\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90b7ae84-6415-4345-a69e-329c0b28af6b",
+          "name": "Create a new MeterAd",
+          "request": {
+            "name": "Create a new MeterAd",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "meter-ads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partnerId\": \"<string>\",\n  \"startTime\": \"<number>\",\n  \"endTime\": \"<number>\",\n  \"questionText\": \"<string>\",\n  \"sideA\": {\n    \"label\": \"<string>\",\n    \"percentage\": \"<number>\",\n    \"assetUrl\": \"<uri>\"\n  },\n  \"sideB\": {\n    \"label\": \"<string>\",\n    \"percentage\": \"<number>\",\n    \"assetUrl\": \"<uri>\"\n  },\n  \"status\": \"<string>\",\n  \"marketingText\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "55be35bb-3eb0-448c-8cb2-4bf6c45a4845",
+              "name": "A MeterAd entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "meter-ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"<string>\",\n  \"startTime\": \"<number>\",\n  \"endTime\": \"<number>\",\n  \"questionText\": \"<string>\",\n  \"sideA\": {\n    \"label\": \"<string>\",\n    \"percentage\": \"<number>\",\n    \"assetUrl\": \"<uri>\"\n  },\n  \"sideB\": {\n    \"label\": \"<string>\",\n    \"percentage\": \"<number>\",\n    \"assetUrl\": \"<uri>\"\n  },\n  \"status\": \"<string>\",\n  \"marketingText\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partnerId\": \"string\",\n  \"startTime\": 7568.062382828965,\n  \"endTime\": 7738.807234241136,\n  \"questionText\": \"string\",\n  \"status\": \"PUBLISHED\",\n  \"createdAt\": \"1969-03-04T17:07:15.521Z\",\n  \"updatedAt\": \"1987-05-01T08:51:12.230Z\",\n  \"url\": \"string\",\n  \"marketingText\": \"string\",\n  \"sideA\": {\n    \"label\": \"string\",\n    \"percentage\": 2236.2085327077452,\n    \"assetUrl\": \"string\"\n  },\n  \"sideB\": {\n    \"label\": \"string\",\n    \"percentage\": 4602.2679665316855,\n    \"assetUrl\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8599d6bc-a0ff-4ee7-9c5a-0cbb74a87f68",
+          "name": "List meter ads, filtered by search terms and sort options.",
+          "request": {
+            "name": "List meter ads, filtered by search terms and sort options.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "meter-ads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partnerId",
+                  "value": "<string>",
+                  "description": "Partner ID to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "questionText",
+                  "value": "<string>",
+                  "description": "Will do a partial case-insensitive match on question text"
+                },
+                {
+                  "disabled": false,
+                  "key": "marketingText",
+                  "value": "<string>",
+                  "description": "Will do a partial case-insensitive match on marketing text"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<number>",
+                  "description": "Provide a value and comparison operator to filter by start time Unix timestamp in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "operator",
+                  "value": "<string>",
+                  "description": "Provide a value and comparison operator to filter by start time Unix timestamp in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<number>",
+                  "description": "Provide a value and comparison operator to filter by end time Unix timestamp in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "operator",
+                  "value": "<string>",
+                  "description": "Provide a value and comparison operator to filter by end time Unix timestamp in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Dictionary of property names to sort direction (ASC or DESC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "partnerId",
+                  "value": "<string>",
+                  "description": "Dictionary of property names to sort direction (ASC or DESC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<string>",
+                  "description": "Dictionary of property names to sort direction (ASC or DESC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<string>",
+                  "description": "Dictionary of property names to sort direction (ASC or DESC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "questionText",
+                  "value": "<string>",
+                  "description": "Dictionary of property names to sort direction (ASC or DESC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "marketingText",
+                  "value": "<string>",
+                  "description": "Dictionary of property names to sort direction (ASC or DESC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-based); the default is 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page; the default is 20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b2e5d775-47ba-4bd7-af67-9594ddd09137",
+              "name": "A paginated list of MeterAd entities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "meter-ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "questionText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "marketingText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "value",
+                      "value": "1643673600000"
+                    },
+                    {
+                      "key": "operator",
+                      "value": "gte"
+                    },
+                    {
+                      "key": "value",
+                      "value": "1643673600000"
+                    },
+                    {
+                      "key": "operator",
+                      "value": "gte"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "questionText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "marketingText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"partnerId\": \"string\",\n      \"startTime\": 8062.047459617516,\n      \"endTime\": 2166.0883544139288,\n      \"questionText\": \"string\",\n      \"status\": \"PUBLISHED\",\n      \"createdAt\": \"1947-02-03T22:01:32.571Z\",\n      \"updatedAt\": \"2000-01-13T01:10:24.329Z\",\n      \"url\": \"string\",\n      \"marketingText\": \"string\",\n      \"sideA\": {\n        \"label\": \"string\",\n        \"percentage\": 1167.136153059074,\n        \"assetUrl\": \"string\"\n      },\n      \"sideB\": {\n        \"label\": \"string\",\n        \"percentage\": 4157.070069975873,\n        \"assetUrl\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"partnerId\": \"string\",\n      \"startTime\": 8910.365071194316,\n      \"endTime\": 2172.627809141868,\n      \"questionText\": \"string\",\n      \"status\": \"PUBLISHED\",\n      \"createdAt\": \"1946-09-09T10:47:15.853Z\",\n      \"updatedAt\": \"1978-03-11T09:27:44.853Z\",\n      \"url\": \"string\",\n      \"marketingText\": \"string\",\n      \"sideA\": {\n        \"label\": \"string\",\n        \"percentage\": 2484.0975138985154,\n        \"assetUrl\": \"string\"\n      },\n      \"sideB\": {\n        \"label\": \"string\",\n        \"percentage\": 8162.7728755984,\n        \"assetUrl\": \"string\"\n      }\n    }\n  ],\n  \"total\": 1585.5793450469746,\n  \"page\": 5224.937306614863,\n  \"pageSize\": 8939.391861415992,\n  \"pageCount\": 7438.659592777503\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb4f5601-e111-40ff-9feb-df3692d18e38",
+          "name": "Get a meter ad by ID",
+          "request": {
+            "name": "Get a meter ad by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "meter-ads",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08a4750c-5c07-43b4-b172-7c585833f1a2",
+              "name": "A meter ad entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "meter-ads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partnerId\": \"string\",\n  \"startTime\": 7568.062382828965,\n  \"endTime\": 7738.807234241136,\n  \"questionText\": \"string\",\n  \"status\": \"PUBLISHED\",\n  \"createdAt\": \"1969-03-04T17:07:15.521Z\",\n  \"updatedAt\": \"1987-05-01T08:51:12.230Z\",\n  \"url\": \"string\",\n  \"marketingText\": \"string\",\n  \"sideA\": {\n    \"label\": \"string\",\n    \"percentage\": 2236.2085327077452,\n    \"assetUrl\": \"string\"\n  },\n  \"sideB\": {\n    \"label\": \"string\",\n    \"percentage\": 4602.2679665316855,\n    \"assetUrl\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e27b47f-d6cf-4f12-b8f5-e43896b8a46e",
+          "name": "Update a meter ad",
+          "request": {
+            "name": "Update a meter ad",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "meter-ads",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partnerId\": \"<string>\",\n  \"startTime\": \"<number>\",\n  \"endTime\": \"<number>\",\n  \"questionText\": \"<string>\",\n  \"marketingText\": \"<string>\",\n  \"sideA\": {\n    \"label\": \"<string>\",\n    \"percentage\": \"<number>\",\n    \"assetUrl\": \"<string>\"\n  },\n  \"sideB\": {\n    \"label\": \"<string>\",\n    \"percentage\": \"<number>\",\n    \"assetUrl\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cbd23a04-cca8-4be0-a60c-7c82f749a950",
+              "name": "The updated meter ad entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "meter-ads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"<string>\",\n  \"startTime\": \"<number>\",\n  \"endTime\": \"<number>\",\n  \"questionText\": \"<string>\",\n  \"marketingText\": \"<string>\",\n  \"sideA\": {\n    \"label\": \"<string>\",\n    \"percentage\": \"<number>\",\n    \"assetUrl\": \"<string>\"\n  },\n  \"sideB\": {\n    \"label\": \"<string>\",\n    \"percentage\": \"<number>\",\n    \"assetUrl\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partnerId\": \"string\",\n  \"startTime\": 7568.062382828965,\n  \"endTime\": 7738.807234241136,\n  \"questionText\": \"string\",\n  \"status\": \"PUBLISHED\",\n  \"createdAt\": \"1969-03-04T17:07:15.521Z\",\n  \"updatedAt\": \"1987-05-01T08:51:12.230Z\",\n  \"url\": \"string\",\n  \"marketingText\": \"string\",\n  \"sideA\": {\n    \"label\": \"string\",\n    \"percentage\": 2236.2085327077452,\n    \"assetUrl\": \"string\"\n  },\n  \"sideB\": {\n    \"label\": \"string\",\n    \"percentage\": 4602.2679665316855,\n    \"assetUrl\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "449a87dd-558a-4a9c-b30d-8e58ab5656b6",
+          "name": "Delete a meter ad",
+          "request": {
+            "name": "Delete a meter ad",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "meter-ads",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "180d4d60-538a-4ea2-9dd8-055b66f9748d",
+              "name": "The meter ad has been successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "meter-ads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "02412aa7-51a8-450f-8006-b39dd4437522",
+    "name": "Versusgame Meter Ads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

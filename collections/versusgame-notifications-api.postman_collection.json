@@ -1,0 +1,269 @@
+{
+  "item": [
+    {
+      "id": "5e7eb476-0913-4de6-9a17-2f17e71bc43d",
+      "name": "notifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c573b36-9efa-4fac-8985-f59be1e7d568",
+          "name": "Notifications Controller count",
+          "request": {
+            "name": "Notifications Controller count",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "notifications",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f3673548-8b4f-40a8-93fd-3fbdfc985b81",
+              "name": "Count of unread notifications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notifications",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9365.452359156876,\n  \"rewardsToClaim\": 433.85023348647024\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71939a5f-7662-4be6-9ed5-f4d903e1b570",
+          "name": "Notifications Controller list",
+          "request": {
+            "name": "Notifications Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "resetCount",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4fa7877f-d780-4669-bff5-059c308174cd",
+              "name": "Read or Unread Notifications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resetCount",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"type\": \"leaderboard_points\",\n      \"notification\": {\n        \"type\": \"achievement\",\n        \"gameId\": \"string\",\n        \"blackTickets\": 1684.1317952876645,\n        \"whiteTickets\": 9255.221285019166,\n        \"isFinalResult\": true,\n        \"isCanceled\": false,\n        \"funds\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"creatorId\": \"string\"\n      },\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"2003-08-28T18:50:38.534Z\"\n    },\n    {\n      \"type\": \"user_promotion\",\n      \"notification\": {\n        \"type\": \"admin_update\",\n        \"gameId\": \"string\",\n        \"blackTickets\": 5841.57062312098,\n        \"whiteTickets\": 7552.958724397166,\n        \"isFinalResult\": false,\n        \"isCanceled\": true,\n        \"funds\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"creatorId\": \"string\"\n      },\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"createdAt\": \"1954-06-02T02:36:43.274Z\"\n    }\n  ],\n  \"gameEntities\": [\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"processing_payouts\",\n      \"language\": \"en-us\",\n      \"gameType\": \"THIS_THAT\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"2010-10-01T11:50:10.721Z\",\n        \"updatedAt\": \"2000-12-01T00:52:49.548Z\"\n      },\n      \"startTime\": \"2018-03-19T01:14:14.003Z\",\n      \"endTime\": \"2015-01-22T12:32:26.766Z\",\n      \"lastJoinTime\": \"2013-03-01T21:34:17.413Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"es-mx\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": true,\n      \"createdAt\": \"1989-04-15T02:01:44.139Z\",\n      \"updatedAt\": \"1983-10-24T14:50:31.833Z\",\n      \"version\": 6032.853592095368,\n      \"orientation\": \"portrait\",\n      \"correctAnswer\": \"B\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"audioUrl\": \"string\",\n      \"videoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"questionVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"landscapeVideoUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"resultUrls\": {\n        \"hls\": \"string\",\n        \"mp4360\": \"string\",\n        \"mp4540\": \"string\",\n        \"mp4720\": \"string\",\n        \"poster\": \"string\"\n      },\n      \"state\": \"quarantined\",\n      \"language\": \"es-mx\",\n      \"gameType\": \"PREDICTION\",\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"creator\": {\n        \"avatar\": \"string\",\n        \"id\": \"string\",\n        \"partnerName\": \"string\",\n        \"avatarAssetId\": \"string\",\n        \"profileColor\": \"string\",\n        \"userName\": \"string\",\n        \"createdAt\": \"2019-06-18T03:54:17.416Z\",\n        \"updatedAt\": \"1981-07-22T16:09:37.009Z\"\n      },\n      \"startTime\": \"1968-08-15T10:57:24.096Z\",\n      \"endTime\": \"2014-12-03T20:23:30.172Z\",\n      \"lastJoinTime\": \"1970-07-02T15:38:00.551Z\",\n      \"gameTitle\": \"string\",\n      \"sourceUrl\": \"string\",\n      \"sideA\": \"string\",\n      \"sideB\": \"string\",\n      \"text\": \"string\",\n      \"categoryId\": \"string\",\n      \"category\": {\n        \"language\": \"es-mx\",\n        \"id\": \"string\",\n        \"categoryName\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"deletedAt\": \"string\",\n        \"sticker\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"isAd\": false,\n      \"createdAt\": \"1977-01-11T17:39:46.334Z\",\n      \"updatedAt\": \"1973-05-17T04:50:29.260Z\",\n      \"version\": 5444.15890883197,\n      \"orientation\": \"portrait\",\n      \"correctAnswer\": \"A\",\n      \"videoAssetId\": \"string\",\n      \"questionVideoAssetId\": \"string\",\n      \"landscapeVideoAssetId\": \"string\",\n      \"audioAssetId\": \"string\",\n      \"resultAssetId\": \"string\",\n      \"isPrivate\": true,\n      \"bingSearch\": \"string\",\n      \"bingSearchClaim\": \"string\",\n      \"metadata\": {},\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"userEntities\": [\n    {\n      \"avatar\": \"string\",\n      \"id\": \"string\",\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"avatarAssetId\": \"string\"\n    },\n    {\n      \"avatar\": \"string\",\n      \"id\": \"string\",\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"avatarAssetId\": \"string\"\n    }\n  ],\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"games\": [\n    \"string\",\n    \"string\"\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "36d83997-96fa-4c7b-9ee3-d3410b9c7890",
+    "name": "Versusgame Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

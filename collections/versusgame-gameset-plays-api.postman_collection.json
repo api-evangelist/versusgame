@@ -1,0 +1,904 @@
+{
+  "item": [
+    {
+      "id": "9f0f89f2-d3f7-4afe-9285-c8258d7201db",
+      "name": "gameset-plays",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b224658-cdd4-4f27-af28-54e7542c01da",
+          "name": "Get the current daily game set ID",
+          "request": {
+            "name": "Get the current daily game set ID",
+            "description": {
+              "content": "Returns the ID of the current daily game set from the DB. If this is the first request of the day, a new game set will be created.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gameset",
+                "plays",
+                "gamesets",
+                "current-daily-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partnerId",
+                  "value": "VERSUS"
+                },
+                {
+                  "disabled": false,
+                  "key": "gameStyle",
+                  "value": "TVT",
+                  "description": "Either TVT (This That) or MG (Mini Games)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44b9fea1-0c2c-4c36-bcf0-20f09204b676",
+              "name": "The current daily game set ID for the given partner and game type.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "gamesets",
+                    "current-daily-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partnerId",
+                      "value": "VERSUS"
+                    },
+                    {
+                      "key": "gameStyle",
+                      "value": "TVT"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gameSetId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df1de8ca-2427-4ec4-babe-f0bd4565cd15",
+          "name": "Get the leader of a game set",
+          "request": {
+            "name": "Get the leader of a game set",
+            "description": {
+              "content": "The GameSetPlay with the most games played for that GameSet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gameset",
+                "plays",
+                "gamesets",
+                ":gameSetId",
+                "leader"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "gameSetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "063d1ccf-a84c-46b5-8df6-a9d26904e14f",
+              "name": "The GameSetPlay entity.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "gamesets",
+                    ":gameSetId",
+                    "leader"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameSetId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"string\",\n  \"gameSetId\": \"string\",\n  \"gameSetAttempt\": 7022.882797524827,\n  \"updatedAt\": \"2005-08-02T08:05:58.876Z\",\n  \"createdAt\": \"1955-03-08T19:08:04.586Z\",\n  \"results\": {},\n  \"gamesPlayedCount\": 8343.009994478336,\n  \"correctAnswerCount\": 3866.694774947077\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3f08804-5042-4f37-a619-d612beac31fc",
+          "name": "Get all GameSetPlay attempts for a given Player and GameSet",
+          "request": {
+            "name": "Get all GameSetPlay attempts for a given Player and GameSet",
+            "description": {},
+            "url": {
+              "path": [
+                "gameset",
+                "plays",
+                "attempts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "gameSetId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4f29509-b84e-46a3-a7c7-1aff355eed20",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "attempts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameSetId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userId\": \"string\",\n    \"gameSetId\": \"string\",\n    \"gameSetAttempt\": 99.04675523691564,\n    \"updatedAt\": \"1972-09-20T08:15:05.305Z\",\n    \"createdAt\": \"1962-03-11T19:27:28.911Z\",\n    \"results\": {},\n    \"gamesPlayedCount\": 4957.13456846721,\n    \"correctAnswerCount\": 5708.0235487588925\n  },\n  {\n    \"userId\": \"string\",\n    \"gameSetId\": \"string\",\n    \"gameSetAttempt\": 5064.849059412523,\n    \"updatedAt\": \"1985-05-22T19:59:44.156Z\",\n    \"createdAt\": \"2010-08-20T13:15:24.784Z\",\n    \"results\": {},\n    \"gamesPlayedCount\": 3722.2253725858236,\n    \"correctAnswerCount\": 5485.672155392955\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b005c69c-4159-4e49-8602-a3d0144ae095",
+          "name": "Get the best GameSetPlay attempt for a given Player and GameSet",
+          "request": {
+            "name": "Get the best GameSetPlay attempt for a given Player and GameSet",
+            "description": {
+              "content": "The best attempt has the most games played for the given GameSet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gameset",
+                "plays",
+                "attempts",
+                "best"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "gameSetId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59a875fa-ee26-4465-95dd-900bd178db92",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "attempts",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameSetId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"string\",\n  \"gameSetId\": \"string\",\n  \"gameSetAttempt\": 7022.882797524827,\n  \"updatedAt\": \"2005-08-02T08:05:58.876Z\",\n  \"createdAt\": \"1955-03-08T19:08:04.586Z\",\n  \"results\": {},\n  \"gamesPlayedCount\": 8343.009994478336,\n  \"correctAnswerCount\": 3866.694774947077\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33c9a15e-b464-4b5d-80c5-31e18158add6",
+          "name": "Get the last GameSetPlay attempt for a given Player and GameSet",
+          "request": {
+            "name": "Get the last GameSetPlay attempt for a given Player and GameSet",
+            "description": {
+              "content": "The last attempt is the most recent attempt for the given GameSet, but not necessarily the best attempt. The attemptWasCompleted property is true if the last attempt has been marked as completed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gameset",
+                "plays",
+                "attempts",
+                "last"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "gameSetId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5b34684-110e-42d1-b722-766ae3d6f80a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "attempts",
+                    "last"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameSetId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"string\",\n  \"gameSetId\": \"string\",\n  \"gameSetAttempt\": 3435.794352645697,\n  \"updatedAt\": \"1995-09-27T03:53:33.698Z\",\n  \"createdAt\": \"1979-12-06T23:27:50.100Z\",\n  \"results\": {},\n  \"gamesPlayedCount\": 2562.096165953619,\n  \"correctAnswerCount\": 239.5438803070027,\n  \"attemptWasCompleted\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f21e02a-b571-48d4-be70-ea4f66c908ea",
+          "name": "Record the completion of a GameSet attempt",
+          "request": {
+            "name": "Record the completion of a GameSet attempt",
+            "description": {
+              "content": "This route is used when the player's attempt is completed because the timer has expired and there was no gameplay submitted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gameset",
+                "plays",
+                "attempts",
+                "completed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"gameSetId\": \"<string>\",\n  \"gameSetAttempt\": \"<number>\",\n  \"distributorId\": \"<string>\",\n  \"shareCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "490c817d-f610-4a10-b535-b7a1cdacc31e",
+              "name": "The request was successful. Not content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "attempts",
+                    "completed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"gameSetId\": \"<string>\",\n  \"gameSetAttempt\": \"<number>\",\n  \"distributorId\": \"<string>\",\n  \"shareCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e29aaad9-805a-4bea-abe0-33dc9b643acb",
+              "name": "The request body is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "attempts",
+                    "completed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"gameSetId\": \"<string>\",\n  \"gameSetAttempt\": \"<number>\",\n  \"distributorId\": \"<string>\",\n  \"shareCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15075a60-e645-4646-a784-0bbd75f3beea",
+          "name": "List the top players of a game set (leaderboard)",
+          "request": {
+            "name": "List the top players of a game set (leaderboard)",
+            "description": {
+              "content": "Ranked by the most games played for that GameSet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gameset",
+                "plays",
+                "gamesets",
+                ":gameSetId",
+                "top-players"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "The approximate number of top players to return. The returned item count may include more to accommodate pagination with filters. Results may also be less if there are fewer than this many players."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The cursor to use for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "withExternalId",
+                  "value": "false",
+                  "description": "Whether to include the externalId in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "gameSetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "861eb606-0a74-4d86-99ac-e4fb7a379d1d",
+              "name": "Ranked list of top players with usernames",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "gamesets",
+                    ":gameSetId",
+                    "top-players"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withExternalId",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameSetId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"userId\": \"0197381e-d0ef-700d-a3fc-f98501417877\",\n      \"username\": \"bucking_bronco\",\n      \"avatarUrl\": \"https://example.com/avatar.jpg\",\n      \"gamesPlayedCount\": 47,\n      \"correctAnswerCount\": 42,\n      \"externalId\": \"reddit-0197381e-d0ef-700d-a3fc-f98501417877\"\n    },\n    {\n      \"userId\": \"0197381e-d0ef-700d-a3fc-f98501417877\",\n      \"username\": \"bucking_bronco\",\n      \"avatarUrl\": \"https://example.com/avatar.jpg\",\n      \"gamesPlayedCount\": 47,\n      \"correctAnswerCount\": 42,\n      \"externalId\": \"reddit-0197381e-d0ef-700d-a3fc-f98501417877\"\n    }\n  ],\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29b5f28e-fa1b-49ac-af7d-6019ccbcbc2c",
+          "name": "List the top players for a game set; with their emails",
+          "request": {
+            "name": "List the top players for a game set; with their emails",
+            "description": {
+              "content": "Ranked by the most games played for that GameSet. `Only returns users with emails`. Requires ADMIN role, to protect PII.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gameset",
+                "plays",
+                "gamesets",
+                ":gameSetId",
+                "top-players-with-emails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "The approximate number of top players to return. The returned item count may include more to accommodate pagination with filters. Results may also be less if there are fewer than this many players."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The cursor to use for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "withExternalId",
+                  "value": "false",
+                  "description": "Whether to include the externalId in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "gameSetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5035cf00-7ff8-4928-8aa1-b73686114c22",
+              "name": "List of top players with metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gameset",
+                    "plays",
+                    "gamesets",
+                    ":gameSetId",
+                    "top-players-with-emails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withExternalId",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameSetId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"userId\": \"0197381e-d0ef-700d-a3fc-f98501417877\",\n      \"username\": \"bucking_bronco\",\n      \"avatarUrl\": \"https://example.com/avatar.jpg\",\n      \"gamesPlayedCount\": 47,\n      \"correctAnswerCount\": 42,\n      \"email\": \"sarah@example.com\",\n      \"emailVerified\": true,\n      \"externalId\": \"reddit-0197381e-d0ef-700d-a3fc-f98501417877\"\n    },\n    {\n      \"userId\": \"0197381e-d0ef-700d-a3fc-f98501417877\",\n      \"username\": \"bucking_bronco\",\n      \"avatarUrl\": \"https://example.com/avatar.jpg\",\n      \"gamesPlayedCount\": 47,\n      \"correctAnswerCount\": 42,\n      \"email\": \"sarah@example.com\",\n      \"emailVerified\": true,\n      \"externalId\": \"reddit-0197381e-d0ef-700d-a3fc-f98501417877\"\n    }\n  ],\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "561394f2-ebea-4441-b94e-64f6d974b1fe",
+    "name": "Versusgame Gameset Plays API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

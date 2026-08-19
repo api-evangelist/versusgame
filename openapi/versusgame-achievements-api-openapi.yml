@@ -1,0 +1,80 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Achievements API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: achievements
+paths:
+  /v1/achievements:
+    get:
+      operationId: AchievementsController_list
+      parameters: []
+      responses:
+        '200':
+          description: List Game Plays Filtered By Status
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GamePlayAchievementEntity'
+      tags:
+      - achievements
+components:
+  schemas:
+    GamePlayAchievementEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          allOf:
+          - $ref: '#/components/schemas/type'
+        level:
+          allOf:
+          - $ref: '#/components/schemas/level'
+        awardPoints:
+          type: number
+        gamePlays:
+          type: number
+      required:
+      - id
+      - name
+      - type
+      - level
+      - awardPoints
+      - gamePlays
+    type:
+      type: string
+      enum:
+      - gameplay
+      - gameplay-count-by-game-type
+      - email-verified
+      - one-friend-invited
+      - five-friends-invited
+      - ten-friends-invited
+      - friends-invited
+      - gameset-completed
+      - gameset-challenge-won
+    level:
+      type: string
+      enum:
+      - level1
+      - level2
+      - level3
+      - level4
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

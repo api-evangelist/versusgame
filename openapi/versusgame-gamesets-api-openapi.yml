@@ -1,0 +1,489 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Gamesets API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: gamesets
+paths:
+  /admin/gamesets:
+    post:
+      operationId: GameSetsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGameSetDto'
+      responses:
+        '201':
+          description: Creates a new game set
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameSet'
+      security:
+      - access-token: []
+      tags:
+      - gamesets
+    get:
+      operationId: GameSetsController_query
+      parameters:
+      - name: sortStartTime
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortMode'
+      - name: sortEndTime
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortMode'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: partnerId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: startTime
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: endTime
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGameSet'
+      security:
+      - access-token: []
+      tags:
+      - gamesets
+  /admin/gamesets/{id}:
+    get:
+      operationId: GameSetsController_byId
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'gets a game set by id '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameSet'
+      security:
+      - access-token: []
+      tags:
+      - gamesets
+    put:
+      operationId: GameSetsController_update
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGameSetDto'
+      responses:
+        '200':
+          description: updates a game set
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameSet'
+      security:
+      - access-token: []
+      tags:
+      - gamesets
+    delete:
+      operationId: GameSetsController_delete
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - gamesets
+  /admin/gamesets/partners/{partnerId}:
+    get:
+      operationId: GameSetsController_getSet
+      parameters:
+      - name: partnerId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: forDate
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'gets a current game set by partner '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameSet'
+      security:
+      - access-token: []
+      tags:
+      - gamesets
+components:
+  schemas:
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    UpdateGameSetDto:
+      type: object
+      properties:
+        startTime:
+          type: string
+        endTime:
+          type: string
+        games:
+          type: array
+          items:
+            type: string
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    CreateGameSetDto:
+      type: object
+      properties:
+        partnerId:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+        games:
+          type: array
+          items:
+            type: string
+      required:
+      - partnerId
+      - startTime
+      - endTime
+      - games
+    Game:
+      type: object
+      properties:
+        audioUrl:
+          type: string
+        videoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        questionVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        landscapeVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        resultUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameStates'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        id:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+        resultAssetId:
+          type: string
+        text:
+          type: string
+        categoryId:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        urls:
+          type: array
+          items:
+            type: string
+      required:
+      - audioUrl
+      - videoUrls
+      - questionVideoUrls
+      - landscapeVideoUrls
+      - resultUrls
+      - state
+      - language
+      - gameType
+      - id
+      - creatorId
+      - creator
+      - startTime
+      - endTime
+      - lastJoinTime
+      - gameTitle
+      - sourceUrl
+      - sideA
+      - sideB
+      - text
+      - categoryId
+      - category
+      - isAd
+      - createdAt
+      - updatedAt
+      - version
+    ListGameSet:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameSet'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    GameSet:
+      type: object
+      properties:
+        id:
+          type: string
+        partnerId:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Creator'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+      required:
+      - id
+      - partner
+      - createdAt
+      - updatedAt
+      - startTime
+      - endTime
+      - deletedAt
+      - games
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

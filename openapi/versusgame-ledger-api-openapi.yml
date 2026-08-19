@@ -1,0 +1,184 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Ledger API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: ledger
+paths:
+  /v1/ledger:
+    get:
+      operationId: LedgerController_list
+      parameters:
+      - name: _
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/FundsUpdatedReasons'
+      - name: reasons
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundsUpdatedReasons'
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List user's transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LedgerListEntity'
+      security:
+      - access-token: []
+      tags:
+      - ledger
+  /v1/admin/ledger:
+    get:
+      operationId: LedgerAdminController_list
+      parameters:
+      - name: _
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/FundsUpdatedReasons'
+      - name: reasons
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundsUpdatedReasons'
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: userId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List user's transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LedgerListEntity'
+      security:
+      - access-token: []
+      tags:
+      - ledger
+components:
+  schemas:
+    FundType:
+      type: string
+      enum:
+      - free
+      - white
+      - black
+      - gray
+      - coin
+      - pending_coin
+      - point
+    LedgersEntity:
+      type: object
+      properties:
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/FundsUpdatedReasons'
+        id:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        funds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Fund'
+      required:
+      - reason
+      - id
+      - userId
+      - createdAt
+      - funds
+    FundsUpdatedReasons:
+      type: string
+      enum:
+      - free_gift
+      - host_cut
+      - referrer_cut
+      - parent_cut
+      - transaction_voided
+      - game_played
+      - game_outcome
+      - pending_outcome
+      - purchase
+      - redeem
+      - refund
+      - payout
+      - admin_update
+      - distributor_cut
+      - achievement
+    Fund:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/FundType'
+        amount:
+          type: number
+      required:
+      - type
+      - amount
+    LedgerListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgersEntity'
+        next:
+          type: string
+      required:
+      - items
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

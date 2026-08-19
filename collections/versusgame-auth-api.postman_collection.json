@@ -1,0 +1,2889 @@
+{
+  "item": [
+    {
+      "id": "a1325f3f-774c-458a-a0ff-dc8263e203d4",
+      "name": "auth",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01abeb8a-b979-4914-be27-834f34bd0078",
+          "name": "Auth Controller identify",
+          "request": {
+            "name": "Auth Controller identify",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "identify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"externalId\": \"<string>\",\n  \"sourceDomain\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"returnUrl\": \"<string>\",\n  \"language\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2eddd3ed-5373-471d-94c1-8c768e637d1a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalId\": \"<string>\",\n  \"sourceDomain\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"returnUrl\": \"<string>\",\n  \"language\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"USER\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 8035.334640032441,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": false,\n  \"tosSignedAt\": \"2003-04-12T04:20:16.450Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eeab6f70-0177-4f00-8c22-23ffb6810f40",
+          "name": "Auth Controller login",
+          "request": {
+            "name": "Auth Controller login",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "26feb468-2d2b-4131-8bfd-b32a101d740f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"AUTOGAME\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 2090.7880311007266,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": true,\n  \"tosSignedAt\": \"1987-02-13T09:07:19.148Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1e16f7b-6a32-4d22-a294-7edaad87e489",
+          "name": "Auth Controller change Password",
+          "request": {
+            "name": "Auth Controller change Password",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "change_password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"oldPassword\": \"<string>\",\n  \"newPassword\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0672c98a-2d92-4920-88c7-a5e7d2524334",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "change_password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"oldPassword\": \"<string>\",\n  \"newPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"AUTOGAME\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 2090.7880311007266,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": true,\n  \"tosSignedAt\": \"1987-02-13T09:07:19.148Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05f10a28-48f0-4fb9-8b0a-53d0f487626c",
+          "name": "Auth Controller reset Password",
+          "request": {
+            "name": "Auth Controller reset Password",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "reset_password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"returnUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f376c2a9-ce9e-46cf-b91a-9074af6f3850",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "reset_password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"returnUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6025e88-46d9-45f2-abed-a248d0205341",
+          "name": "Auth Controller reset Password Set New",
+          "request": {
+            "name": "Auth Controller reset Password Set New",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "reset_password",
+                "set_new"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e038302-20f2-4998-ba3c-9961adf71a0a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "reset_password",
+                    "set_new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"AUTOGAME\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 2090.7880311007266,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": true,\n  \"tosSignedAt\": \"1987-02-13T09:07:19.148Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca94d001-4dc1-4aed-9bd5-4e985aec599f",
+          "name": "Auth Controller reset Password Verify Token",
+          "request": {
+            "name": "Auth Controller reset Password Verify Token",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "reset_password",
+                "verify_token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "286674a2-042f-4d47-81b3-1b01c7376199",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "reset_password",
+                    "verify_token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a31d3bc4-d960-4420-8318-57790666febb",
+          "name": "Auth Controller confirm Invite",
+          "request": {
+            "name": "Auth Controller confirm Invite",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "confirm_invite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "86eedc62-085b-4a9a-9366-5c5309754d6c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "confirm_invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"AUTOGAME\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 2090.7880311007266,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": true,\n  \"tosSignedAt\": \"1987-02-13T09:07:19.148Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f893c89d-6195-476b-80ef-0b23bca48d75",
+          "name": "Auth Controller verify Email",
+          "request": {
+            "name": "Auth Controller verify Email",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "verify_email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d858d43-251a-4cad-96f1-87b5908eb5f9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "verify_email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "565b880a-c064-49a0-afbf-69566efe16ac",
+          "name": "Auth Controller signup",
+          "request": {
+            "name": "Auth Controller signup",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"returnUrl\": \"<string>\",\n  \"tosSigned\": \"<boolean>\",\n  \"sourceDomain\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"language\": \"<string>\",\n  \"password\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"username\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"points\": \"<number>\",\n  \"referrerId\": \"<string>\",\n  \"referralCode\": \"<string>\",\n  \"amplitudeExperimentVariant\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "494a93f6-b355-4c9e-a3d3-890618901b75",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"returnUrl\": \"<string>\",\n  \"tosSigned\": \"<boolean>\",\n  \"sourceDomain\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"language\": \"<string>\",\n  \"password\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"username\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"points\": \"<number>\",\n  \"referrerId\": \"<string>\",\n  \"referralCode\": \"<string>\",\n  \"amplitudeExperimentVariant\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"AUTOGAME\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 2090.7880311007266,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": true,\n  \"tosSignedAt\": \"1987-02-13T09:07:19.148Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dff1f77d-bba3-40dc-9651-92d969997e2a",
+          "name": "Auth Controller resend Email Verification",
+          "request": {
+            "name": "Auth Controller resend Email Verification",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "resend_email_verification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"email\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d023a395-8e7c-4ca1-9d6a-2c634179dc0c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "resend_email_verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"language\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"AUTOGAME\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 2090.7880311007266,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": true,\n  \"tosSignedAt\": \"1987-02-13T09:07:19.148Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8433e471-3715-4800-b09f-f7f19d80b685",
+          "name": "Auth Controller refresh",
+          "request": {
+            "name": "Auth Controller refresh",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "refresh"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST"
+          },
+          "response": [
+            {
+              "id": "06f67ed5-e04b-4384-b3f8-4449ca13df63",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"AUTOGAME\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 2090.7880311007266,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": true,\n  \"tosSignedAt\": \"1987-02-13T09:07:19.148Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ae60fee-98f0-43f6-86e2-b7b4a830190a",
+          "name": "Auth Controller logout",
+          "request": {
+            "name": "Auth Controller logout",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST"
+          },
+          "response": [
+            {
+              "id": "acb7b14e-ff1d-4601-87f5-c04e6996c3ba",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59da6aaf-5ca2-481a-9d4a-6f27c661529c",
+          "name": "Auth Controller validate Email",
+          "request": {
+            "name": "Auth Controller validate Email",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "validate_email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3ba5630-82fd-4149-be17-b55f52e51be0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "validate_email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "743ccb04-071b-4958-8391-ee857e92fa3b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "validate_email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7bccbbe-1341-454a-801a-df5f8ba9e87c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "validate_email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "257983d8-4014-477f-8736-d3d5a4d4bb5c",
+          "name": "Auth Controller sign Tos",
+          "request": {
+            "name": "Auth Controller sign Tos",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "sign_tos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b6c6c86f-0b0a-49b1-9723-cf51847a067e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "sign_tos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c4dc65f-3a0c-4f70-a8c4-abc3ba0b4fb6",
+          "name": "Auth Controller update Payout Email",
+          "request": {
+            "name": "Auth Controller update Payout Email",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "payout_email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82db08d1-8e65-4ae9-954e-b84202050ede",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "payout_email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"verified\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c1893ce-1ad6-42a4-af86-3c7b16640b25",
+          "name": "Auth Controller payout Email Verification",
+          "request": {
+            "name": "Auth Controller payout Email Verification",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "payout_email_verification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9931adf2-e7a3-4070-826a-832b91c4841f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "payout_email_verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "290d9a6f-8c77-4160-b03c-64e10ea04f26",
+          "name": "Auth Controller microsoft Rewards",
+          "request": {
+            "name": "Auth Controller microsoft Rewards",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "microsoft_rewards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"returnUrl\": \"<string>\",\n  \"sourceDomain\": \"<string>\",\n  \"language\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25f199e9-4275-4b62-bf90-72ba26d6bfdd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "microsoft_rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"returnUrl\": \"<string>\",\n  \"sourceDomain\": \"<string>\",\n  \"language\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    \"AUTOGAME\",\n    \"USER\"\n  ],\n  \"accessToken\": \"string\",\n  \"accessTokenExpiresIn\": 2090.7880311007266,\n  \"refreshToken\": \"string\",\n  \"lastTosSigned\": true,\n  \"tosSignedAt\": \"1987-02-13T09:07:19.148Z\",\n  \"isExemptFromSigningTos\": false,\n  \"userId\": \"string\",\n  \"language\": \"<string>\",\n  \"email\": \"string\",\n  \"payoutEmail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea202eb3-4cad-4b9f-9e59-714d443c4800",
+          "name": "Admin Controller invite",
+          "request": {
+            "name": "Admin Controller invite",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "auth",
+                "invite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"language\": \"<string>\",\n  \"isExemptFromSigningTos\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a569cc14-232b-4698-bbac-72a951bc5f04",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "auth",
+                    "invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"language\": \"<string>\",\n  \"isExemptFromSigningTos\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20407453-6b63-4457-b4d0-e3be39632f06",
+          "name": "Admin Controller list",
+          "request": {
+            "name": "Admin Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "auth",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d5ceeac3-d396-489a-801e-32e859a72df0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "auth",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"emailVerified\": false,\n      \"payoutEmail\": \"string\",\n      \"payoutEmailVerified\": false,\n      \"payoutEmailCode\": \"string\",\n      \"createdAt\": {},\n      \"updatedAt\": {},\n      \"signupIp\": \"string\",\n      \"lastTosSigned\": 5921.243636628349,\n      \"tosSignedAt\": 8157.356562986143,\n      \"isExemptFromSigningTos\": false,\n      \"roles\": {},\n      \"externalId\": {},\n      \"email\": \"string\",\n      \"password\": \"string\",\n      \"resetPasswordSecret\": \"string\",\n      \"blocked\": false,\n      \"blockedReason\": \"string\",\n      \"deletedAt\": 3693.474082959244,\n      \"language\": \"en-us\"\n    },\n    {\n      \"id\": \"string\",\n      \"emailVerified\": false,\n      \"payoutEmail\": \"string\",\n      \"payoutEmailVerified\": false,\n      \"payoutEmailCode\": \"string\",\n      \"createdAt\": {},\n      \"updatedAt\": {},\n      \"signupIp\": \"string\",\n      \"lastTosSigned\": 9832.794184597957,\n      \"tosSignedAt\": 7922.501714768831,\n      \"isExemptFromSigningTos\": false,\n      \"roles\": {},\n      \"externalId\": {},\n      \"email\": \"string\",\n      \"password\": \"string\",\n      \"resetPasswordSecret\": \"string\",\n      \"blocked\": true,\n      \"blockedReason\": \"string\",\n      \"deletedAt\": 1220.256301537387,\n      \"language\": \"es-mx\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d37b375-b127-48bb-abef-f4c70e2aedcc",
+          "name": "Admin Controller set Creator",
+          "request": {
+            "name": "Admin Controller set Creator",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "auth",
+                "users",
+                ":userId",
+                "set_creator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatarAssetId\": \"<string>\",\n  \"partnerName\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"userName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19f82fa9-9a8b-49e0-bef3-e68b259e5076",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "auth",
+                    "users",
+                    ":userId",
+                    "set_creator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"avatarAssetId\": \"<string>\",\n  \"partnerName\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"userName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28145d0c-1bad-4bb5-a749-764c19755fcc",
+          "name": "Admin Controller update User",
+          "request": {
+            "name": "Admin Controller update User",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "auth",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isExemptFromSigningTos\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33cee129-47d2-4047-b48d-234970dca4cd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "auth",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"isExemptFromSigningTos\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dc3ea17-a09b-4f77-a335-db732af87603",
+          "name": "Super Admin Controller add Role",
+          "request": {
+            "name": "Super Admin Controller add Role",
+            "description": {},
+            "url": {
+              "path": [
+                "superadmin",
+                "auth",
+                "role",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27b7d912-a4c7-4a98-a0b2-0d7487ceaf28",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "superadmin",
+                    "auth",
+                    "role",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76c112a7-2fa0-4bb9-88db-1ea830180cba",
+          "name": "Super Admin Controller delete Role",
+          "request": {
+            "name": "Super Admin Controller delete Role",
+            "description": {},
+            "url": {
+              "path": [
+                "superadmin",
+                "auth",
+                "role",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3dd51d5-fdbe-4744-9d51-44b4e882212c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "superadmin",
+                    "auth",
+                    "role",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e33b517-2053-4123-b9e4-caaa58a6dc57",
+          "name": "social Controller Authapple",
+          "request": {
+            "name": "social Controller Authapple",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "apple"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86024f21-7345-410e-9b6a-93bbf6df58b8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "apple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcbf947e-5d2f-4363-8273-ff041fa61215",
+          "name": "social Controller Auth Callback Getapple",
+          "request": {
+            "name": "social Controller Auth Callback Getapple",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "apple",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6dbc729b-24bb-4901-90bc-49732a916e52",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "apple",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65288413-ec22-4b77-b411-5d9251185b6a",
+          "name": "social Controller Auth Callback Postapple",
+          "request": {
+            "name": "social Controller Auth Callback Postapple",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "apple",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d3d65a8-589d-4422-b20f-1f304810c270",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "apple",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dda76a2-add8-4095-af38-a57e9ec2a0d4",
+          "name": "social Controller Authfacebook",
+          "request": {
+            "name": "social Controller Authfacebook",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "facebook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef2bbb9b-6680-4a16-bc59-eee3bc111308",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "facebook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08cc6721-e6fa-4582-a43e-90b101358c64",
+          "name": "social Controller Auth Callback Getfacebook",
+          "request": {
+            "name": "social Controller Auth Callback Getfacebook",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "facebook",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29e19c9c-f8c0-4cb4-be13-00e2f4969807",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "facebook",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "339d15a1-47f2-4377-8b91-05d7140391ec",
+          "name": "social Controller Auth Callback Postfacebook",
+          "request": {
+            "name": "social Controller Auth Callback Postfacebook",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "facebook",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf6431a4-21ab-427c-8cba-45ccda99bd57",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "facebook",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e260b8f-601a-4bca-a439-2eedc5199eb9",
+          "name": "social Controller Authgoogle",
+          "request": {
+            "name": "social Controller Authgoogle",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "google"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "648ef0df-7d3e-44b1-bb60-244d555fbab2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "google"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c34ff555-2963-4cba-8dec-7a80aa614f30",
+          "name": "social Controller Auth Callback Getgoogle",
+          "request": {
+            "name": "social Controller Auth Callback Getgoogle",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "google",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52458d07-2907-4e4a-84bc-0e043c0093c9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "google",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bc013f3-4df5-4f89-85d4-416b9c28292c",
+          "name": "social Controller Auth Callback Postgoogle",
+          "request": {
+            "name": "social Controller Auth Callback Postgoogle",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "google",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef72c7bc-bbb0-4671-9c89-eb7323c93486",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "google",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80e63a12-2632-495a-bd9d-3378e9901e53",
+          "name": "social Controller Authmicrosoft",
+          "request": {
+            "name": "social Controller Authmicrosoft",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "microsoft"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49f5c26e-fc40-43ea-b806-02e04aa233ab",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "microsoft"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35de40a3-2485-40fa-968a-653448bfcdbd",
+          "name": "social Controller Auth Callback Getmicrosoft",
+          "request": {
+            "name": "social Controller Auth Callback Getmicrosoft",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "microsoft",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a2d0d1f-9c4c-4fd4-895b-ec14832c2698",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "microsoft",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ae8dff7-d891-489a-ae49-8adba7f666e1",
+          "name": "social Controller Auth Callback Postmicrosoft",
+          "request": {
+            "name": "social Controller Auth Callback Postmicrosoft",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "microsoft",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31530ae8-06e4-4e56-a65e-4d18be979e42",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "microsoft",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "36f39a93-ef90-49d0-a00f-1499cb20c6b1",
+    "name": "Versusgame Auth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,557 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Gameplays API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: gameplays
+paths:
+  /v1/gameplays:
+    get:
+      operationId: GameplaysController_list
+      parameters:
+      - name: state
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/ListGameplayStates'
+      - name: gameId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List Game Plays Filtered By Status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGameplays'
+      security:
+      - access-token: []
+      tags:
+      - gameplays
+    post:
+      operationId: GameplaysController_create
+      parameters:
+      - name: x-idempotency-key
+        required: true
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGameplayDto'
+      responses:
+        '201':
+          description: Creates a Game Play
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gameplay'
+      security:
+      - access-token: []
+      tags:
+      - gameplays
+  /v1/gameplays/{id}/claim_reward:
+    post:
+      operationId: GameplaysController_claimReward
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-idempotency-key
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Claims a Game Play reward
+      security:
+      - access-token: []
+      tags:
+      - gameplays
+  /v1/gameplays/{id}:
+    get:
+      operationId: GameplaysController_byId
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Gets a Game Play by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gameplay'
+      security:
+      - access-token: []
+      tags:
+      - gameplays
+    delete:
+      operationId: GameplaysController_cancel
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-idempotency-key
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Cancels a Game Play
+      security:
+      - access-token: []
+      tags:
+      - gameplays
+components:
+  schemas:
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    GameplayStates:
+      type: string
+      enum:
+      - waiting_for_match
+      - matched
+      - declared_winner
+      - declared_loser
+      - won
+      - lost
+      - canceled
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    Gameplay:
+      type: object
+      properties:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameplayStates'
+        side:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        ticketType:
+          allOf:
+          - $ref: '#/components/schemas/TicketType'
+        rewardType:
+          allOf:
+          - $ref: '#/components/schemas/RewardType'
+        achievements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AchievementEntity'
+        game:
+          $ref: '#/components/schemas/Game'
+        id:
+          type: string
+        userId:
+          type: string
+        gameId:
+          type: string
+        quantity:
+          type: number
+        matched:
+          type: number
+        rewardClaimed:
+          type: boolean
+        createdAt:
+          format: date-time
+          type: string
+        opponents:
+          type: object
+        returnUrl:
+          type: string
+        sideAPercent:
+          type: number
+        majorityBonusWon:
+          type: boolean
+        newLeague:
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+          type: string
+      required:
+      - gameType
+      - state
+      - side
+      - ticketType
+      - game
+      - id
+      - userId
+      - gameId
+      - quantity
+      - matched
+      - createdAt
+      - opponents
+      - returnUrl
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    CreateGameplayDto:
+      type: object
+      properties:
+        ticketType:
+          allOf:
+          - $ref: '#/components/schemas/TicketType'
+        rewardType:
+          allOf:
+          - $ref: '#/components/schemas/RewardType'
+        side:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        gameSetAttempt:
+          type: number
+          default: 1
+          minimum: 1
+          description: Required for multiple attempts with This_That game sets
+        gameSetIsComplete:
+          type: boolean
+          default: false
+          description: No longer used for This_That game sets, but still needed for mini-games gameSets.
+        correctAnswerStreakDidEnd:
+          type: boolean
+          default: false
+          description: No longer used for This_That game sets, but still needed for mini-games gameSets.
+        gameId:
+          type: string
+        quantity:
+          type: number
+          minimum: 1
+          maximum: 100
+        widgetId:
+          type: string
+        returnUrl:
+          type: string
+        points:
+          type: number
+          minimum: 0
+        distributorId:
+          type: string
+        gameSetId:
+          type: string
+        shareCode:
+          type: string
+      required:
+      - ticketType
+      - side
+      - gameId
+      - quantity
+      - widgetId
+      - returnUrl
+      - distributorId
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    AchievementEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        expireAt:
+          format: date-time
+          type: string
+        achievementId:
+          type: string
+      required:
+      - id
+      - userId
+      - createdAt
+      - expireAt
+      - achievementId
+    ListGameplays:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gameplay'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    Game:
+      type: object
+      properties:
+        audioUrl:
+          type: string
+        videoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        questionVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        landscapeVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        resultUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameStates'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        id:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+        resultAssetId:
+          type: string
+        text:
+          type: string
+        categoryId:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        urls:
+          type: array
+          items:
+            type: string
+      required:
+      - audioUrl
+      - videoUrls
+      - questionVideoUrls
+      - landscapeVideoUrls
+      - resultUrls
+      - state
+      - language
+      - gameType
+      - id
+      - creatorId
+      - creator
+      - startTime
+      - endTime
+      - lastJoinTime
+      - gameTitle
+      - sourceUrl
+      - sideA
+      - sideB
+      - text
+      - categoryId
+      - category
+      - isAd
+      - createdAt
+      - updatedAt
+      - version
+    TicketType:
+      type: string
+      enum:
+      - white
+      - black
+      - free
+    ListGameplayStates:
+      type: string
+      enum:
+      - all
+      - active
+      - pending
+      - finished
+    RewardType:
+      type: string
+      enum:
+      - microsoft
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

@@ -1,0 +1,191 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Buddy List API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: buddy-list
+paths:
+  /v1/buddy-list/invitations:
+    post:
+      operationId: BuddyListController_createBuddyListInvitation
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBuddyListInvitationRequestDTO'
+      responses:
+        '201':
+          description: The created buddy list invitation context object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuddyListInvitationEntity'
+        '400':
+          description: The request body is invalid
+      summary: Create a new buddy list invitation
+      tags:
+      - buddy-list
+  /v1/buddy-list/invitations/{shareCode}:
+    get:
+      operationId: BuddyListController_getBuddyListInvitationByShareCode
+      parameters:
+      - name: shareCode
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The found buddy list invitation context object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuddyListInvitationEntity'
+        '404':
+          description: No invitation found for the given share code
+      summary: Get a buddy list invitation context object by share code
+      tags:
+      - buddy-list
+  /v1/buddy-list/invitations/{shareCode}/redirect:
+    get:
+      operationId: BuddyListController_getBuddyListInvitationRedirectByShareCode
+      parameters:
+      - name: shareCode
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '302':
+          description: Redirects to the media partner article with the deep link params associated with
+            the given shareCode
+          headers:
+            Location:
+              description: The deep link URL
+              schema:
+                type: string
+                example: https://example.com
+        '404':
+          description: No invitation found for the given share code
+      summary: Redirects to a buddy list invitation deep link URL for the given share code
+      tags:
+      - buddy-list
+  /v1/buddy-list/referrals:
+    post:
+      description: Triggered when a new player registers after following a buddy list invitation link.
+      operationId: BuddyListController_createBuddyListReferral
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      summary: Record a new buddy list referral on successful registration.
+      tags:
+      - buddy-list
+components:
+  schemas:
+    BuddyListInvitationEntity:
+      type: object
+      properties:
+        invitingPlayerIsRegistered:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        invitingPlayerGameResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameSetResult'
+        entityType:
+          type: object
+          default: BuddyListInvitation
+        invitingPlayerId:
+          type: string
+        invitingPlayerUsername:
+          type: string
+        invitingPlayerAnalyticsId:
+          type: string
+        shareCode:
+          type: string
+        distributorId:
+          type: string
+        deepLinkUrl:
+          type: string
+        gameSetId:
+          type: string
+        gameSetAttempt:
+          type: number
+          default: 1
+        invitationDate:
+          type: number
+        buddyListId:
+          type: string
+      required:
+      - invitingPlayerIsRegistered
+      - invitingPlayerGameResults
+      - entityType
+      - invitingPlayerId
+      - invitingPlayerUsername
+      - invitingPlayerAnalyticsId
+      - shareCode
+      - distributorId
+      - deepLinkUrl
+      - gameSetId
+      - invitationDate
+      - buddyListId
+    GameSetResult:
+      type: object
+      properties:
+        gameId:
+          type: string
+        correctAnswer:
+          type: boolean
+      required:
+      - gameId
+    CreateBuddyListInvitationRequestDTO:
+      type: object
+      properties:
+        gameSetAttempt:
+          type: number
+          default: 1
+          description: Required for multiple attempts with This_That game sets
+        invitingPlayerGameResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameSetResult'
+        invitingPlayerId:
+          type: string
+        invitingPlayerUsername:
+          type: string
+        invitingPlayerAnalyticsId:
+          type: string
+        distributorId:
+          type: string
+        deepLinkUrl:
+          type: string
+        gameSetId:
+          type: string
+      required:
+      - invitingPlayerGameResults
+      - invitingPlayerAnalyticsId
+      - distributorId
+      - deepLinkUrl
+      - gameSetId
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

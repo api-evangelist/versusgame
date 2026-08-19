@@ -1,0 +1,267 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Partner Domain API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: partner-domain
+paths:
+  /v1/partner-domain:
+    post:
+      operationId: PartnerDomainController_create
+      parameters:
+      - name: x-user-id
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePartnerDomainDto'
+      responses:
+        '201':
+          description: Creates a new partner Domain
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerDomains'
+      security:
+      - access-token: []
+      tags:
+      - partner-domain
+    get:
+      operationId: PartnerDomainController_query
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPartnerDomains'
+      security:
+      - access-token: []
+      - access-token: []
+      tags:
+      - partner-domain
+  /v1/partner-domain/{id}:
+    put:
+      operationId: PartnerDomainController_update
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePartnerDomainDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerDomains'
+      security:
+      - access-token: []
+      tags:
+      - partner-domain
+    delete:
+      operationId: PartnerDomainController_delete
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - partner-domain
+  /v1/partner-domain/{domain}:
+    get:
+      operationId: PartnerDomainController_byDomain
+      parameters:
+      - name: domain
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Gets a partner Domain by domain
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerDomains'
+      security:
+      - access-token: []
+      - access-token: []
+      tags:
+      - partner-domain
+components:
+  schemas:
+    PartnerDomains:
+      type: object
+      properties:
+        id:
+          type: string
+        domain:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        articleUrlRules:
+          type: array
+          items:
+            type: string
+        indexPagesRules:
+          type: array
+          items:
+            type: string
+        enableAutogame:
+          type: boolean
+      required:
+      - id
+      - domain
+      - creatorId
+      - creator
+      - createdAt
+      - updatedAt
+      - articleUrlRules
+      - indexPagesRules
+      - enableAutogame
+    UpdatePartnerDomainDto:
+      type: object
+      properties:
+        articleUrlRules:
+          type: array
+          items:
+            type: string
+            pattern: /a-z|N|\*|\//
+        indexPagesRules:
+          type: array
+          items:
+            type: string
+            pattern: /a-z|N|\*|\//
+        enableAutogame:
+          type: boolean
+      required:
+      - articleUrlRules
+      - indexPagesRules
+      - enableAutogame
+    SearchDto:
+      type: object
+      properties:
+        creatorId:
+          type: string
+        domain:
+          type: string
+    ListPartnerDomains:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerDomains'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    CreatePartnerDomainDto:
+      type: object
+      properties:
+        domain:
+          type: string
+        articleUrlRules:
+          type: array
+          items:
+            type: string
+            pattern: /a-z|N|\*|\//
+        indexPagesRules:
+          type: array
+          items:
+            type: string
+            pattern: /a-z|N|\*|\//
+        enableAutogame:
+          type: boolean
+      required:
+      - domain
+      - articleUrlRules
+      - indexPagesRules
+      - enableAutogame
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

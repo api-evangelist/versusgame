@@ -1,0 +1,259 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Categories API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: categories
+paths:
+  /v1/categories:
+    get:
+      operationId: CategoriesController_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindCategoryDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindCategoryDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Categories
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCategory'
+      tags:
+      - categories
+  /v1/admin/categories:
+    post:
+      operationId: CategoriesAdminController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCategoryDto'
+      responses:
+        '201':
+          description: New Category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+      security:
+      - access-token: []
+      tags:
+      - categories
+    get:
+      operationId: CategoriesAdminController_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindCategoryDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindCategoryDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Categories
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCategory'
+      security:
+      - access-token: []
+      tags:
+      - categories
+  /v1/admin/categories/{categoryId}:
+    patch:
+      operationId: CategoriesAdminController_update
+      parameters:
+      - name: categoryId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCategoryDto'
+      responses:
+        '204':
+          description: Updated Category
+      security:
+      - access-token: []
+      tags:
+      - categories
+    get:
+      operationId: CategoriesAdminController_byId
+      parameters:
+      - name: categoryId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+      security:
+      - access-token: []
+      tags:
+      - categories
+    delete:
+      operationId: CategoriesAdminController_delete
+      parameters:
+      - name: categoryId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Delete Category
+      security:
+      - access-token: []
+      tags:
+      - categories
+components:
+  schemas:
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    CreateCategoryDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        categoryName:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - categoryName
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    UpdateCategoryDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        categoryName:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+    SearchFindCategoryDto:
+      type: object
+      properties:
+        categoryName:
+          type: string
+    ListCategory:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    SortFindCategoryDto:
+      type: object
+      properties:
+        categoryName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

@@ -1,0 +1,220 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Versusgame Gameset Plays API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "gameset-plays",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the current daily game set ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gameset/plays/gamesets/current-daily-id",
+            "params": [
+              {
+                "name": "partnerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "gameStyle",
+                "value": "",
+                "type": "query",
+                "description": "Either TVT (This That) or MG (Mini Games)"
+              }
+            ]
+          },
+          "docs": "Returns the ID of the current daily game set from the DB. If this is the first request of the day, a new game set will be created."
+        },
+        {
+          "info": {
+            "name": "Get the leader of a game set",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gameset/plays/gamesets/:gameSetId/leader",
+            "params": [
+              {
+                "name": "gameSetId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The GameSetPlay with the most games played for that GameSet."
+        },
+        {
+          "info": {
+            "name": "Get all GameSetPlay attempts for a given Player and GameSet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gameset/plays/attempts",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "gameSetId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all GameSetPlay attempts for a given Player and GameSet"
+        },
+        {
+          "info": {
+            "name": "Get the best GameSetPlay attempt for a given Player and GameSet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gameset/plays/attempts/best",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "gameSetId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "The best attempt has the most games played for the given GameSet."
+        },
+        {
+          "info": {
+            "name": "Get the last GameSetPlay attempt for a given Player and GameSet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gameset/plays/attempts/last",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "gameSetId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "The last attempt is the most recent attempt for the given GameSet, but not necessarily the best attempt. The attemptWasCompleted property is true if the last attempt has been marked as completed."
+        },
+        {
+          "info": {
+            "name": "Record the completion of a GameSet attempt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/gameset/plays/attempts/completed",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This route is used when the player's attempt is completed because the timer has expired and there was no gameplay submitted."
+        },
+        {
+          "info": {
+            "name": "List the top players of a game set (leaderboard)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gameset/plays/gamesets/:gameSetId/top-players",
+            "params": [
+              {
+                "name": "gameSetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The approximate number of top players to return. The returned item count may include more to accommodate pagination with filters. Results may also be less if there are fewer than this many players."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The cursor to use for pagination."
+              },
+              {
+                "name": "withExternalId",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the externalId in the response"
+              }
+            ]
+          },
+          "docs": "Ranked by the most games played for that GameSet."
+        },
+        {
+          "info": {
+            "name": "List the top players for a game set; with their emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gameset/plays/gamesets/:gameSetId/top-players-with-emails",
+            "params": [
+              {
+                "name": "gameSetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The approximate number of top players to return. The returned item count may include more to accommodate pagination with filters. Results may also be less if there are fewer than this many players."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The cursor to use for pagination."
+              },
+              {
+                "name": "withExternalId",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the externalId in the response"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Ranked by the most games played for that GameSet. `Only returns users with emails`. Requires ADMIN role, to protect PII."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

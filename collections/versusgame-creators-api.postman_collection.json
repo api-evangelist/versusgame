@@ -1,0 +1,659 @@
+{
+  "item": [
+    {
+      "id": "1b3e331e-ab9f-4e2c-a6f4-1b7aea6d298d",
+      "name": "creators",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "933b5782-1f23-4c0c-8ad5-2ca608003d24",
+          "name": "Creators Admin Controller update",
+          "request": {
+            "name": "Creators Admin Controller update",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "creators",
+                ":creatorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "creatorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partnerName\": \"<string>\",\n  \"avatarAssetId\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"userName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8704055-5902-4317-b528-ad9f6cb81157",
+              "name": "Updated Creator",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "creators",
+                    ":creatorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "creatorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerName\": \"<string>\",\n  \"avatarAssetId\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"userName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "599eba0b-6ac6-4cff-a8f6-5e8cc8d1e26b",
+          "name": "Creators Admin Controller by Id",
+          "request": {
+            "name": "Creators Admin Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "creators",
+                ":creatorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "creatorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8931f383-d6d8-45e4-9215-b892d6c997e8",
+              "name": "Get Creator",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "creators",
+                    ":creatorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "creatorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"avatar\": \"string\",\n  \"id\": \"string\",\n  \"partnerName\": \"string\",\n  \"avatarAssetId\": \"string\",\n  \"profileColor\": \"string\",\n  \"userName\": \"string\",\n  \"createdAt\": \"1953-09-02T10:06:08.746Z\",\n  \"updatedAt\": \"2012-02-09T16:26:36.186Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7c428bf-8392-46e8-abea-34d821ee6773",
+          "name": "Creators Admin Controller list",
+          "request": {
+            "name": "Creators Admin Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "creators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creatorIds",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "partnerName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "partnerName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32dee694-da6c-4623-bb91-0778138ad173",
+              "name": "List of Creator",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "creators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creatorIds",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "partnerName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partnerName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"avatar\": \"string\",\n      \"id\": \"string\",\n      \"partnerName\": \"string\",\n      \"avatarAssetId\": \"string\",\n      \"profileColor\": \"string\",\n      \"userName\": \"string\",\n      \"createdAt\": \"1963-09-07T14:42:51.823Z\",\n      \"updatedAt\": \"1993-07-10T09:52:38.046Z\"\n    },\n    {\n      \"avatar\": \"string\",\n      \"id\": \"string\",\n      \"partnerName\": \"string\",\n      \"avatarAssetId\": \"string\",\n      \"profileColor\": \"string\",\n      \"userName\": \"string\",\n      \"createdAt\": \"2016-08-26T16:15:42.254Z\",\n      \"updatedAt\": \"1985-12-16T11:20:07.522Z\"\n    }\n  ],\n  \"total\": 6123.6984495326415\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28be5314-b0b5-4629-b924-9362b6ebb1e6",
+          "name": "Creators Creators Controller update",
+          "request": {
+            "name": "Creators Creators Controller update",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "creators",
+                "creators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partnerName\": \"<string>\",\n  \"avatarAssetId\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"userName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2cee65da-9e56-454f-89dd-77ef27e6d491",
+              "name": "Updated Creator",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "creators",
+                    "creators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerName\": \"<string>\",\n  \"avatarAssetId\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"userName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c6c5936-9f07-47c9-8832-b37b994d9a7b",
+          "name": "Creators Creators Controller list",
+          "request": {
+            "name": "Creators Creators Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "creators",
+                "creators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creatorIds",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "partnerName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "partnerName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "60406c9d-3f16-44b9-bbdf-ced57c247d39",
+              "name": "List of Creator",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "creators",
+                    "creators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creatorIds",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "partnerName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partnerName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"avatar\": \"string\",\n      \"id\": \"string\",\n      \"partnerName\": \"string\",\n      \"avatarAssetId\": \"string\",\n      \"profileColor\": \"string\",\n      \"userName\": \"string\",\n      \"createdAt\": \"1983-04-09T15:34:18.835Z\",\n      \"updatedAt\": \"2017-11-30T08:06:39.838Z\"\n    },\n    {\n      \"avatar\": \"string\",\n      \"id\": \"string\",\n      \"partnerName\": \"string\",\n      \"avatarAssetId\": \"string\",\n      \"profileColor\": \"string\",\n      \"userName\": \"string\",\n      \"createdAt\": \"1972-05-24T22:02:04.059Z\",\n      \"updatedAt\": \"2012-05-01T14:15:17.784Z\"\n    }\n  ],\n  \"total\": 1794.061501905546\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7f0133ab-c731-4bb0-9718-faaa8bd48a94",
+    "name": "Versusgame Creators API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

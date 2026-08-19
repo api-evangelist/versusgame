@@ -1,0 +1,1219 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Autogame/article/v2 API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: autogame/article/v2
+paths:
+  /v2/autogame/article:
+    post:
+      operationId: ArticleControllerV2_createArticle_v2
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateArticleDtoV2'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+    get:
+      operationId: ArticleControllerV2_findArticles_v2
+      parameters:
+      - name: url
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: hostName
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: partnerId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: take
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: skip
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Article'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/drafts/{id}:
+    get:
+      operationId: ArticleControllerV2_drafyById_v2
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameDraftEntity'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/partners/{partnerId}/domains:
+    get:
+      operationId: ArticleControllerV2_getDomains_v2
+      parameters:
+      - name: partnerId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: includeState
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftState'
+      - name: excludeState
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftState'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: skip
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerDomainResponse'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/partners/{partnerId}/domains/{domainId}/articles:
+    get:
+      operationId: ArticleControllerV2_getDomainArticles_v2
+      parameters:
+      - name: partnerId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: domainId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: includeState
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftState'
+      - name: excludeState
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftState'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: skip
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostArticleResponse'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/partners/{partnerId}/articles/{articleId}/drafts:
+    get:
+      operationId: ArticleControllerV2_getArticlesDraft_v2
+      parameters:
+      - name: partnerId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: articleId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: includeState
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftState'
+      - name: excludeState
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftState'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: skip
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GameDraftEntity'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/drafts/{articleId}:
+    post:
+      operationId: ArticleControllerV2_createDraft_v2
+      parameters:
+      - name: articleId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDraftDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameDraft'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/drafts/{id}/set_state:
+    post:
+      operationId: ArticleControllerV2_setState_v2
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetStateDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/drafts/{id}/version:
+    post:
+      operationId: ArticleControllerV2_newVersion_v2
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewVersionDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/drafts:
+    get:
+      operationId: ArticleControllerV2_listGameDrafts_v2
+      parameters:
+      - name: includeState
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftState'
+      - name: excludeState
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftState'
+      - name: gameType
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/GameType'
+      - name: id
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: articleId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: text
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: userId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: systemMessageNames
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: lock
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: partnerId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: url
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: skip
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGameDraftV2'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+  /v2/autogame/article/drafts/{draftId}/game:
+    post:
+      operationId: ArticleControllerV2_createGame_v2
+      parameters:
+      - name: draftId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-idempotency-key
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGameDto'
+      responses:
+        '201':
+          description: Creates a new game
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameEntity'
+      security:
+      - access-token: []
+      tags:
+      - autogame/article/v2
+components:
+  schemas:
+    CreateDraftDto:
+      type: object
+      properties:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        url:
+          type: string
+      required:
+      - gameType
+      - gameDetail
+      - systemMessage
+      - systemMessageName
+      - url
+    StatsEntity:
+      type: object
+      properties:
+        sideA:
+          $ref: '#/components/schemas/SideStatsEntity'
+        sideB:
+          $ref: '#/components/schemas/SideStatsEntity'
+      required:
+      - sideA
+      - sideB
+    GameDraftState:
+      type: string
+      enum:
+      - sqa-to-review
+      - video-to-review
+      - video-ready
+      - approved
+      - rejected
+      - published
+    Overlay:
+      type: object
+      properties:
+        start_chunk:
+          type: number
+        end_chunk:
+          type: number
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - start_chunk
+      - end_chunk
+      - images_query
+      - image_type
+      - image_search
+    Question:
+      type: object
+      properties:
+        text:
+          type: string
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - text
+      - images_query
+      - image_type
+      - image_search
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    Synopsis:
+      type: object
+      properties:
+        text:
+          type: string
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - text
+      - images_query
+      - image_type
+      - image_search
+    PartnerDomainResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerDomain'
+      required:
+      - items
+    SlushingEntity:
+      type: object
+      properties:
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        blackTicketsGameplays:
+          type: number
+      required:
+      - whiteTickets
+      - blackTickets
+      - blackTicketsGameplays
+    ImageSearch:
+      type: object
+      properties:
+        searchId:
+          type: string
+        selected:
+          type: number
+      required:
+      - searchId
+      - selected
+    SideStatsEntity:
+      type: object
+      properties:
+        whiteTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        blackTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        freeTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+      required:
+      - whiteTickets
+      - blackTickets
+      - freeTickets
+    SetStateDto:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        lock:
+          type: number
+          minimum: 0
+      required:
+      - version
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    GameEntity:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameStates'
+        winningSide:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        stats:
+          $ref: '#/components/schemas/StatsEntity'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        id:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        version:
+          type: number
+        startTime:
+          type: string
+        lastJoinTime:
+          type: string
+        endTime:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        slushing:
+          $ref: '#/components/schemas/SlushingEntity'
+        resultChanged:
+          type: boolean
+        hostEarnings:
+          type: number
+        isPendingResult:
+          type: boolean
+        isFinalResult:
+          type: boolean
+        votePercentageSideA:
+          type: number
+        votePercentageSideB:
+          type: number
+        gameTitle:
+          type: string
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        questionVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        landscapeVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        sideA:
+          type: string
+        sideB:
+          type: string
+        sourceUrl:
+          type: string
+        text:
+          type: string
+        videoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        resultUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        categoryId:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        urls:
+          type: array
+          items:
+            type: string
+        audioAssetId:
+          type: string
+      required:
+      - state
+      - gameType
+      - language
+      - id
+      - creatorId
+      - creator
+      - version
+      - startTime
+      - lastJoinTime
+      - endTime
+      - createdAt
+      - updatedAt
+      - hostEarnings
+      - isPendingResult
+      - isFinalResult
+      - votePercentageSideA
+      - votePercentageSideB
+      - gameTitle
+      - isAd
+      - isPrivate
+      - bingSearch
+      - sideA
+      - sideB
+      - sourceUrl
+      - text
+      - categoryId
+      - category
+    GameDetail:
+      type: object
+      properties:
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        synopsis:
+          type: array
+          items:
+            $ref: '#/components/schemas/Synopsis'
+        overlays:
+          type: array
+          items:
+            $ref: '#/components/schemas/Overlay'
+        question:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answers'
+      required:
+      - synopsis
+      - overlays
+      - question
+      - answers
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    Article:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        rawOpenAiChat:
+          type: array
+          items:
+            type: object
+        hostName:
+          type: string
+        partnerId:
+          type: string
+        sourceType:
+          enum:
+          - widget
+          - manual
+          - blob
+          type: string
+      required:
+      - id
+      - url
+      - createdAt
+      - updatedAt
+      - rawOpenAiChat
+      - hostName
+      - partnerId
+    GameDraftEntity:
+      type: object
+      properties:
+        articleId:
+          type: string
+        url:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        lock:
+          type: number
+        userId:
+          type: string
+        manualOverrides:
+          type: object
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        article:
+          $ref: '#/components/schemas/ArticleEntity'
+        id:
+          type: string
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        text:
+          type: string
+      required:
+      - articleId
+      - url
+      - createdAt
+      - updatedAt
+      - state
+      - lock
+      - version
+      - gameIds
+      - article
+      - id
+      - gameDetail
+      - text
+    SideStatsByTicketTypeEntity:
+      type: object
+      properties:
+        gameplays:
+          type: number
+        tickets:
+          type: number
+        matched:
+          type: number
+      required:
+      - gameplays
+      - tickets
+      - matched
+    CreateArticleDtoV2:
+      type: object
+      properties:
+        url:
+          type: string
+        partnerId:
+          type: string
+        sourceType:
+          allOf:
+          - $ref: '#/components/schemas/sourceType'
+        text:
+          type: string
+      required:
+      - url
+      - partnerId
+      - sourceType
+      - text
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    ArticleEntity:
+      type: object
+      properties:
+        sourceType:
+          allOf:
+          - $ref: '#/components/schemas/ArticleSourceType'
+        id:
+          type: string
+        articleKey:
+          type: string
+        partnerId:
+          type: string
+        url:
+          type: string
+        hostName:
+          type: string
+        rawOpenAiChat:
+          type: array
+          items:
+            type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        drafts:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftEntity'
+      required:
+      - sourceType
+      - id
+      - articleKey
+      - partnerId
+      - url
+      - hostName
+      - createdAt
+      - updatedAt
+      - drafts
+    ArticleSourceType:
+      type: string
+      enum:
+      - widget
+      - manual
+      - blob
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    HostArticleResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostArticle'
+      required:
+      - items
+    GameDraft:
+      type: object
+      properties:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        id:
+          type: string
+        gameIndex:
+          type: string
+        lock:
+          type: number
+        userId:
+          type: string
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        url:
+          type: string
+      required:
+      - gameType
+      - state
+      - id
+      - gameIndex
+      - lock
+      - gameDetail
+      - manualOverrides
+      - version
+      - gameIds
+      - createdAt
+      - updatedAt
+      - systemMessage
+      - systemMessageName
+      - url
+    sourceType:
+      type: string
+      enum:
+      - widget
+      - manual
+      - blob
+    HostArticle:
+      type: object
+      properties:
+        url:
+          type: string
+        id:
+          type: string
+        draftsCount:
+          type: number
+        sourceType:
+          type: string
+        createDay:
+          format: date-time
+          type: string
+      required:
+      - url
+      - id
+      - draftsCount
+      - sourceType
+      - createDay
+    NewVersionDto:
+      type: object
+      properties:
+        version:
+          type: number
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+      required:
+      - version
+      - gameDetail
+      - manualOverrides
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    ListGameDraftV2:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftEntity'
+      required:
+      - items
+    Answers:
+      type: object
+      properties:
+        text:
+          type: string
+      required:
+      - text
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    CreateGameDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        startTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        categoryId:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        text:
+          type: string
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        urls:
+          type: array
+          items:
+            type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+      required:
+      - language
+      - gameType
+      - startTime
+      - lastJoinTime
+      - endTime
+      - gameTitle
+      - sourceUrl
+      - categoryId
+      - sideA
+      - sideB
+      - text
+      - isAd
+    PartnerDomain:
+      type: object
+      properties:
+        hostName:
+          type: string
+        id:
+          type: string
+        draftsCount:
+          type: number
+      required:
+      - hostName
+      - id
+      - draftsCount
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

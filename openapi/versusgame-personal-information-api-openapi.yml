@@ -1,0 +1,69 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Personal Information API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: personal-information
+paths:
+  /v1/personal-information:
+    get:
+      operationId: PersonalController_byId
+      parameters: []
+      responses:
+        '200':
+          description: Users personal-information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalInformation'
+      security:
+      - access-token: []
+      tags:
+      - personal-information
+    patch:
+      operationId: PersonalController_update
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePersonalInformationDto'
+      responses:
+        '204':
+          description: Update Personal-Information
+      security:
+      - access-token: []
+      tags:
+      - personal-information
+components:
+  schemas:
+    PersonalInformation:
+      type: object
+      properties:
+        id:
+          type: string
+        birthday:
+          format: date-time
+          type: string
+      required:
+      - id
+    UpdatePersonalInformationDto:
+      type: object
+      properties:
+        birthday:
+          format: date-time
+          type: string
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

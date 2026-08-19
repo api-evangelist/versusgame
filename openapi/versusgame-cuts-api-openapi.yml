@@ -1,0 +1,350 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Cuts API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: cuts
+paths:
+  /v1/admin/cuts:
+    get:
+      operationId: CutsAdminController_getGlobalCuts
+      parameters: []
+      responses:
+        '200':
+          description: Global cuts configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalCutsEntity'
+      security:
+      - access-token: []
+      tags:
+      - cuts
+    patch:
+      operationId: CutsAdminController_updateGlobalCuts
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGlobalCutsDto'
+      responses:
+        '200':
+          description: Updated global cuts configuration
+      security:
+      - access-token: []
+      tags:
+      - cuts
+  /v1/admin/cuts/history:
+    get:
+      operationId: CutsAdminController_getGlobalCutsHistory
+      parameters: []
+      responses:
+        '200':
+          description: Global cuts history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalCutsHistoryListEntity'
+      security:
+      - access-token: []
+      tags:
+      - cuts
+  /v1/admin/cuts/{userId}:
+    get:
+      operationId: CutsAdminController_getUserCuts
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get cuts configuration for a user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCutsEntity'
+      security:
+      - access-token: []
+      - access-token: []
+      tags:
+      - cuts
+    patch:
+      operationId: CutsAdminController_updateUserCuts
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserCutsDto'
+      responses:
+        '200':
+          description: Updated cuts configuration for a user
+      security:
+      - access-token: []
+      - access-token: []
+      tags:
+      - cuts
+  /v1/admin/cuts/{userId}/distributor:
+    patch:
+      operationId: CutsAdminController_updateUserDistributionCuts
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDistributionCutsDto'
+      responses:
+        '200':
+          description: Updated distribution cuts configuration for a user
+      security:
+      - access-token: []
+      - access-token: []
+      tags:
+      - cuts
+  /v1/admin/cuts/{userId}/history:
+    get:
+      operationId: CutsAdminController_getUserCutsHistory
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User cuts history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCutsHistoryListEntity'
+      security:
+      - access-token: []
+      tags:
+      - cuts
+components:
+  schemas:
+    UpdateUserDistributionCutsDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        distributorCutPercentage:
+          type: number
+          minimum: 0
+          maximum: 100
+        version:
+          type: number
+          minimum: 0
+      required:
+      - userId
+      - distributorCutPercentage
+      - version
+    ParentCut:
+      type: object
+      properties:
+        userId:
+          type: string
+        cutPercentage:
+          type: number
+        userName:
+          type: string
+        type:
+          type: string
+          enum:
+          - general
+        description:
+          type: string
+      required:
+      - userId
+      - cutPercentage
+      - userName
+      - type
+      - description
+    UpdateGlobalCutsDto:
+      type: object
+      properties:
+        transactionFeePercentage:
+          type: number
+          minimum: 0
+          maximum: 100
+        rakePercentage:
+          type: number
+          minimum: 0
+          maximum: 100
+        defaultDistributorCutPercentage:
+          type: number
+          minimum: 0
+          maximum: 100
+        defaultCreatorCutPercentage:
+          type: number
+          minimum: 0
+          maximum: 100
+        version:
+          type: number
+          minimum: 0
+      required:
+      - transactionFeePercentage
+      - rakePercentage
+      - defaultDistributorCutPercentage
+      - defaultCreatorCutPercentage
+      - version
+    GlobalCutsHistoryEntity:
+      type: object
+      properties:
+        updatedBy:
+          type: string
+        after:
+          $ref: '#/components/schemas/GlobalCutsEntity'
+      required:
+      - updatedBy
+      - after
+    UpdateUserCutsDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        creatorCutPercentage:
+          type: number
+          minimum: 0
+          maximum: 50
+        parents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidParentCut'
+        version:
+          type: number
+          minimum: 0
+      required:
+      - userId
+      - creatorCutPercentage
+      - parents
+      - version
+    GlobalCutsHistoryListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalCutsHistoryEntity'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    GlobalCutsEntity:
+      type: object
+      properties:
+        version:
+          type: number
+        transactionFeePercentage:
+          type: number
+        rakePercentage:
+          type: number
+        defaultDistributorCutPercentage:
+          type: number
+        defaultCreatorCutPercentage:
+          type: number
+        updatedAt:
+          type: string
+      required:
+      - transactionFeePercentage
+      - rakePercentage
+      - defaultDistributorCutPercentage
+      - defaultCreatorCutPercentage
+      - updatedAt
+    UserCutsEntity:
+      type: object
+      properties:
+        version:
+          type: number
+        userId:
+          type: string
+        distributorCutPercentage:
+          type: number
+        creatorCutPercentage:
+          type: number
+        parents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParentCut'
+      required:
+      - version
+      - userId
+      - distributorCutPercentage
+      - creatorCutPercentage
+      - parents
+    ValidParentCut:
+      type: object
+      properties:
+        userId:
+          type: string
+        cutPercentage:
+          type: number
+        type:
+          type: string
+          enum:
+          - general
+        description:
+          type: string
+      required:
+      - userId
+      - cutPercentage
+      - type
+      - description
+    UserCutsHistoryListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserCutsHistoryEntity'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    UserCutsHistoryEntity:
+      type: object
+      properties:
+        userId:
+          type: string
+        updatedBy:
+          type: string
+        after:
+          $ref: '#/components/schemas/UserCutsEntity'
+        createdAt:
+          type: number
+      required:
+      - userId
+      - updatedBy
+      - after
+      - createdAt
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

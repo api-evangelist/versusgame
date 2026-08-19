@@ -2,13 +2,12 @@ generated: '2026-08-02'
 method: derived
 source: openapi/versusgame-openapi-original.json
 status: candidate
-summary: >-
-  No official hosted or remote Model Context Protocol server was found for VersusGame. Searched the
-  company's public surface, the VersusGame GitHub organization (zero public repositories) and the npm
-  registry; probed api.versusgame.com for /mcp, /.well-known/ai-plugin.json and
-  /.well-known/oauth-protected-resource - all miss. The candidate tool set below is DERIVED from the
-  Versusgame API operations as a proposal for an agent-facing surface. It is NOT published by
-  VersusGame, and no MCPServer pointer is wired in apis.yml.
+summary: No official hosted or remote Model Context Protocol server was found for VersusGame. Searched
+  the company's public surface, the VersusGame GitHub organization (zero public repositories) and the
+  npm registry; probed api.versusgame.com for /mcp, /.well-known/ai-plugin.json and /.well-known/oauth-protected-resource
+  - all miss. The candidate tool set below is DERIVED from the Versusgame API operations as a proposal
+  for an agent-facing surface. It is NOT published by VersusGame, and no MCPServer pointer is wired in
+  apis.yml.
 server: null
 transport: null
 url: null
@@ -16,11 +15,9 @@ auth:
   type: http bearer
   bearer_format: JWT
   header: Authorization
-  note: >-
-    Every candidate tool below maps to an operation that carries the access-token security
-    requirement, except list_categories, list_playlists, list_products, list_achievements,
-    get_game_stats, get_active_meter_ads, get_current_daily_gameset and the gameset leaderboard
-    reads, which are unauthenticated in the spec.
+  note: Every candidate tool below maps to an operation that carries the access-token security requirement,
+    except list_categories, list_playlists, list_products, list_achievements, get_game_stats, get_active_meter_ads,
+    get_current_daily_gameset and the gameset leaderboard reads, which are unauthenticated in the spec.
 candidate_tools:
 - name: list_games
   maps_to: GET /v1/creator/games
@@ -143,8 +140,12 @@ candidate_tools:
   source_operation: openapi/versusgame-openapi-original.json#ArticleControllerV2_createArticle_v2
   description: Submit an article URL to the autogame AI pipeline to generate prediction games from it.
 excluded_from_candidate_set:
-  reason: >-
-    /v1/admin/*, /superadmin/*, /internal/* and the raw autogame model-proxy operations (OpenAI chat
-    completions, Google search, ElevenLabs/Polly speech, Remotion render, scraper, proxy) are
-    deliberately excluded - they are privileged back-office or vendor-passthrough surfaces, not agent
-    tools. See agentic-access/versusgame-agentic-access.yml for the per-operation execution contracts.
+  reason: /v1/admin/*, /superadmin/*, /internal/* and the raw autogame model-proxy operations (OpenAI
+    chat completions, Google search, ElevenLabs/Polly speech, Remotion render, scraper, proxy) are deliberately
+    excluded - they are privileged back-office or vendor-passthrough surfaces, not agent tools. See agentic-access/versusgame-agentic-access.yml
+    for the per-operation execution contracts.
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census

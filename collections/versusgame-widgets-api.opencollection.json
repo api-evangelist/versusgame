@@ -1,0 +1,298 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Versusgame Widgets API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "widgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WidgetsController_getWidgetById",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/widgets/:widgetId",
+            "headers": [
+              {
+                "name": "x-app-referrer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "widgetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "WidgetsControllerV2_getWidgetByIdV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/widgets/:widgetId",
+            "headers": [
+              {
+                "name": "x-app-referrer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "widgetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "text",
+                "value": "",
+                "type": "query",
+                "description": "game text to search"
+              },
+              {
+                "name": "categoryIds",
+                "value": "",
+                "type": "query",
+                "description": "categoryIds the game should belong to"
+              },
+              {
+                "name": "preferCategoryIds",
+                "value": "",
+                "type": "query",
+                "description": "categoryIds the game should preferably belong to"
+              },
+              {
+                "name": "excludeCategoryIds",
+                "value": "",
+                "type": "query",
+                "description": "categoryIds the game should not belong to"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "WidgetsControllerV2_getWidgetByIdContextV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/widgets/:widgetId",
+            "params": [
+              {
+                "name": "widgetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Get a Widget for This-vs-That",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/widgets/tvt/:widgetId",
+            "params": [
+              {
+                "name": "widgetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a Widget By Id with the desired categoryIds. Only games that belong to the specified categoryIds for the partner associated with the widget will be returned."
+        },
+        {
+          "info": {
+            "name": "WidgetsCreatorController_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/creator/widgets",
+            "params": [
+              {
+                "name": "_expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "articleUrl",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "WidgetsCreatorController_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/creator/widgets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "WidgetsCreatorController_getWidget",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/creator/widgets/:widgetId",
+            "params": [
+              {
+                "name": "widgetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "articleUrl",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "WidgetsCreatorController_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/creator/widgets/:widgetId",
+            "params": [
+              {
+                "name": "widgetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "WidgetsCreatorController_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/creator/widgets/:widgetId",
+            "params": [
+              {
+                "name": "widgetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

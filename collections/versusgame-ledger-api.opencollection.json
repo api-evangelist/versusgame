@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Versusgame Ledger API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ledger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "LedgerController_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/ledger",
+            "params": [
+              {
+                "name": "_",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reasons",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "asc",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "LedgerAdminController_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/admin/ledger",
+            "params": [
+              {
+                "name": "_",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reasons",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "asc",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

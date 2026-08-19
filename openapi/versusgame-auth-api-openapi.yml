@@ -1,0 +1,907 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Auth API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: auth
+paths:
+  /auth/identify:
+    post:
+      operationId: AuthController_identify
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentifyExternalUser'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      tags:
+      - auth
+  /auth/login:
+    post:
+      operationId: AuthController_login
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SigninDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      tags:
+      - auth
+  /auth/change_password:
+    post:
+      operationId: AuthController_changePassword
+      parameters:
+      - name: authorization
+        required: true
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      security:
+      - refreshToken: []
+      - refreshToken: []
+      tags:
+      - auth
+  /auth/reset_password:
+    post:
+      operationId: AuthController_resetPassword
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordDto'
+      responses:
+        '204':
+          description: ''
+      tags:
+      - auth
+  /auth/reset_password/set_new:
+    post:
+      operationId: AuthController_resetPasswordSetNew
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordSetNewDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      tags:
+      - auth
+  /auth/reset_password/verify_token:
+    post:
+      operationId: AuthController_resetPasswordVerifyToken
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - auth
+  /auth/confirm_invite:
+    post:
+      operationId: AuthController_confirmInvite
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmInviteDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      tags:
+      - auth
+  /auth/verify_email:
+    post:
+      operationId: AuthController_verifyEmail
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - auth
+  /auth/signup:
+    post:
+      operationId: AuthController_signup
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      tags:
+      - auth
+  /auth/resend_email_verification:
+    post:
+      operationId: AuthController_resendEmailVerification
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerificationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      tags:
+      - auth
+  /auth/refresh:
+    post:
+      operationId: AuthController_refresh
+      parameters:
+      - name: authorization
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      security:
+      - refreshToken: []
+      - refreshToken: []
+      tags:
+      - auth
+  /auth/logout:
+    post:
+      operationId: AuthController_logout
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      security:
+      - refreshToken: []
+      - refreshToken: []
+      tags:
+      - auth
+  /auth/validate_email:
+    post:
+      operationId: AuthController_validateEmail
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateEmailDto'
+      responses:
+        '204':
+          description: ''
+        '400':
+          description: ''
+        '409':
+          description: ''
+      tags:
+      - auth
+  /auth/sign_tos:
+    post:
+      operationId: AuthController_signTos
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /auth/payout_email:
+    patch:
+      operationId: AuthController_updatePayoutEmail
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePayoutEmailDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePayoutEmailEntity'
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /auth/payout_email_verification:
+    post:
+      operationId: AuthController_payoutEmailVerification
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutEmailVerificationDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /auth/microsoft_rewards:
+    post:
+      operationId: AuthController_microsoftRewards
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftRewardsDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsEntity'
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /admin/auth/invite:
+    post:
+      operationId: AdminController_invite
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminInviteUserDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /admin/auth/users:
+    get:
+      operationId: AdminController_list
+      parameters:
+      - name: asc
+        required: false
+        in: query
+        schema:
+          type: boolean
+      - name: start
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUsersEntity'
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /admin/auth/users/{userId}/set_creator:
+    post:
+      operationId: AdminController_setCreator
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetCreatorDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /admin/auth/users/{userId}:
+    patch:
+      operationId: AdminController_updateUser
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /superadmin/auth/role/{userId}:
+    post:
+      operationId: SuperAdminController_addRole
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetRoleDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - auth
+    delete:
+      operationId: SuperAdminController_deleteRole
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetRoleDto'
+      responses:
+        '204':
+          description: ''
+      security:
+      - access-token: []
+      tags:
+      - auth
+  /auth/apple:
+    get:
+      operationId: socialControllerAuthapple
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+  /auth/apple/callback:
+    get:
+      operationId: socialControllerAuthCallbackGetapple
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+    post:
+      operationId: socialControllerAuthCallbackPostapple
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+  /auth/facebook:
+    get:
+      operationId: socialControllerAuthfacebook
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+  /auth/facebook/callback:
+    get:
+      operationId: socialControllerAuthCallbackGetfacebook
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+    post:
+      operationId: socialControllerAuthCallbackPostfacebook
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+  /auth/google:
+    get:
+      operationId: socialControllerAuthgoogle
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+  /auth/google/callback:
+    get:
+      operationId: socialControllerAuthCallbackGetgoogle
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+    post:
+      operationId: socialControllerAuthCallbackPostgoogle
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+  /auth/microsoft:
+    get:
+      operationId: socialControllerAuthmicrosoft
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+  /auth/microsoft/callback:
+    get:
+      operationId: socialControllerAuthCallbackGetmicrosoft
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+    post:
+      operationId: socialControllerAuthCallbackPostmicrosoft
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: ''
+      tags:
+      - auth
+components:
+  schemas:
+    UpdateUserDto:
+      type: object
+      properties:
+        isExemptFromSigningTos:
+          type: boolean
+      required:
+      - isExemptFromSigningTos
+    UpdatePayoutEmailEntity:
+      type: object
+      properties:
+        verified:
+          type: boolean
+      required:
+      - verified
+    IdentifyExternalUser:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        externalId:
+          type: string
+        sourceDomain:
+          type: string
+        distributorId:
+          type: string
+        returnUrl:
+          type: string
+        username:
+          type: string
+      required:
+      - externalId
+      - sourceDomain
+      - distributorId
+      - returnUrl
+    ResetPasswordDto:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        returnUrl:
+          type: string
+      required:
+      - email
+      - returnUrl
+    ResetPasswordSetNewDto:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+      - password
+    ListUsersEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserEntity'
+      required:
+      - items
+    ChangePasswordDto:
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+      required:
+      - oldPassword
+      - newPassword
+    UpdatePayoutEmailDto:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    ResendEmailVerificationDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        userId:
+          type: string
+        email:
+          type: string
+          format: email
+      required:
+      - language
+      - userId
+      - email
+    AdminInviteUserDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        email:
+          type: string
+          format: email
+        isExemptFromSigningTos:
+          type: boolean
+      required:
+      - email
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    SignupDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        returnUrl:
+          type: string
+        tosSigned:
+          type: boolean
+        birthday:
+          format: date-time
+          type: string
+        username:
+          type: string
+        profileColor:
+          type: string
+        points:
+          type: number
+          minimum: 0
+        sourceDomain:
+          type: string
+        distributorId:
+          type: string
+        referrerId:
+          type: string
+        referralCode:
+          type: string
+        amplitudeExperimentVariant:
+          type: string
+        externalId:
+          type: string
+        userId:
+          type: string
+      required:
+      - email
+      - returnUrl
+      - tosSigned
+      - sourceDomain
+      - distributorId
+    CredentialsEntity:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        accessToken:
+          type: string
+        accessTokenExpiresIn:
+          type: number
+        refreshToken:
+          type: string
+        lastTosSigned:
+          type: boolean
+        tosSignedAt:
+          format: date-time
+          type: string
+        isExemptFromSigningTos:
+          type: boolean
+        userId:
+          type: string
+        email:
+          type: string
+        payoutEmail:
+          type: string
+      required:
+      - roles
+      - accessToken
+      - accessTokenExpiresIn
+      - refreshToken
+      - lastTosSigned
+      - tosSignedAt
+      - isExemptFromSigningTos
+      - userId
+    SigninDto:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - password
+    MicrosoftRewardsDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        returnUrl:
+          type: string
+        sourceDomain:
+          type: string
+      required:
+      - returnUrl
+      - sourceDomain
+    Role:
+      type: string
+      enum:
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
+    PayoutEmailVerificationDto:
+      type: object
+      properties:
+        code:
+          type: string
+      required:
+      - code
+    SetRoleDto:
+      type: object
+      properties:
+        role:
+          allOf:
+          - $ref: '#/components/schemas/Role'
+      required:
+      - role
+    UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        emailVerified:
+          type: object
+          default: false
+        payoutEmail:
+          type: string
+        payoutEmailVerified:
+          type: object
+          default: false
+        payoutEmailCode:
+          type: string
+        password:
+          type: string
+        resetPasswordSecret:
+          type: string
+        createdAt:
+          type: object
+        updatedAt:
+          type: object
+        signupIp:
+          type: string
+        lastTosSigned:
+          type: number
+        tosSignedAt:
+          type: number
+        isExemptFromSigningTos:
+          type: object
+          default: false
+        blocked:
+          type: boolean
+        blockedReason:
+          type: string
+        deletedAt:
+          type: number
+        roles:
+          type: object
+        language:
+          type: string
+          enum:
+          - en-us
+          - es-mx
+        externalId:
+          type: object
+      required:
+      - id
+      - emailVerified
+      - payoutEmail
+      - payoutEmailVerified
+      - payoutEmailCode
+      - createdAt
+      - updatedAt
+      - signupIp
+      - lastTosSigned
+      - tosSignedAt
+      - isExemptFromSigningTos
+      - roles
+      - externalId
+    SetCreatorDto:
+      type: object
+      properties:
+        avatarAssetId:
+          type: string
+        partnerName:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+      required:
+      - avatarAssetId
+      - partnerName
+      - profileColor
+      - userName
+    ValidateEmailDto:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    ConfirmInviteDto:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+      - password
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

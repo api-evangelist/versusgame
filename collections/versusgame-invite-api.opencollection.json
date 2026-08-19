@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Versusgame Invite API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invite",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "InviteController_link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/invite/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

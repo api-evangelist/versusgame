@@ -1,0 +1,3768 @@
+{
+  "item": [
+    {
+      "id": "82fc29af-d8c7-40d7-932b-4bbf6b7d5217",
+      "name": "autogame",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e670026f-36ab-4df9-ad6f-c0b4c302608e",
+          "name": "Autogame Controller create Upload",
+          "request": {
+            "name": "Autogame Controller create Upload",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"extension\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ad0041f-3616-477c-b83b-63c60fb03b03",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"extension\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uploadUrl\": \"string\",\n  \"resourceUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5173c945-e94e-4a87-b728-92e621063129",
+          "name": "Polly Controller voice",
+          "request": {
+            "name": "Polly Controller voice",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "polly",
+                "voice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "audio/mp3"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"engine\": \"<string>\",\n  \"text\": \"<string>\",\n  \"languageCode\": \"<string>\",\n  \"voiceId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d4ada80-5dea-42c8-90e2-4d78830834aa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "polly",
+                    "voice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "audio/mp3"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"engine\": \"<string>\",\n  \"text\": \"<string>\",\n  \"languageCode\": \"<string>\",\n  \"voiceId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mp3"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "432aa114-8899-42ed-b0f2-698795bf6d50",
+          "name": "Polly Controller voice Asset",
+          "request": {
+            "name": "Polly Controller voice Asset",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "polly",
+                "voice-asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"syntesizedSpeech\": {\n    \"engine\": \"<string>\",\n    \"text\": \"<string>\",\n    \"languageCode\": \"<string>\",\n    \"voiceId\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1222f336-7832-45a9-8844-6a8900be099b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "polly",
+                    "voice-asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"syntesizedSpeech\": {\n    \"engine\": \"<string>\",\n    \"text\": \"<string>\",\n    \"languageCode\": \"<string>\",\n    \"voiceId\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9e58af9-81fd-4d51-b231-59e22b0cdbf1",
+          "name": "Polly Controller speech Marks",
+          "request": {
+            "name": "Polly Controller speech Marks",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "polly",
+                "speech_marks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"engine\": \"<string>\",\n  \"text\": \"<string>\",\n  \"languageCode\": \"<string>\",\n  \"voiceId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a990cc44-b994-4b22-966c-b07cb9ba18f1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "polly",
+                    "speech_marks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"engine\": \"<string>\",\n  \"text\": \"<string>\",\n  \"languageCode\": \"<string>\",\n  \"voiceId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"speechMarks\": [\n    {\n      \"time\": 794.3722660592479,\n      \"type\": \"string\",\n      \"start\": 6913.40597329924,\n      \"end\": 9145.50594550098,\n      \"value\": \"string\"\n    },\n    {\n      \"time\": 3180.643723628168,\n      \"type\": \"string\",\n      \"start\": 5520.34132742107,\n      \"end\": 526.9500879407718,\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f8c8b0d-09af-49ed-a209-1c96a88b3eeb",
+          "name": "Polly Controller describe Voices",
+          "request": {
+            "name": "Polly Controller describe Voices",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "polly"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2684651-eb76-44b4-b6af-f76d6ff1faf9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "polly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 6918.556116462811,\n  \"voices\": [\n    {\n      \"gender\": \"string\",\n      \"id\": \"string\",\n      \"languageCode\": \"string\",\n      \"languageName\": \"string\",\n      \"name\": \"string\",\n      \"additionalLanguageCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"supportedEngines\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"gender\": \"string\",\n      \"id\": \"string\",\n      \"languageCode\": \"string\",\n      \"languageName\": \"string\",\n      \"name\": \"string\",\n      \"additionalLanguageCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"supportedEngines\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56b7da0b-f621-4d6c-8f69-f6872d80a7c8",
+          "name": "Google Search Controller search",
+          "request": {
+            "name": "Google Search Controller search",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "google_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "c2coff",
+                  "value": "<string>",
+                  "description": "Enables or disables [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/json_api_reference#chineseSearch). The default value for this parameter is 0 (zero), meaning that the feature is enabled. Supported values are: * `1`: Disabled * `0`: Enabled (default)"
+                },
+                {
+                  "disabled": false,
+                  "key": "cr",
+                  "value": "<string>",
+                  "description": "Restricts search results to documents originating in a particular country. You may use [Boolean operators](https://developers.google.com/custom-search/docs/json_api_reference#booleanOperators) in the cr parameter's value. Google Search determines the country of a document by analyzing: * the top-level domain (TLD) of the document's URL * the geographic location of the Web server's IP address See the [Country Parameter Values](https://developers.google.com/custom-search/docs/json_api_reference#countryCollections) page for a list of valid values for this parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "cx",
+                  "value": "<string>",
+                  "description": "The Programmable Search Engine ID to use for this request."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateRestrict",
+                  "value": "<string>",
+                  "description": "Restricts results to URLs based on date. Supported values include: * `d[number]`: requests results from the specified number of past days. * `w[number]`: requests results from the specified number of past weeks. * `m[number]`: requests results from the specified number of past months. * `y[number]`: requests results from the specified number of past years."
+                },
+                {
+                  "disabled": false,
+                  "key": "exactTerms",
+                  "value": "<string>",
+                  "description": "Identifies a phrase that all documents in the search results must contain."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTerms",
+                  "value": "<string>",
+                  "description": "Identifies a word or phrase that should not appear in any documents in the search results."
+                },
+                {
+                  "disabled": false,
+                  "key": "fileType",
+                  "value": "<string>",
+                  "description": "Restricts results to files of a specified extension. A list of file types indexable by Google can be found in Search Console [Help Center](https://support.google.com/webmasters/answer/35287)."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Controls turning on or off the duplicate content filter. * See [Automatic Filtering](https://developers.google.com/custom-search/docs/json_api_reference#automaticFiltering) for more information about Google's search results filters. Note that host crowding filtering applies only to multi-site searches. * By default, Google applies filtering to all search results to improve the quality of those results. Acceptable values are: * `0`: Turns off duplicate content filter. * `1`: Turns on duplicate content filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "gl",
+                  "value": "<string>",
+                  "description": "Geolocation of end user. * The `gl` parameter value is a two-letter country code. The `gl` parameter boosts search results whose country of origin matches the parameter value. See the [Country Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) page for a list of valid values. * Specifying a `gl` parameter value should lead to more relevant results. This is particularly true for international customers and, even more specifically, for customers in English- speaking countries other than the United States."
+                },
+                {
+                  "disabled": false,
+                  "key": "googlehost",
+                  "value": "<string>",
+                  "description": "**Deprecated**. Use the `gl` parameter for a similar effect. The local Google domain (for example, google.com, google.de, or google.fr) to use to perform the search."
+                },
+                {
+                  "disabled": false,
+                  "key": "highRange",
+                  "value": "<string>",
+                  "description": "Specifies the ending value for a search range. * Use `lowRange` and `highRange` to append an inclusive search range of `lowRange...highRange` to the query."
+                },
+                {
+                  "disabled": false,
+                  "key": "hl",
+                  "value": "<string>",
+                  "description": "Sets the user interface language. * Explicitly setting this parameter improves the performance and the quality of your search results. * See the [Interface Languages](https://developers.google.com/custom-search/docs/json_api_reference#wsInterfaceLanguages) section of [Internationalizing Queries and Results Presentation](https://developers.google.com/custom-search/docs/json_api_reference#wsInternationalizing) for more information, and [Supported Interface Languages](https://developers.google.com/custom-search/docs/json_api_reference#interfaceLanguages) for a list of supported languages."
+                },
+                {
+                  "disabled": false,
+                  "key": "hq",
+                  "value": "<string>",
+                  "description": "Appends the specified query terms to the query, as if they were combined with a logical AND operator."
+                },
+                {
+                  "disabled": false,
+                  "key": "imgColorType",
+                  "value": "<string>",
+                  "description": "Returns black and white, grayscale, transparent, or color images. Acceptable values are: * `\"color\"` * `\"gray\"` * `\"mono\"`: black and white * `\"trans\"`: transparent background"
+                },
+                {
+                  "disabled": false,
+                  "key": "imgDominantColor",
+                  "value": "<string>",
+                  "description": "Returns images of a specific dominant color. Acceptable values are: * `\"black\"` * `\"blue\"` * `\"brown\"` * `\"gray\"` * `\"green\"` * `\"orange\"` * `\"pink\"` * `\"purple\"` * `\"red\"` * `\"teal\"` * `\"white\"` * `\"yellow\"`"
+                },
+                {
+                  "disabled": false,
+                  "key": "imgSize",
+                  "value": "<string>",
+                  "description": "Returns images of a specified size. Acceptable values are: * `\"huge\"` * `\"icon\"` * `\"large\"` * `\"medium\"` * `\"small\"` * `\"xlarge\"` * `\"xxlarge\"`"
+                },
+                {
+                  "disabled": false,
+                  "key": "imgType",
+                  "value": "<string>",
+                  "description": "Returns images of a type. Acceptable values are: * `\"clipart\"` * `\"face\"` * `\"lineart\"` * `\"stock\"` * `\"photo\"` * `\"animated\"`"
+                },
+                {
+                  "disabled": false,
+                  "key": "linkSite",
+                  "value": "<string>",
+                  "description": "Specifies that all search results should contain a link to a particular URL."
+                },
+                {
+                  "disabled": false,
+                  "key": "lowRange",
+                  "value": "<string>",
+                  "description": "Specifies the starting value for a search range. Use `lowRange` and `highRange` to append an inclusive search range of `lowRange...highRange` to the query."
+                },
+                {
+                  "disabled": false,
+                  "key": "lr",
+                  "value": "<string>",
+                  "description": "Restricts the search to documents written in a particular language (e.g., `lr=lang_ja`). Acceptable values are: * `\"lang_ar\"`: Arabic * `\"lang_bg\"`: Bulgarian * `\"lang_ca\"`: Catalan * `\"lang_cs\"`: Czech * `\"lang_da\"`: Danish * `\"lang_de\"`: German * `\"lang_el\"`: Greek * `\"lang_en\"`: English * `\"lang_es\"`: Spanish * `\"lang_et\"`: Estonian * `\"lang_fi\"`: Finnish * `\"lang_fr\"`: French * `\"lang_hr\"`: Croatian * `\"lang_hu\"`: Hungarian * `\"lang_id\"`: Indonesian * `\"lang_is\"`: Icelandic * `\"lang_it\"`: Italian * `\"lang_iw\"`: Hebrew * `\"lang_ja\"`: Japanese * `\"lang_ko\"`: Korean * `\"lang_lt\"`: Lithuanian * `\"lang_lv\"`: Latvian * `\"lang_nl\"`: Dutch * `\"lang_no\"`: Norwegian * `\"lang_pl\"`: Polish * `\"lang_pt\"`: Portuguese * `\"lang_ro\"`: Romanian * `\"lang_ru\"`: Russian * `\"lang_sk\"`: Slovak * `\"lang_sl\"`: Slovenian * `\"lang_sr\"`: Serbian * `\"lang_sv\"`: Swedish * `\"lang_tr\"`: Turkish * `\"lang_zh-CN\"`: Chinese (Simplified) * `\"lang_zh-TW\"`: Chinese (Traditional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "num",
+                  "value": "<number>",
+                  "description": "Number of search results to return. * Valid values are integers between 1 and 10, inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "orTerms",
+                  "value": "<string>",
+                  "description": "Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Query"
+                },
+                {
+                  "disabled": false,
+                  "key": "relatedSite",
+                  "value": "<string>",
+                  "description": "Specifies that all search results should be pages that are related to the specified URL."
+                },
+                {
+                  "disabled": false,
+                  "key": "rights",
+                  "value": "<string>",
+                  "description": "Filters based on licensing. Supported values include: `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`, `cc_nonderived` and combinations of these. See [typical combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration)."
+                },
+                {
+                  "disabled": false,
+                  "key": "safe",
+                  "value": "<string>",
+                  "description": "Search safety level. Acceptable values are: * `\"active\"`: Enables SafeSearch filtering. * `\"off\"`: Disables SafeSearch filtering. (default)"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchType",
+                  "value": "<string>",
+                  "description": "Specifies the search type: `image`. If unspecified, results are limited to webpages. Acceptable values are: * `\"image\"`: custom image search."
+                },
+                {
+                  "disabled": false,
+                  "key": "siteSearch",
+                  "value": "<string>",
+                  "description": "Specifies a given site which should always be included or excluded from results (see `siteSearchFilter` parameter, below)."
+                },
+                {
+                  "disabled": false,
+                  "key": "siteSearchFilter",
+                  "value": "<string>",
+                  "description": "Controls whether to include or exclude results from the site named in the `siteSearch` parameter. Acceptable values are: * `\"e\"`: exclude * `\"i\"`: include"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sort expression to apply to the results. The sort parameter specifies that the results be sorted according to the specified expression i.e. sort by date. [Example: sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<number>",
+                  "description": "The index of the first result to return. The default number of results per page is 10, so `&start=11` would start at the top of the second page of results. **Note**: The JSON API will never return more than 100 results, even if more than 100 documents match the query, so setting the sum of `start + num` to a number greater than 100 will produce an error. Also note that the maximum value for `num` is 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5ac4b69c-1a0e-4088-8631-78e47fc849dd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "google_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "c2coff",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cx",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateRestrict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exactTerms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTerms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "googlehost",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "highRange",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "imgColorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "imgDominantColor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "imgSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "imgType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "linkSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lowRange",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "num",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "orTerms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rights",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "safe",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteSearch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteSearchFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"result\": {\n    \"items\": [\n      {\n        \"link\": \"string\",\n        \"fileFormat\": \"string\",\n        \"title\": \"string\",\n        \"htmlTitle\": \"string\",\n        \"displayLink\": \"string\",\n        \"mime\": \"string\",\n        \"image\": {\n          \"byteSize\": 3148.6672606059406,\n          \"contextLink\": \"string\",\n          \"height\": 2959.1212361213857,\n          \"thumbnailHeight\": 8713.071699897971,\n          \"thumbnailLink\": \"string\",\n          \"thumbnailWidth\": 5286.691710757065,\n          \"width\": 9349.320926313423\n        }\n      },\n      {\n        \"link\": \"string\",\n        \"fileFormat\": \"string\",\n        \"title\": \"string\",\n        \"htmlTitle\": \"string\",\n        \"displayLink\": \"string\",\n        \"mime\": \"string\",\n        \"image\": {\n          \"byteSize\": 9936.961543251915,\n          \"contextLink\": \"string\",\n          \"height\": 2604.384290912862,\n          \"thumbnailHeight\": 9413.727478138639,\n          \"thumbnailLink\": \"string\",\n          \"thumbnailWidth\": 9478.30939866465,\n          \"width\": 3206.60887814896\n        }\n      }\n    ],\n    \"searchInformation\": {\n      \"totalResults\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea18bf38-a104-4221-92fa-d5506c192b5d",
+          "name": "Google Search Controller insert",
+          "request": {
+            "name": "Google Search Controller insert",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "google_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"link\": \"<string>\",\n      \"fileFormat\": \"<string>\",\n      \"title\": \"<string>\",\n      \"htmlTitle\": \"<string>\",\n      \"displayLink\": \"<string>\",\n      \"mime\": \"<string>\",\n      \"image\": {\n        \"byteSize\": \"<number>\",\n        \"contextLink\": \"<string>\",\n        \"height\": \"<number>\",\n        \"thumbnailHeight\": \"<number>\",\n        \"thumbnailLink\": \"<string>\",\n        \"thumbnailWidth\": \"<number>\",\n        \"width\": \"<number>\"\n      }\n    },\n    {\n      \"link\": \"<string>\",\n      \"fileFormat\": \"<string>\",\n      \"title\": \"<string>\",\n      \"htmlTitle\": \"<string>\",\n      \"displayLink\": \"<string>\",\n      \"mime\": \"<string>\",\n      \"image\": {\n        \"byteSize\": \"<number>\",\n        \"contextLink\": \"<string>\",\n        \"height\": \"<number>\",\n        \"thumbnailHeight\": \"<number>\",\n        \"thumbnailLink\": \"<string>\",\n        \"thumbnailWidth\": \"<number>\",\n        \"width\": \"<number>\"\n      }\n    }\n  ],\n  \"searchInformation\": {\n    \"totalResults\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d3fca25-9ed6-417f-bda9-e6af7d2fa93f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "google_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"link\": \"<string>\",\n      \"fileFormat\": \"<string>\",\n      \"title\": \"<string>\",\n      \"htmlTitle\": \"<string>\",\n      \"displayLink\": \"<string>\",\n      \"mime\": \"<string>\",\n      \"image\": {\n        \"byteSize\": \"<number>\",\n        \"contextLink\": \"<string>\",\n        \"height\": \"<number>\",\n        \"thumbnailHeight\": \"<number>\",\n        \"thumbnailLink\": \"<string>\",\n        \"thumbnailWidth\": \"<number>\",\n        \"width\": \"<number>\"\n      }\n    },\n    {\n      \"link\": \"<string>\",\n      \"fileFormat\": \"<string>\",\n      \"title\": \"<string>\",\n      \"htmlTitle\": \"<string>\",\n      \"displayLink\": \"<string>\",\n      \"mime\": \"<string>\",\n      \"image\": {\n        \"byteSize\": \"<number>\",\n        \"contextLink\": \"<string>\",\n        \"height\": \"<number>\",\n        \"thumbnailHeight\": \"<number>\",\n        \"thumbnailLink\": \"<string>\",\n        \"thumbnailWidth\": \"<number>\",\n        \"width\": \"<number>\"\n      }\n    }\n  ],\n  \"searchInformation\": {\n    \"totalResults\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"result\": {\n    \"items\": [\n      {\n        \"link\": \"<string>\",\n        \"fileFormat\": \"<string>\",\n        \"title\": \"<string>\",\n        \"htmlTitle\": \"<string>\",\n        \"displayLink\": \"<string>\",\n        \"mime\": \"<string>\",\n        \"image\": {\n          \"byteSize\": \"<number>\",\n          \"contextLink\": \"<string>\",\n          \"height\": \"<number>\",\n          \"thumbnailHeight\": \"<number>\",\n          \"thumbnailLink\": \"<string>\",\n          \"thumbnailWidth\": \"<number>\",\n          \"width\": \"<number>\"\n        }\n      },\n      {\n        \"link\": \"<string>\",\n        \"fileFormat\": \"<string>\",\n        \"title\": \"<string>\",\n        \"htmlTitle\": \"<string>\",\n        \"displayLink\": \"<string>\",\n        \"mime\": \"<string>\",\n        \"image\": {\n          \"byteSize\": \"<number>\",\n          \"contextLink\": \"<string>\",\n          \"height\": \"<number>\",\n          \"thumbnailHeight\": \"<number>\",\n          \"thumbnailLink\": \"<string>\",\n          \"thumbnailWidth\": \"<number>\",\n          \"width\": \"<number>\"\n        }\n      }\n    ],\n    \"searchInformation\": {\n      \"totalResults\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b920fa21-1ec3-4923-a9e8-b6f9d6648f7b",
+          "name": "Google Search Controller by Id",
+          "request": {
+            "name": "Google Search Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "google_search",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a91ec3b5-9f0f-415a-a3ee-be6c1a829995",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "google_search",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"result\": {\n    \"items\": [\n      {\n        \"link\": \"<string>\",\n        \"fileFormat\": \"<string>\",\n        \"title\": \"<string>\",\n        \"htmlTitle\": \"<string>\",\n        \"displayLink\": \"<string>\",\n        \"mime\": \"<string>\",\n        \"image\": {\n          \"byteSize\": \"<number>\",\n          \"contextLink\": \"<string>\",\n          \"height\": \"<number>\",\n          \"thumbnailHeight\": \"<number>\",\n          \"thumbnailLink\": \"<string>\",\n          \"thumbnailWidth\": \"<number>\",\n          \"width\": \"<number>\"\n        }\n      },\n      {\n        \"link\": \"<string>\",\n        \"fileFormat\": \"<string>\",\n        \"title\": \"<string>\",\n        \"htmlTitle\": \"<string>\",\n        \"displayLink\": \"<string>\",\n        \"mime\": \"<string>\",\n        \"image\": {\n          \"byteSize\": \"<number>\",\n          \"contextLink\": \"<string>\",\n          \"height\": \"<number>\",\n          \"thumbnailHeight\": \"<number>\",\n          \"thumbnailLink\": \"<string>\",\n          \"thumbnailWidth\": \"<number>\",\n          \"width\": \"<number>\"\n        }\n      }\n    ],\n    \"searchInformation\": {\n      \"totalResults\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38d3085b-121d-4478-9dd4-9ff56da19db4",
+          "name": "Open AI Controller chat Completion Create",
+          "request": {
+            "name": "Open AI Controller chat Completion Create",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "openai",
+                "chat_completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<object>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": \"<object>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"role\": \"<object>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": \"<object>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"frequency_penalty\": \"<number>\",\n  \"function_call\": \"<object>\",\n  \"logit_bias\": \"<object>\",\n  \"max_tokens\": \"<number>\",\n  \"n\": \"<number>\",\n  \"presence_penalty\": \"<number>\",\n  \"response_format\": \"<object>\",\n  \"seed\": \"<number>\",\n  \"stop\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"tool_choice\": \"<object>\",\n  \"tools\": \"<object>\",\n  \"top_p\": \"<number>\",\n  \"user\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41a5d093-dd71-46da-bc20-10472c76d19f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "openai",
+                    "chat_completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<object>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": \"<object>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"role\": \"<object>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": \"<object>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"frequency_penalty\": \"<number>\",\n  \"function_call\": \"<object>\",\n  \"logit_bias\": \"<object>\",\n  \"max_tokens\": \"<number>\",\n  \"n\": \"<number>\",\n  \"presence_penalty\": \"<number>\",\n  \"response_format\": \"<object>\",\n  \"seed\": \"<number>\",\n  \"stop\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"tool_choice\": \"<object>\",\n  \"tools\": \"<object>\",\n  \"top_p\": \"<number>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40853d29-b374-4b5c-a898-23dff5eca91f",
+          "name": "Scraper Controller scrape",
+          "request": {
+            "name": "Scraper Controller scrape",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "scraper"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5c94f885-599d-477b-9844-e6eb802adb88",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "scraper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"content\": \"string\",\n  \"textContent\": \"string\",\n  \"length\": 2173.5951861363633,\n  \"excerpt\": \"string\",\n  \"byline\": \"string\",\n  \"dir\": \"string\",\n  \"siteName\": \"string\",\n  \"lang\": \"string\",\n  \"publishedDate\": \"1952-06-09T19:47:44.731Z\",\n  \"isArticle\": true,\n  \"recent\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c2de2ce-7e4d-49e8-9d4f-5efda52c7463",
+          "name": "Proxy Controller proxy",
+          "request": {
+            "name": "Proxy Controller proxy",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "proxy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "75dbd93e-3f64-4324-b757-16a24246f165",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "proxy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4300b1b-fe2e-4161-8dc5-25ac46303ed7",
+          "name": "Remotion Controller render",
+          "request": {
+            "name": "Remotion Controller render",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "remotion",
+                "render"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compositionId\": \"<string>\",\n  \"inputProps\": \"<object>\",\n  \"fps\": \"<number>\",\n  \"durationInFrames\": \"<number>\",\n  \"width\": \"<number>\",\n  \"height\": \"<number>\",\n  \"bundleBuildId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bcc44a4b-5a22-4480-aec5-a8c31809bb5e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "remotion",
+                    "render"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"compositionId\": \"<string>\",\n  \"inputProps\": \"<object>\",\n  \"fps\": \"<number>\",\n  \"durationInFrames\": \"<number>\",\n  \"width\": \"<number>\",\n  \"height\": \"<number>\",\n  \"bundleBuildId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobStatus\": \"processing\",\n  \"isVideo\": false,\n  \"isAudio\": false,\n  \"isImage\": false,\n  \"videoUrl\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"imageUrl\": \"string\",\n  \"audioUrl\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"mimeType\": \"string\",\n  \"size\": 9533.735998855484,\n  \"width\": 7740.946165159401,\n  \"height\": 4402.763527855936,\n  \"errorCode\": \"string\",\n  \"userId\": \"string\",\n  \"createdAt\": \"2000-11-05T23:05:33.771Z\",\n  \"updatedAt\": \"2015-10-17T15:55:05.735Z\",\n  \"deletedAt\": \"1988-07-26T14:43:55.923Z\",\n  \"uploadSignedUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c93bf819-8aa4-4d55-8415-ef6a58694263",
+          "name": "Chat History Controller create Chat History",
+          "request": {
+            "name": "Chat History Controller create Chat History",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "chat-history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"history\": \"<object>\",\n  \"messageVersion\": \"<number>\",\n  \"gameId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0f2dcf6-3028-493f-8877-bad238b7e068",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "chat-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"history\": \"<object>\",\n  \"messageVersion\": \"<number>\",\n  \"gameId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"creatorId\": \"string\",\n  \"name\": \"string\",\n  \"history\": {},\n  \"gameId\": \"string\",\n  \"messageVersion\": 929.4232640256428,\n  \"version\": 9975.352640701727,\n  \"createdAt\": \"1963-07-05T17:14:49.791Z\",\n  \"updatedAt\": \"1978-01-14T22:46:23.166Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cff373b7-c644-4231-bfd7-dd2adb315df0",
+          "name": "Chat History Controller list Chat Histories",
+          "request": {
+            "name": "Chat History Controller list Chat Histories",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "chat-history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creatorId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "gameCreated",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9e1c7cbb-0918-49e3-a91d-1204afc801f9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "chat-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creatorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameCreated",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"name\": \"string\",\n      \"history\": {},\n      \"gameId\": \"string\",\n      \"messageVersion\": 1195.487034567162,\n      \"version\": 3249.8339249172127,\n      \"createdAt\": \"2001-01-19T15:45:43.470Z\",\n      \"updatedAt\": \"1975-10-28T15:13:01.793Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"creatorId\": \"string\",\n      \"name\": \"string\",\n      \"history\": {},\n      \"gameId\": \"string\",\n      \"messageVersion\": 6199.420997323446,\n      \"version\": 5722.849269869942,\n      \"createdAt\": \"2008-12-30T05:32:18.290Z\",\n      \"updatedAt\": \"2015-09-26T18:10:41.103Z\"\n    }\n  ],\n  \"total\": 5976.002575487899\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55646630-1ea8-4d54-93d0-fea5dcc52a33",
+          "name": "Chat History Controller Get Chat History By Id",
+          "request": {
+            "name": "Chat History Controller Get Chat History By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "chat-history",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "87519a90-d92b-4ddb-9323-aeca32fe52bd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "chat-history",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"creatorId\": \"string\",\n  \"name\": \"string\",\n  \"history\": {},\n  \"gameId\": \"string\",\n  \"messageVersion\": 929.4232640256428,\n  \"version\": 9975.352640701727,\n  \"createdAt\": \"1963-07-05T17:14:49.791Z\",\n  \"updatedAt\": \"1978-01-14T22:46:23.166Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "028520ed-5a62-4eee-af4e-be36d746b429",
+          "name": "Chat History Controller update Chat History",
+          "request": {
+            "name": "Chat History Controller update Chat History",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "chat-history",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<number>\",\n  \"history\": \"<object>\",\n  \"name\": \"<string>\",\n  \"gameId\": \"<string>\",\n  \"messageVersion\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11a625e0-81b5-4ccf-9ed4-60217a840c85",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "chat-history",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<number>\",\n  \"history\": \"<object>\",\n  \"name\": \"<string>\",\n  \"gameId\": \"<string>\",\n  \"messageVersion\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"creatorId\": \"string\",\n  \"name\": \"string\",\n  \"history\": {},\n  \"gameId\": \"string\",\n  \"messageVersion\": 929.4232640256428,\n  \"version\": 9975.352640701727,\n  \"createdAt\": \"1963-07-05T17:14:49.791Z\",\n  \"updatedAt\": \"1978-01-14T22:46:23.166Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4da2c2b6-09bb-4759-b930-3a6b720688bc",
+          "name": "Article Controller create Article",
+          "request": {
+            "name": "Article Controller create Article",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83592a1c-63a0-4f25-b115-e966f5d6ae51",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"rawOpenAiChat\": [],\n  \"hostName\": \"string\",\n  \"partnerId\": \"string\",\n  \"sourceType\": \"blob\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86cd64ff-829f-4398-a416-30c2d2dd32f1",
+          "name": "Article Controller draft By Id",
+          "request": {
+            "name": "Article Controller draft By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article",
+                "drafts",
+                ":id",
+                "game_index",
+                ":gameIndex"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "gameIndex",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b75cd29b-52cc-4fad-963e-026b294d99d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":id",
+                    "game_index",
+                    ":gameIndex"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameIndex",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gameType\": \"TRIVIA\",\n  \"state\": \"video-ready\",\n  \"id\": \"string\",\n  \"gameIndex\": \"string\",\n  \"lock\": 1551.0223055530203,\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"string\",\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 7734.171662652738\n        }\n      },\n      {\n        \"text\": \"string\",\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 2628.7340393182712\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": 5329.938566659606,\n        \"end_chunk\": 3102.946426407296,\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 9261.01201861512\n        }\n      },\n      {\n        \"start_chunk\": 4933.76260506925,\n        \"end_chunk\": 4077.305155411938,\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 1013.9949579974184\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"string\",\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 8762.092364526206\n        }\n      },\n      {\n        \"text\": \"string\",\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 3726.142989424681\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"string\"\n      },\n      {\n        \"text\": \"string\"\n      }\n    ],\n    \"correctAnswer\": \"A\"\n  },\n  \"manualOverrides\": {},\n  \"version\": 7483.107245341331,\n  \"gameIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"systemMessage\": \"string\",\n  \"systemMessageName\": \"string\",\n  \"url\": \"string\",\n  \"userId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c37b485-7318-43af-aa1f-6adb5b1a1dcd",
+          "name": "Article Controller list Game Drafts",
+          "request": {
+            "name": "Article Controller list Game Drafts",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article",
+                "drafts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "gameType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "gameIndex",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "systemMessageNames",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "systemMessageNames",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lock",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "articleId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e8961ed6-3e62-49a6-9d68-1ed732cbab0c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article",
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameIndex",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "systemMessageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "systemMessageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lock",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "articleId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"gameType\": \"<string>\",\n      \"state\": \"<string>\",\n      \"id\": \"string\",\n      \"gameIndex\": \"string\",\n      \"lock\": 2733.573229103874,\n      \"gameDetail\": {\n        \"synopsis\": [\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"overlays\": [\n          {\n            \"start_chunk\": 5012.999492064238,\n            \"end_chunk\": 4117.9189149803005,\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"start_chunk\": 9646.907279263802,\n            \"end_chunk\": 9986.17120689174,\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"question\": [\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"answers\": [\n          {\n            \"text\": \"string\"\n          },\n          {\n            \"text\": \"string\"\n          }\n        ],\n        \"correctAnswer\": \"B\"\n      },\n      \"manualOverrides\": {},\n      \"version\": 1452.0948812892186,\n      \"gameIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"systemMessage\": \"string\",\n      \"systemMessageName\": \"string\",\n      \"url\": \"string\",\n      \"userId\": \"string\"\n    },\n    {\n      \"gameType\": \"<string>\",\n      \"state\": \"<string>\",\n      \"id\": \"string\",\n      \"gameIndex\": \"string\",\n      \"lock\": 6350.979459424365,\n      \"gameDetail\": {\n        \"synopsis\": [\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"overlays\": [\n          {\n            \"start_chunk\": 3345.6575169149573,\n            \"end_chunk\": 8301.56048023085,\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"start_chunk\": 9745.120273728468,\n            \"end_chunk\": 1382.1956572674653,\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"question\": [\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"answers\": [\n          {\n            \"text\": \"string\"\n          },\n          {\n            \"text\": \"string\"\n          }\n        ],\n        \"correctAnswer\": \"A\"\n      },\n      \"manualOverrides\": {},\n      \"version\": 1657.0974668465599,\n      \"gameIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"systemMessage\": \"string\",\n      \"systemMessageName\": \"string\",\n      \"url\": \"string\",\n      \"userId\": \"string\"\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1203f440-fb65-44e2-957e-82bb9582bf97",
+          "name": "Article Controller list Game Draft Versions",
+          "request": {
+            "name": "Article Controller list Game Draft Versions",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article",
+                "drafts",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f936ef09-b4d6-4db5-9e7b-8021ced7620f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article",
+                    "drafts",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"gameIndex\": \"string\",\n      \"gameDetail\": {\n        \"synopsis\": [\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"overlays\": [\n          {\n            \"start_chunk\": 1586.3327914557801,\n            \"end_chunk\": 4581.479195639604,\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"start_chunk\": 7007.083937353865,\n            \"end_chunk\": 9750.831181629836,\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"question\": [\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"answers\": [\n          {\n            \"text\": \"string\"\n          },\n          {\n            \"text\": \"string\"\n          }\n        ],\n        \"correctAnswer\": \"A\"\n      },\n      \"manualOverrides\": {},\n      \"version\": 4182.040894479413,\n      \"createdAt\": \"string\",\n      \"userId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"gameIndex\": \"string\",\n      \"gameDetail\": {\n        \"synopsis\": [\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"overlays\": [\n          {\n            \"start_chunk\": 9077.066831611346,\n            \"end_chunk\": 1311.629586676889,\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"start_chunk\": 454.6547723860106,\n            \"end_chunk\": 3005.2900663725222,\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"question\": [\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"string\",\n            \"images_query\": \"string\",\n            \"image_type\": \"string\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"answers\": [\n          {\n            \"text\": \"string\"\n          },\n          {\n            \"text\": \"string\"\n          }\n        ],\n        \"correctAnswer\": \"A\"\n      },\n      \"manualOverrides\": {},\n      \"version\": 9436.004365950741,\n      \"createdAt\": \"string\",\n      \"userId\": \"string\"\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c17a65a-8611-41a7-99d5-0b53592aeb26",
+          "name": "Article Controller create Draft",
+          "request": {
+            "name": "Article Controller create Draft",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article",
+                "drafts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gameType\": \"<string>\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"systemMessage\": \"<string>\",\n  \"systemMessageName\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d497746-a13e-4a05-80be-328a3e8417ed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gameType\": \"<string>\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"systemMessage\": \"<string>\",\n  \"systemMessageName\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gameType\": \"<string>\",\n  \"state\": \"<string>\",\n  \"id\": \"string\",\n  \"gameIndex\": \"string\",\n  \"lock\": 6303.467901467383,\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"manualOverrides\": {},\n  \"version\": 9247.859116268077,\n  \"gameIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"systemMessage\": \"string\",\n  \"systemMessageName\": \"string\",\n  \"url\": \"string\",\n  \"userId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b12aa6f5-def7-488e-8558-c24de78d6558",
+          "name": "Article Controller set State",
+          "request": {
+            "name": "Article Controller set State",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article",
+                "drafts",
+                ":id",
+                "game_index",
+                ":gameIndex",
+                "set_state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "gameIndex",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<number>\",\n  \"state\": \"<string>\",\n  \"gameIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lock\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9661d27-adb8-4ddb-8314-4a9b7e1e112a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":id",
+                    "game_index",
+                    ":gameIndex",
+                    "set_state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameIndex",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<number>\",\n  \"state\": \"<string>\",\n  \"gameIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lock\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65e24bf7-afc2-462d-9fa6-98b5ec4b849f",
+          "name": "Article Controller new Version",
+          "request": {
+            "name": "Article Controller new Version",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article",
+                "drafts",
+                ":id",
+                "game_index",
+                ":gameIndex",
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "gameIndex",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<number>\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"manualOverrides\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa210b90-96b1-40b1-aafa-227dc0547890",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":id",
+                    "game_index",
+                    ":gameIndex",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameIndex",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<number>\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"manualOverrides\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcc172b8-60bf-496d-b3e6-5a0ad2e7020a",
+          "name": "Article Controller article By Id",
+          "request": {
+            "name": "Article Controller article By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9fb1a5b4-7b29-4c59-a845-ef2b8263e1d6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"rawOpenAiChat\": [],\n  \"hostName\": \"string\",\n  \"partnerId\": \"string\",\n  \"sourceType\": \"blob\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97791936-f578-471f-8de5-842822c16404",
+          "name": "Article Controller create Game",
+          "request": {
+            "name": "Article Controller create Game",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "article",
+                "drafts",
+                ":id",
+                "game_index",
+                ":gameIndex",
+                "game"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "gameIndex",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-idempotency-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"<string>\",\n  \"gameType\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"lastJoinTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"gameTitle\": \"<string>\",\n  \"sourceUrl\": \"<string>\",\n  \"categoryId\": \"<string>\",\n  \"sideA\": \"<string>\",\n  \"sideB\": \"<string>\",\n  \"text\": \"<string>\",\n  \"isAd\": \"<boolean>\",\n  \"orientation\": \"<string>\",\n  \"correctAnswer\": \"<string>\",\n  \"videoAssetId\": \"<string>\",\n  \"isPrivate\": \"<boolean>\",\n  \"bingSearch\": \"<string>\",\n  \"bingSearchClaim\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"questionVideoAssetId\": \"<string>\",\n  \"landscapeVideoAssetId\": \"<string>\",\n  \"audioAssetId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d080a7c-f0e5-4d99-a490-1e93447617bd",
+              "name": "Creates a new game",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":id",
+                    "game_index",
+                    ":gameIndex",
+                    "game"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameIndex",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"language\": \"<string>\",\n  \"gameType\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"lastJoinTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"gameTitle\": \"<string>\",\n  \"sourceUrl\": \"<string>\",\n  \"categoryId\": \"<string>\",\n  \"sideA\": \"<string>\",\n  \"sideB\": \"<string>\",\n  \"text\": \"<string>\",\n  \"isAd\": \"<boolean>\",\n  \"orientation\": \"<string>\",\n  \"correctAnswer\": \"<string>\",\n  \"videoAssetId\": \"<string>\",\n  \"isPrivate\": \"<boolean>\",\n  \"bingSearch\": \"<string>\",\n  \"bingSearchClaim\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"questionVideoAssetId\": \"<string>\",\n  \"landscapeVideoAssetId\": \"<string>\",\n  \"audioAssetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"canceled\",\n  \"gameType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"id\": \"string\",\n  \"creatorId\": \"string\",\n  \"creator\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"1948-03-09T19:20:57.858Z\",\n    \"updatedAt\": \"2020-09-02T18:57:28.871Z\"\n  },\n  \"version\": 5106.673402918942,\n  \"startTime\": \"string\",\n  \"lastJoinTime\": \"string\",\n  \"endTime\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"hostEarnings\": 951.6028154838218,\n  \"isPendingResult\": true,\n  \"isFinalResult\": false,\n  \"votePercentageSideA\": 4830.012718350545,\n  \"votePercentageSideB\": 2398.5203374576945,\n  \"gameTitle\": \"string\",\n  \"isAd\": false,\n  \"isPrivate\": true,\n  \"bingSearch\": \"string\",\n  \"sideA\": \"string\",\n  \"sideB\": \"string\",\n  \"sourceUrl\": \"string\",\n  \"text\": \"string\",\n  \"categoryId\": \"string\",\n  \"category\": {\n    \"language\": \"<string>\",\n    \"id\": \"string\",\n    \"categoryName\": \"string\",\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"deletedAt\": \"string\",\n    \"sticker\": \"string\",\n    \"icon\": \"string\"\n  },\n  \"winningSide\": \"<string>\",\n  \"stats\": {\n    \"sideA\": {\n      \"whiteTickets\": {\n        \"gameplays\": 6184.005925555122,\n        \"tickets\": 2536.319574581848,\n        \"matched\": 2588.3160229812265\n      },\n      \"blackTickets\": {\n        \"gameplays\": 6116.742878847247,\n        \"tickets\": 3260.9798137686043,\n        \"matched\": 2989.3688479773527\n      },\n      \"freeTickets\": {\n        \"gameplays\": 3515.197782602468,\n        \"tickets\": 9313.52130079324,\n        \"matched\": 2211.6438823733242\n      }\n    },\n    \"sideB\": {\n      \"whiteTickets\": {\n        \"gameplays\": 9508.278937467569,\n        \"tickets\": 9088.291880939376,\n        \"matched\": 5187.487390680746\n      },\n      \"blackTickets\": {\n        \"gameplays\": 3715.6527496818526,\n        \"tickets\": 4171.176349609597,\n        \"matched\": 3813.3778277557517\n      },\n      \"freeTickets\": {\n        \"gameplays\": 8867.37401970796,\n        \"tickets\": 611.1347330946426,\n        \"matched\": 5177.194917278446\n      }\n    }\n  },\n  \"orientation\": \"<string>\",\n  \"correctAnswer\": \"<string>\",\n  \"slushing\": {\n    \"whiteTickets\": 3590.6725481760272,\n    \"blackTickets\": 7042.147470324034,\n    \"blackTicketsGameplays\": 247.94794155179824\n  },\n  \"resultChanged\": true,\n  \"bingSearchClaim\": \"string\",\n  \"metadata\": {},\n  \"questionVideoUrls\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"landscapeVideoUrls\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"videoUrls\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"resultUrls\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"urls\": [\n    \"string\",\n    \"string\"\n  ],\n  \"audioAssetId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4f1a81d-510e-4610-b3e4-b4b575ce3464",
+          "name": "Autogame Game Controller create Game",
+          "request": {
+            "name": "Autogame Game Controller create Game",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "game"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creatorId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "idempotencyKey",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "skipRelevanceCheck",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"<string>\",\n  \"gameType\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"lastJoinTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"gameTitle\": \"<string>\",\n  \"sourceUrl\": \"<string>\",\n  \"categoryId\": \"<string>\",\n  \"sideA\": \"<string>\",\n  \"sideB\": \"<string>\",\n  \"text\": \"<string>\",\n  \"isAd\": \"<boolean>\",\n  \"orientation\": \"<string>\",\n  \"correctAnswer\": \"<string>\",\n  \"videoAssetId\": \"<string>\",\n  \"isPrivate\": \"<boolean>\",\n  \"bingSearch\": \"<string>\",\n  \"bingSearchClaim\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"questionVideoAssetId\": \"<string>\",\n  \"landscapeVideoAssetId\": \"<string>\",\n  \"audioAssetId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb31f9e2-c7c6-4b58-b096-ec7f839b5357",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "game"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creatorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "idempotencyKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skipRelevanceCheck",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"language\": \"<string>\",\n  \"gameType\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"lastJoinTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"gameTitle\": \"<string>\",\n  \"sourceUrl\": \"<string>\",\n  \"categoryId\": \"<string>\",\n  \"sideA\": \"<string>\",\n  \"sideB\": \"<string>\",\n  \"text\": \"<string>\",\n  \"isAd\": \"<boolean>\",\n  \"orientation\": \"<string>\",\n  \"correctAnswer\": \"<string>\",\n  \"videoAssetId\": \"<string>\",\n  \"isPrivate\": \"<boolean>\",\n  \"bingSearch\": \"<string>\",\n  \"bingSearchClaim\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"questionVideoAssetId\": \"<string>\",\n  \"landscapeVideoAssetId\": \"<string>\",\n  \"audioAssetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uploadUrl\": \"string\",\n  \"resourceUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bed4577-90ec-4d4f-8686-0bf77184d115",
+          "name": "Eleven Labs Controller voice",
+          "request": {
+            "name": "Eleven Labs Controller voice",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "elevenlabs",
+                "voice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "audio/mp3"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"languageCode\": \"en\",\n  \"voiceId\": \"Brian\",\n  \"stability\": 0.5,\n  \"similarityBoost\": 0.75\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5342e289-4022-4d64-a21e-23cc503a3b4d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "elevenlabs",
+                    "voice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "audio/mp3"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"languageCode\": \"en\",\n  \"voiceId\": \"Brian\",\n  \"stability\": 0.5,\n  \"similarityBoost\": 0.75\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mp3"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cc190fc-2d44-43c1-b26b-cea7383740c8",
+          "name": "Eleven Labs Controller voice Asset",
+          "request": {
+            "name": "Eleven Labs Controller voice Asset",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "elevenlabs",
+                "voice-asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"syntesizedSpeech\": {\n    \"text\": \"<string>\",\n    \"languageCode\": \"en\",\n    \"voiceId\": \"Brian\",\n    \"stability\": 0.5,\n    \"similarityBoost\": 0.75\n  },\n  \"name\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "440ec18b-e5ee-4256-962e-003034b9a0d2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "elevenlabs",
+                    "voice-asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"syntesizedSpeech\": {\n    \"text\": \"<string>\",\n    \"languageCode\": \"en\",\n    \"voiceId\": \"Brian\",\n    \"stability\": 0.5,\n    \"similarityBoost\": 0.75\n  },\n  \"name\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98f7adc6-6594-420f-99e3-699653fbdf90",
+          "name": "Eleven Labs Controller speech Marks",
+          "request": {
+            "name": "Eleven Labs Controller speech Marks",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "elevenlabs",
+                "speech_marks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"languageCode\": \"en\",\n  \"voiceId\": \"Brian\",\n  \"stability\": 0.5,\n  \"similarityBoost\": 0.75\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79b65f51-ac75-456e-a76f-f022b57efc76",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "elevenlabs",
+                    "speech_marks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"languageCode\": \"en\",\n  \"voiceId\": \"Brian\",\n  \"stability\": 0.5,\n  \"similarityBoost\": 0.75\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"audio_base64\": \"string\",\n  \"alignment\": {\n    \"characters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"character_start_times_seconds\": [\n      5447.751399435688,\n      5785.236203748806\n    ],\n    \"character_end_times_seconds\": [\n      796.8195969115055,\n      4420.1361153351845\n    ]\n  },\n  \"normalized_alignment\": {\n    \"characters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"character_start_times_seconds\": [\n      5295.540955417013,\n      98.5467345309754\n    ],\n    \"character_end_times_seconds\": [\n      9824.20383982779,\n      5303.87888826813\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecfe998a-12bf-4843-a0ba-69b58b954bfc",
+          "name": "Eleven Labs Controller describe Voices",
+          "request": {
+            "name": "Eleven Labs Controller describe Voices",
+            "description": {},
+            "url": {
+              "path": [
+                "autogame",
+                "elevenlabs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5846f1aa-5218-457f-8f57-85d1c97e6c7e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autogame",
+                    "elevenlabs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 9639.36599322194,\n  \"voices\": [\n    {\n      \"voice_id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"string\",\n      \"fine_tuning\": {},\n      \"labels\": {},\n      \"description\": \"string\",\n      \"preview_url\": \"string\",\n      \"available_for_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"settings\": {},\n      \"sharing\": {},\n      \"high_quality_base_model_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"safety_control\": {},\n      \"voice_verification\": {},\n      \"owner_id\": \"string\",\n      \"permission_on_resource\": \"string\",\n      \"is_legacy\": true\n    },\n    {\n      \"voice_id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"string\",\n      \"fine_tuning\": {},\n      \"labels\": {},\n      \"description\": \"string\",\n      \"preview_url\": \"string\",\n      \"available_for_tiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"settings\": {},\n      \"sharing\": {},\n      \"high_quality_base_model_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"safety_control\": {},\n      \"voice_verification\": {},\n      \"owner_id\": \"string\",\n      \"permission_on_resource\": \"string\",\n      \"is_legacy\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7ed2d23c-7726-4403-bb2f-709de0f2cf45",
+    "name": "Versusgame Autogame API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

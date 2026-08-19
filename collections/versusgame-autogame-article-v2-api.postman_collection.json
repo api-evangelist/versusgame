@@ -1,0 +1,1660 @@
+{
+  "item": [
+    {
+      "id": "912b3fe6-fe95-4bea-9037-b3e307667adf",
+      "name": "autogame/article/v2",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "585fee15-009a-4e77-af9f-26bbca415d51",
+          "name": "Article Controller V2 create Article v2",
+          "request": {
+            "name": "Article Controller V2 create Article v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"partnerId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "665edb93-e203-4f56-a2bb-b9eeb447bec9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"partnerId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"rawOpenAiChat\": [],\n  \"hostName\": \"string\",\n  \"partnerId\": \"string\",\n  \"sourceType\": \"blob\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8fc42e4-ba60-44fd-a32a-4ca2c24d9a9d",
+          "name": "Article Controller V2 find Articles v2",
+          "request": {
+            "name": "Article Controller V2 find Articles v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hostName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "partnerId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "take",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c0ed3e53-b380-4da7-8203-19d75818551a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hostName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"url\": \"string\",\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"rawOpenAiChat\": [],\n    \"hostName\": \"string\",\n    \"partnerId\": \"string\",\n    \"sourceType\": \"widget\"\n  },\n  {\n    \"id\": \"string\",\n    \"url\": \"string\",\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"rawOpenAiChat\": [],\n    \"hostName\": \"string\",\n    \"partnerId\": \"string\",\n    \"sourceType\": \"blob\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5139a502-c0c9-467e-939a-239da6d4a2ec",
+          "name": "Article Controller V2 drafy By Id v2",
+          "request": {
+            "name": "Article Controller V2 drafy By Id v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "drafts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "166ec690-46eb-4121-ac1b-15c3762420f3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"articleId\": \"string\",\n  \"url\": \"string\",\n  \"createdAt\": \"1996-03-31T01:35:37.249Z\",\n  \"updatedAt\": \"1949-09-03T09:34:23.352Z\",\n  \"state\": \"approved\",\n  \"lock\": 7758.486356150995,\n  \"version\": 9134.766195782773,\n  \"gameIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"article\": {\n    \"sourceType\": \"widget\",\n    \"id\": \"string\",\n    \"articleKey\": \"string\",\n    \"partnerId\": \"string\",\n    \"url\": \"string\",\n    \"hostName\": \"string\",\n    \"createdAt\": \"1979-02-18T04:16:06.162Z\",\n    \"updatedAt\": \"1948-11-14T11:43:33.499Z\",\n    \"drafts\": [\n      {\n        \"articleId\": \"string\",\n        \"url\": \"string\",\n        \"createdAt\": \"1988-01-18T07:04:24.788Z\",\n        \"updatedAt\": \"1975-04-19T21:11:02.583Z\",\n        \"state\": \"published\",\n        \"lock\": 7432.803092802638,\n        \"version\": 9468.01465167171,\n        \"gameIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"article\": {\n          \"value\": \"<Circular reference to #/components/schemas/ArticleEntity detected>\"\n        },\n        \"id\": \"string\",\n        \"gameDetail\": {\n          \"synopsis\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"overlays\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"question\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"answers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctAnswer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"text\": \"string\",\n        \"userId\": \"string\",\n        \"manualOverrides\": {},\n        \"systemMessage\": \"string\",\n        \"systemMessageName\": \"string\",\n        \"gameType\": \"INSTANT_POLL\"\n      },\n      {\n        \"articleId\": \"string\",\n        \"url\": \"string\",\n        \"createdAt\": \"1984-01-04T20:23:18.562Z\",\n        \"updatedAt\": \"2019-06-03T15:50:04.770Z\",\n        \"state\": \"sqa-to-review\",\n        \"lock\": 603.9764213049604,\n        \"version\": 9451.000673135697,\n        \"gameIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"article\": {\n          \"value\": \"<Circular reference to #/components/schemas/ArticleEntity detected>\"\n        },\n        \"id\": \"string\",\n        \"gameDetail\": {\n          \"synopsis\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"overlays\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"question\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"answers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctAnswer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"text\": \"string\",\n        \"userId\": \"string\",\n        \"manualOverrides\": {},\n        \"systemMessage\": \"string\",\n        \"systemMessageName\": \"string\",\n        \"gameType\": \"TRIVIA\"\n      }\n    ]\n  },\n  \"id\": \"string\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"string\",\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 3958.427052899672\n        }\n      },\n      {\n        \"text\": \"string\",\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 5535.062609496262\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": 2541.7648216980724,\n        \"end_chunk\": 2947.3633059836,\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 7317.950092622143\n        }\n      },\n      {\n        \"start_chunk\": 6529.944228327771,\n        \"end_chunk\": 7595.192307840321,\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 3950.3289562218756\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"string\",\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 5310.191590633617\n        }\n      },\n      {\n        \"text\": \"string\",\n        \"images_query\": \"string\",\n        \"image_type\": \"string\",\n        \"image_search\": {\n          \"searchId\": \"string\",\n          \"selected\": 8480.576022982821\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"string\"\n      },\n      {\n        \"text\": \"string\"\n      }\n    ],\n    \"correctAnswer\": \"B\"\n  },\n  \"text\": \"string\",\n  \"userId\": \"string\",\n  \"manualOverrides\": {},\n  \"systemMessage\": \"string\",\n  \"systemMessageName\": \"string\",\n  \"gameType\": \"POLL\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10088cd5-c53e-4841-b6f9-2dd6d5372992",
+          "name": "Article Controller V2 get Domains v2",
+          "request": {
+            "name": "Article Controller V2 get Domains v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "partners",
+                ":partnerId",
+                "domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partnerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2d575eeb-ac0a-4c4f-981d-ed38e4ad68bd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "partners",
+                    ":partnerId",
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partnerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"hostName\": \"string\",\n      \"id\": \"string\",\n      \"draftsCount\": 6683.642381433206\n    },\n    {\n      \"hostName\": \"string\",\n      \"id\": \"string\",\n      \"draftsCount\": 7139.590797115602\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "732b9fe6-fad3-4b87-8777-fac247f70213",
+          "name": "Article Controller V2 get Domain Articles v2",
+          "request": {
+            "name": "Article Controller V2 get Domain Articles v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "partners",
+                ":partnerId",
+                "domains",
+                ":domainId",
+                "articles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partnerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fabeac58-cc74-435a-aa39-6c896d1f3ecf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "partners",
+                    ":partnerId",
+                    "domains",
+                    ":domainId",
+                    "articles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partnerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"url\": \"string\",\n      \"id\": \"string\",\n      \"draftsCount\": 5962.499704515622,\n      \"sourceType\": \"string\",\n      \"createDay\": \"2026-08-09T21:51:18.709Z\"\n    },\n    {\n      \"url\": \"string\",\n      \"id\": \"string\",\n      \"draftsCount\": 2661.5351417103193,\n      \"sourceType\": \"string\",\n      \"createDay\": \"1987-05-24T03:16:49.154Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0fe75db-ffcb-461f-95dd-d8ccb8fa0d32",
+          "name": "Article Controller V2 get Articles Draft v2",
+          "request": {
+            "name": "Article Controller V2 get Articles Draft v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "partners",
+                ":partnerId",
+                "articles",
+                ":articleId",
+                "drafts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partnerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "articleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f3e2bed-21de-47bb-80dc-11f1fa58b585",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "partners",
+                    ":partnerId",
+                    "articles",
+                    ":articleId",
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partnerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "articleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"articleId\": \"string\",\n    \"url\": \"string\",\n    \"createdAt\": \"2017-06-03T22:35:10.602Z\",\n    \"updatedAt\": \"1974-08-10T23:45:32.820Z\",\n    \"state\": \"<string>\",\n    \"lock\": 6223.231611753226,\n    \"version\": 6788.1081060351635,\n    \"gameIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"article\": {\n      \"sourceType\": \"widget\",\n      \"id\": \"string\",\n      \"articleKey\": \"string\",\n      \"partnerId\": \"string\",\n      \"url\": \"string\",\n      \"hostName\": \"string\",\n      \"createdAt\": \"2023-03-28T08:24:54.235Z\",\n      \"updatedAt\": \"2021-08-20T15:32:24.888Z\",\n      \"drafts\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/GameDraftEntity detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/GameDraftEntity detected>\"\n        }\n      ]\n    },\n    \"id\": \"string\",\n    \"gameDetail\": {\n      \"synopsis\": [\n        {\n          \"text\": \"string\",\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"text\": \"string\",\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"overlays\": [\n        {\n          \"start_chunk\": 2122.0654448710598,\n          \"end_chunk\": 3775.906216281243,\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"start_chunk\": 6899.169546844356,\n          \"end_chunk\": 2913.9206398122265,\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"question\": [\n        {\n          \"text\": \"string\",\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"text\": \"string\",\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"answers\": [\n        {\n          \"text\": \"string\"\n        },\n        {\n          \"text\": \"string\"\n        }\n      ],\n      \"correctAnswer\": \"A\"\n    },\n    \"text\": \"string\",\n    \"userId\": \"string\",\n    \"manualOverrides\": {},\n    \"systemMessage\": \"string\",\n    \"systemMessageName\": \"string\",\n    \"gameType\": \"TRIVIA\"\n  },\n  {\n    \"articleId\": \"string\",\n    \"url\": \"string\",\n    \"createdAt\": \"1984-05-03T21:39:03.801Z\",\n    \"updatedAt\": \"1989-09-04T12:43:32.063Z\",\n    \"state\": \"<string>\",\n    \"lock\": 1310.1824186242584,\n    \"version\": 5020.578664592244,\n    \"gameIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"article\": {\n      \"sourceType\": \"manual\",\n      \"id\": \"string\",\n      \"articleKey\": \"string\",\n      \"partnerId\": \"string\",\n      \"url\": \"string\",\n      \"hostName\": \"string\",\n      \"createdAt\": \"1986-04-04T22:36:55.235Z\",\n      \"updatedAt\": \"1960-06-23T16:04:14.612Z\",\n      \"drafts\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/GameDraftEntity detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/GameDraftEntity detected>\"\n        }\n      ]\n    },\n    \"id\": \"string\",\n    \"gameDetail\": {\n      \"synopsis\": [\n        {\n          \"text\": \"string\",\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"text\": \"string\",\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"overlays\": [\n        {\n          \"start_chunk\": 2698.3638431674917,\n          \"end_chunk\": 8230.301951511425,\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"start_chunk\": 563.6062640405004,\n          \"end_chunk\": 6374.371757702795,\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"question\": [\n        {\n          \"text\": \"string\",\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"text\": \"string\",\n          \"images_query\": \"string\",\n          \"image_type\": \"string\",\n          \"image_search\": {\n            \"searchId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"answers\": [\n        {\n          \"text\": \"string\"\n        },\n        {\n          \"text\": \"string\"\n        }\n      ],\n      \"correctAnswer\": \"B\"\n    },\n    \"text\": \"string\",\n    \"userId\": \"string\",\n    \"manualOverrides\": {},\n    \"systemMessage\": \"string\",\n    \"systemMessageName\": \"string\",\n    \"gameType\": \"INSTANT_POLL\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d79da0f5-6371-4223-ba1c-ad5306bcc703",
+          "name": "Article Controller V2 create Draft v2",
+          "request": {
+            "name": "Article Controller V2 create Draft v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "drafts",
+                ":articleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "articleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gameType\": \"<string>\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"systemMessage\": \"<string>\",\n  \"systemMessageName\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4aeb3d25-f317-4171-b60b-8f36c160ea3d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":articleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "articleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gameType\": \"<string>\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"systemMessage\": \"<string>\",\n  \"systemMessageName\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gameType\": \"<string>\",\n  \"state\": \"<string>\",\n  \"id\": \"string\",\n  \"gameIndex\": \"string\",\n  \"lock\": 79.90838191834104,\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"manualOverrides\": {},\n  \"version\": 9541.236228414458,\n  \"gameIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"systemMessage\": \"string\",\n  \"systemMessageName\": \"string\",\n  \"url\": \"string\",\n  \"userId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d44c1d8f-5680-4214-b539-5834bad3b7e4",
+          "name": "Article Controller V2 set State v2",
+          "request": {
+            "name": "Article Controller V2 set State v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "drafts",
+                ":id",
+                "set_state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<number>\",\n  \"state\": \"<string>\",\n  \"gameIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lock\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "456e7340-6ac4-4ae3-8643-d65a5aa5565b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":id",
+                    "set_state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<number>\",\n  \"state\": \"<string>\",\n  \"gameIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lock\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9b31257-3757-4772-9b03-cd2651595b46",
+          "name": "Article Controller V2 new Version v2",
+          "request": {
+            "name": "Article Controller V2 new Version v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "drafts",
+                ":id",
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<number>\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"manualOverrides\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9db04f25-93da-4ed0-a964-7f036ab6d0bd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":id",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<number>\",\n  \"gameDetail\": {\n    \"synopsis\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"overlays\": [\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"start_chunk\": \"<number>\",\n        \"end_chunk\": \"<number>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"question\": [\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      },\n      {\n        \"text\": \"<string>\",\n        \"images_query\": \"<string>\",\n        \"image_type\": \"<string>\",\n        \"image_search\": {\n          \"searchId\": \"<string>\",\n          \"selected\": \"<number>\"\n        }\n      }\n    ],\n    \"answers\": [\n      {\n        \"text\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\"\n      }\n    ],\n    \"correctAnswer\": \"<string>\"\n  },\n  \"manualOverrides\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "400db565-a65f-4a50-9da2-7e44b6c0f9bf",
+          "name": "Article Controller V2 list Game Drafts v2",
+          "request": {
+            "name": "Article Controller V2 list Game Drafts v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "drafts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeState",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "gameType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "articleId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "systemMessageNames",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "systemMessageNames",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lock",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "partnerId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2a9f1de6-b7db-4e86-8303-8a494bf2c571",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gameType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "articleId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "systemMessageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "systemMessageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lock",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"articleId\": \"string\",\n      \"url\": \"string\",\n      \"createdAt\": \"1998-05-09T01:43:06.378Z\",\n      \"updatedAt\": \"1953-09-09T13:09:37.732Z\",\n      \"state\": \"<string>\",\n      \"lock\": 3994.7443061771346,\n      \"version\": 5743.639519676439,\n      \"gameIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"article\": {\n        \"sourceType\": \"widget\",\n        \"id\": \"string\",\n        \"articleKey\": \"string\",\n        \"partnerId\": \"string\",\n        \"url\": \"string\",\n        \"hostName\": \"string\",\n        \"createdAt\": \"1953-02-15T16:25:30.245Z\",\n        \"updatedAt\": \"2014-01-24T01:35:56.919Z\",\n        \"drafts\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/GameDraftEntity detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/GameDraftEntity detected>\"\n          }\n        ]\n      },\n      \"id\": \"string\",\n      \"gameDetail\": {\n        \"synopsis\": [\n          {\n            \"text\": \"<string>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"<string>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"overlays\": [\n          {\n            \"start_chunk\": \"<number>\",\n            \"end_chunk\": \"<number>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"start_chunk\": \"<number>\",\n            \"end_chunk\": \"<number>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"question\": [\n          {\n            \"text\": \"<string>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"<string>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"answers\": [\n          {\n            \"text\": \"<string>\"\n          },\n          {\n            \"text\": \"<string>\"\n          }\n        ],\n        \"correctAnswer\": \"<string>\"\n      },\n      \"text\": \"string\",\n      \"userId\": \"string\",\n      \"manualOverrides\": {},\n      \"systemMessage\": \"string\",\n      \"systemMessageName\": \"string\",\n      \"gameType\": \"<string>\"\n    },\n    {\n      \"articleId\": \"string\",\n      \"url\": \"string\",\n      \"createdAt\": \"2018-06-13T09:31:35.102Z\",\n      \"updatedAt\": \"1980-10-29T02:57:51.393Z\",\n      \"state\": \"<string>\",\n      \"lock\": 3049.751757277698,\n      \"version\": 9188.256793126035,\n      \"gameIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"article\": {\n        \"sourceType\": \"blob\",\n        \"id\": \"string\",\n        \"articleKey\": \"string\",\n        \"partnerId\": \"string\",\n        \"url\": \"string\",\n        \"hostName\": \"string\",\n        \"createdAt\": \"2001-03-02T11:56:50.822Z\",\n        \"updatedAt\": \"2007-02-25T07:58:22.430Z\",\n        \"drafts\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/GameDraftEntity detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/GameDraftEntity detected>\"\n          }\n        ]\n      },\n      \"id\": \"string\",\n      \"gameDetail\": {\n        \"synopsis\": [\n          {\n            \"text\": \"<string>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"<string>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"overlays\": [\n          {\n            \"start_chunk\": \"<number>\",\n            \"end_chunk\": \"<number>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"start_chunk\": \"<number>\",\n            \"end_chunk\": \"<number>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"question\": [\n          {\n            \"text\": \"<string>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"text\": \"<string>\",\n            \"images_query\": \"<string>\",\n            \"image_type\": \"<string>\",\n            \"image_search\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"answers\": [\n          {\n            \"text\": \"<string>\"\n          },\n          {\n            \"text\": \"<string>\"\n          }\n        ],\n        \"correctAnswer\": \"<string>\"\n      },\n      \"text\": \"string\",\n      \"userId\": \"string\",\n      \"manualOverrides\": {},\n      \"systemMessage\": \"string\",\n      \"systemMessageName\": \"string\",\n      \"gameType\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "607c4336-ed0c-43f2-8f8e-58625b2fe7e9",
+          "name": "Article Controller V2 create Game v2",
+          "request": {
+            "name": "Article Controller V2 create Game v2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "autogame",
+                "article",
+                "drafts",
+                ":draftId",
+                "game"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "draftId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-idempotency-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"<string>\",\n  \"gameType\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"lastJoinTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"gameTitle\": \"<string>\",\n  \"sourceUrl\": \"<string>\",\n  \"categoryId\": \"<string>\",\n  \"sideA\": \"<string>\",\n  \"sideB\": \"<string>\",\n  \"text\": \"<string>\",\n  \"isAd\": \"<boolean>\",\n  \"orientation\": \"<string>\",\n  \"correctAnswer\": \"<string>\",\n  \"videoAssetId\": \"<string>\",\n  \"isPrivate\": \"<boolean>\",\n  \"bingSearch\": \"<string>\",\n  \"bingSearchClaim\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"questionVideoAssetId\": \"<string>\",\n  \"landscapeVideoAssetId\": \"<string>\",\n  \"audioAssetId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87c22e25-7ca9-4ae4-90df-827f83a76d35",
+              "name": "Creates a new game",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "autogame",
+                    "article",
+                    "drafts",
+                    ":draftId",
+                    "game"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draftId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"language\": \"<string>\",\n  \"gameType\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"lastJoinTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"gameTitle\": \"<string>\",\n  \"sourceUrl\": \"<string>\",\n  \"categoryId\": \"<string>\",\n  \"sideA\": \"<string>\",\n  \"sideB\": \"<string>\",\n  \"text\": \"<string>\",\n  \"isAd\": \"<boolean>\",\n  \"orientation\": \"<string>\",\n  \"correctAnswer\": \"<string>\",\n  \"videoAssetId\": \"<string>\",\n  \"isPrivate\": \"<boolean>\",\n  \"bingSearch\": \"<string>\",\n  \"bingSearchClaim\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"questionVideoAssetId\": \"<string>\",\n  \"landscapeVideoAssetId\": \"<string>\",\n  \"audioAssetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"changing_game_result\",\n  \"gameType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"id\": \"string\",\n  \"creatorId\": \"string\",\n  \"creator\": {\n    \"avatar\": \"string\",\n    \"id\": \"string\",\n    \"partnerName\": \"string\",\n    \"avatarAssetId\": \"string\",\n    \"profileColor\": \"string\",\n    \"userName\": \"string\",\n    \"createdAt\": \"2017-02-04T01:37:42.066Z\",\n    \"updatedAt\": \"1951-12-16T12:56:29.474Z\"\n  },\n  \"version\": 9355.007507700604,\n  \"startTime\": \"string\",\n  \"lastJoinTime\": \"string\",\n  \"endTime\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"hostEarnings\": 3799.4483652517665,\n  \"isPendingResult\": true,\n  \"isFinalResult\": true,\n  \"votePercentageSideA\": 572.2122811652052,\n  \"votePercentageSideB\": 3373.4044199579926,\n  \"gameTitle\": \"string\",\n  \"isAd\": false,\n  \"isPrivate\": false,\n  \"bingSearch\": \"string\",\n  \"sideA\": \"string\",\n  \"sideB\": \"string\",\n  \"sourceUrl\": \"string\",\n  \"text\": \"string\",\n  \"categoryId\": \"string\",\n  \"category\": {\n    \"language\": \"<string>\",\n    \"id\": \"string\",\n    \"categoryName\": \"string\",\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"deletedAt\": \"string\",\n    \"sticker\": \"string\",\n    \"icon\": \"string\"\n  },\n  \"winningSide\": \"<string>\",\n  \"stats\": {\n    \"sideA\": {\n      \"whiteTickets\": {\n        \"gameplays\": 5756.37548884733,\n        \"tickets\": 5782.942620924482,\n        \"matched\": 2284.4232776608087\n      },\n      \"blackTickets\": {\n        \"gameplays\": 4823.2052252931835,\n        \"tickets\": 5282.291609602655,\n        \"matched\": 1649.1271593293523\n      },\n      \"freeTickets\": {\n        \"gameplays\": 5004.985587051911,\n        \"tickets\": 9054.922642922844,\n        \"matched\": 2954.8283831727163\n      }\n    },\n    \"sideB\": {\n      \"whiteTickets\": {\n        \"gameplays\": 1073.4764509407146,\n        \"tickets\": 3598.4202934917153,\n        \"matched\": 2072.6598909895165\n      },\n      \"blackTickets\": {\n        \"gameplays\": 9731.595932438724,\n        \"tickets\": 289.58133230362114,\n        \"matched\": 4780.211361103894\n      },\n      \"freeTickets\": {\n        \"gameplays\": 151.04698277357053,\n        \"tickets\": 1848.767448941514,\n        \"matched\": 736.093655284481\n      }\n    }\n  },\n  \"orientation\": \"<string>\",\n  \"correctAnswer\": \"<string>\",\n  \"slushing\": {\n    \"whiteTickets\": 4908.34580611795,\n    \"blackTickets\": 7981.876547313142,\n    \"blackTicketsGameplays\": 4795.504479698867\n  },\n  \"resultChanged\": true,\n  \"bingSearchClaim\": \"string\",\n  \"metadata\": {},\n  \"questionVideoUrls\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"landscapeVideoUrls\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"videoUrls\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"resultUrls\": {\n    \"hls\": \"string\",\n    \"mp4360\": \"string\",\n    \"mp4540\": \"string\",\n    \"mp4720\": \"string\",\n    \"poster\": \"string\"\n  },\n  \"urls\": [\n    \"string\",\n    \"string\"\n  ],\n  \"audioAssetId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bbb05c88-8196-4c40-a2c8-33fa60521abe",
+    "name": "Versusgame Autogame/article/v2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,227 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Creators API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: creators
+paths:
+  /v1/admin/creators/{creatorId}:
+    patch:
+      operationId: CreatorsAdminController_update
+      parameters:
+      - name: creatorId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCreatorDto'
+      responses:
+        '204':
+          description: Updated Creator
+      security:
+      - access-token: []
+      tags:
+      - creators
+    get:
+      operationId: CreatorsAdminController_byId
+      parameters:
+      - name: creatorId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Creator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creator'
+      security:
+      - access-token: []
+      tags:
+      - creators
+  /v1/admin/creators:
+    get:
+      operationId: CreatorsAdminController_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindCreatorDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindCreatorDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Creator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCreator'
+      security:
+      - access-token: []
+      tags:
+      - creators
+  /v1/creators/creators:
+    patch:
+      operationId: CreatorsCreatorsController_update
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCreatorDto'
+      responses:
+        '204':
+          description: Updated Creator
+      security:
+      - access-token: []
+      tags:
+      - creators
+    get:
+      operationId: CreatorsCreatorsController_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindCreatorDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindCreatorDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Creator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCreator'
+      security:
+      - access-token: []
+      tags:
+      - creators
+components:
+  schemas:
+    ListCreator:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    UpdateCreatorDto:
+      type: object
+      properties:
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+    SearchFindCreatorDto:
+      type: object
+      properties:
+        creatorIds:
+          type: array
+          items:
+            type: string
+        partnerName:
+          type: string
+        userName:
+          type: string
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    SortFindCreatorDto:
+      type: object
+      properties:
+        partnerName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        userName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

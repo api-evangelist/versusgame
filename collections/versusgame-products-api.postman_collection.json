@@ -1,0 +1,595 @@
+{
+  "item": [
+    {
+      "id": "baae1554-8192-4a96-a017-737b8a1b0870",
+      "name": "products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34969404-c15f-43b9-a216-17b1f11d97f7",
+          "name": "Products Controller list",
+          "request": {
+            "name": "Products Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "{\"productName\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "{\"amount\":\"<string>\",\"productName\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a19ee2e-db91-4c3e-83e3-c193e244d3ae",
+              "name": "List of Products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"language\": \"es-mx\",\n      \"id\": \"string\",\n      \"productName\": \"string\",\n      \"productDescription\": \"string\",\n      \"whiteTickets\": 7068.210407255472,\n      \"blackTickets\": 2906.4030136475008,\n      \"amount\": 6583.37524276695,\n      \"mostPopular\": true,\n      \"createdAt\": \"2020-09-06T15:27:53.503Z\",\n      \"deletedAt\": \"1986-01-27T01:29:20.799Z\"\n    },\n    {\n      \"language\": \"en-us\",\n      \"id\": \"string\",\n      \"productName\": \"string\",\n      \"productDescription\": \"string\",\n      \"whiteTickets\": 1046.1400307935253,\n      \"blackTickets\": 3279.044835084666,\n      \"amount\": 3893.9865398223606,\n      \"mostPopular\": true,\n      \"createdAt\": \"1967-07-24T11:32:33.187Z\",\n      \"deletedAt\": \"1987-09-18T08:38:52.744Z\"\n    }\n  ],\n  \"total\": 7870.588832855563\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "101a3e2e-40c5-45e8-b398-ed645de2fa5e",
+          "name": "Products Admin Controller create",
+          "request": {
+            "name": "Products Admin Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productName\": \"<string>\",\n  \"productDescription\": \"<string>\",\n  \"whiteTickets\": \"<number>\",\n  \"blackTickets\": \"<number>\",\n  \"amount\": \"<number>\",\n  \"mostPopular\": \"<boolean>\",\n  \"language\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6f265a65-52ed-4116-a52f-d1e7450c12b6",
+              "name": "New Product",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productName\": \"<string>\",\n  \"productDescription\": \"<string>\",\n  \"whiteTickets\": \"<number>\",\n  \"blackTickets\": \"<number>\",\n  \"amount\": \"<number>\",\n  \"mostPopular\": \"<boolean>\",\n  \"language\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"language\": \"en-us\",\n  \"id\": \"string\",\n  \"productName\": \"string\",\n  \"productDescription\": \"string\",\n  \"whiteTickets\": 863.6014174419304,\n  \"blackTickets\": 6014.611540080557,\n  \"amount\": 8845.576019729095,\n  \"mostPopular\": false,\n  \"createdAt\": \"1949-06-20T19:03:09.550Z\",\n  \"deletedAt\": \"2016-02-02T07:26:46.038Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f69bcdec-a800-4142-a774-fc1ab1d56abe",
+          "name": "Products Admin Controller list",
+          "request": {
+            "name": "Products Admin Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "{\"productName\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "{\"amount\":\"<string>\",\"productName\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d21a3ab0-fd6c-4bbe-9b7e-79d321e5a42a",
+              "name": "List of Products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"language\": \"en-us\",\n      \"id\": \"string\",\n      \"productName\": \"string\",\n      \"productDescription\": \"string\",\n      \"whiteTickets\": 2894.7734656003477,\n      \"blackTickets\": 8957.731396742598,\n      \"amount\": 2240.0600491422906,\n      \"mostPopular\": false,\n      \"createdAt\": \"1971-02-19T05:15:42.030Z\",\n      \"deletedAt\": \"2012-06-11T15:13:16.843Z\"\n    },\n    {\n      \"language\": \"es-mx\",\n      \"id\": \"string\",\n      \"productName\": \"string\",\n      \"productDescription\": \"string\",\n      \"whiteTickets\": 3692.3470857638085,\n      \"blackTickets\": 5188.402392990293,\n      \"amount\": 5706.87226775464,\n      \"mostPopular\": true,\n      \"createdAt\": \"1948-06-16T00:17:26.855Z\",\n      \"deletedAt\": \"2022-06-02T07:58:16.189Z\"\n    }\n  ],\n  \"total\": 3929.785490100062\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "550a9102-a2b5-48ed-afbf-1acd7d711de4",
+          "name": "Products Admin Controller update",
+          "request": {
+            "name": "Products Admin Controller update",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "products",
+                ":productId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productName\": \"<string>\",\n  \"productDescription\": \"<string>\",\n  \"whiteTickets\": \"<number>\",\n  \"whiteTicketImage\": \"<string>\",\n  \"blackTickets\": \"<number>\",\n  \"blackTicketImage\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"mostPopular\": \"<boolean>\",\n  \"language\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5cb80bf6-eeff-4fd1-92f1-3044485dbc21",
+              "name": "Updated Product",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productName\": \"<string>\",\n  \"productDescription\": \"<string>\",\n  \"whiteTickets\": \"<number>\",\n  \"whiteTicketImage\": \"<string>\",\n  \"blackTickets\": \"<number>\",\n  \"blackTicketImage\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"mostPopular\": \"<boolean>\",\n  \"language\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d13c597-322e-450b-b699-06345cff7cc5",
+          "name": "Products Admin Controller by Id",
+          "request": {
+            "name": "Products Admin Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "products",
+                ":productId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "993ad835-5326-4bdd-b40d-747ef36dec6a",
+              "name": "Get Product",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"language\": \"en-us\",\n  \"id\": \"string\",\n  \"productName\": \"string\",\n  \"productDescription\": \"string\",\n  \"whiteTickets\": 863.6014174419304,\n  \"blackTickets\": 6014.611540080557,\n  \"amount\": 8845.576019729095,\n  \"mostPopular\": false,\n  \"createdAt\": \"1949-06-20T19:03:09.550Z\",\n  \"deletedAt\": \"2016-02-02T07:26:46.038Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e14d4974-5c3e-4a28-b427-134c0c51b95d",
+    "name": "Versusgame Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

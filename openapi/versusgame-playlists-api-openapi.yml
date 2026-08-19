@@ -1,0 +1,658 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Playlists API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: playlists
+paths:
+  /v1/playlists:
+    get:
+      operationId: PlaylistsController_list
+      parameters:
+      - name: _expand
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/PlaylistExpand'
+      - name: expand
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaylistExpand'
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindPlaylistDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindPlaylistDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: autofill
+        required: false
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of Playlists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPlaylist'
+      tags:
+      - playlists
+  /v1/creator/playlists:
+    post:
+      operationId: PlaylistsCreatorController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlaylistDto'
+      responses:
+        '201':
+          description: New Playlist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playlist'
+      security:
+      - access-token: []
+      tags:
+      - playlists
+    get:
+      operationId: PlaylistsCreatorController_list
+      parameters:
+      - name: _expand
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/PlaylistExpand'
+      - name: expand
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaylistExpand'
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindPlaylistDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindPlaylistDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: autofill
+        required: false
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of Playlist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPlaylist'
+      security:
+      - access-token: []
+      tags:
+      - playlists
+  /v1/creator/playlists/{playlistId}:
+    patch:
+      operationId: PlaylistsCreatorController_update
+      parameters:
+      - name: playlistId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlaylistDto'
+      responses:
+        '204':
+          description: Updated Playlist
+      security:
+      - access-token: []
+      tags:
+      - playlists
+    get:
+      operationId: PlaylistsCreatorController_byId
+      parameters:
+      - name: playlistId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Playlist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playlist'
+      security:
+      - access-token: []
+      tags:
+      - playlists
+  /v1/creator/playlists/{id}/refresh:
+    post:
+      operationId: PlaylistsCreatorController_refreshAutofill
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Refresh a playlist Autofill games  by Id
+      security:
+      - access-token: []
+      tags:
+      - playlists
+components:
+  schemas:
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    PlaylistExpand:
+      type: string
+      enum:
+      - games
+      - creator
+      - widgets
+    GameSet:
+      type: object
+      properties:
+        id:
+          type: string
+        partnerId:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Creator'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+      required:
+      - id
+      - partner
+      - createdAt
+      - updatedAt
+      - startTime
+      - endTime
+      - deletedAt
+      - games
+    Widget:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        id:
+          type: string
+        name:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        playlistId:
+          type: string
+        playlist:
+          $ref: '#/components/schemas/Playlist'
+        deletedAt:
+          format: date-time
+          type: string
+      required:
+      - type
+      - id
+      - name
+      - creatorId
+      - creator
+      - playlistId
+      - playlist
+      - deletedAt
+    Playlist:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameSet:
+          $ref: '#/components/schemas/GameSet'
+        id:
+          type: string
+        totalGames:
+          type: number
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        widgets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Widget'
+        gamesOrder:
+          type: array
+          items:
+            type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofilledGames:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofillCategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        autofillCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofillExcludedCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofill:
+          type: boolean
+      required:
+      - language
+      - id
+      - totalGames
+      - creatorId
+      - creator
+      - widgets
+      - games
+      - autofilledGames
+      - autofill
+    ListPlaylist:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Playlist'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    CreatePlaylistDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameIds:
+          type: array
+          items:
+            type: string
+        autofill:
+          type: boolean
+        totalGames:
+          type: number
+        autofillCategories:
+          type: array
+          items:
+            type: string
+        autofillCreators:
+          type: array
+          items:
+            type: string
+        autofillExcludedCreators:
+          type: array
+          items:
+            type: string
+      required:
+      - language
+      - autofill
+      - totalGames
+    Game:
+      type: object
+      properties:
+        audioUrl:
+          type: string
+        videoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        questionVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        landscapeVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        resultUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameStates'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        id:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+        resultAssetId:
+          type: string
+        text:
+          type: string
+        categoryId:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        urls:
+          type: array
+          items:
+            type: string
+      required:
+      - audioUrl
+      - videoUrls
+      - questionVideoUrls
+      - landscapeVideoUrls
+      - resultUrls
+      - state
+      - language
+      - gameType
+      - id
+      - creatorId
+      - creator
+      - startTime
+      - endTime
+      - lastJoinTime
+      - gameTitle
+      - sourceUrl
+      - sideA
+      - sideB
+      - text
+      - categoryId
+      - category
+      - isAd
+      - createdAt
+      - updatedAt
+      - version
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    UpdatePlaylistDto:
+      type: object
+      properties:
+        gameIds:
+          type: array
+          items:
+            type: string
+        autofill:
+          type: boolean
+        totalGames:
+          type: number
+        autofillCategories:
+          type: array
+          items:
+            type: string
+        autofillCreators:
+          type: array
+          items:
+            type: string
+        autofillExcludedCreators:
+          type: array
+          items:
+            type: string
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    SearchFindPlaylistDto:
+      type: object
+      properties:
+        creatorIds:
+          type: array
+          items:
+            type: string
+        ids:
+          type: array
+          items:
+            type: string
+        autofill:
+          type: boolean
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    SortFindPlaylistDto:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    WidgetTypes:
+      type: string
+      enum:
+      - inline
+      - expanding
+      - mobile-expanding
+      - docked
+      - carousel
+      - sidebar
+      - playlist
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

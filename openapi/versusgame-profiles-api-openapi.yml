@@ -1,0 +1,395 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Profiles API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: profiles
+paths:
+  /v1/profiles:
+    get:
+      operationId: ProfilesController_me
+      parameters: []
+      responses:
+        '200':
+          description: Users profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+      security:
+      - access-token: []
+      tags:
+      - profiles
+    patch:
+      operationId: ProfilesController_update
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProfileDto'
+      responses:
+        '204':
+          description: Update Profile
+      security:
+      - access-token: []
+      tags:
+      - profiles
+  /v1/profiles/{id}:
+    get:
+      operationId: ProfilesController_byId
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Users profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+      security:
+      - access-token: []
+      tags:
+      - profiles
+  /v1/profiles/username_available:
+    post:
+      operationId: ProfilesController_usernameAvailable
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidUsernameDto'
+      responses:
+        '204':
+          description: Verifies if a username is available or not
+      tags:
+      - profiles
+  /v1/admin/profiles/{id}:
+    patch:
+      operationId: ProfileAdminController_update
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProfileDto'
+      responses:
+        '204':
+          description: Updated Profile
+      security:
+      - access-token: []
+      tags:
+      - profiles
+    get:
+      operationId: ProfileAdminController_byId
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+      security:
+      - access-token: []
+      tags:
+      - profiles
+  /v1/admin/profiles:
+    get:
+      operationId: ProfileAdminController_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindProfileEmailDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindProfileDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Expanded Profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListExpandedProfile'
+      security:
+      - access-token: []
+      tags:
+      - profiles
+components:
+  schemas:
+    ListExpandedProfile:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExpandedProfile'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    ExpandedProfile:
+      type: object
+      properties:
+        avatar:
+          type: string
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        balance:
+          $ref: '#/components/schemas/WalletResponse'
+        id:
+          type: string
+        username:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - avatar
+      - roles
+      - balance
+      - id
+      - username
+      - profileColor
+      - createdAt
+      - updatedAt
+    WalletResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        coins:
+          type: number
+        pendingCoins:
+          type: number
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        grayTickets:
+          type: number
+        points:
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        canCollectFreeGift:
+          type: boolean
+        gamesDeclared:
+          type: number
+        gamesCorrectAnswers:
+          type: number
+        achievements:
+          type: array
+          items:
+            type: string
+        currentLeague:
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+          type: string
+        gamePlaysSinceDemotion:
+          type: number
+        lifetimeGamesPlayed:
+          type: number
+        emailVerified:
+          type: boolean
+        leagues:
+          type: array
+          items:
+            $ref: '#/components/schemas/WalletLeague'
+        referralCount:
+          type: number
+        dailySetCounts:
+          $ref: '#/components/schemas/DailySetCount'
+      required:
+      - id
+      - coins
+      - pendingCoins
+      - whiteTickets
+      - blackTickets
+      - grayTickets
+      - points
+      - createdAt
+      - updatedAt
+      - version
+      - canCollectFreeGift
+      - gamesDeclared
+      - gamesCorrectAnswers
+      - achievements
+      - currentLeague
+      - gamePlaysSinceDemotion
+      - lifetimeGamesPlayed
+      - emailVerified
+      - referralCount
+      - dailySetCounts
+    WalletLeague:
+      type: object
+      properties:
+        name:
+          type: string
+        leaderboardId:
+          type: string
+      required:
+      - name
+      - leaderboardId
+    DailySetCount:
+      type: object
+      properties:
+        totalCompleted:
+          type: number
+          default: 0
+        totalWins:
+          type: number
+          default: 0
+        totalLosses:
+          type: number
+          default: 0
+        totalTies:
+          type: number
+          default: 0
+      required:
+      - totalCompleted
+      - totalWins
+      - totalLosses
+      - totalTies
+    SortFindProfileDto:
+      type: object
+      properties:
+        username:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    SearchFindProfileEmailDto:
+      type: object
+      properties:
+        userEmail:
+          type: string
+        username:
+          type: string
+        usernameLike:
+          type: string
+        ids:
+          type: array
+          items:
+            type: string
+    ValidUsernameDto:
+      type: object
+      properties:
+        username:
+          type: string
+      required:
+      - username
+    UpdateProfileDto:
+      type: object
+      properties:
+        username:
+          type: string
+        profileColor:
+          type: string
+        avatarAssetId:
+          type:
+          - string
+          - 'null'
+    Profile:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - avatar
+      - id
+      - username
+      - profileColor
+      - createdAt
+      - updatedAt
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    Role:
+      type: string
+      enum:
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

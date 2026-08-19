@@ -1,0 +1,336 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Wallets API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: wallets
+paths:
+  /v1/wallets/account-balance:
+    get:
+      operationId: WalletsController_getAccountBalance
+      parameters: []
+      responses:
+        '200':
+          description: The account balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletResponse'
+      security:
+      - access-token: []
+      tags:
+      - wallets
+  /v1/wallets/claim-daily-gift:
+    post:
+      operationId: WalletsController_claimDailyGift
+      parameters: []
+      responses:
+        '200':
+          description: Claim Daily Gift Tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimDailyGiftResponse'
+      security:
+      - access-token: []
+      tags:
+      - wallets
+  /v1/admin/wallets/{userId}:
+    put:
+      operationId: AdminController_updateUserWallet
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminUpdateFundsDto'
+      responses:
+        '204':
+          description: Updated User Wallet via Admin Controls
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateWalletResponse'
+      security:
+      - access-token: []
+      tags:
+      - wallets
+  /v1/admin/wallets/{userId}/demote:
+    put:
+      operationId: AdminController_demoteUserWallet
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DemoteUserDto'
+      responses:
+        '200':
+          description: Demotes User Wallet via Admin Controls
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletResponse'
+      security:
+      - access-token: []
+      tags:
+      - wallets
+  /v1/admin/wallets/{userId}/promote:
+    put:
+      operationId: AdminController_promoteUserWallet
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromoteUserDto'
+      responses:
+        '200':
+          description: Promotes User Wallet via Admin Controls
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletResponse'
+      security:
+      - access-token: []
+      tags:
+      - wallets
+components:
+  schemas:
+    PromoteUserDto:
+      type: object
+      properties:
+        leaderboardLeague:
+          type: string
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+        distributorId:
+          type: string
+      required:
+      - leaderboardLeague
+      - distributorId
+    WalletResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        coins:
+          type: number
+        pendingCoins:
+          type: number
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        grayTickets:
+          type: number
+        points:
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        canCollectFreeGift:
+          type: boolean
+        gamesDeclared:
+          type: number
+        gamesCorrectAnswers:
+          type: number
+        achievements:
+          type: array
+          items:
+            type: string
+        currentLeague:
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+          type: string
+        gamePlaysSinceDemotion:
+          type: number
+        lifetimeGamesPlayed:
+          type: number
+        emailVerified:
+          type: boolean
+        leagues:
+          type: array
+          items:
+            $ref: '#/components/schemas/WalletLeague'
+        referralCount:
+          type: number
+        dailySetCounts:
+          $ref: '#/components/schemas/DailySetCount'
+      required:
+      - id
+      - coins
+      - pendingCoins
+      - whiteTickets
+      - blackTickets
+      - grayTickets
+      - points
+      - createdAt
+      - updatedAt
+      - version
+      - canCollectFreeGift
+      - gamesDeclared
+      - gamesCorrectAnswers
+      - achievements
+      - currentLeague
+      - gamePlaysSinceDemotion
+      - lifetimeGamesPlayed
+      - emailVerified
+      - referralCount
+      - dailySetCounts
+    WalletLeague:
+      type: object
+      properties:
+        name:
+          type: string
+        leaderboardId:
+          type: string
+      required:
+      - name
+      - leaderboardId
+    DailySetCount:
+      type: object
+      properties:
+        totalCompleted:
+          type: number
+          default: 0
+        totalWins:
+          type: number
+          default: 0
+        totalLosses:
+          type: number
+          default: 0
+        totalTies:
+          type: number
+          default: 0
+      required:
+      - totalCompleted
+      - totalWins
+      - totalLosses
+      - totalTies
+    ClaimDailyGiftResponse:
+      type: object
+      properties:
+        amount:
+          type: number
+      required:
+      - amount
+    FundsUpdatedReasons:
+      type: string
+      enum:
+      - free_gift
+      - host_cut
+      - referrer_cut
+      - parent_cut
+      - transaction_voided
+      - game_played
+      - game_outcome
+      - pending_outcome
+      - purchase
+      - redeem
+      - refund
+      - payout
+      - admin_update
+      - distributor_cut
+      - achievement
+    DemoteUserDto:
+      type: object
+      properties:
+        distributorId:
+          type: string
+      required:
+      - distributorId
+    ValidUpdateFund:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/ValidUpdateFunds'
+        amount:
+          type: number
+      required:
+      - type
+      - amount
+    ValidUpdateFunds:
+      type: string
+      enum:
+      - black
+      - white
+      - coin
+      - point
+    UpdateWalletResponse:
+      type: object
+      properties:
+        version:
+          type: number
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - updatedAt
+    AdminUpdateFundsDto:
+      type: object
+      properties:
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/FundsUpdatedReasons'
+        walletVersion:
+          type: number
+        funds:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidUpdateFund'
+        adminDescription:
+          type: string
+        distributorId:
+          type: string
+        gameCorrectAnswer:
+          type: boolean
+        gameDeclared:
+          type: boolean
+      required:
+      - reason
+      - funds
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

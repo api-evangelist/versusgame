@@ -1,0 +1,28 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Versusgame Achievements API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "achievements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AchievementsController_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/achievements"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

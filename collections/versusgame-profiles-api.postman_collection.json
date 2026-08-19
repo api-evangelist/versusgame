@@ -1,0 +1,784 @@
+{
+  "item": [
+    {
+      "id": "89b402b6-ad88-4119-87fe-aa355580b074",
+      "name": "profiles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9c94919-9e2b-413c-8342-deae90d0ba45",
+          "name": "Profiles Controller me",
+          "request": {
+            "name": "Profiles Controller me",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "95021e5c-1d95-4862-85b8-4d0e197ae4eb",
+              "name": "Users profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"avatar\": \"string\",\n  \"id\": \"string\",\n  \"username\": \"string\",\n  \"profileColor\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"avatarAssetId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a497f1f2-1e2c-45ad-9848-b40f3b83fbb3",
+          "name": "Profiles Controller update",
+          "request": {
+            "name": "Profiles Controller update",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"avatarAssetId\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8a68d2e-be9c-498c-86c7-f6a500fa810f",
+              "name": "Update Profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"avatarAssetId\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8439cbd7-8046-491c-a3df-f3fd7dcbf4d8",
+          "name": "Profiles Controller by Id",
+          "request": {
+            "name": "Profiles Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "profiles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eb595f35-f78d-43e4-98fc-812ea7df2bf0",
+              "name": "Users profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"avatar\": \"string\",\n  \"id\": \"string\",\n  \"username\": \"string\",\n  \"profileColor\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"avatarAssetId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fbccb11-78d8-45d2-aa6c-b7d9e84c1e43",
+          "name": "Profiles Controller username Available",
+          "request": {
+            "name": "Profiles Controller username Available",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "profiles",
+                "username_available"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8041638-4339-46f2-989b-980caac45532",
+              "name": "Verifies if a username is available or not",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    "username_available"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a9db079-473c-405b-8081-258b1fa887e3",
+          "name": "Profile Admin Controller update",
+          "request": {
+            "name": "Profile Admin Controller update",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "profiles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"avatarAssetId\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f466a655-3f3c-4555-960b-f8e49cf92d0d",
+              "name": "Updated Profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "profiles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"profileColor\": \"<string>\",\n  \"avatarAssetId\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b124e63e-0725-4be1-90d4-95e44b3e9ccc",
+          "name": "Profile Admin Controller by Id",
+          "request": {
+            "name": "Profile Admin Controller by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "profiles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0d4aa86d-e632-41c4-baf4-278ef3597e22",
+              "name": "Get Profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "profiles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"avatar\": \"string\",\n  \"id\": \"string\",\n  \"username\": \"string\",\n  \"profileColor\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"avatarAssetId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "210f41db-f2d4-433c-a161-0a7fa64d5ca4",
+          "name": "Profile Admin Controller list",
+          "request": {
+            "name": "Profile Admin Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userEmail",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "usernameLike",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c10b8414-3359-4a9a-ab46-0d632e498407",
+              "name": "List of Expanded Profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "usernameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"avatar\": \"string\",\n      \"roles\": [\n        \"CREATOR\",\n        \"MICROSOFT_REWARDS_USER\"\n      ],\n      \"balance\": {\n        \"id\": \"string\",\n        \"coins\": 7760.164977177125,\n        \"pendingCoins\": 3048.7870711767628,\n        \"whiteTickets\": 1230.5452564778907,\n        \"blackTickets\": 4459.058347854139,\n        \"grayTickets\": 4531.650676052013,\n        \"points\": 7070.97055414748,\n        \"createdAt\": \"1988-09-27T01:34:49.367Z\",\n        \"updatedAt\": \"1947-08-07T09:20:27.431Z\",\n        \"version\": 2633.9069585969955,\n        \"canCollectFreeGift\": true,\n        \"gamesDeclared\": 9547.327337085138,\n        \"gamesCorrectAnswers\": 998.2067300119957,\n        \"achievements\": [\n          \"string\",\n          \"string\"\n        ],\n        \"currentLeague\": \"level3\",\n        \"gamePlaysSinceDemotion\": 1822.134788933777,\n        \"lifetimeGamesPlayed\": 2928.7553789885533,\n        \"emailVerified\": false,\n        \"referralCount\": 8038.157459591312,\n        \"dailySetCounts\": {\n          \"totalCompleted\": 0,\n          \"totalWins\": 0,\n          \"totalLosses\": 0,\n          \"totalTies\": 0\n        },\n        \"leagues\": [\n          {\n            \"name\": \"string\",\n            \"leaderboardId\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"leaderboardId\": \"string\"\n          }\n        ]\n      },\n      \"id\": \"string\",\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"avatarAssetId\": \"string\"\n    },\n    {\n      \"avatar\": \"string\",\n      \"roles\": [\n        \"SUPER_ADMIN\",\n        \"CREATOR\"\n      ],\n      \"balance\": {\n        \"id\": \"string\",\n        \"coins\": 4592.5596399363485,\n        \"pendingCoins\": 2548.879992315608,\n        \"whiteTickets\": 4864.0954358193085,\n        \"blackTickets\": 5368.944102745745,\n        \"grayTickets\": 6800.872062654466,\n        \"points\": 5623.6426615818655,\n        \"createdAt\": \"2022-10-08T15:50:23.210Z\",\n        \"updatedAt\": \"1993-12-26T12:09:45.236Z\",\n        \"version\": 2436.6169776152637,\n        \"canCollectFreeGift\": false,\n        \"gamesDeclared\": 433.65480511409646,\n        \"gamesCorrectAnswers\": 3926.0696628372816,\n        \"achievements\": [\n          \"string\",\n          \"string\"\n        ],\n        \"currentLeague\": \"level1\",\n        \"gamePlaysSinceDemotion\": 1494.1908448850427,\n        \"lifetimeGamesPlayed\": 2957.1198047452363,\n        \"emailVerified\": false,\n        \"referralCount\": 8882.346479291364,\n        \"dailySetCounts\": {\n          \"totalCompleted\": 0,\n          \"totalWins\": 0,\n          \"totalLosses\": 0,\n          \"totalTies\": 0\n        },\n        \"leagues\": [\n          {\n            \"name\": \"string\",\n            \"leaderboardId\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"leaderboardId\": \"string\"\n          }\n        ]\n      },\n      \"id\": \"string\",\n      \"username\": \"string\",\n      \"profileColor\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"avatarAssetId\": \"string\"\n    }\n  ],\n  \"total\": 2805.174520079633\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea65c4f8-4790-473a-886b-5f46cf08e469",
+    "name": "Versusgame Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}

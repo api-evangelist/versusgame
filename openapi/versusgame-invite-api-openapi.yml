@@ -1,0 +1,35 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Invite API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: Invite
+paths:
+  /invite/{code}:
+    get:
+      operationId: InviteController_link
+      parameters:
+      - name: code
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Invite
+components:
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

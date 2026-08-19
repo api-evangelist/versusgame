@@ -1,0 +1,440 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Gameset Plays API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: gameset-plays
+paths:
+  /gameset/plays/gamesets/current-daily-id:
+    get:
+      description: Returns the ID of the current daily game set from the DB. If this is the first request
+        of the day, a new game set will be created.
+      operationId: GameSetPlaysController_getCurrentDailyGameSetId
+      parameters:
+      - name: partnerId
+        required: false
+        in: query
+        schema:
+          default: VERSUS
+          type: string
+      - name: gameStyle
+        required: false
+        in: query
+        description: Either TVT (This That) or MG (Mini Games)
+        schema:
+          default: TVT
+          type: string
+      responses:
+        '200':
+          description: The current daily game set ID for the given partner and game type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDailyGameSetIdResponse'
+      summary: Get the current daily game set ID
+      tags:
+      - gameset-plays
+  /gameset/plays/gamesets/{gameSetId}/leader:
+    get:
+      description: The GameSetPlay with the most games played for that GameSet.
+      operationId: GameSetPlaysController_forGameSetLeader
+      parameters:
+      - name: gameSetId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The GameSetPlay entity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameSetPlayResponse'
+      summary: Get the leader of a game set
+      tags:
+      - gameset-plays
+  /gameset/plays/attempts:
+    get:
+      operationId: GameSetPlaysController_getAttempts
+      parameters:
+      - name: userId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: gameSetId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GameSetPlayResponse'
+      summary: Get all GameSetPlay attempts for a given Player and GameSet
+      tags:
+      - gameset-plays
+  /gameset/plays/attempts/best:
+    get:
+      description: The best attempt has the most games played for the given GameSet.
+      operationId: GameSetPlaysController_getBestAttempt
+      parameters:
+      - name: userId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: gameSetId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameSetPlayResponse'
+      summary: Get the best GameSetPlay attempt for a given Player and GameSet
+      tags:
+      - gameset-plays
+  /gameset/plays/attempts/last:
+    get:
+      description: The last attempt is the most recent attempt for the given GameSet, but not necessarily
+        the best attempt. The attemptWasCompleted property is true if the last attempt has been marked
+        as completed.
+      operationId: GameSetPlaysController_getLastAttempt
+      parameters:
+      - name: userId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: gameSetId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameSetLastAttemptResponse'
+      summary: Get the last GameSetPlay attempt for a given Player and GameSet
+      tags:
+      - gameset-plays
+  /gameset/plays/attempts/completed:
+    post:
+      description: This route is used when the player's attempt is completed because the timer has expired
+        and there was no gameplay submitted.
+      operationId: GameSetPlaysController_recordGameSetCompleted
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordGameSetAttemptCompletedRequest'
+      responses:
+        '204':
+          description: The request was successful. Not content returned.
+        '400':
+          description: The request body is invalid
+      summary: Record the completion of a GameSet attempt
+      tags:
+      - gameset-plays
+  /gameset/plays/gamesets/{gameSetId}/top-players:
+    get:
+      description: Ranked by the most games played for that GameSet.
+      operationId: GameSetPlaysController_topPlayersForGameSet
+      parameters:
+      - name: gameSetId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: The approximate number of top players to return. The returned item count may include
+          more to accommodate pagination with filters. Results may also be less if there are fewer than
+          this many players.
+        schema:
+          default: 20
+          type: number
+      - name: cursor
+        required: false
+        in: query
+        description: The cursor to use for pagination.
+        schema:
+          type: string
+      - name: withExternalId
+        required: false
+        in: query
+        description: Whether to include the externalId in the response
+        schema:
+          default: false
+          type: boolean
+      responses:
+        '200':
+          description: Ranked list of top players with usernames
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopPlayersForGameSetResponseEntity'
+      summary: List the top players of a game set (leaderboard)
+      tags:
+      - gameset-plays
+  /gameset/plays/gamesets/{gameSetId}/top-players-with-emails:
+    get:
+      description: Ranked by the most games played for that GameSet. `Only returns users with emails`.
+        Requires ADMIN role, to protect PII.
+      operationId: GameSetPlaysController_topPlayersForGameSetWithEmails
+      parameters:
+      - name: gameSetId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: The approximate number of top players to return. The returned item count may include
+          more to accommodate pagination with filters. Results may also be less if there are fewer than
+          this many players.
+        schema:
+          default: 20
+          type: number
+      - name: cursor
+        required: false
+        in: query
+        description: The cursor to use for pagination.
+        schema:
+          type: string
+      - name: withExternalId
+        required: false
+        in: query
+        description: Whether to include the externalId in the response
+        schema:
+          default: false
+          type: boolean
+      responses:
+        '200':
+          description: List of top players with metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopPlayersForGameSetWithEmailResponseEntity'
+      security:
+      - access-token: []
+      summary: List the top players for a game set; with their emails
+      tags:
+      - gameset-plays
+components:
+  schemas:
+    RankedPlayerStandings:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Usually a UUID, but older users may have a numberic id
+          example: 0197381e-d0ef-700d-a3fc-f98501417877
+        externalId:
+          type: string
+          description: The player's externalId
+          example: reddit-0197381e-d0ef-700d-a3fc-f98501417877
+        username:
+          type: string
+          description: The player's username
+          example: bucking_bronco
+        avatarUrl:
+          type: string
+          example: https://example.com/avatar.jpg
+          description: The player's avatar URL
+        gamesPlayedCount:
+          type: number
+          example: 47
+          description: Total games played in that GameSet attempt
+        correctAnswerCount:
+          type: number
+          example: 42
+          description: Total correct answers in that GameSet attempt
+      required:
+      - userId
+      - username
+      - avatarUrl
+      - gamesPlayedCount
+      - correctAnswerCount
+    GameSetPlayResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+        gameSetId:
+          type: string
+        gameSetAttempt:
+          type: number
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        results:
+          type: object
+        gamesPlayedCount:
+          type: number
+        correctAnswerCount:
+          type: number
+      required:
+      - userId
+      - gameSetId
+      - gameSetAttempt
+      - updatedAt
+      - createdAt
+      - results
+      - gamesPlayedCount
+      - correctAnswerCount
+    TopPlayersForGameSetWithEmailResponseEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RankedPlayerStandingsWithEmail'
+        cursor:
+          type: string
+      required:
+      - items
+    RecordGameSetAttemptCompletedRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+        gameSetId:
+          type: string
+        gameSetAttempt:
+          type: number
+        distributorId:
+          type: string
+        shareCode:
+          type: string
+      required:
+      - userId
+      - gameSetId
+      - gameSetAttempt
+      - distributorId
+    RankedPlayerStandingsWithEmail:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Usually a UUID, but older users may have a numberic id
+          example: 0197381e-d0ef-700d-a3fc-f98501417877
+        externalId:
+          type: string
+          description: The player's externalId
+          example: reddit-0197381e-d0ef-700d-a3fc-f98501417877
+        username:
+          type: string
+          description: The player's username
+          example: bucking_bronco
+        avatarUrl:
+          type: string
+          example: https://example.com/avatar.jpg
+          description: The player's avatar URL
+        gamesPlayedCount:
+          type: number
+          example: 47
+          description: Total games played in that GameSet attempt
+        correctAnswerCount:
+          type: number
+          example: 42
+          description: Total correct answers in that GameSet attempt
+        email:
+          type: string
+          example: sarah@example.com
+        emailVerified:
+          type: boolean
+          example: true
+      required:
+      - userId
+      - username
+      - avatarUrl
+      - gamesPlayedCount
+      - correctAnswerCount
+      - email
+      - emailVerified
+    TopPlayersForGameSetResponseEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RankedPlayerStandings'
+        cursor:
+          type: string
+      required:
+      - items
+    GetDailyGameSetIdResponse:
+      type: object
+      properties:
+        gameSetId:
+          type: string
+      required:
+      - gameSetId
+    GameSetLastAttemptResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+        gameSetId:
+          type: string
+        gameSetAttempt:
+          type: number
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        results:
+          type: object
+        gamesPlayedCount:
+          type: number
+        correctAnswerCount:
+          type: number
+        attemptWasCompleted:
+          type: boolean
+      required:
+      - userId
+      - gameSetId
+      - gameSetAttempt
+      - updatedAt
+      - createdAt
+      - results
+      - gamesPlayedCount
+      - correctAnswerCount
+      - attemptWasCompleted
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

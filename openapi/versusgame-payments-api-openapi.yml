@@ -1,0 +1,647 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Payments API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: payments
+paths:
+  /v1/payments/payout/business:
+    post:
+      operationId: PaymentsController_makeBusinessPayout
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessPayoutV2Dto'
+      responses:
+        '201':
+          description: Confirmation of Business Payout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Business'
+      security:
+      - access-token: []
+      tags:
+      - payments
+  /v1/payments/payout/gcow:
+    post:
+      operationId: PaymentsController_gcowPayout
+      parameters:
+      - name: x-idempotency-key
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GcowPayoutDto'
+      responses:
+        '200':
+          description: Gcow payout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GcowPayout'
+      security:
+      - access-token: []
+      tags:
+      - payments
+  /v1/payments/payout/gcow/{id}:
+    get:
+      operationId: PaymentsController_gcowPayoutById
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Gcow payout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GcowPayout'
+      security:
+      - access-token: []
+      tags:
+      - payments
+  /v1/payments/callback/gcow:
+    post:
+      operationId: PaymentsController_gcowCallback
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CallbackDto'
+      responses:
+        '200':
+          description: Gcow callback
+      tags:
+      - payments
+  /v1/payments/stripe/create:
+    post:
+      operationId: PaymentsController_create
+      parameters:
+      - name: x-idempotency-key
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStripePaymentDto'
+      responses:
+        '201':
+          description: Stripe ClientSecret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StripeEntity'
+      security:
+      - access-token: []
+      tags:
+      - payments
+  /v1/payments/stripe/{id}:
+    get:
+      operationId: PaymentsController_byId
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Payment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StripeEntity'
+      tags:
+      - payments
+  /v1/payments/callback/stripe:
+    post:
+      operationId: PaymentsController_stripeCallback
+      parameters:
+      - name: stripe-signature
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Stripe callback
+      tags:
+      - payments
+  /v1/payments/buy-ticket-bundle-coin:
+    post:
+      operationId: PaymentsController_buyTicketsWithCoin
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuyTicketsDto'
+      responses:
+        '204':
+          description: Purchase tickets with coins
+      security:
+      - access-token: []
+      tags:
+      - payments
+  /v1/admin/payout/business:
+    get:
+      operationId: BusinessAdminController_listBusiness
+      parameters:
+      - name: _expand
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/BusinessExpand'
+      - name: expand
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessExpand'
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindBusinessDto'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindBusinessDto'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Business Payouts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListExpandedBusinessEntity'
+      security:
+      - access-token: []
+      tags:
+      - payments
+  /v1/admin/payout/business/{id}:
+    get:
+      operationId: BusinessAdminController_businessById
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Business
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Business'
+      security:
+      - access-token: []
+      tags:
+      - payments
+components:
+  schemas:
+    GcowPayout:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        coins:
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        idempotencyKey:
+          type: string
+        authorizationId:
+          type: string
+        errored:
+          type: boolean
+        successful:
+          type: boolean
+      required:
+      - id
+      - userId
+      - coins
+      - createdAt
+      - idempotencyKey
+      - authorizationId
+      - errored
+      - successful
+    BuyTicketsDto:
+      type: object
+      properties:
+        product_id:
+          type: string
+          example: '1'
+      required:
+      - product_id
+    ExpandedBusiness:
+      type: object
+      properties:
+        profile:
+          $ref: '#/components/schemas/Creator'
+        balance:
+          $ref: '#/components/schemas/WalletResponse'
+        id:
+          type: string
+        userId:
+          type: string
+        coins:
+          type: number
+        paymentPeriod:
+          type: string
+        createdAt:
+          type: string
+      required:
+      - profile
+      - balance
+      - id
+      - userId
+      - coins
+      - paymentPeriod
+      - createdAt
+    WalletLeague:
+      type: object
+      properties:
+        name:
+          type: string
+        leaderboardId:
+          type: string
+      required:
+      - name
+      - leaderboardId
+    CreateStripePaymentDto:
+      type: object
+      properties:
+        productId:
+          type: string
+      required:
+      - productId
+    DailySetCount:
+      type: object
+      properties:
+        totalCompleted:
+          type: number
+          default: 0
+        totalWins:
+          type: number
+          default: 0
+        totalLosses:
+          type: number
+          default: 0
+        totalTies:
+          type: number
+          default: 0
+      required:
+      - totalCompleted
+      - totalWins
+      - totalLosses
+      - totalTies
+    BusinessExpand:
+      type: string
+      enum:
+      - user
+    StripeEntity:
+      type: object
+      properties:
+        paymentStatus:
+          allOf:
+          - $ref: '#/components/schemas/PaymentStatus'
+        id:
+          type: string
+        userId:
+          type: string
+        productId:
+          type: string
+        product:
+          $ref: '#/components/schemas/ProductEntity'
+        idempotencyKey:
+          type: string
+        clientSecret:
+          type: string
+        ip:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - paymentStatus
+      - id
+      - userId
+      - productId
+      - product
+      - idempotencyKey
+      - clientSecret
+      - ip
+      - createdAt
+    SearchFindBusinessDto:
+      type: object
+      properties:
+        paymentPeriod:
+          type: string
+        userId:
+          type: string
+    SortFindBusinessDto:
+      type: object
+      properties:
+        userId:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        createdAt:
+          type: string
+          enum:
+          - asc
+          - desc
+    ProductEntity:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        createdAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+      required:
+      - language
+      - id
+      - productName
+      - productDescription
+      - whiteTickets
+      - blackTickets
+      - amount
+      - mostPopular
+      - createdAt
+      - deletedAt
+    PaymentStatus:
+      type: string
+      enum:
+      - pending
+      - success
+      - failed
+    BusinessPayoutV2Dto:
+      type: object
+      properties:
+        coins:
+          type: number
+          minimum: 100
+          maximum: 5000000
+      required:
+      - coins
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    ListExpandedBusinessEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExpandedBusiness'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    WalletResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        coins:
+          type: number
+        pendingCoins:
+          type: number
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        grayTickets:
+          type: number
+        points:
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        canCollectFreeGift:
+          type: boolean
+        gamesDeclared:
+          type: number
+        gamesCorrectAnswers:
+          type: number
+        achievements:
+          type: array
+          items:
+            type: string
+        currentLeague:
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+          type: string
+        gamePlaysSinceDemotion:
+          type: number
+        lifetimeGamesPlayed:
+          type: number
+        emailVerified:
+          type: boolean
+        leagues:
+          type: array
+          items:
+            $ref: '#/components/schemas/WalletLeague'
+        referralCount:
+          type: number
+        dailySetCounts:
+          $ref: '#/components/schemas/DailySetCount'
+      required:
+      - id
+      - coins
+      - pendingCoins
+      - whiteTickets
+      - blackTickets
+      - grayTickets
+      - points
+      - createdAt
+      - updatedAt
+      - version
+      - canCollectFreeGift
+      - gamesDeclared
+      - gamesCorrectAnswers
+      - achievements
+      - currentLeague
+      - gamePlaysSinceDemotion
+      - lifetimeGamesPlayed
+      - emailVerified
+      - referralCount
+      - dailySetCounts
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    Business:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        coins:
+          type: number
+        paymentPeriod:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - userId
+      - coins
+      - paymentPeriod
+      - createdAt
+    CallbackDto:
+      type: object
+      properties:
+        app_id:
+          type: string
+        customer_email:
+          type: string
+        created_at:
+          type: number
+          minimum: 0
+        amount:
+          type: string
+        currency_code:
+          type: string
+        url:
+          type: string
+        idempotency_key:
+          type: string
+        sign:
+          type: string
+      required:
+      - app_id
+      - customer_email
+      - created_at
+      - amount
+      - currency_code
+      - url
+      - idempotency_key
+      - sign
+    RewardLinkTypes:
+      type: string
+      enum:
+      - gift_card
+    GcowPayoutDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/RewardLinkTypes'
+        coins:
+          type: number
+          minimum: 100
+          maximum: 5000
+      required:
+      - type
+      - coins
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

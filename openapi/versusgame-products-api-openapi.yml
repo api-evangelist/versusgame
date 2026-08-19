@@ -1,0 +1,286 @@
+openapi: 3.2.0
+info:
+  title: Versusgame Products API
+  description: APIs for Versusgame Application
+  version: '1.0'
+  contact: {}
+tags:
+- name: products
+paths:
+  /v1/products:
+    get:
+      operationId: ProductsController_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindProductDto2'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindProductDto2'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Products
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProduct'
+      tags:
+      - products
+  /v1/admin/products:
+    post:
+      operationId: ProductsAdminController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductDto'
+      responses:
+        '201':
+          description: New Product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEntity'
+      security:
+      - access-token: []
+      tags:
+      - products
+    get:
+      operationId: ProductsAdminController_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SearchFindProductDto2'
+      - name: sort
+        required: false
+        in: query
+        schema:
+          $ref: '#/components/schemas/SortFindProductDto2'
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Products
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProduct'
+      security:
+      - access-token: []
+      tags:
+      - products
+  /v1/admin/products/{productId}:
+    patch:
+      operationId: ProductsAdminController_update
+      parameters:
+      - name: productId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductDto'
+      responses:
+        '204':
+          description: Updated Product
+      security:
+      - access-token: []
+      tags:
+      - products
+    get:
+      operationId: ProductsAdminController_byId
+      parameters:
+      - name: productId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get Product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEntity'
+      security:
+      - access-token: []
+      tags:
+      - products
+components:
+  schemas:
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    ProductEntity:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        createdAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+      required:
+      - language
+      - id
+      - productName
+      - productDescription
+      - whiteTickets
+      - blackTickets
+      - amount
+      - mostPopular
+      - createdAt
+      - deletedAt
+    SearchFindProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
+    UpdateProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        whiteTicketImage:
+          type: string
+        blackTickets:
+          type: number
+        blackTicketImage:
+          type: string
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        language:
+          type: string
+          enum:
+          - en-us
+          - es-mx
+    SortFindProductDto2:
+      type: object
+      properties:
+        sort:
+          $ref: '#/components/schemas/SortFindProductDto'
+    SearchFindProductDto2:
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/SearchFindProductDto'
+    ListProduct:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductEntity'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    SortFindProductDto:
+      type: object
+      properties:
+        amount:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        productName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    CreateProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        language:
+          type: string
+          enum:
+          - en-us
+          - es-mx
+      required:
+      - productName
+      - productDescription
+      - whiteTickets
+      - blackTickets
+      - amount
+      - mostPopular
+      - language
+  securitySchemes:
+    access-token:
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter the bearer token below (do not include 'Bearer')
+      type: http
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key For External calls

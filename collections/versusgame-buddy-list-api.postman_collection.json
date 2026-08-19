@@ -1,0 +1,491 @@
+{
+  "item": [
+    {
+      "id": "d6824cf4-4141-4160-a124-905a3c422250",
+      "name": "buddy-list",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "310a1ab4-9825-4b1e-9b9e-35754f564ec2",
+          "name": "Create a new buddy list invitation",
+          "request": {
+            "name": "Create a new buddy list invitation",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "buddy-list",
+                "invitations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invitingPlayerGameResults\": [\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    },\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    }\n  ],\n  \"invitingPlayerAnalyticsId\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"deepLinkUrl\": \"<string>\",\n  \"gameSetId\": \"<string>\",\n  \"gameSetAttempt\": 1,\n  \"invitingPlayerId\": \"<string>\",\n  \"invitingPlayerUsername\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dfb8aec9-de5a-40ee-b06f-34eae6fc2a9e",
+              "name": "The created buddy list invitation context object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buddy-list",
+                    "invitations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invitingPlayerGameResults\": [\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    },\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    }\n  ],\n  \"invitingPlayerAnalyticsId\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"deepLinkUrl\": \"<string>\",\n  \"gameSetId\": \"<string>\",\n  \"gameSetAttempt\": 1,\n  \"invitingPlayerId\": \"<string>\",\n  \"invitingPlayerUsername\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invitingPlayerIsRegistered\": \"false\",\n  \"invitingPlayerGameResults\": [\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    },\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    }\n  ],\n  \"entityType\": \"BuddyListInvitation\",\n  \"invitingPlayerId\": \"string\",\n  \"invitingPlayerUsername\": \"string\",\n  \"invitingPlayerAnalyticsId\": \"string\",\n  \"shareCode\": \"string\",\n  \"distributorId\": \"string\",\n  \"deepLinkUrl\": \"string\",\n  \"gameSetId\": \"string\",\n  \"invitationDate\": 6538.146241494611,\n  \"buddyListId\": \"string\",\n  \"gameSetAttempt\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac84c492-65fc-426f-9c70-ff306697b955",
+              "name": "The request body is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buddy-list",
+                    "invitations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invitingPlayerGameResults\": [\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    },\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    }\n  ],\n  \"invitingPlayerAnalyticsId\": \"<string>\",\n  \"distributorId\": \"<string>\",\n  \"deepLinkUrl\": \"<string>\",\n  \"gameSetId\": \"<string>\",\n  \"gameSetAttempt\": 1,\n  \"invitingPlayerId\": \"<string>\",\n  \"invitingPlayerUsername\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c20dc312-46b5-459f-ac9b-ede4e3abcbef",
+          "name": "Get a buddy list invitation context object by share code",
+          "request": {
+            "name": "Get a buddy list invitation context object by share code",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "buddy-list",
+                "invitations",
+                ":shareCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shareCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca50d954-1f88-43c1-9681-c921803753df",
+              "name": "The found buddy list invitation context object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buddy-list",
+                    "invitations",
+                    ":shareCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shareCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invitingPlayerIsRegistered\": \"true\",\n  \"invitingPlayerGameResults\": [\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    },\n    {\n      \"gameId\": \"<string>\",\n      \"correctAnswer\": \"<boolean>\"\n    }\n  ],\n  \"entityType\": \"BuddyListInvitation\",\n  \"invitingPlayerId\": \"string\",\n  \"invitingPlayerUsername\": \"string\",\n  \"invitingPlayerAnalyticsId\": \"string\",\n  \"shareCode\": \"string\",\n  \"distributorId\": \"string\",\n  \"deepLinkUrl\": \"string\",\n  \"gameSetId\": \"string\",\n  \"invitationDate\": 1526.9873562195069,\n  \"buddyListId\": \"string\",\n  \"gameSetAttempt\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08238428-d6f5-4272-8a79-0284c8b40d80",
+              "name": "No invitation found for the given share code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buddy-list",
+                    "invitations",
+                    ":shareCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shareCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cafbe86-8939-455c-bac6-279ebf3e2d65",
+          "name": "Redirects to a buddy list invitation deep link URL for the given share code",
+          "request": {
+            "name": "Redirects to a buddy list invitation deep link URL for the given share code",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "buddy-list",
+                "invitations",
+                ":shareCode",
+                "redirect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shareCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b35f07f0-e709-43cb-903e-64a5b7001317",
+              "name": "Redirects to the media partner article with the deep link params associated with the given shareCode",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buddy-list",
+                    "invitations",
+                    ":shareCode",
+                    "redirect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shareCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The deep link URL",
+                  "key": "Location",
+                  "value": "https://example.com"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "709d23a5-3337-4903-a4aa-4613df6cfea9",
+              "name": "No invitation found for the given share code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buddy-list",
+                    "invitations",
+                    ":shareCode",
+                    "redirect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shareCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f73c282-d379-4bb7-ab9b-f8a8e3b471ea",
+          "name": "Record a new buddy list referral on successful registration.",
+          "request": {
+            "name": "Record a new buddy list referral on successful registration.",
+            "description": {
+              "content": "Triggered when a new player registers after following a buddy list invitation link.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "buddy-list",
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2abdc576-974f-45e2-8ca2-738a0d788ac2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buddy-list",
+                    "referrals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "aafdae29-e4e8-42a0-b5c9-d9c023144247",
+    "name": "Versusgame Buddy List API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Versusgame Application",
+      "type": "text/plain"
+    }
+  }
+}
