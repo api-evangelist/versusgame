@@ -15,7 +15,7 @@ image: https://cdn.prod.website-files.com/661e9580f882ac357a892420/667c9c7ef8960
 url: https://raw.githubusercontent.com/api-evangelist/versusgame/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
