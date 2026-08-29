@@ -11,6 +11,18 @@ description: >-
   creation, gameplays, gamesets, leaderboards, widgets, creators, playlists, wallets, ledger, payments/payouts
   and an autogame AI pipeline. Publicly named partners include ABC, Microsoft, Disney, BuzzFeed, Billboard,
   ESPN and UFC.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.prod.website-files.com/661e9580f882ac357a892420/667c9c7ef8960c14de4190b9_Versus-Favicon-256.png
 url: https://raw.githubusercontent.com/api-evangelist/versusgame/refs/heads/main/apis.yml
 x-type: company
