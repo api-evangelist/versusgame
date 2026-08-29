@@ -485,6 +485,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/versusgame-capability-edges.yml
+  name: VersusGame Business Capability Map
 - type: MCPServer
   url: mcp/versusgame-mcp.yml
 - type: AgenticAccess

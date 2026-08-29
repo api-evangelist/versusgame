@@ -1,0 +1,25 @@
+slug: versusgame
+provider: VersusGame
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: assets
+  spec_file: versusgame-assets-api-openapi.yml
+  capability_id: BC-3710
+  capability_id_l1: BC-3710
+  capability_name: Media Asset Management
+  confidence: 0.7
+  evidence: POST /v1/assets AssetsController_create; schemas Asset, CreateAssetDto, VideoUrls, JobStatus
+  reason: Create/get/delete and admin listing of media assets with video URL renditions and a processing
+    JobStatus — onboarding and stewardship of media assets. Evidence does not clearly distinguish ingest/QC
+    from storage or transcoding, so only the L1 is asserted.
