@@ -34,13 +34,13 @@ tags:
 - Company
 - Gaming
 - prediction-games
-- audience-engagement
-- gamification
-- media-and-entertainment
-- publishing
+- Audience Engagement
+- Gamification
+- Media and Entertainment
+- Publishing
 - Widgets
-- leaderboards
-- creator-economy
+- Leaderboards
+- Creator Economy
 - ai-content-generation
 - Payments
 tags_raw:
@@ -63,7 +63,7 @@ apis:
   humanURL: https://api.versusgame.com/api
   baseURL: https://api.versusgame.com
   tags:
-  - achievements
+  - Achievements
   tags_raw:
   - achievements
   properties:
@@ -167,7 +167,7 @@ apis:
   humanURL: https://api.versusgame.com/api
   baseURL: https://api.versusgame.com
   tags:
-  - creators
+  - Creators
   tags_raw:
   - creators
   properties:
@@ -217,7 +217,7 @@ apis:
   humanURL: https://api.versusgame.com/api
   baseURL: https://api.versusgame.com
   tags:
-  - games
+  - Games
   tags_raw:
   - games
   properties:
@@ -295,7 +295,7 @@ apis:
   humanURL: https://api.versusgame.com/api
   baseURL: https://api.versusgame.com
   tags:
-  - keyframes
+  - Keyframes
   tags_raw:
   - keyframes
   properties:
@@ -309,7 +309,7 @@ apis:
   humanURL: https://api.versusgame.com/api
   baseURL: https://api.versusgame.com
   tags:
-  - leaderboards
+  - Leaderboards
   tags_raw:
   - leaderboards
   properties:
@@ -401,7 +401,7 @@ apis:
   humanURL: https://api.versusgame.com/api
   baseURL: https://api.versusgame.com
   tags:
-  - personal-information
+  - Personal Information
   tags_raw:
   - personal-information
   properties:
@@ -415,7 +415,7 @@ apis:
   humanURL: https://api.versusgame.com/api
   baseURL: https://api.versusgame.com
   tags:
-  - playlists
+  - Playlists
   tags_raw:
   - playlists
   properties:
