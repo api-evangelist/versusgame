@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: personal-information
+- name: Personal Information
 paths:
   /v1/personal-information:
     get:
@@ -21,7 +22,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - personal-information
+      - Personal Information
+      summary: Personal controller by id
+      x-summary-source: derived
     patch:
       operationId: PersonalController_update
       parameters: []
@@ -37,7 +40,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - personal-information
+      - Personal Information
+      summary: Personal controller update
+      x-summary-source: derived
 components:
   schemas:
     PersonalInformation:

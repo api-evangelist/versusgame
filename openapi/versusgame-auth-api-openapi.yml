@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: auth
+- name: Auth
 paths:
   /auth/identify:
     post:
@@ -25,7 +26,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/CredentialsEntity'
       tags:
-      - auth
+      - Auth
+      summary: Auth controller identify
+      x-summary-source: derived
   /auth/login:
     post:
       operationId: AuthController_login
@@ -44,7 +47,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/CredentialsEntity'
       tags:
-      - auth
+      - Auth
+      summary: Auth controller login
+      x-summary-source: derived
   /auth/change_password:
     post:
       operationId: AuthController_changePassword
@@ -71,7 +76,9 @@ paths:
       - refreshToken: []
       - refreshToken: []
       tags:
-      - auth
+      - Auth
+      summary: Auth controller change password
+      x-summary-source: derived
   /auth/reset_password:
     post:
       operationId: AuthController_resetPassword
@@ -86,7 +93,9 @@ paths:
         '204':
           description: ''
       tags:
-      - auth
+      - Auth
+      summary: Auth controller reset password
+      x-summary-source: derived
   /auth/reset_password/set_new:
     post:
       operationId: AuthController_resetPasswordSetNew
@@ -105,7 +114,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/CredentialsEntity'
       tags:
-      - auth
+      - Auth
+      summary: Auth controller reset password set new
+      x-summary-source: derived
   /auth/reset_password/verify_token:
     post:
       operationId: AuthController_resetPasswordVerifyToken
@@ -114,7 +125,9 @@ paths:
         '204':
           description: ''
       tags:
-      - auth
+      - Auth
+      summary: Auth controller reset password verify token
+      x-summary-source: derived
   /auth/confirm_invite:
     post:
       operationId: AuthController_confirmInvite
@@ -133,7 +146,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/CredentialsEntity'
       tags:
-      - auth
+      - Auth
+      summary: Auth controller confirm invite
+      x-summary-source: derived
   /auth/verify_email:
     post:
       operationId: AuthController_verifyEmail
@@ -142,7 +157,9 @@ paths:
         '200':
           description: ''
       tags:
-      - auth
+      - Auth
+      summary: Auth controller verify email
+      x-summary-source: derived
   /auth/signup:
     post:
       operationId: AuthController_signup
@@ -161,7 +178,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/CredentialsEntity'
       tags:
-      - auth
+      - Auth
+      summary: Auth controller signup
+      x-summary-source: derived
   /auth/resend_email_verification:
     post:
       operationId: AuthController_resendEmailVerification
@@ -180,7 +199,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/CredentialsEntity'
       tags:
-      - auth
+      - Auth
+      summary: Auth controller resend email verification
+      x-summary-source: derived
   /auth/refresh:
     post:
       operationId: AuthController_refresh
@@ -201,7 +222,9 @@ paths:
       - refreshToken: []
       - refreshToken: []
       tags:
-      - auth
+      - Auth
+      summary: Auth controller refresh
+      x-summary-source: derived
   /auth/logout:
     post:
       operationId: AuthController_logout
@@ -213,7 +236,9 @@ paths:
       - refreshToken: []
       - refreshToken: []
       tags:
-      - auth
+      - Auth
+      summary: Auth controller logout
+      x-summary-source: derived
   /auth/validate_email:
     post:
       operationId: AuthController_validateEmail
@@ -232,7 +257,9 @@ paths:
         '409':
           description: ''
       tags:
-      - auth
+      - Auth
+      summary: Auth controller validate email
+      x-summary-source: derived
   /auth/sign_tos:
     post:
       operationId: AuthController_signTos
@@ -243,7 +270,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Auth controller sign tos
+      x-summary-source: derived
   /auth/payout_email:
     patch:
       operationId: AuthController_updatePayoutEmail
@@ -264,7 +293,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Auth controller update payout email
+      x-summary-source: derived
   /auth/payout_email_verification:
     post:
       operationId: AuthController_payoutEmailVerification
@@ -281,7 +312,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Auth controller payout email verification
+      x-summary-source: derived
   /auth/microsoft_rewards:
     post:
       operationId: AuthController_microsoftRewards
@@ -302,7 +335,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Auth controller microsoft rewards
+      x-summary-source: derived
   /admin/auth/invite:
     post:
       operationId: AdminController_invite
@@ -319,7 +354,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Admin controller invite
+      x-summary-source: derived
   /admin/auth/users:
     get:
       operationId: AdminController_list
@@ -349,7 +386,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Admin controller list
+      x-summary-source: derived
   /admin/auth/users/{userId}/set_creator:
     post:
       operationId: AdminController_setCreator
@@ -371,7 +410,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Admin controller set creator
+      x-summary-source: derived
   /admin/auth/users/{userId}:
     patch:
       operationId: AdminController_updateUser
@@ -393,7 +434,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Admin controller update user
+      x-summary-source: derived
   /superadmin/auth/role/{userId}:
     post:
       operationId: SuperAdminController_addRole
@@ -415,7 +458,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Super admin controller add role
+      x-summary-source: derived
     delete:
       operationId: SuperAdminController_deleteRole
       parameters:
@@ -436,7 +481,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - auth
+      - Auth
+      summary: Super admin controller delete role
+      x-summary-source: derived
   /auth/apple:
     get:
       operationId: socialControllerAuthapple
@@ -444,9 +491,10 @@ paths:
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller authapple
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
   /auth/apple/callback:
     get:
       operationId: socialControllerAuthCallbackGetapple
@@ -454,18 +502,20 @@ paths:
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller auth callback getapple
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
     post:
       operationId: socialControllerAuthCallbackPostapple
       parameters: []
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller auth callback postapple
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
   /auth/facebook:
     get:
       operationId: socialControllerAuthfacebook
@@ -473,9 +523,10 @@ paths:
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller authfacebook
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
   /auth/facebook/callback:
     get:
       operationId: socialControllerAuthCallbackGetfacebook
@@ -483,18 +534,20 @@ paths:
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller auth callback getfacebook
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
     post:
       operationId: socialControllerAuthCallbackPostfacebook
       parameters: []
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller auth callback postfacebook
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
   /auth/google:
     get:
       operationId: socialControllerAuthgoogle
@@ -502,9 +555,10 @@ paths:
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller authgoogle
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
   /auth/google/callback:
     get:
       operationId: socialControllerAuthCallbackGetgoogle
@@ -512,18 +566,20 @@ paths:
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller auth callback getgoogle
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
     post:
       operationId: socialControllerAuthCallbackPostgoogle
       parameters: []
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller auth callback postgoogle
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
   /auth/microsoft:
     get:
       operationId: socialControllerAuthmicrosoft
@@ -531,9 +587,10 @@ paths:
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller authmicrosoft
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
   /auth/microsoft/callback:
     get:
       operationId: socialControllerAuthCallbackGetmicrosoft
@@ -541,55 +598,64 @@ paths:
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller auth callback getmicrosoft
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
     post:
       operationId: socialControllerAuthCallbackPostmicrosoft
       parameters: []
       responses:
         '200':
           description: ''
-      summary: ''
+      summary: Social controller auth callback postmicrosoft
       tags:
-      - auth
+      - Auth
+      x-summary-source: derived
 components:
   schemas:
-    UpdateUserDto:
+    ListUsersEntity:
       type: object
       properties:
-        isExemptFromSigningTos:
-          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserEntity'
       required:
-      - isExemptFromSigningTos
-    UpdatePayoutEmailEntity:
+      - items
+    Role:
+      type: string
+      enum:
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
+    SigninDto:
       type: object
       properties:
-        verified:
-          type: boolean
+        email:
+          type: string
+        password:
+          type: string
       required:
-      - verified
-    IdentifyExternalUser:
+      - email
+      - password
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    PayoutEmailVerificationDto:
       type: object
       properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        externalId:
-          type: string
-        sourceDomain:
-          type: string
-        distributorId:
-          type: string
-        returnUrl:
-          type: string
-        username:
+        code:
           type: string
       required:
-      - externalId
-      - sourceDomain
-      - distributorId
-      - returnUrl
+      - code
     ResetPasswordDto:
       type: object
       properties:
@@ -601,22 +667,57 @@ components:
       required:
       - email
       - returnUrl
-    ResetPasswordSetNewDto:
+    SetRoleDto:
+      type: object
+      properties:
+        role:
+          allOf:
+          - $ref: '#/components/schemas/Role'
+      required:
+      - role
+    SetCreatorDto:
+      type: object
+      properties:
+        avatarAssetId:
+          type: string
+        partnerName:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+      required:
+      - avatarAssetId
+      - partnerName
+      - profileColor
+      - userName
+    UpdatePayoutEmailEntity:
+      type: object
+      properties:
+        verified:
+          type: boolean
+      required:
+      - verified
+    MicrosoftRewardsDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        returnUrl:
+          type: string
+        sourceDomain:
+          type: string
+      required:
+      - returnUrl
+      - sourceDomain
+    ConfirmInviteDto:
       type: object
       properties:
         password:
           type: string
       required:
       - password
-    ListUsersEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserEntity'
-      required:
-      - items
     ChangePasswordDto:
       type: object
       properties:
@@ -635,171 +736,13 @@ components:
           format: email
       required:
       - email
-    ResendEmailVerificationDto:
+    UpdateUserDto:
       type: object
       properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        userId:
-          type: string
-        email:
-          type: string
-          format: email
-      required:
-      - language
-      - userId
-      - email
-    AdminInviteUserDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        email:
-          type: string
-          format: email
         isExemptFromSigningTos:
           type: boolean
       required:
-      - email
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    SignupDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        email:
-          type: string
-          format: email
-        password:
-          type: string
-        returnUrl:
-          type: string
-        tosSigned:
-          type: boolean
-        birthday:
-          format: date-time
-          type: string
-        username:
-          type: string
-        profileColor:
-          type: string
-        points:
-          type: number
-          minimum: 0
-        sourceDomain:
-          type: string
-        distributorId:
-          type: string
-        referrerId:
-          type: string
-        referralCode:
-          type: string
-        amplitudeExperimentVariant:
-          type: string
-        externalId:
-          type: string
-        userId:
-          type: string
-      required:
-      - email
-      - returnUrl
-      - tosSigned
-      - sourceDomain
-      - distributorId
-    CredentialsEntity:
-      type: object
-      properties:
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        accessToken:
-          type: string
-        accessTokenExpiresIn:
-          type: number
-        refreshToken:
-          type: string
-        lastTosSigned:
-          type: boolean
-        tosSignedAt:
-          format: date-time
-          type: string
-        isExemptFromSigningTos:
-          type: boolean
-        userId:
-          type: string
-        email:
-          type: string
-        payoutEmail:
-          type: string
-      required:
-      - roles
-      - accessToken
-      - accessTokenExpiresIn
-      - refreshToken
-      - lastTosSigned
-      - tosSignedAt
       - isExemptFromSigningTos
-      - userId
-    SigninDto:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-      required:
-      - email
-      - password
-    MicrosoftRewardsDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        returnUrl:
-          type: string
-        sourceDomain:
-          type: string
-      required:
-      - returnUrl
-      - sourceDomain
-    Role:
-      type: string
-      enum:
-      - anonymous
-      - ADMIN
-      - CREATOR
-      - USER
-      - SUPER_ADMIN
-      - AUTOGAME
-      - DISTRIBUTION_MANAGER
-      - MICROSOFT_REWARDS_USER
-    PayoutEmailVerificationDto:
-      type: object
-      properties:
-        code:
-          type: string
-      required:
-      - code
-    SetRoleDto:
-      type: object
-      properties:
-        role:
-          allOf:
-          - $ref: '#/components/schemas/Role'
-      required:
-      - role
     UserEntity:
       type: object
       properties:
@@ -863,22 +806,145 @@ components:
       - isExemptFromSigningTos
       - roles
       - externalId
-    SetCreatorDto:
+    CredentialsEntity:
       type: object
       properties:
-        avatarAssetId:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        accessToken:
           type: string
-        partnerName:
+        accessTokenExpiresIn:
+          type: number
+        refreshToken:
+          type: string
+        lastTosSigned:
+          type: boolean
+        tosSignedAt:
+          format: date-time
+          type: string
+        isExemptFromSigningTos:
+          type: boolean
+        userId:
+          type: string
+        email:
+          type: string
+        payoutEmail:
+          type: string
+      required:
+      - roles
+      - accessToken
+      - accessTokenExpiresIn
+      - refreshToken
+      - lastTosSigned
+      - tosSignedAt
+      - isExemptFromSigningTos
+      - userId
+    ResetPasswordSetNewDto:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+      - password
+    IdentifyExternalUser:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        externalId:
+          type: string
+        sourceDomain:
+          type: string
+        distributorId:
+          type: string
+        returnUrl:
+          type: string
+        username:
+          type: string
+      required:
+      - externalId
+      - sourceDomain
+      - distributorId
+      - returnUrl
+    ResendEmailVerificationDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        userId:
+          type: string
+        email:
+          type: string
+          format: email
+      required:
+      - language
+      - userId
+      - email
+    AdminInviteUserDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        email:
+          type: string
+          format: email
+        isExemptFromSigningTos:
+          type: boolean
+      required:
+      - email
+    SignupDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        returnUrl:
+          type: string
+        tosSigned:
+          type: boolean
+        birthday:
+          format: date-time
+          type: string
+        username:
           type: string
         profileColor:
           type: string
-        userName:
+        points:
+          type: number
+          minimum: 0
+        sourceDomain:
+          type: string
+        distributorId:
+          type: string
+        referrerId:
+          type: string
+        referralCode:
+          type: string
+        amplitudeExperimentVariant:
+          type: string
+        externalId:
+          type: string
+        userId:
           type: string
       required:
-      - avatarAssetId
-      - partnerName
-      - profileColor
-      - userName
+      - email
+      - returnUrl
+      - tosSigned
+      - sourceDomain
+      - distributorId
     ValidateEmailDto:
       type: object
       properties:
@@ -887,13 +953,6 @@ components:
           format: email
       required:
       - email
-    ConfirmInviteDto:
-      type: object
-      properties:
-        password:
-          type: string
-      required:
-      - password
   securitySchemes:
     access-token:
       scheme: bearer

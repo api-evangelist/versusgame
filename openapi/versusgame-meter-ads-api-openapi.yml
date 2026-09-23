@@ -4,14 +4,13 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: meter-ads
 paths:
   /v1/meter-ads/active:
     get:
-      description: Returns an array of active meter ads for a given partner ID. If no partner ID is provided,
-        the default partner ID is used. Active means that the status is "published", the start date is
-        in the past, and the end date is in the future.
+      description: Returns an array of active meter ads for a given partner ID. If no partner ID is provided, the default partner ID is used. Active means that the status is "published", the start date is in the past, and the end date is in the future.
       operationId: MeterAdsController_listActive_v1
       parameters:
       - name: partnerId
@@ -92,8 +91,7 @@ paths:
       - name: startTime
         required: false
         in: query
-        description: Provide a value and comparison operator to filter by start time Unix timestamp in
-          milliseconds
+        description: Provide a value and comparison operator to filter by start time Unix timestamp in milliseconds
         schema:
           $ref: '#/components/schemas/TimeComparison'
       - name: endTime
@@ -133,7 +131,7 @@ paths:
                 $ref: '#/components/schemas/PaginatedMeterAdsDto'
       security:
       - access-token: []
-      summary: List meter ads, filtered by search terms and sort options.
+      summary: List meter ads, filtered by search terms and sort options
       tags:
       - meter-ads
   /v1/admin/meter-ads/{id}:
@@ -201,6 +199,31 @@ paths:
       - meter-ads
 components:
   schemas:
+    UpdateMeterAdDto:
+      type: object
+      properties:
+        partnerId:
+          type: string
+        startTime:
+          type: number
+        endTime:
+          type: number
+        questionText:
+          type: string
+        marketingText:
+          type: string
+        sideA:
+          $ref: '#/components/schemas/UpdateAdSideDto'
+        sideB:
+          $ref: '#/components/schemas/UpdateAdSideDto'
+        status:
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - CANCELLED
+          type: string
+        url:
+          type: string
     MeterAd:
       type: object
       properties:
@@ -276,43 +299,6 @@ components:
       - createdAt
       - updatedAt
       - url
-    AdSideDto:
-      type: object
-      properties:
-        label:
-          type: string
-        percentage:
-          type: number
-          minimum: 0
-        assetUrl:
-          type: string
-          format: uri
-      required:
-      - label
-      - percentage
-      - assetUrl
-    TimeComparison:
-      type: object
-      properties:
-        value:
-          type: number
-          minimum: 0
-          description: Unix timestamp in milliseconds
-          example: 1643673600000
-        operator:
-          enum:
-          - eq
-          - gt
-          - gte
-          - lt
-          - lte
-          - neq
-          type: string
-          description: Comparison operator to apply
-          example: gte
-      required:
-      - value
-      - operator
     PaginatedMeterAdsDto:
       type: object
       properties:
@@ -334,6 +320,30 @@ components:
       - page
       - pageSize
       - pageCount
+    UpdateAdSideDto:
+      type: object
+      properties:
+        label:
+          type: string
+        percentage:
+          type: number
+        assetUrl:
+          type: string
+    AdSideDto:
+      type: object
+      properties:
+        label:
+          type: string
+        percentage:
+          type: number
+          minimum: 0
+        assetUrl:
+          type: string
+          format: uri
+      required:
+      - label
+      - percentage
+      - assetUrl
     CreateMeterAdDto:
       type: object
       properties:
@@ -371,6 +381,28 @@ components:
       - sideA
       - sideB
       - status
+    TimeComparison:
+      type: object
+      properties:
+        value:
+          type: number
+          minimum: 0
+          description: Unix timestamp in milliseconds
+          example: 1643673600000
+        operator:
+          enum:
+          - eq
+          - gt
+          - gte
+          - lt
+          - lte
+          - neq
+          type: string
+          description: Comparison operator to apply
+          example: gte
+      required:
+      - value
+      - operator
     SortOptionsDto:
       type: object
       properties:
@@ -410,40 +442,6 @@ components:
           - DESC
           type: string
           description: Sort direction for marketingText
-    UpdateMeterAdDto:
-      type: object
-      properties:
-        partnerId:
-          type: string
-        startTime:
-          type: number
-        endTime:
-          type: number
-        questionText:
-          type: string
-        marketingText:
-          type: string
-        sideA:
-          $ref: '#/components/schemas/UpdateAdSideDto'
-        sideB:
-          $ref: '#/components/schemas/UpdateAdSideDto'
-        status:
-          enum:
-          - DRAFT
-          - PUBLISHED
-          - CANCELLED
-          type: string
-        url:
-          type: string
-    UpdateAdSideDto:
-      type: object
-      properties:
-        label:
-          type: string
-        percentage:
-          type: number
-        assetUrl:
-          type: string
   securitySchemes:
     access-token:
       scheme: bearer

@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: internal
+- name: Internal
 paths:
   /internal/user/info:
     get:
@@ -26,7 +27,9 @@ paths:
       security:
       - x-api-key: []
       tags:
-      - internal
+      - Internal
+      summary: Internal controller user info
+      x-summary-source: derived
   /internal/users/find:
     post:
       operationId: InternalController_FindUsers
@@ -49,7 +52,9 @@ paths:
       security:
       - x-api-key: []
       tags:
-      - internal
+      - Internal
+      summary: Internal controller find users
+      x-summary-source: derived
 components:
   schemas:
     FindUserslDto:
@@ -61,6 +66,30 @@ components:
             type: string
       required:
       - userIds
+    Profile:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - avatar
+      - id
+      - username
+      - profileColor
+      - createdAt
+      - updatedAt
     UserInfo:
       type: object
       properties:
@@ -90,30 +119,6 @@ components:
       - id
       - emailVerified
       - roles
-      - createdAt
-      - updatedAt
-    Profile:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        username:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-      required:
-      - avatar
-      - id
-      - username
-      - profileColor
       - createdAt
       - updatedAt
   securitySchemes:

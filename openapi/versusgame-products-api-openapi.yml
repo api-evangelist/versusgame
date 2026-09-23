@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: products
+- name: Products
 paths:
   /v1/products:
     get:
@@ -39,7 +40,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListProduct'
       tags:
-      - products
+      - Products
+      summary: Products controller list
+      x-summary-source: derived
   /v1/admin/products:
     post:
       operationId: ProductsAdminController_create
@@ -60,7 +63,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - products
+      - Products
+      summary: Products admin controller create
+      x-summary-source: derived
     get:
       operationId: ProductsAdminController_list
       parameters:
@@ -94,7 +99,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - products
+      - Products
+      summary: Products admin controller list
+      x-summary-source: derived
   /v1/admin/products/{productId}:
     patch:
       operationId: ProductsAdminController_update
@@ -116,7 +123,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - products
+      - Products
+      summary: Products admin controller update
+      x-summary-source: derived
     get:
       operationId: ProductsAdminController_byId
       parameters:
@@ -135,14 +144,85 @@ paths:
       security:
       - access-token: []
       tags:
-      - products
+      - Products
+      summary: Products admin controller by id
+      x-summary-source: derived
 components:
   schemas:
+    CreateProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        language:
+          type: string
+          enum:
+          - en-us
+          - es-mx
+      required:
+      - productName
+      - productDescription
+      - whiteTickets
+      - blackTickets
+      - amount
+      - mostPopular
+      - language
+    SearchFindProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
     Language:
       type: string
       enum:
       - en-us
       - es-mx
+    ListProduct:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductEntity'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    UpdateProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        whiteTicketImage:
+          type: string
+        blackTickets:
+          type: number
+        blackTicketImage:
+          type: string
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        language:
+          type: string
+          enum:
+          - en-us
+          - es-mx
     ProductEntity:
       type: object
       properties:
@@ -180,62 +260,16 @@ components:
       - mostPopular
       - createdAt
       - deletedAt
-    SearchFindProductDto:
-      type: object
-      properties:
-        productName:
-          type: string
-    UpdateProductDto:
-      type: object
-      properties:
-        productName:
-          type: string
-        productDescription:
-          type: string
-        whiteTickets:
-          type: number
-        whiteTicketImage:
-          type: string
-        blackTickets:
-          type: number
-        blackTicketImage:
-          type: string
-        amount:
-          type: number
-        mostPopular:
-          type: boolean
-        language:
-          type: string
-          enum:
-          - en-us
-          - es-mx
-    SortFindProductDto2:
-      type: object
-      properties:
-        sort:
-          $ref: '#/components/schemas/SortFindProductDto'
     SearchFindProductDto2:
       type: object
       properties:
         search:
           $ref: '#/components/schemas/SearchFindProductDto'
-    ListProduct:
+    SortFindProductDto2:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductEntity'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
+        sort:
+          $ref: '#/components/schemas/SortFindProductDto'
     SortFindProductDto:
       type: object
       properties:
@@ -245,34 +279,11 @@ components:
         productName:
           allOf:
           - $ref: '#/components/schemas/SortMode'
-    CreateProductDto:
-      type: object
-      properties:
-        productName:
-          type: string
-        productDescription:
-          type: string
-        whiteTickets:
-          type: number
-        blackTickets:
-          type: number
-        amount:
-          type: number
-        mostPopular:
-          type: boolean
-        language:
-          type: string
-          enum:
-          - en-us
-          - es-mx
-      required:
-      - productName
-      - productDescription
-      - whiteTickets
-      - blackTickets
-      - amount
-      - mostPopular
-      - language
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
   securitySchemes:
     access-token:
       scheme: bearer

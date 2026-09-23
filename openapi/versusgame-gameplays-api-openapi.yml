@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: gameplays
 paths:
@@ -47,6 +48,8 @@ paths:
       - access-token: []
       tags:
       - gameplays
+      summary: Gameplays controller list
+      x-summary-source: derived
     post:
       operationId: GameplaysController_create
       parameters:
@@ -72,6 +75,8 @@ paths:
       - access-token: []
       tags:
       - gameplays
+      summary: Gameplays controller create
+      x-summary-source: derived
   /v1/gameplays/{id}/claim_reward:
     post:
       operationId: GameplaysController_claimReward
@@ -93,6 +98,8 @@ paths:
       - access-token: []
       tags:
       - gameplays
+      summary: Gameplays controller claim reward
+      x-summary-source: derived
   /v1/gameplays/{id}:
     get:
       operationId: GameplaysController_byId
@@ -113,6 +120,8 @@ paths:
       - access-token: []
       tags:
       - gameplays
+      summary: Gameplays controller by id
+      x-summary-source: derived
     delete:
       operationId: GameplaysController_cancel
       parameters:
@@ -133,8 +142,66 @@ paths:
       - access-token: []
       tags:
       - gameplays
+      summary: Gameplays controller cancel
+      x-summary-source: derived
 components:
   schemas:
+    ListGameplayStates:
+      type: string
+      enum:
+      - all
+      - active
+      - pending
+      - finished
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
     Language:
       type: string
       enum:
@@ -150,33 +217,6 @@ components:
       - won
       - lost
       - canceled
-    Category:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
-          type: string
-        categoryName:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-      required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
     Gameplay:
       type: object
       properties:
@@ -250,11 +290,6 @@ components:
       enum:
       - landscape
       - portrait
-    Side:
-      type: string
-      enum:
-      - A
-      - B
     CreateGameplayDto:
       type: object
       properties:
@@ -307,78 +342,6 @@ components:
       - widgetId
       - returnUrl
       - distributorId
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    GameType:
-      type: string
-      enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    GameStates:
-      type: string
-      enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
-      - canceled
-      - refunded
-      - quarantined
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
     AchievementEntity:
       type: object
       properties:
@@ -400,18 +363,56 @@ components:
       - createdAt
       - expireAt
       - achievementId
-    ListGameplays:
+    RewardType:
+      type: string
+      enum:
+      - microsoft
+    Category:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Gameplay'
-        next:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
           type: string
       required:
-      - items
-      - next
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    Side:
+      type: string
+      enum:
+      - A
+      - B
     Game:
       type: object
       properties:
@@ -527,23 +528,33 @@ components:
       - createdAt
       - updatedAt
       - version
+    ListGameplays:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gameplay'
+        next:
+          type: string
+      required:
+      - items
+      - next
     TicketType:
       type: string
       enum:
       - white
       - black
       - free
-    ListGameplayStates:
+    GameType:
       type: string
       enum:
-      - all
-      - active
-      - pending
-      - finished
-    RewardType:
-      type: string
-      enum:
-      - microsoft
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
   securitySchemes:
     access-token:
       scheme: bearer

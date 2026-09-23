@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: creators
+- name: Creators
 paths:
   /v1/admin/creators/{creatorId}:
     patch:
@@ -28,7 +29,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - creators
+      - Creators
+      summary: Creators admin controller update
+      x-summary-source: derived
     get:
       operationId: CreatorsAdminController_byId
       parameters:
@@ -47,7 +50,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - creators
+      - Creators
+      summary: Creators admin controller by id
+      x-summary-source: derived
   /v1/admin/creators:
     get:
       operationId: CreatorsAdminController_list
@@ -82,7 +87,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - creators
+      - Creators
+      summary: Creators admin controller list
+      x-summary-source: derived
   /v1/creators/creators:
     patch:
       operationId: CreatorsCreatorsController_update
@@ -99,7 +106,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - creators
+      - Creators
+      summary: Creators creators controller update
+      x-summary-source: derived
     get:
       operationId: CreatorsCreatorsController_list
       parameters:
@@ -133,43 +142,11 @@ paths:
       security:
       - access-token: []
       tags:
-      - creators
+      - Creators
+      summary: Creators creators controller list
+      x-summary-source: derived
 components:
   schemas:
-    ListCreator:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Creator'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    UpdateCreatorDto:
-      type: object
-      properties:
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-    SearchFindCreatorDto:
-      type: object
-      properties:
-        creatorIds:
-          type: array
-          items:
-            type: string
-        partnerName:
-          type: string
-        userName:
-          type: string
     Creator:
       type: object
       properties:
@@ -200,6 +177,45 @@ components:
       - userName
       - createdAt
       - updatedAt
+    SearchFindCreatorDto:
+      type: object
+      properties:
+        creatorIds:
+          type: array
+          items:
+            type: string
+        partnerName:
+          type: string
+        userName:
+          type: string
+    ListCreator:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    UpdateCreatorDto:
+      type: object
+      properties:
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
     SortFindCreatorDto:
       type: object
       properties:
@@ -209,11 +225,6 @@ components:
         userName:
           allOf:
           - $ref: '#/components/schemas/SortMode'
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
   securitySchemes:
     access-token:
       scheme: bearer

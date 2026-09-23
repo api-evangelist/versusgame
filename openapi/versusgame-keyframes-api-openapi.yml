@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: keyframes
 paths:
@@ -34,6 +35,8 @@ paths:
       - access-token: []
       tags:
       - keyframes
+      summary: Key frame controller create v1
+      x-summary-source: derived
   /v1/keyframes/batch:
     post:
       operationId: KeyFrameController_createBatch_v1
@@ -51,6 +54,8 @@ paths:
       - access-token: []
       tags:
       - keyframes
+      summary: Key frame controller create batch v1
+      x-summary-source: derived
   /v1/keyframes/search:
     post:
       operationId: KeyFrameController_imageSearch_v1
@@ -70,11 +75,46 @@ paths:
                 $ref: '#/components/schemas/SearchKeyFrameResponse'
       tags:
       - keyframes
+      summary: Key frame controller image search v1
+      x-summary-source: derived
 components:
   schemas:
+    KeyFrameEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        mediaId:
+          type: string
+        createdAt:
+          type: number
+        timestamp:
+          type: number
+        description:
+          type: string
+        keyFrameIndex:
+          type: number
+        embedding:
+          type: array
+          items:
+            type: number
+      required:
+      - id
+      - mediaId
+      - timestamp
+      - description
+      - keyFrameIndex
+      - embedding
     File:
       type: object
       properties: {}
+    CreateKeyFrameResponse:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     SearchKeyFramesDto:
       type: object
       properties:
@@ -130,39 +170,6 @@ components:
       - items
       - scores
       - total
-    KeyFrameEntity:
-      type: object
-      properties:
-        id:
-          type: string
-        mediaId:
-          type: string
-        createdAt:
-          type: number
-        timestamp:
-          type: number
-        description:
-          type: string
-        keyFrameIndex:
-          type: number
-        embedding:
-          type: array
-          items:
-            type: number
-      required:
-      - id
-      - mediaId
-      - timestamp
-      - description
-      - keyFrameIndex
-      - embedding
-    CreateKeyFrameResponse:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
   securitySchemes:
     access-token:
       scheme: bearer

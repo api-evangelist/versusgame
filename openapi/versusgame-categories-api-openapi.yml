@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: categories
+- name: Categories
 paths:
   /v1/categories:
     get:
@@ -39,7 +40,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListCategory'
       tags:
-      - categories
+      - Categories
+      summary: Categories controller list
+      x-summary-source: derived
   /v1/admin/categories:
     post:
       operationId: CategoriesAdminController_create
@@ -60,7 +63,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - categories
+      - Categories
+      summary: Categories admin controller create
+      x-summary-source: derived
     get:
       operationId: CategoriesAdminController_list
       parameters:
@@ -94,7 +99,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - categories
+      - Categories
+      summary: Categories admin controller list
+      x-summary-source: derived
   /v1/admin/categories/{categoryId}:
     patch:
       operationId: CategoriesAdminController_update
@@ -116,7 +123,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - categories
+      - Categories
+      summary: Categories admin controller update
+      x-summary-source: derived
     get:
       operationId: CategoriesAdminController_byId
       parameters:
@@ -135,7 +144,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - categories
+      - Categories
+      summary: Categories admin controller by id
+      x-summary-source: derived
     delete:
       operationId: CategoriesAdminController_delete
       parameters:
@@ -150,14 +161,11 @@ paths:
       security:
       - access-token: []
       tags:
-      - categories
+      - Categories
+      summary: Categories admin controller delete
+      x-summary-source: derived
 components:
   schemas:
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
     CreateCategoryDto:
       type: object
       properties:
@@ -173,6 +181,21 @@ components:
       required:
       - language
       - categoryName
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    SearchFindCategoryDto:
+      type: object
+      properties:
+        categoryName:
+          type: string
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
     Category:
       type: object
       properties:
@@ -200,35 +223,6 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
-    UpdateCategoryDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        categoryName:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-    SearchFindCategoryDto:
-      type: object
-      properties:
-        categoryName:
-          type: string
-    ListCategory:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-        total:
-          type: number
-      required:
-      - items
-      - total
     SortFindCategoryDto:
       type: object
       properties:
@@ -241,11 +235,30 @@ components:
         updatedAt:
           allOf:
           - $ref: '#/components/schemas/SortMode'
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
+    ListCategory:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    UpdateCategoryDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        categoryName:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
   securitySchemes:
     access-token:
       scheme: bearer

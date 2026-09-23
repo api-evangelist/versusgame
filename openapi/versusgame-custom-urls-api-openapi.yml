@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: custom-urls
 paths:
@@ -25,6 +26,8 @@ paths:
                 $ref: '#/components/schemas/CustomUrl'
       tags:
       - custom-urls
+      summary: Custom url controller find by url
+      x-summary-source: derived
   /v1/admin/custom-urls/{customUrlId}:
     patch:
       operationId: CustomUrlAdminController_update
@@ -47,6 +50,8 @@ paths:
       - access-token: []
       tags:
       - custom-urls
+      summary: Custom url admin controller update
+      x-summary-source: derived
     get:
       operationId: CustomUrlAdminController_byId
       parameters:
@@ -78,6 +83,8 @@ paths:
       - access-token: []
       tags:
       - custom-urls
+      summary: Custom url admin controller by id
+      x-summary-source: derived
   /v1/admin/custom-urls:
     get:
       operationId: CustomUrlAdminController_list
@@ -125,6 +132,8 @@ paths:
       - access-token: []
       tags:
       - custom-urls
+      summary: Custom url admin controller list
+      x-summary-source: derived
   /v1/creator/custom-urls:
     post:
       operationId: CustomUrlCreatorController_create
@@ -146,6 +155,8 @@ paths:
       - access-token: []
       tags:
       - custom-urls
+      summary: Custom url creator controller create
+      x-summary-source: derived
     patch:
       operationId: CustomUrlCreatorController_update
       parameters: []
@@ -162,6 +173,8 @@ paths:
       - access-token: []
       tags:
       - custom-urls
+      summary: Custom url creator controller update
+      x-summary-source: derived
     get:
       operationId: CustomUrlCreatorController_get
       parameters:
@@ -188,6 +201,8 @@ paths:
       - access-token: []
       tags:
       - custom-urls
+      summary: Custom url creator controller get
+      x-summary-source: derived
   /v1/creator/custom-urls/{Id}:
     delete:
       operationId: CustomUrlCreatorController_delete
@@ -199,22 +214,23 @@ paths:
       - access-token: []
       tags:
       - custom-urls
+      summary: Custom url creator controller delete
+      x-summary-source: derived
 components:
   schemas:
-    CustomUrlSortFindAllDto:
+    UpdateCustomUrlDto:
       type: object
       properties:
+        widgetId:
+          type: string
         url:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
+          type: string
         websiteTitle:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-    CustomUrlSearchFindAllDto2:
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/CustomUrlSearchFindAllDto'
+          type: string
+        backgroundColor:
+          type: string
+        textColor:
+          type: string
     VideoUrls:
       type: object
       properties:
@@ -234,43 +250,62 @@ components:
       - mp4540
       - mp4720
       - poster
-    GameSet:
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    WidgetTypes:
+      type: string
+      enum:
+      - inline
+      - expanding
+      - mobile-expanding
+      - docked
+      - carousel
+      - sidebar
+      - playlist
+    Category:
       type: object
       properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
         id:
           type: string
-        partnerId:
+        categoryName:
           type: string
-        partner:
-          $ref: '#/components/schemas/Creator'
         createdAt:
-          format: date-time
           type: string
         updatedAt:
-          format: date-time
-          type: string
-        startTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
           type: string
         deletedAt:
-          format: date-time
           type: string
-        games:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
+        sticker:
+          type: string
+        icon:
+          type: string
       required:
+      - language
       - id
-      - partner
+      - categoryName
       - createdAt
       - updatedAt
-      - startTime
-      - endTime
       - deletedAt
-      - games
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
     ListCustomUrl:
       type: object
       properties:
@@ -283,136 +318,6 @@ components:
       required:
       - items
       - total
-    Widget:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/WidgetTypes'
-        id:
-          type: string
-        name:
-          type: string
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        playlistId:
-          type: string
-        playlist:
-          $ref: '#/components/schemas/Playlist'
-        deletedAt:
-          format: date-time
-          type: string
-      required:
-      - type
-      - id
-      - name
-      - creatorId
-      - creator
-      - playlistId
-      - playlist
-      - deletedAt
-    Playlist:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        gameSet:
-          $ref: '#/components/schemas/GameSet'
-        id:
-          type: string
-        totalGames:
-          type: number
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        widgets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Widget'
-        gamesOrder:
-          type: array
-          items:
-            type: string
-        games:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        autofilledGames:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        autofillCategories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-        autofillCreators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Creator'
-        autofillExcludedCreators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Creator'
-        autofill:
-          type: boolean
-      required:
-      - language
-      - id
-      - totalGames
-      - creatorId
-      - creator
-      - widgets
-      - games
-      - autofilledGames
-      - autofill
-    CreateCustomUrlDto:
-      type: object
-      properties:
-        widgetId:
-          type: string
-        url:
-          type: string
-        websiteTitle:
-          type: string
-        backgroundColor:
-          type: string
-        textColor:
-          type: string
-      required:
-      - widgetId
-      - url
-      - websiteTitle
-      - backgroundColor
-      - textColor
-    CustomUrlSortFindAllDto2:
-      type: object
-      properties:
-        sort:
-          $ref: '#/components/schemas/CustomUrlSortFindAllDto'
-    GameType:
-      type: string
-      enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    CustomUrlSearchFindAllDto:
-      type: object
-      properties:
-        creatorIds:
-          type: array
-          items:
-            type: string
-        url:
-          type: string
-        websiteTitle:
-          type: string
     Game:
       type: object
       properties:
@@ -528,6 +433,237 @@ components:
       - createdAt
       - updatedAt
       - version
+    Widget:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        id:
+          type: string
+        name:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        playlistId:
+          type: string
+        playlist:
+          $ref: '#/components/schemas/Playlist'
+        deletedAt:
+          format: date-time
+          type: string
+      required:
+      - type
+      - id
+      - name
+      - creatorId
+      - creator
+      - playlistId
+      - playlist
+      - deletedAt
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    CustomUrlExpand:
+      type: string
+      enum:
+      - creator
+      - widget
+    CustomUrlSearchFindAllDto2:
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/CustomUrlSearchFindAllDto'
+    CustomUrlSortFindAllDto2:
+      type: object
+      properties:
+        sort:
+          $ref: '#/components/schemas/CustomUrlSortFindAllDto'
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    Playlist:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameSet:
+          $ref: '#/components/schemas/GameSet'
+        id:
+          type: string
+        totalGames:
+          type: number
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        widgets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Widget'
+        gamesOrder:
+          type: array
+          items:
+            type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofilledGames:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofillCategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        autofillCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofillExcludedCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofill:
+          type: boolean
+      required:
+      - language
+      - id
+      - totalGames
+      - creatorId
+      - creator
+      - widgets
+      - games
+      - autofilledGames
+      - autofill
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    CustomUrlSearchFindAllDto:
+      type: object
+      properties:
+        creatorIds:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+        websiteTitle:
+          type: string
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    GameSet:
+      type: object
+      properties:
+        id:
+          type: string
+        partnerId:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Creator'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+      required:
+      - id
+      - partner
+      - createdAt
+      - updatedAt
+      - startTime
+      - endTime
+      - deletedAt
+      - games
+    CustomUrlSortFindAllDto:
+      type: object
+      properties:
+        url:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        websiteTitle:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    CreateCustomUrlDto:
+      type: object
+      properties:
+        widgetId:
+          type: string
+        url:
+          type: string
+        websiteTitle:
+          type: string
+        backgroundColor:
+          type: string
+        textColor:
+          type: string
+      required:
+      - widgetId
+      - url
+      - websiteTitle
+      - backgroundColor
+      - textColor
+    Side:
+      type: string
+      enum:
+      - A
+      - B
     CustomUrl:
       type: object
       properties:
@@ -562,125 +698,6 @@ components:
       - textColor
       - createdAt
       - updatedAt
-    CustomUrlExpand:
-      type: string
-      enum:
-      - creator
-      - widget
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    UpdateCustomUrlDto:
-      type: object
-      properties:
-        widgetId:
-          type: string
-        url:
-          type: string
-        websiteTitle:
-          type: string
-        backgroundColor:
-          type: string
-        textColor:
-          type: string
-    Side:
-      type: string
-      enum:
-      - A
-      - B
-    GameStates:
-      type: string
-      enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
-      - canceled
-      - refunded
-      - quarantined
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
-    Category:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
-          type: string
-        categoryName:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-      required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
-    WidgetTypes:
-      type: string
-      enum:
-      - inline
-      - expanding
-      - mobile-expanding
-      - docked
-      - carousel
-      - sidebar
-      - playlist
   securitySchemes:
     access-token:
       scheme: bearer

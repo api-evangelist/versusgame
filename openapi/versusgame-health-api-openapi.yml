@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: Health
 paths:
@@ -20,6 +21,8 @@ paths:
                 type: string
       tags:
       - Health
+      summary: Health controller check
+      x-summary-source: derived
 components:
   securitySchemes:
     access-token:

@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: cuts
 paths:
@@ -22,6 +23,8 @@ paths:
       - access-token: []
       tags:
       - cuts
+      summary: Cuts admin controller get global cuts
+      x-summary-source: derived
     patch:
       operationId: CutsAdminController_updateGlobalCuts
       parameters: []
@@ -38,6 +41,8 @@ paths:
       - access-token: []
       tags:
       - cuts
+      summary: Cuts admin controller update global cuts
+      x-summary-source: derived
   /v1/admin/cuts/history:
     get:
       operationId: CutsAdminController_getGlobalCutsHistory
@@ -53,6 +58,8 @@ paths:
       - access-token: []
       tags:
       - cuts
+      summary: Cuts admin controller get global cuts history
+      x-summary-source: derived
   /v1/admin/cuts/{userId}:
     get:
       operationId: CutsAdminController_getUserCuts
@@ -74,6 +81,8 @@ paths:
       - access-token: []
       tags:
       - cuts
+      summary: Cuts admin controller get user cuts
+      x-summary-source: derived
     patch:
       operationId: CutsAdminController_updateUserCuts
       parameters:
@@ -96,6 +105,8 @@ paths:
       - access-token: []
       tags:
       - cuts
+      summary: Cuts admin controller update user cuts
+      x-summary-source: derived
   /v1/admin/cuts/{userId}/distributor:
     patch:
       operationId: CutsAdminController_updateUserDistributionCuts
@@ -119,6 +130,8 @@ paths:
       - access-token: []
       tags:
       - cuts
+      summary: Cuts admin controller update user distribution cuts
+      x-summary-source: derived
   /v1/admin/cuts/{userId}/history:
     get:
       operationId: CutsAdminController_getUserCutsHistory
@@ -139,6 +152,8 @@ paths:
       - access-token: []
       tags:
       - cuts
+      summary: Cuts admin controller get user cuts history
+      x-summary-source: derived
 components:
   schemas:
     UpdateUserDistributionCutsDto:
@@ -178,6 +193,73 @@ components:
       - userName
       - type
       - description
+    UserCutsHistoryEntity:
+      type: object
+      properties:
+        userId:
+          type: string
+        updatedBy:
+          type: string
+        after:
+          $ref: '#/components/schemas/UserCutsEntity'
+        createdAt:
+          type: number
+      required:
+      - userId
+      - updatedBy
+      - after
+      - createdAt
+    UserCutsEntity:
+      type: object
+      properties:
+        version:
+          type: number
+        userId:
+          type: string
+        distributorCutPercentage:
+          type: number
+        creatorCutPercentage:
+          type: number
+        parents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParentCut'
+      required:
+      - version
+      - userId
+      - distributorCutPercentage
+      - creatorCutPercentage
+      - parents
+    ValidParentCut:
+      type: object
+      properties:
+        userId:
+          type: string
+        cutPercentage:
+          type: number
+        type:
+          type: string
+          enum:
+          - general
+        description:
+          type: string
+      required:
+      - userId
+      - cutPercentage
+      - type
+      - description
+    GlobalCutsHistoryListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalCutsHistoryEntity'
+        next:
+          type: string
+      required:
+      - items
+      - next
     UpdateGlobalCutsDto:
       type: object
       properties:
@@ -237,13 +319,13 @@ components:
       - creatorCutPercentage
       - parents
       - version
-    GlobalCutsHistoryListEntity:
+    UserCutsHistoryListEntity:
       type: object
       properties:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/GlobalCutsHistoryEntity'
+            $ref: '#/components/schemas/UserCutsHistoryEntity'
         next:
           type: string
       required:
@@ -270,73 +352,6 @@ components:
       - defaultDistributorCutPercentage
       - defaultCreatorCutPercentage
       - updatedAt
-    UserCutsEntity:
-      type: object
-      properties:
-        version:
-          type: number
-        userId:
-          type: string
-        distributorCutPercentage:
-          type: number
-        creatorCutPercentage:
-          type: number
-        parents:
-          type: array
-          items:
-            $ref: '#/components/schemas/ParentCut'
-      required:
-      - version
-      - userId
-      - distributorCutPercentage
-      - creatorCutPercentage
-      - parents
-    ValidParentCut:
-      type: object
-      properties:
-        userId:
-          type: string
-        cutPercentage:
-          type: number
-        type:
-          type: string
-          enum:
-          - general
-        description:
-          type: string
-      required:
-      - userId
-      - cutPercentage
-      - type
-      - description
-    UserCutsHistoryListEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserCutsHistoryEntity'
-        next:
-          type: string
-      required:
-      - items
-      - next
-    UserCutsHistoryEntity:
-      type: object
-      properties:
-        userId:
-          type: string
-        updatedBy:
-          type: string
-        after:
-          $ref: '#/components/schemas/UserCutsEntity'
-        createdAt:
-          type: number
-      required:
-      - userId
-      - updatedBy
-      - after
-      - createdAt
   securitySchemes:
     access-token:
       scheme: bearer

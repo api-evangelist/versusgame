@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: gamesets
 paths:
@@ -28,6 +29,8 @@ paths:
       - access-token: []
       tags:
       - gamesets
+      summary: Game sets controller create
+      x-summary-source: derived
     get:
       operationId: GameSetsController_query
       parameters:
@@ -77,6 +80,8 @@ paths:
       - access-token: []
       tags:
       - gamesets
+      summary: Game sets controller query
+      x-summary-source: derived
   /admin/gamesets/{id}:
     get:
       operationId: GameSetsController_byId
@@ -97,6 +102,8 @@ paths:
       - access-token: []
       tags:
       - gamesets
+      summary: Game sets controller by id
+      x-summary-source: derived
     put:
       operationId: GameSetsController_update
       parameters:
@@ -122,6 +129,8 @@ paths:
       - access-token: []
       tags:
       - gamesets
+      summary: Game sets controller update
+      x-summary-source: derived
     delete:
       operationId: GameSetsController_delete
       parameters:
@@ -137,6 +146,8 @@ paths:
       - access-token: []
       tags:
       - gamesets
+      summary: Game sets controller delete
+      x-summary-source: derived
   /admin/gamesets/partners/{partnerId}:
     get:
       operationId: GameSetsController_getSet
@@ -162,13 +173,123 @@ paths:
       - access-token: []
       tags:
       - gamesets
+      summary: Game sets controller get set
+      x-summary-source: derived
 components:
   schemas:
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
     Language:
       type: string
       enum:
       - en-us
       - es-mx
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    ListGameSet:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameSet'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    GameSet:
+      type: object
+      properties:
+        id:
+          type: string
+        partnerId:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Creator'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+      required:
+      - id
+      - partner
+      - createdAt
+      - updatedAt
+      - startTime
+      - endTime
+      - deletedAt
+      - games
     UpdateGameSetDto:
       type: object
       properties:
@@ -207,16 +328,6 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
-    Side:
-      type: string
-      enum:
-      - A
-      - B
     GameStates:
       type: string
       enum:
@@ -231,52 +342,11 @@ components:
       - canceled
       - refunded
       - quarantined
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
-    GameType:
+    Side:
       type: string
       enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    CreateGameSetDto:
-      type: object
-      properties:
-        partnerId:
-          type: string
-        startTime:
-          type: string
-        endTime:
-          type: string
-        games:
-          type: array
-          items:
-            type: string
-      required:
-      - partnerId
-      - startTime
-      - endTime
-      - games
+      - A
+      - B
     Game:
       type: object
       properties:
@@ -392,90 +462,33 @@ components:
       - createdAt
       - updatedAt
       - version
-    ListGameSet:
+    CreateGameSetDto:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameSet'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    GameSet:
-      type: object
-      properties:
-        id:
-          type: string
         partnerId:
           type: string
-        partner:
-          $ref: '#/components/schemas/Creator'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
         startTime:
-          format: date-time
           type: string
         endTime:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
           type: string
         games:
           type: array
           items:
-            $ref: '#/components/schemas/Game'
+            type: string
       required:
-      - id
-      - partner
-      - createdAt
-      - updatedAt
+      - partnerId
       - startTime
       - endTime
-      - deletedAt
       - games
-    SortMode:
+    GameType:
       type: string
       enum:
-      - asc
-      - desc
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
   securitySchemes:
     access-token:
       scheme: bearer

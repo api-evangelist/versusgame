@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: wallets
+- name: Wallets
 paths:
   /v1/wallets/account-balance:
     get:
@@ -21,7 +22,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - wallets
+      - Wallets
+      summary: Wallets controller get account balance
+      x-summary-source: derived
   /v1/wallets/claim-daily-gift:
     post:
       operationId: WalletsController_claimDailyGift
@@ -36,7 +39,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - wallets
+      - Wallets
+      summary: Wallets controller claim daily gift
+      x-summary-source: derived
   /v1/admin/wallets/{userId}:
     put:
       operationId: AdminController_updateUserWallet
@@ -62,7 +67,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - wallets
+      - Wallets
+      summary: Admin controller update user wallet
+      x-summary-source: derived
   /v1/admin/wallets/{userId}/demote:
     put:
       operationId: AdminController_demoteUserWallet
@@ -88,7 +95,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - wallets
+      - Wallets
+      summary: Admin controller demote user wallet
+      x-summary-source: derived
   /v1/admin/wallets/{userId}/promote:
     put:
       operationId: AdminController_promoteUserWallet
@@ -114,24 +123,74 @@ paths:
       security:
       - access-token: []
       tags:
-      - wallets
+      - Wallets
+      summary: Admin controller promote user wallet
+      x-summary-source: derived
 components:
   schemas:
-    PromoteUserDto:
+    AdminUpdateFundsDto:
       type: object
       properties:
-        leaderboardLeague:
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/FundsUpdatedReasons'
+        walletVersion:
+          type: number
+        funds:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidUpdateFund'
+        adminDescription:
           type: string
-          enum:
-          - level1
-          - level2
-          - level3
-          - level4
         distributorId:
           type: string
+        gameCorrectAnswer:
+          type: boolean
+        gameDeclared:
+          type: boolean
       required:
-      - leaderboardLeague
-      - distributorId
+      - reason
+      - funds
+    UpdateWalletResponse:
+      type: object
+      properties:
+        version:
+          type: number
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - updatedAt
+    ValidUpdateFund:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/ValidUpdateFunds'
+        amount:
+          type: number
+      required:
+      - type
+      - amount
+    FundsUpdatedReasons:
+      type: string
+      enum:
+      - free_gift
+      - host_cut
+      - referrer_cut
+      - parent_cut
+      - transaction_voided
+      - game_played
+      - game_outcome
+      - pending_outcome
+      - purchase
+      - redeem
+      - refund
+      - payout
+      - admin_update
+      - distributor_cut
+      - achievement
     WalletResponse:
       type: object
       properties:
@@ -219,6 +278,35 @@ components:
       required:
       - name
       - leaderboardId
+    DemoteUserDto:
+      type: object
+      properties:
+        distributorId:
+          type: string
+      required:
+      - distributorId
+    ValidUpdateFunds:
+      type: string
+      enum:
+      - black
+      - white
+      - coin
+      - point
+    PromoteUserDto:
+      type: object
+      properties:
+        leaderboardLeague:
+          type: string
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+        distributorId:
+          type: string
+      required:
+      - leaderboardLeague
+      - distributorId
     DailySetCount:
       type: object
       properties:
@@ -246,83 +334,6 @@ components:
           type: number
       required:
       - amount
-    FundsUpdatedReasons:
-      type: string
-      enum:
-      - free_gift
-      - host_cut
-      - referrer_cut
-      - parent_cut
-      - transaction_voided
-      - game_played
-      - game_outcome
-      - pending_outcome
-      - purchase
-      - redeem
-      - refund
-      - payout
-      - admin_update
-      - distributor_cut
-      - achievement
-    DemoteUserDto:
-      type: object
-      properties:
-        distributorId:
-          type: string
-      required:
-      - distributorId
-    ValidUpdateFund:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/ValidUpdateFunds'
-        amount:
-          type: number
-      required:
-      - type
-      - amount
-    ValidUpdateFunds:
-      type: string
-      enum:
-      - black
-      - white
-      - coin
-      - point
-    UpdateWalletResponse:
-      type: object
-      properties:
-        version:
-          type: number
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - updatedAt
-    AdminUpdateFundsDto:
-      type: object
-      properties:
-        reason:
-          allOf:
-          - $ref: '#/components/schemas/FundsUpdatedReasons'
-        walletVersion:
-          type: number
-        funds:
-          minItems: 1
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidUpdateFund'
-        adminDescription:
-          type: string
-        distributorId:
-          type: string
-        gameCorrectAnswer:
-          type: boolean
-        gameDeclared:
-          type: boolean
-      required:
-      - reason
-      - funds
   securitySchemes:
     access-token:
       scheme: bearer

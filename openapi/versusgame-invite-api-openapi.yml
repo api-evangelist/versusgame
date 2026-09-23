@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: Invite
 paths:
@@ -21,6 +22,8 @@ paths:
           description: ''
       tags:
       - Invite
+      summary: Invite controller link
+      x-summary-source: derived
 components:
   securitySchemes:
     access-token:

@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: Legal
 paths:
@@ -20,6 +21,8 @@ paths:
           description: ''
       tags:
       - Legal
+      summary: Legal controller privacy
+      x-summary-source: derived
   /rules/{language}:
     get:
       operationId: LegalController_rules
@@ -33,6 +36,8 @@ paths:
           description: ''
       tags:
       - Legal
+      summary: Legal controller rules
+      x-summary-source: derived
   /tos/{language}:
     get:
       operationId: LegalController_tos
@@ -46,6 +51,8 @@ paths:
           description: ''
       tags:
       - Legal
+      summary: Legal controller tos
+      x-summary-source: derived
   /promotional-rules/{language}:
     get:
       operationId: LegalController_promotional
@@ -59,6 +66,8 @@ paths:
           description: ''
       tags:
       - Legal
+      summary: Legal controller promotional
+      x-summary-source: derived
   /business-service-terms/{language}:
     get:
       operationId: LegalController_businessServiceTerms
@@ -72,6 +81,8 @@ paths:
           description: ''
       tags:
       - Legal
+      summary: Legal controller business service terms
+      x-summary-source: derived
 components:
   securitySchemes:
     access-token:

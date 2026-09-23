@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: ledger
+- name: Ledger
 paths:
   /v1/ledger:
     get:
@@ -48,7 +49,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - ledger
+      - Ledger
+      summary: Ledger controller list
+      x-summary-source: derived
   /v1/admin/ledger:
     get:
       operationId: LedgerAdminController_list
@@ -95,19 +98,11 @@ paths:
       security:
       - access-token: []
       tags:
-      - ledger
+      - Ledger
+      summary: Ledger admin controller list
+      x-summary-source: derived
 components:
   schemas:
-    FundType:
-      type: string
-      enum:
-      - free
-      - white
-      - black
-      - gray
-      - coin
-      - pending_coin
-      - point
     LedgersEntity:
       type: object
       properties:
@@ -131,6 +126,17 @@ components:
       - userId
       - createdAt
       - funds
+    LedgerListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgersEntity'
+        next:
+          type: string
+      required:
+      - items
     FundsUpdatedReasons:
       type: string
       enum:
@@ -160,17 +166,16 @@ components:
       required:
       - type
       - amount
-    LedgerListEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LedgersEntity'
-        next:
-          type: string
-      required:
-      - items
+    FundType:
+      type: string
+      enum:
+      - free
+      - white
+      - black
+      - gray
+      - coin
+      - pending_coin
+      - point
   securitySchemes:
     access-token:
       scheme: bearer

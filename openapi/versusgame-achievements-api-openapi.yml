@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: achievements
+- name: Achievements
 paths:
   /v1/achievements:
     get:
@@ -21,9 +22,18 @@ paths:
                 items:
                   $ref: '#/components/schemas/GamePlayAchievementEntity'
       tags:
-      - achievements
+      - Achievements
+      summary: Achievements controller list
+      x-summary-source: derived
 components:
   schemas:
+    level:
+      type: string
+      enum:
+      - level1
+      - level2
+      - level3
+      - level4
     GamePlayAchievementEntity:
       type: object
       properties:
@@ -60,13 +70,6 @@ components:
       - friends-invited
       - gameset-completed
       - gameset-challenge-won
-    level:
-      type: string
-      enum:
-      - level1
-      - level2
-      - level3
-      - level4
   securitySchemes:
     access-token:
       scheme: bearer

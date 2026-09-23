@@ -4,8 +4,9 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
-- name: profiles
+- name: Profiles
 paths:
   /v1/profiles:
     get:
@@ -21,7 +22,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - profiles
+      - Profiles
+      summary: Profiles controller me
+      x-summary-source: derived
     patch:
       operationId: ProfilesController_update
       parameters: []
@@ -37,7 +40,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - profiles
+      - Profiles
+      summary: Profiles controller update
+      x-summary-source: derived
   /v1/profiles/{id}:
     get:
       operationId: ProfilesController_byId
@@ -57,7 +62,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - profiles
+      - Profiles
+      summary: Profiles controller by id
+      x-summary-source: derived
   /v1/profiles/username_available:
     post:
       operationId: ProfilesController_usernameAvailable
@@ -72,7 +79,9 @@ paths:
         '204':
           description: Verifies if a username is available or not
       tags:
-      - profiles
+      - Profiles
+      summary: Profiles controller username available
+      x-summary-source: derived
   /v1/admin/profiles/{id}:
     patch:
       operationId: ProfileAdminController_update
@@ -94,7 +103,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - profiles
+      - Profiles
+      summary: Profile admin controller update
+      x-summary-source: derived
     get:
       operationId: ProfileAdminController_byId
       parameters:
@@ -113,7 +124,9 @@ paths:
       security:
       - access-token: []
       tags:
-      - profiles
+      - Profiles
+      summary: Profile admin controller by id
+      x-summary-source: derived
   /v1/admin/profiles:
     get:
       operationId: ProfileAdminController_list
@@ -148,21 +161,29 @@ paths:
       security:
       - access-token: []
       tags:
-      - profiles
+      - Profiles
+      summary: Profile admin controller list
+      x-summary-source: derived
 components:
   schemas:
-    ListExpandedProfile:
+    Role:
+      type: string
+      enum:
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
+    ValidUsernameDto:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExpandedProfile'
-        total:
-          type: number
+        username:
+          type: string
       required:
-      - items
-      - total
+      - username
     ExpandedProfile:
       type: object
       properties:
@@ -195,6 +216,19 @@ components:
       - profileColor
       - createdAt
       - updatedAt
+    SearchFindProfileEmailDto:
+      type: object
+      properties:
+        userEmail:
+          type: string
+        username:
+          type: string
+        usernameLike:
+          type: string
+        ids:
+          type: array
+          items:
+            type: string
     WalletResponse:
       type: object
       properties:
@@ -282,26 +316,6 @@ components:
       required:
       - name
       - leaderboardId
-    DailySetCount:
-      type: object
-      properties:
-        totalCompleted:
-          type: number
-          default: 0
-        totalWins:
-          type: number
-          default: 0
-        totalLosses:
-          type: number
-          default: 0
-        totalTies:
-          type: number
-          default: 0
-      required:
-      - totalCompleted
-      - totalWins
-      - totalLosses
-      - totalTies
     SortFindProfileDto:
       type: object
       properties:
@@ -311,26 +325,18 @@ components:
         createdAt:
           allOf:
           - $ref: '#/components/schemas/SortMode'
-    SearchFindProfileEmailDto:
+    ListExpandedProfile:
       type: object
       properties:
-        userEmail:
-          type: string
-        username:
-          type: string
-        usernameLike:
-          type: string
-        ids:
+        items:
           type: array
           items:
-            type: string
-    ValidUsernameDto:
-      type: object
-      properties:
-        username:
-          type: string
+            $ref: '#/components/schemas/ExpandedProfile'
+        total:
+          type: number
       required:
-      - username
+      - items
+      - total
     UpdateProfileDto:
       type: object
       properties:
@@ -366,22 +372,31 @@ components:
       - profileColor
       - createdAt
       - updatedAt
+    DailySetCount:
+      type: object
+      properties:
+        totalCompleted:
+          type: number
+          default: 0
+        totalWins:
+          type: number
+          default: 0
+        totalLosses:
+          type: number
+          default: 0
+        totalTies:
+          type: number
+          default: 0
+      required:
+      - totalCompleted
+      - totalWins
+      - totalLosses
+      - totalTies
     SortMode:
       type: string
       enum:
       - asc
       - desc
-    Role:
-      type: string
-      enum:
-      - anonymous
-      - ADMIN
-      - CREATOR
-      - USER
-      - SUPER_ADMIN
-      - AUTOGAME
-      - DISTRIBUTION_MANAGER
-      - MICROSOFT_REWARDS_USER
   securitySchemes:
     access-token:
       scheme: bearer

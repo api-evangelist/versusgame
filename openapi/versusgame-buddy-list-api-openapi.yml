@@ -4,6 +4,7 @@ info:
   description: APIs for Versusgame Application
   version: '1.0'
   contact: {}
+servers: []
 tags:
 - name: buddy-list
 paths:
@@ -61,8 +62,7 @@ paths:
           type: string
       responses:
         '302':
-          description: Redirects to the media partner article with the deep link params associated with
-            the given shareCode
+          description: Redirects to the media partner article with the deep link params associated with the given shareCode
           headers:
             Location:
               description: The deep link URL
@@ -86,11 +86,20 @@ paths:
             application/json:
               schema:
                 type: object
-      summary: Record a new buddy list referral on successful registration.
+      summary: Record a new buddy list referral on successful registration
       tags:
       - buddy-list
 components:
   schemas:
+    GameSetResult:
+      type: object
+      properties:
+        gameId:
+          type: string
+        correctAnswer:
+          type: boolean
+      required:
+      - gameId
     BuddyListInvitationEntity:
       type: object
       properties:
@@ -140,15 +149,6 @@ components:
       - gameSetId
       - invitationDate
       - buddyListId
-    GameSetResult:
-      type: object
-      properties:
-        gameId:
-          type: string
-        correctAnswer:
-          type: boolean
-      required:
-      - gameId
     CreateBuddyListInvitationRequestDTO:
       type: object
       properties:
