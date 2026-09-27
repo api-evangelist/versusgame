@@ -149,56 +149,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreateProductDto:
+    SortFindProductDto2:
       type: object
       properties:
-        productName:
-          type: string
-        productDescription:
-          type: string
-        whiteTickets:
-          type: number
-        blackTickets:
-          type: number
-        amount:
-          type: number
-        mostPopular:
-          type: boolean
-        language:
-          type: string
-          enum:
-          - en-us
-          - es-mx
-      required:
-      - productName
-      - productDescription
-      - whiteTickets
-      - blackTickets
-      - amount
-      - mostPopular
-      - language
-    SearchFindProductDto:
+        sort:
+          $ref: '#/components/schemas/SortFindProductDto'
+    SearchFindProductDto2:
       type: object
       properties:
-        productName:
-          type: string
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    ListProduct:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductEntity'
-        total:
-          type: number
-      required:
-      - items
-      - total
+        search:
+          $ref: '#/components/schemas/SearchFindProductDto'
     UpdateProductDto:
       type: object
       properties:
@@ -223,6 +183,15 @@ components:
           enum:
           - en-us
           - es-mx
+    SortFindProductDto:
+      type: object
+      properties:
+        amount:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        productName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
     ProductEntity:
       type: object
       properties:
@@ -260,30 +229,61 @@ components:
       - mostPopular
       - createdAt
       - deletedAt
-    SearchFindProductDto2:
+    ListProduct:
       type: object
       properties:
-        search:
-          $ref: '#/components/schemas/SearchFindProductDto'
-    SortFindProductDto2:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductEntity'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    SearchFindProductDto:
       type: object
       properties:
-        sort:
-          $ref: '#/components/schemas/SortFindProductDto'
-    SortFindProductDto:
-      type: object
-      properties:
-        amount:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
         productName:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
+          type: string
     SortMode:
       type: string
       enum:
       - asc
       - desc
+    CreateProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        language:
+          type: string
+          enum:
+          - en-us
+          - es-mx
+      required:
+      - productName
+      - productDescription
+      - whiteTickets
+      - blackTickets
+      - amount
+      - mostPopular
+      - language
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
   securitySchemes:
     access-token:
       scheme: bearer

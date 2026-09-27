@@ -254,170 +254,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    PaymentStatus:
-      type: string
-      enum:
-      - pending
-      - success
-      - failed
-    RewardLinkTypes:
-      type: string
-      enum:
-      - gift_card
-    CallbackDto:
+    BusinessPayoutV2Dto:
       type: object
       properties:
-        app_id:
-          type: string
-        customer_email:
-          type: string
-        created_at:
-          type: number
-          minimum: 0
-        amount:
-          type: string
-        currency_code:
-          type: string
-        url:
-          type: string
-        idempotency_key:
-          type: string
-        sign:
-          type: string
-      required:
-      - app_id
-      - customer_email
-      - created_at
-      - amount
-      - currency_code
-      - url
-      - idempotency_key
-      - sign
-    GcowPayoutDto:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/RewardLinkTypes'
         coins:
           type: number
           minimum: 100
-          maximum: 5000
+          maximum: 5000000
       required:
-      - type
       - coins
-    GcowPayout:
-      type: object
-      properties:
-        id:
-          type: string
-        userId:
-          type: string
-        coins:
-          type: number
-        createdAt:
-          format: date-time
-          type: string
-        idempotencyKey:
-          type: string
-        authorizationId:
-          type: string
-        errored:
-          type: boolean
-        successful:
-          type: boolean
-      required:
-      - id
-      - userId
-      - coins
-      - createdAt
-      - idempotencyKey
-      - authorizationId
-      - errored
-      - successful
-    Business:
-      type: object
-      properties:
-        id:
-          type: string
-        userId:
-          type: string
-        coins:
-          type: number
-        paymentPeriod:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - userId
-      - coins
-      - paymentPeriod
-      - createdAt
-    StripeEntity:
-      type: object
-      properties:
-        paymentStatus:
-          allOf:
-          - $ref: '#/components/schemas/PaymentStatus'
-        id:
-          type: string
-        userId:
-          type: string
-        productId:
-          type: string
-        product:
-          $ref: '#/components/schemas/ProductEntity'
-        idempotencyKey:
-          type: string
-        clientSecret:
-          type: string
-        ip:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - paymentStatus
-      - id
-      - userId
-      - productId
-      - product
-      - idempotencyKey
-      - clientSecret
-      - ip
-      - createdAt
-    ExpandedBusiness:
-      type: object
-      properties:
-        profile:
-          $ref: '#/components/schemas/Creator'
-        balance:
-          $ref: '#/components/schemas/WalletResponse'
-        id:
-          type: string
-        userId:
-          type: string
-        coins:
-          type: number
-        paymentPeriod:
-          type: string
-        createdAt:
-          type: string
-      required:
-      - profile
-      - balance
-      - id
-      - userId
-      - coins
-      - paymentPeriod
-      - createdAt
     WalletResponse:
       type: object
       properties:
@@ -495,16 +340,110 @@ components:
       - emailVerified
       - referralCount
       - dailySetCounts
-    WalletLeague:
+    GcowPayout:
       type: object
       properties:
-        name:
+        id:
           type: string
-        leaderboardId:
+        userId:
+          type: string
+        coins:
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        idempotencyKey:
+          type: string
+        authorizationId:
+          type: string
+        errored:
+          type: boolean
+        successful:
+          type: boolean
+      required:
+      - id
+      - userId
+      - coins
+      - createdAt
+      - idempotencyKey
+      - authorizationId
+      - errored
+      - successful
+    SortFindBusinessDto:
+      type: object
+      properties:
+        userId:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        createdAt:
+          type: string
+          enum:
+          - asc
+          - desc
+    ListExpandedBusinessEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExpandedBusiness'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    StripeEntity:
+      type: object
+      properties:
+        paymentStatus:
+          allOf:
+          - $ref: '#/components/schemas/PaymentStatus'
+        id:
+          type: string
+        userId:
+          type: string
+        productId:
+          type: string
+        product:
+          $ref: '#/components/schemas/ProductEntity'
+        idempotencyKey:
+          type: string
+        clientSecret:
+          type: string
+        ip:
+          type: string
+        createdAt:
+          format: date-time
           type: string
       required:
-      - name
-      - leaderboardId
+      - paymentStatus
+      - id
+      - userId
+      - productId
+      - product
+      - idempotencyKey
+      - clientSecret
+      - ip
+      - createdAt
+    RewardLinkTypes:
+      type: string
+      enum:
+      - gift_card
+    SearchFindBusinessDto:
+      type: object
+      properties:
+        paymentPeriod:
+          type: string
+        userId:
+          type: string
+    BuyTicketsDto:
+      type: object
+      properties:
+        product_id:
+          type: string
+          example: '1'
+      required:
+      - product_id
     ProductEntity:
       type: object
       properties:
@@ -542,22 +481,31 @@ components:
       - mostPopular
       - createdAt
       - deletedAt
-    SearchFindBusinessDto:
+    ExpandedBusiness:
       type: object
       properties:
-        paymentPeriod:
+        profile:
+          $ref: '#/components/schemas/Creator'
+        balance:
+          $ref: '#/components/schemas/WalletResponse'
+        id:
           type: string
         userId:
           type: string
-    BusinessPayoutV2Dto:
-      type: object
-      properties:
         coins:
           type: number
-          minimum: 100
-          maximum: 5000000
+        paymentPeriod:
+          type: string
+        createdAt:
+          type: string
       required:
+      - profile
+      - balance
+      - id
+      - userId
       - coins
+      - paymentPeriod
+      - createdAt
     Creator:
       type: object
       properties:
@@ -588,34 +536,23 @@ components:
       - userName
       - createdAt
       - updatedAt
-    BuyTicketsDto:
-      type: object
-      properties:
-        product_id:
-          type: string
-          example: '1'
-      required:
-      - product_id
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
-    SortFindBusinessDto:
-      type: object
-      properties:
-        userId:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        createdAt:
-          type: string
-          enum:
-          - asc
-          - desc
     BusinessExpand:
       type: string
       enum:
       - user
+    GcowPayoutDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/RewardLinkTypes'
+        coins:
+          type: number
+          minimum: 100
+          maximum: 5000
+      required:
+      - type
+      - coins
     DailySetCount:
       type: object
       properties:
@@ -636,18 +573,81 @@ components:
       - totalWins
       - totalLosses
       - totalTies
-    ListExpandedBusinessEntity:
+    PaymentStatus:
+      type: string
+      enum:
+      - pending
+      - success
+      - failed
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    Business:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExpandedBusiness'
-        total:
+        id:
+          type: string
+        userId:
+          type: string
+        coins:
           type: number
+        paymentPeriod:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
       required:
-      - items
-      - total
+      - id
+      - userId
+      - coins
+      - paymentPeriod
+      - createdAt
+    CallbackDto:
+      type: object
+      properties:
+        app_id:
+          type: string
+        customer_email:
+          type: string
+        created_at:
+          type: number
+          minimum: 0
+        amount:
+          type: string
+        currency_code:
+          type: string
+        url:
+          type: string
+        idempotency_key:
+          type: string
+        sign:
+          type: string
+      required:
+      - app_id
+      - customer_email
+      - created_at
+      - amount
+      - currency_code
+      - url
+      - idempotency_key
+      - sign
+    WalletLeague:
+      type: object
+      properties:
+        name:
+          type: string
+        leaderboardId:
+          type: string
+      required:
+      - name
+      - leaderboardId
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
     CreateStripePaymentDto:
       type: object
       properties:

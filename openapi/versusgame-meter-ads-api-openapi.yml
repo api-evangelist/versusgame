@@ -224,6 +224,76 @@ components:
           type: string
         url:
           type: string
+    TimeComparison:
+      type: object
+      properties:
+        value:
+          type: number
+          minimum: 0
+          description: Unix timestamp in milliseconds
+          example: 1643673600000
+        operator:
+          enum:
+          - eq
+          - gt
+          - gte
+          - lt
+          - lte
+          - neq
+          type: string
+          description: Comparison operator to apply
+          example: gte
+      required:
+      - value
+      - operator
+    UpdateAdSideDto:
+      type: object
+      properties:
+        label:
+          type: string
+        percentage:
+          type: number
+        assetUrl:
+          type: string
+    SortOptionsDto:
+      type: object
+      properties:
+        status:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for status
+        partnerId:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for partnerId
+        startTime:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for startTime
+        endTime:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for endTime
+        questionText:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for questionText
+        marketingText:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for marketingText
     MeterAd:
       type: object
       properties:
@@ -320,15 +390,6 @@ components:
       - page
       - pageSize
       - pageCount
-    UpdateAdSideDto:
-      type: object
-      properties:
-        label:
-          type: string
-        percentage:
-          type: number
-        assetUrl:
-          type: string
     AdSideDto:
       type: object
       properties:
@@ -381,67 +442,6 @@ components:
       - sideA
       - sideB
       - status
-    TimeComparison:
-      type: object
-      properties:
-        value:
-          type: number
-          minimum: 0
-          description: Unix timestamp in milliseconds
-          example: 1643673600000
-        operator:
-          enum:
-          - eq
-          - gt
-          - gte
-          - lt
-          - lte
-          - neq
-          type: string
-          description: Comparison operator to apply
-          example: gte
-      required:
-      - value
-      - operator
-    SortOptionsDto:
-      type: object
-      properties:
-        status:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for status
-        partnerId:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for partnerId
-        startTime:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for startTime
-        endTime:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for endTime
-        questionText:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for questionText
-        marketingText:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for marketingText
   securitySchemes:
     access-token:
       scheme: bearer

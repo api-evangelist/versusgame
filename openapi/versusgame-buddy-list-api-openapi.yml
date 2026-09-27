@@ -91,15 +91,6 @@ paths:
       - buddy-list
 components:
   schemas:
-    GameSetResult:
-      type: object
-      properties:
-        gameId:
-          type: string
-        correctAnswer:
-          type: boolean
-      required:
-      - gameId
     BuddyListInvitationEntity:
       type: object
       properties:
@@ -178,6 +169,15 @@ components:
       - distributorId
       - deepLinkUrl
       - gameSetId
+    GameSetResult:
+      type: object
+      properties:
+        gameId:
+          type: string
+        correctAnswer:
+          type: boolean
+      required:
+      - gameId
   securitySchemes:
     access-token:
       scheme: bearer

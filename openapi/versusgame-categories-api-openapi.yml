@@ -181,48 +181,6 @@ components:
       required:
       - language
       - categoryName
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    SearchFindCategoryDto:
-      type: object
-      properties:
-        categoryName:
-          type: string
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
-    Category:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
-          type: string
-        categoryName:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-      required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
     SortFindCategoryDto:
       type: object
       properties:
@@ -259,6 +217,48 @@ components:
           type: string
         icon:
           type: string
+    SearchFindCategoryDto:
+      type: object
+      properties:
+        categoryName:
+          type: string
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
   securitySchemes:
     access-token:
       scheme: bearer

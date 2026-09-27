@@ -156,6 +156,116 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ValidParentCut:
+      type: object
+      properties:
+        userId:
+          type: string
+        cutPercentage:
+          type: number
+        type:
+          type: string
+          enum:
+          - general
+        description:
+          type: string
+      required:
+      - userId
+      - cutPercentage
+      - type
+      - description
+    UpdateUserCutsDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        creatorCutPercentage:
+          type: number
+          minimum: 0
+          maximum: 50
+        parents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidParentCut'
+        version:
+          type: number
+          minimum: 0
+      required:
+      - userId
+      - creatorCutPercentage
+      - parents
+      - version
+    GlobalCutsHistoryEntity:
+      type: object
+      properties:
+        updatedBy:
+          type: string
+        after:
+          $ref: '#/components/schemas/GlobalCutsEntity'
+      required:
+      - updatedBy
+      - after
+    UserCutsHistoryListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserCutsHistoryEntity'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    GlobalCutsHistoryListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalCutsHistoryEntity'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    UserCutsEntity:
+      type: object
+      properties:
+        version:
+          type: number
+        userId:
+          type: string
+        distributorCutPercentage:
+          type: number
+        creatorCutPercentage:
+          type: number
+        parents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParentCut'
+      required:
+      - version
+      - userId
+      - distributorCutPercentage
+      - creatorCutPercentage
+      - parents
+    UserCutsHistoryEntity:
+      type: object
+      properties:
+        userId:
+          type: string
+        updatedBy:
+          type: string
+        after:
+          $ref: '#/components/schemas/UserCutsEntity'
+        createdAt:
+          type: number
+      required:
+      - userId
+      - updatedBy
+      - after
+      - createdAt
     UpdateUserDistributionCutsDto:
       type: object
       properties:
@@ -193,73 +303,6 @@ components:
       - userName
       - type
       - description
-    UserCutsHistoryEntity:
-      type: object
-      properties:
-        userId:
-          type: string
-        updatedBy:
-          type: string
-        after:
-          $ref: '#/components/schemas/UserCutsEntity'
-        createdAt:
-          type: number
-      required:
-      - userId
-      - updatedBy
-      - after
-      - createdAt
-    UserCutsEntity:
-      type: object
-      properties:
-        version:
-          type: number
-        userId:
-          type: string
-        distributorCutPercentage:
-          type: number
-        creatorCutPercentage:
-          type: number
-        parents:
-          type: array
-          items:
-            $ref: '#/components/schemas/ParentCut'
-      required:
-      - version
-      - userId
-      - distributorCutPercentage
-      - creatorCutPercentage
-      - parents
-    ValidParentCut:
-      type: object
-      properties:
-        userId:
-          type: string
-        cutPercentage:
-          type: number
-        type:
-          type: string
-          enum:
-          - general
-        description:
-          type: string
-      required:
-      - userId
-      - cutPercentage
-      - type
-      - description
-    GlobalCutsHistoryListEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GlobalCutsHistoryEntity'
-        next:
-          type: string
-      required:
-      - items
-      - next
     UpdateGlobalCutsDto:
       type: object
       properties:
@@ -288,49 +331,6 @@ components:
       - defaultDistributorCutPercentage
       - defaultCreatorCutPercentage
       - version
-    GlobalCutsHistoryEntity:
-      type: object
-      properties:
-        updatedBy:
-          type: string
-        after:
-          $ref: '#/components/schemas/GlobalCutsEntity'
-      required:
-      - updatedBy
-      - after
-    UpdateUserCutsDto:
-      type: object
-      properties:
-        userId:
-          type: string
-        creatorCutPercentage:
-          type: number
-          minimum: 0
-          maximum: 50
-        parents:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidParentCut'
-        version:
-          type: number
-          minimum: 0
-      required:
-      - userId
-      - creatorCutPercentage
-      - parents
-      - version
-    UserCutsHistoryListEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserCutsHistoryEntity'
-        next:
-          type: string
-      required:
-      - items
-      - next
     GlobalCutsEntity:
       type: object
       properties:

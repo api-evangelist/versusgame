@@ -146,273 +146,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ListGameplayStates:
-      type: string
-      enum:
-      - all
-      - active
-      - pending
-      - finished
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    GameplayStates:
-      type: string
-      enum:
-      - waiting_for_match
-      - matched
-      - declared_winner
-      - declared_loser
-      - won
-      - lost
-      - canceled
-    Gameplay:
-      type: object
-      properties:
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        state:
-          allOf:
-          - $ref: '#/components/schemas/GameplayStates'
-        side:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        ticketType:
-          allOf:
-          - $ref: '#/components/schemas/TicketType'
-        rewardType:
-          allOf:
-          - $ref: '#/components/schemas/RewardType'
-        achievements:
-          type: array
-          items:
-            $ref: '#/components/schemas/AchievementEntity'
-        game:
-          $ref: '#/components/schemas/Game'
-        id:
-          type: string
-        userId:
-          type: string
-        gameId:
-          type: string
-        quantity:
-          type: number
-        matched:
-          type: number
-        rewardClaimed:
-          type: boolean
-        createdAt:
-          format: date-time
-          type: string
-        opponents:
-          type: object
-        returnUrl:
-          type: string
-        sideAPercent:
-          type: number
-        majorityBonusWon:
-          type: boolean
-        newLeague:
-          enum:
-          - level1
-          - level2
-          - level3
-          - level4
-          type: string
-      required:
-      - gameType
-      - state
-      - side
-      - ticketType
-      - game
-      - id
-      - userId
-      - gameId
-      - quantity
-      - matched
-      - createdAt
-      - opponents
-      - returnUrl
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
-    CreateGameplayDto:
-      type: object
-      properties:
-        ticketType:
-          allOf:
-          - $ref: '#/components/schemas/TicketType'
-        rewardType:
-          allOf:
-          - $ref: '#/components/schemas/RewardType'
-        side:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        gameSetAttempt:
-          type: number
-          default: 1
-          minimum: 1
-          description: Required for multiple attempts with This_That game sets
-        gameSetIsComplete:
-          type: boolean
-          default: false
-          description: No longer used for This_That game sets, but still needed for mini-games gameSets.
-        correctAnswerStreakDidEnd:
-          type: boolean
-          default: false
-          description: No longer used for This_That game sets, but still needed for mini-games gameSets.
-        gameId:
-          type: string
-        quantity:
-          type: number
-          minimum: 1
-          maximum: 100
-        widgetId:
-          type: string
-        returnUrl:
-          type: string
-        points:
-          type: number
-          minimum: 0
-        distributorId:
-          type: string
-        gameSetId:
-          type: string
-        shareCode:
-          type: string
-      required:
-      - ticketType
-      - side
-      - gameId
-      - quantity
-      - widgetId
-      - returnUrl
-      - distributorId
-    AchievementEntity:
-      type: object
-      properties:
-        id:
-          type: string
-        userId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        expireAt:
-          format: date-time
-          type: string
-        achievementId:
-          type: string
-      required:
-      - id
-      - userId
-      - createdAt
-      - expireAt
-      - achievementId
-    RewardType:
-      type: string
-      enum:
-      - microsoft
-    Category:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
-          type: string
-        categoryName:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-      required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
-    GameStates:
-      type: string
-      enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
-      - canceled
-      - refunded
-      - quarantined
-    Side:
-      type: string
-      enum:
-      - A
-      - B
     Game:
       type: object
       properties:
@@ -528,6 +261,160 @@ components:
       - createdAt
       - updatedAt
       - version
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    Gameplay:
+      type: object
+      properties:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameplayStates'
+        side:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        ticketType:
+          allOf:
+          - $ref: '#/components/schemas/TicketType'
+        rewardType:
+          allOf:
+          - $ref: '#/components/schemas/RewardType'
+        achievements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AchievementEntity'
+        game:
+          $ref: '#/components/schemas/Game'
+        id:
+          type: string
+        userId:
+          type: string
+        gameId:
+          type: string
+        quantity:
+          type: number
+        matched:
+          type: number
+        rewardClaimed:
+          type: boolean
+        createdAt:
+          format: date-time
+          type: string
+        opponents:
+          type: object
+        returnUrl:
+          type: string
+        sideAPercent:
+          type: number
+        majorityBonusWon:
+          type: boolean
+        newLeague:
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+          type: string
+      required:
+      - gameType
+      - state
+      - side
+      - ticketType
+      - game
+      - id
+      - userId
+      - gameId
+      - quantity
+      - matched
+      - createdAt
+      - opponents
+      - returnUrl
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    GameplayStates:
+      type: string
+      enum:
+      - waiting_for_match
+      - matched
+      - declared_winner
+      - declared_loser
+      - won
+      - lost
+      - canceled
     ListGameplays:
       type: object
       properties:
@@ -540,12 +427,58 @@ components:
       required:
       - items
       - next
-    TicketType:
-      type: string
-      enum:
-      - white
-      - black
-      - free
+    CreateGameplayDto:
+      type: object
+      properties:
+        ticketType:
+          allOf:
+          - $ref: '#/components/schemas/TicketType'
+        rewardType:
+          allOf:
+          - $ref: '#/components/schemas/RewardType'
+        side:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        gameSetAttempt:
+          type: number
+          default: 1
+          minimum: 1
+          description: Required for multiple attempts with This_That game sets
+        gameSetIsComplete:
+          type: boolean
+          default: false
+          description: No longer used for This_That game sets, but still needed for mini-games gameSets.
+        correctAnswerStreakDidEnd:
+          type: boolean
+          default: false
+          description: No longer used for This_That game sets, but still needed for mini-games gameSets.
+        gameId:
+          type: string
+        quantity:
+          type: number
+          minimum: 1
+          maximum: 100
+        widgetId:
+          type: string
+        returnUrl:
+          type: string
+        points:
+          type: number
+          minimum: 0
+        distributorId:
+          type: string
+        gameSetId:
+          type: string
+        shareCode:
+          type: string
+      required:
+      - ticketType
+      - side
+      - gameId
+      - quantity
+      - widgetId
+      - returnUrl
+      - distributorId
     GameType:
       type: string
       enum:
@@ -555,6 +488,73 @@ components:
       - TRIVIA
       - SURVEY
       - THIS_THAT
+    TicketType:
+      type: string
+      enum:
+      - white
+      - black
+      - free
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    AchievementEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        expireAt:
+          format: date-time
+          type: string
+        achievementId:
+          type: string
+      required:
+      - id
+      - userId
+      - createdAt
+      - expireAt
+      - achievementId
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    RewardType:
+      type: string
+      enum:
+      - microsoft
+    ListGameplayStates:
+      type: string
+      enum:
+      - all
+      - active
+      - pending
+      - finished
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
   securitySchemes:
     access-token:
       scheme: bearer

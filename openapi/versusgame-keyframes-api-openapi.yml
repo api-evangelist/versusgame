@@ -79,6 +79,71 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    File:
+      type: object
+      properties: {}
+    SearchKeyFrameResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyFrameEntity'
+        scores:
+          type: array
+          items:
+            type: number
+        total:
+          type: number
+      required:
+      - items
+      - scores
+      - total
+    CreateKeyFrameDto:
+      type: object
+      properties:
+        mediaId:
+          type: string
+        description:
+          type: string
+        keyFrameIndex:
+          type: number
+        timestamp:
+          type: number
+        embedding:
+          type: array
+          items:
+            type: number
+        image:
+          format: Binary
+          allOf:
+          - $ref: '#/components/schemas/File'
+      required:
+      - mediaId
+      - keyFrameIndex
+      - timestamp
+    CreateKeyFrameResponse:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    SearchKeyFramesDto:
+      type: object
+      properties:
+        mediaId:
+          type: string
+        description:
+          type: string
+        embedding:
+          type: array
+          items:
+            type: number
+        image:
+          format: Binary
+          allOf:
+          - $ref: '#/components/schemas/File'
     KeyFrameEntity:
       type: object
       properties:
@@ -105,71 +170,6 @@ components:
       - description
       - keyFrameIndex
       - embedding
-    File:
-      type: object
-      properties: {}
-    CreateKeyFrameResponse:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    SearchKeyFramesDto:
-      type: object
-      properties:
-        mediaId:
-          type: string
-        description:
-          type: string
-        embedding:
-          type: array
-          items:
-            type: number
-        image:
-          format: Binary
-          allOf:
-          - $ref: '#/components/schemas/File'
-    CreateKeyFrameDto:
-      type: object
-      properties:
-        mediaId:
-          type: string
-        description:
-          type: string
-        keyFrameIndex:
-          type: number
-        timestamp:
-          type: number
-        embedding:
-          type: array
-          items:
-            type: number
-        image:
-          format: Binary
-          allOf:
-          - $ref: '#/components/schemas/File'
-      required:
-      - mediaId
-      - keyFrameIndex
-      - timestamp
-    SearchKeyFrameResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyFrameEntity'
-        scores:
-          type: array
-          items:
-            type: number
-        total:
-          type: number
-      required:
-      - items
-      - scores
-      - total
   securitySchemes:
     access-token:
       scheme: bearer

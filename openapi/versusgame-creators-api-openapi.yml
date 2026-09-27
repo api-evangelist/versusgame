@@ -177,14 +177,23 @@ components:
       - userName
       - createdAt
       - updatedAt
-    SearchFindCreatorDto:
+    SortFindCreatorDto:
       type: object
       properties:
-        creatorIds:
-          type: array
-          items:
-            type: string
         partnerName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        userName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    UpdateCreatorDto:
+      type: object
+      properties:
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
           type: string
         userName:
           type: string
@@ -200,14 +209,14 @@ components:
       required:
       - items
       - total
-    UpdateCreatorDto:
+    SearchFindCreatorDto:
       type: object
       properties:
+        creatorIds:
+          type: array
+          items:
+            type: string
         partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
           type: string
         userName:
           type: string
@@ -216,15 +225,6 @@ components:
       enum:
       - asc
       - desc
-    SortFindCreatorDto:
-      type: object
-      properties:
-        partnerName:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        userName:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
   securitySchemes:
     access-token:
       scheme: bearer

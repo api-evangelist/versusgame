@@ -583,6 +583,114 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    CreateGameComplaintDto:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        reason:
+          type: string
+      required:
+      - sessionId
+      - reason
+    CreateGameDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        startTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        categoryId:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        text:
+          type: string
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        urls:
+          type: array
+          items:
+            type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+      required:
+      - language
+      - gameType
+      - startTime
+      - lastJoinTime
+      - endTime
+      - gameTitle
+      - sourceUrl
+      - categoryId
+      - sideA
+      - sideB
+      - text
+      - isAd
+    SideStatsEntity:
+      type: object
+      properties:
+        whiteTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        blackTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        freeTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+      required:
+      - whiteTickets
+      - blackTickets
+      - freeTickets
     SideStatsByTicketTypeEntity:
       type: object
       properties:
@@ -596,6 +704,300 @@ components:
       - gameplays
       - tickets
       - matched
+    UpdateGameDto:
+      type: object
+      properties:
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        version:
+          type: number
+      required:
+      - version
+    ListGameDetails:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameEntity'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    SearchFindGamesDto:
+      type: object
+      properties:
+        states:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameStates'
+        includeGameTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameType'
+        excludeGameTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameType'
+        gameText:
+          type: string
+        creatorId:
+          type: string
+        ids:
+          type: array
+          items:
+            type: string
+        categoryId:
+          type: string
+        categoryName:
+          type: string
+        startAfter:
+          format: date-time
+          type: string
+        startBefore:
+          format: date-time
+          type: string
+        endAfter:
+          format: date-time
+          type: string
+    Game:
+      type: object
+      properties:
+        audioUrl:
+          type: string
+        videoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        questionVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        landscapeVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        resultUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameStates'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        id:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+        resultAssetId:
+          type: string
+        text:
+          type: string
+        categoryId:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        urls:
+          type: array
+          items:
+            type: string
+      required:
+      - audioUrl
+      - videoUrls
+      - questionVideoUrls
+      - landscapeVideoUrls
+      - resultUrls
+      - state
+      - language
+      - gameType
+      - id
+      - creatorId
+      - creator
+      - startTime
+      - endTime
+      - lastJoinTime
+      - gameTitle
+      - sourceUrl
+      - sideA
+      - sideB
+      - text
+      - categoryId
+      - category
+      - isAd
+      - createdAt
+      - updatedAt
+      - version
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    UserPropertiesDto:
+      type: object
+      properties:
+        language:
+          type: string
+        country:
+          type: string
+        city:
+          type: string
+        platform:
+          type: string
+    RecommendedGameResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        recommendId:
+          type: string
+      required:
+      - items
+      - recommendId
+    SlushingEntity:
+      type: object
+      properties:
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        blackTicketsGameplays:
+          type: number
+      required:
+      - whiteTickets
+      - blackTickets
+      - blackTicketsGameplays
+    DeclareGameDto:
+      type: object
+      properties:
+        side:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        resultAssetId:
+          type: string
+        version:
+          type: number
+      required:
+      - side
+      - resultAssetId
+      - version
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    SearchGame:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        scores:
+          type: array
+          items:
+            type: number
+        total:
+          type: number
+      required:
+      - items
+      - scores
+      - total
     VideoUrls:
       type: object
       properties:
@@ -615,22 +1017,6 @@ components:
       - mp4540
       - mp4720
       - poster
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    UserPropertiesDto:
-      type: object
-      properties:
-        language:
-          type: string
-        country:
-          type: string
-        city:
-          type: string
-        platform:
-          type: string
     GameEntity:
       type: object
       properties:
@@ -752,6 +1138,11 @@ components:
       - text
       - categoryId
       - category
+    UserProperties:
+      type: object
+      properties:
+        userProperties:
+          $ref: '#/components/schemas/UserPropertiesDto'
     StatsEntity:
       type: object
       properties:
@@ -762,31 +1153,50 @@ components:
       required:
       - sideA
       - sideB
-    SideStatsEntity:
+    SortFindGamesDto:
       type: object
       properties:
-        whiteTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
-        blackTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
-        freeTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        startTime:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        endTime:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        lastJoinTime:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    GameStatsEntity:
+      type: object
+      properties:
+        sideAPercent:
+          type: number
       required:
-      - whiteTickets
-      - blackTickets
-      - freeTickets
-    RecommendedGameResponse:
+      - sideAPercent
+    ListGame:
       type: object
       properties:
         items:
           type: array
           items:
             $ref: '#/components/schemas/Game'
-        recommendId:
-          type: string
+        total:
+          type: number
       required:
       - items
-      - recommendId
+      - total
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    Side:
+      type: string
+      enum:
+      - A
+      - B
     Category:
       type: object
       properties:
@@ -819,416 +1229,6 @@ components:
       enum:
       - creators
       - categories
-    GameStates:
-      type: string
-      enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
-      - canceled
-      - refunded
-      - quarantined
-    ListGame:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    CreateGameDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        orientation:
-          allOf:
-          - $ref: '#/components/schemas/Orientation'
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        correctAnswer:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        startTime:
-          format: date-time
-          type: string
-        lastJoinTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        gameTitle:
-          type: string
-        sourceUrl:
-          type: string
-        categoryId:
-          type: string
-        sideA:
-          type: string
-        sideB:
-          type: string
-        videoAssetId:
-          type: string
-        text:
-          type: string
-        isAd:
-          type: boolean
-        isPrivate:
-          type: boolean
-        bingSearch:
-          type: string
-        bingSearchClaim:
-          type: string
-        metadata:
-          type: object
-        urls:
-          type: array
-          items:
-            type: string
-        questionVideoAssetId:
-          type: string
-        landscapeVideoAssetId:
-          type: string
-        audioAssetId:
-          type: string
-      required:
-      - language
-      - gameType
-      - startTime
-      - lastJoinTime
-      - endTime
-      - gameTitle
-      - sourceUrl
-      - categoryId
-      - sideA
-      - sideB
-      - text
-      - isAd
-    SlushingEntity:
-      type: object
-      properties:
-        whiteTickets:
-          type: number
-        blackTickets:
-          type: number
-        blackTicketsGameplays:
-          type: number
-      required:
-      - whiteTickets
-      - blackTickets
-      - blackTicketsGameplays
-    SearchGame:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        scores:
-          type: array
-          items:
-            type: number
-        total:
-          type: number
-      required:
-      - items
-      - scores
-      - total
-    DeclareGameDto:
-      type: object
-      properties:
-        side:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        resultAssetId:
-          type: string
-        version:
-          type: number
-      required:
-      - side
-      - resultAssetId
-      - version
-    CreateGameComplaintDto:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        reason:
-          type: string
-      required:
-      - sessionId
-      - reason
-    SortFindGamesDto:
-      type: object
-      properties:
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        startTime:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        endTime:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        lastJoinTime:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-    Game:
-      type: object
-      properties:
-        audioUrl:
-          type: string
-        videoUrls:
-          $ref: '#/components/schemas/VideoUrls'
-        questionVideoUrls:
-          $ref: '#/components/schemas/VideoUrls'
-        landscapeVideoUrls:
-          $ref: '#/components/schemas/VideoUrls'
-        resultUrls:
-          $ref: '#/components/schemas/VideoUrls'
-        state:
-          allOf:
-          - $ref: '#/components/schemas/GameStates'
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        orientation:
-          allOf:
-          - $ref: '#/components/schemas/Orientation'
-        correctAnswer:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        id:
-          type: string
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        startTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        lastJoinTime:
-          format: date-time
-          type: string
-        gameTitle:
-          type: string
-        sourceUrl:
-          type: string
-        sideA:
-          type: string
-        sideB:
-          type: string
-        videoAssetId:
-          type: string
-        questionVideoAssetId:
-          type: string
-        landscapeVideoAssetId:
-          type: string
-        audioAssetId:
-          type: string
-        resultAssetId:
-          type: string
-        text:
-          type: string
-        categoryId:
-          type: string
-        category:
-          $ref: '#/components/schemas/Category'
-        isAd:
-          type: boolean
-        isPrivate:
-          type: boolean
-        bingSearch:
-          type: string
-        bingSearchClaim:
-          type: string
-        metadata:
-          type: object
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        version:
-          type: number
-        urls:
-          type: array
-          items:
-            type: string
-      required:
-      - audioUrl
-      - videoUrls
-      - questionVideoUrls
-      - landscapeVideoUrls
-      - resultUrls
-      - state
-      - language
-      - gameType
-      - id
-      - creatorId
-      - creator
-      - startTime
-      - endTime
-      - lastJoinTime
-      - gameTitle
-      - sourceUrl
-      - sideA
-      - sideB
-      - text
-      - categoryId
-      - category
-      - isAd
-      - createdAt
-      - updatedAt
-      - version
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    GameStatsEntity:
-      type: object
-      properties:
-        sideAPercent:
-          type: number
-      required:
-      - sideAPercent
-    UserProperties:
-      type: object
-      properties:
-        userProperties:
-          $ref: '#/components/schemas/UserPropertiesDto'
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
-    UpdateGameDto:
-      type: object
-      properties:
-        isPrivate:
-          type: boolean
-        bingSearch:
-          type: string
-        bingSearchClaim:
-          type: string
-        metadata:
-          type: object
-        version:
-          type: number
-      required:
-      - version
-    GameType:
-      type: string
-      enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
-    SearchFindGamesDto:
-      type: object
-      properties:
-        states:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameStates'
-        includeGameTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameType'
-        excludeGameTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameType'
-        gameText:
-          type: string
-        creatorId:
-          type: string
-        ids:
-          type: array
-          items:
-            type: string
-        categoryId:
-          type: string
-        categoryName:
-          type: string
-        startAfter:
-          format: date-time
-          type: string
-        startBefore:
-          format: date-time
-          type: string
-        endAfter:
-          format: date-time
-          type: string
-    ListGameDetails:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameEntity'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    Side:
-      type: string
-      enum:
-      - A
-      - B
   securitySchemes:
     access-token:
       scheme: bearer

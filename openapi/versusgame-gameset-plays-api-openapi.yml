@@ -235,68 +235,24 @@ paths:
       - gameset-plays
 components:
   schemas:
-    RecordGameSetAttemptCompletedRequest:
-      type: object
-      properties:
-        userId:
-          type: string
-        gameSetId:
-          type: string
-        gameSetAttempt:
-          type: number
-        distributorId:
-          type: string
-        shareCode:
-          type: string
-      required:
-      - userId
-      - gameSetId
-      - gameSetAttempt
-      - distributorId
-    TopPlayersForGameSetResponseEntity:
+    TopPlayersForGameSetWithEmailResponseEntity:
       type: object
       properties:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/RankedPlayerStandings'
+            $ref: '#/components/schemas/RankedPlayerStandingsWithEmail'
         cursor:
           type: string
       required:
       - items
-    GameSetLastAttemptResponse:
+    GetDailyGameSetIdResponse:
       type: object
       properties:
-        userId:
-          type: string
         gameSetId:
           type: string
-        gameSetAttempt:
-          type: number
-        updatedAt:
-          format: date-time
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        results:
-          type: object
-        gamesPlayedCount:
-          type: number
-        correctAnswerCount:
-          type: number
-        attemptWasCompleted:
-          type: boolean
       required:
-      - userId
       - gameSetId
-      - gameSetAttempt
-      - updatedAt
-      - createdAt
-      - results
-      - gamesPlayedCount
-      - correctAnswerCount
-      - attemptWasCompleted
     RankedPlayerStandingsWithEmail:
       type: object
       properties:
@@ -338,24 +294,17 @@ components:
       - correctAnswerCount
       - email
       - emailVerified
-    TopPlayersForGameSetWithEmailResponseEntity:
+    TopPlayersForGameSetResponseEntity:
       type: object
       properties:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/RankedPlayerStandingsWithEmail'
+            $ref: '#/components/schemas/RankedPlayerStandings'
         cursor:
           type: string
       required:
       - items
-    GetDailyGameSetIdResponse:
-      type: object
-      properties:
-        gameSetId:
-          type: string
-      required:
-      - gameSetId
     RankedPlayerStandings:
       type: object
       properties:
@@ -389,6 +338,24 @@ components:
       - avatarUrl
       - gamesPlayedCount
       - correctAnswerCount
+    RecordGameSetAttemptCompletedRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+        gameSetId:
+          type: string
+        gameSetAttempt:
+          type: number
+        distributorId:
+          type: string
+        shareCode:
+          type: string
+      required:
+      - userId
+      - gameSetId
+      - gameSetAttempt
+      - distributorId
     GameSetPlayResponse:
       type: object
       properties:
@@ -419,6 +386,39 @@ components:
       - results
       - gamesPlayedCount
       - correctAnswerCount
+    GameSetLastAttemptResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+        gameSetId:
+          type: string
+        gameSetAttempt:
+          type: number
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        results:
+          type: object
+        gamesPlayedCount:
+          type: number
+        correctAnswerCount:
+          type: number
+        attemptWasCompleted:
+          type: boolean
+      required:
+      - userId
+      - gameSetId
+      - gameSetAttempt
+      - updatedAt
+      - createdAt
+      - results
+      - gamesPlayedCount
+      - correctAnswerCount
+      - attemptWasCompleted
   securitySchemes:
     access-token:
       scheme: bearer

@@ -103,40 +103,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LedgersEntity:
-      type: object
-      properties:
-        reason:
-          allOf:
-          - $ref: '#/components/schemas/FundsUpdatedReasons'
-        id:
-          type: string
-        userId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        funds:
-          type: array
-          items:
-            $ref: '#/components/schemas/Fund'
-      required:
-      - reason
-      - id
-      - userId
-      - createdAt
-      - funds
-    LedgerListEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LedgersEntity'
-        next:
-          type: string
-      required:
-      - items
     FundsUpdatedReasons:
       type: string
       enum:
@@ -166,6 +132,40 @@ components:
       required:
       - type
       - amount
+    LedgerListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgersEntity'
+        next:
+          type: string
+      required:
+      - items
+    LedgersEntity:
+      type: object
+      properties:
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/FundsUpdatedReasons'
+        id:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        funds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Fund'
+      required:
+      - reason
+      - id
+      - userId
+      - createdAt
+      - funds
     FundType:
       type: string
       enum:

@@ -138,13 +138,25 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SearchDto:
+    UpdatePartnerDomainDto:
       type: object
       properties:
-        creatorId:
-          type: string
-        domain:
-          type: string
+        articleUrlRules:
+          type: array
+          items:
+            type: string
+            pattern: /a-z|N|\*|\//
+        indexPagesRules:
+          type: array
+          items:
+            type: string
+            pattern: /a-z|N|\*|\//
+        enableAutogame:
+          type: boolean
+      required:
+      - articleUrlRules
+      - indexPagesRules
+      - enableAutogame
     Creator:
       type: object
       properties:
@@ -175,21 +187,11 @@ components:
       - userName
       - createdAt
       - updatedAt
-    ListPartnerDomains:
+    CreatePartnerDomainDto:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartnerDomains'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    UpdatePartnerDomainDto:
-      type: object
-      properties:
+        domain:
+          type: string
         articleUrlRules:
           type: array
           items:
@@ -203,9 +205,22 @@ components:
         enableAutogame:
           type: boolean
       required:
+      - domain
       - articleUrlRules
       - indexPagesRules
       - enableAutogame
+    ListPartnerDomains:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerDomains'
+        total:
+          type: number
+      required:
+      - items
+      - total
     PartnerDomains:
       type: object
       properties:
@@ -243,28 +258,13 @@ components:
       - articleUrlRules
       - indexPagesRules
       - enableAutogame
-    CreatePartnerDomainDto:
+    SearchDto:
       type: object
       properties:
+        creatorId:
+          type: string
         domain:
           type: string
-        articleUrlRules:
-          type: array
-          items:
-            type: string
-            pattern: /a-z|N|\*|\//
-        indexPagesRules:
-          type: array
-          items:
-            type: string
-            pattern: /a-z|N|\*|\//
-        enableAutogame:
-          type: boolean
-      required:
-      - domain
-      - articleUrlRules
-      - indexPagesRules
-      - enableAutogame
   securitySchemes:
     access-token:
       scheme: bearer

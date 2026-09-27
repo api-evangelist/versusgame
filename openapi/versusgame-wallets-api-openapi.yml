@@ -128,6 +128,24 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FundsUpdatedReasons:
+      type: string
+      enum:
+      - free_gift
+      - host_cut
+      - referrer_cut
+      - parent_cut
+      - transaction_voided
+      - game_played
+      - game_outcome
+      - pending_outcome
+      - purchase
+      - redeem
+      - refund
+      - payout
+      - admin_update
+      - distributor_cut
+      - achievement
     AdminUpdateFundsDto:
       type: object
       properties:
@@ -152,45 +170,13 @@ components:
       required:
       - reason
       - funds
-    UpdateWalletResponse:
+    ClaimDailyGiftResponse:
       type: object
       properties:
-        version:
-          type: number
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - updatedAt
-    ValidUpdateFund:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/ValidUpdateFunds'
         amount:
           type: number
       required:
-      - type
       - amount
-    FundsUpdatedReasons:
-      type: string
-      enum:
-      - free_gift
-      - host_cut
-      - referrer_cut
-      - parent_cut
-      - transaction_voided
-      - game_played
-      - game_outcome
-      - pending_outcome
-      - purchase
-      - redeem
-      - refund
-      - payout
-      - admin_update
-      - distributor_cut
-      - achievement
     WalletResponse:
       type: object
       properties:
@@ -278,13 +264,6 @@ components:
       required:
       - name
       - leaderboardId
-    DemoteUserDto:
-      type: object
-      properties:
-        distributorId:
-          type: string
-      required:
-      - distributorId
     ValidUpdateFunds:
       type: string
       enum:
@@ -292,21 +271,6 @@ components:
       - white
       - coin
       - point
-    PromoteUserDto:
-      type: object
-      properties:
-        leaderboardLeague:
-          type: string
-          enum:
-          - level1
-          - level2
-          - level3
-          - level4
-        distributorId:
-          type: string
-      required:
-      - leaderboardLeague
-      - distributorId
     DailySetCount:
       type: object
       properties:
@@ -327,13 +291,49 @@ components:
       - totalWins
       - totalLosses
       - totalTies
-    ClaimDailyGiftResponse:
+    PromoteUserDto:
       type: object
       properties:
+        leaderboardLeague:
+          type: string
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+        distributorId:
+          type: string
+      required:
+      - leaderboardLeague
+      - distributorId
+    ValidUpdateFund:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/ValidUpdateFunds'
         amount:
           type: number
       required:
+      - type
       - amount
+    DemoteUserDto:
+      type: object
+      properties:
+        distributorId:
+          type: string
+      required:
+      - distributorId
+    UpdateWalletResponse:
+      type: object
+      properties:
+        version:
+          type: number
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - updatedAt
   securitySchemes:
     access-token:
       scheme: bearer

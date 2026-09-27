@@ -166,69 +166,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Role:
-      type: string
-      enum:
-      - anonymous
-      - ADMIN
-      - CREATOR
-      - USER
-      - SUPER_ADMIN
-      - AUTOGAME
-      - DISTRIBUTION_MANAGER
-      - MICROSOFT_REWARDS_USER
-    ValidUsernameDto:
-      type: object
-      properties:
-        username:
-          type: string
-      required:
-      - username
-    ExpandedProfile:
-      type: object
-      properties:
-        avatar:
-          type: string
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-        balance:
-          $ref: '#/components/schemas/WalletResponse'
-        id:
-          type: string
-        username:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-      required:
-      - avatar
-      - roles
-      - balance
-      - id
-      - username
-      - profileColor
-      - createdAt
-      - updatedAt
-    SearchFindProfileEmailDto:
-      type: object
-      properties:
-        userEmail:
-          type: string
-        username:
-          type: string
-        usernameLike:
-          type: string
-        ids:
-          type: array
-          items:
-            type: string
     WalletResponse:
       type: object
       properties:
@@ -306,6 +243,19 @@ components:
       - emailVerified
       - referralCount
       - dailySetCounts
+    SearchFindProfileEmailDto:
+      type: object
+      properties:
+        userEmail:
+          type: string
+        username:
+          type: string
+        usernameLike:
+          type: string
+        ids:
+          type: array
+          items:
+            type: string
     WalletLeague:
       type: object
       properties:
@@ -316,38 +266,6 @@ components:
       required:
       - name
       - leaderboardId
-    SortFindProfileDto:
-      type: object
-      properties:
-        username:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-    ListExpandedProfile:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExpandedProfile'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    UpdateProfileDto:
-      type: object
-      properties:
-        username:
-          type: string
-        profileColor:
-          type: string
-        avatarAssetId:
-          type:
-          - string
-          - 'null'
     Profile:
       type: object
       properties:
@@ -372,6 +290,11 @@ components:
       - profileColor
       - createdAt
       - updatedAt
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
     DailySetCount:
       type: object
       properties:
@@ -392,11 +315,88 @@ components:
       - totalWins
       - totalLosses
       - totalTies
-    SortMode:
+    SortFindProfileDto:
+      type: object
+      properties:
+        username:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    ExpandedProfile:
+      type: object
+      properties:
+        avatar:
+          type: string
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        balance:
+          $ref: '#/components/schemas/WalletResponse'
+        id:
+          type: string
+        username:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - avatar
+      - roles
+      - balance
+      - id
+      - username
+      - profileColor
+      - createdAt
+      - updatedAt
+    ListExpandedProfile:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExpandedProfile'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    UpdateProfileDto:
+      type: object
+      properties:
+        username:
+          type: string
+        profileColor:
+          type: string
+        avatarAssetId:
+          type:
+          - string
+          - 'null'
+    ValidUsernameDto:
+      type: object
+      properties:
+        username:
+          type: string
+      required:
+      - username
+    Role:
       type: string
       enum:
-      - asc
-      - desc
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
   securitySchemes:
     access-token:
       scheme: bearer
