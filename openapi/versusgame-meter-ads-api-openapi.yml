@@ -199,6 +199,67 @@ paths:
       - meter-ads
 components:
   schemas:
+    AdSideDto:
+      type: object
+      properties:
+        label:
+          type: string
+        percentage:
+          type: number
+          minimum: 0
+        assetUrl:
+          type: string
+          format: uri
+      required:
+      - label
+      - percentage
+      - assetUrl
+    CreateMeterAdDto:
+      type: object
+      properties:
+        partnerId:
+          type: string
+        startTime:
+          type: number
+          minimum: 1
+          description: Unix timestamp in milliseconds
+        endTime:
+          type: number
+          description: Unix timestamp in milliseconds
+        questionText:
+          type: string
+        marketingText:
+          type: string
+          description: Frontend will supply a default if not provided
+        sideA:
+          $ref: '#/components/schemas/AdSideDto'
+        sideB:
+          $ref: '#/components/schemas/AdSideDto'
+        status:
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - CANCELLED
+          type: string
+        url:
+          type: string
+      required:
+      - partnerId
+      - startTime
+      - endTime
+      - questionText
+      - sideA
+      - sideB
+      - status
+    UpdateAdSideDto:
+      type: object
+      properties:
+        label:
+          type: string
+        percentage:
+          type: number
+        assetUrl:
+          type: string
     UpdateMeterAdDto:
       type: object
       properties:
@@ -224,37 +285,27 @@ components:
           type: string
         url:
           type: string
-    TimeComparison:
+    PaginatedMeterAdsDto:
       type: object
       properties:
-        value:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeterAd'
+        total:
           type: number
-          minimum: 0
-          description: Unix timestamp in milliseconds
-          example: 1643673600000
-        operator:
-          enum:
-          - eq
-          - gt
-          - gte
-          - lt
-          - lte
-          - neq
-          type: string
-          description: Comparison operator to apply
-          example: gte
+        page:
+          type: number
+        pageSize:
+          type: number
+        pageCount:
+          type: number
       required:
-      - value
-      - operator
-    UpdateAdSideDto:
-      type: object
-      properties:
-        label:
-          type: string
-        percentage:
-          type: number
-        assetUrl:
-          type: string
+      - items
+      - total
+      - page
+      - pageSize
+      - pageCount
     SortOptionsDto:
       type: object
       properties:
@@ -369,79 +420,28 @@ components:
       - createdAt
       - updatedAt
       - url
-    PaginatedMeterAdsDto:
+    TimeComparison:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/MeterAd'
-        total:
-          type: number
-        page:
-          type: number
-        pageSize:
-          type: number
-        pageCount:
-          type: number
-      required:
-      - items
-      - total
-      - page
-      - pageSize
-      - pageCount
-    AdSideDto:
-      type: object
-      properties:
-        label:
-          type: string
-        percentage:
+        value:
           type: number
           minimum: 0
-        assetUrl:
-          type: string
-          format: uri
-      required:
-      - label
-      - percentage
-      - assetUrl
-    CreateMeterAdDto:
-      type: object
-      properties:
-        partnerId:
-          type: string
-        startTime:
-          type: number
-          minimum: 1
           description: Unix timestamp in milliseconds
-        endTime:
-          type: number
-          description: Unix timestamp in milliseconds
-        questionText:
-          type: string
-        marketingText:
-          type: string
-          description: Frontend will supply a default if not provided
-        sideA:
-          $ref: '#/components/schemas/AdSideDto'
-        sideB:
-          $ref: '#/components/schemas/AdSideDto'
-        status:
+          example: 1643673600000
+        operator:
           enum:
-          - DRAFT
-          - PUBLISHED
-          - CANCELLED
+          - eq
+          - gt
+          - gte
+          - lt
+          - lte
+          - neq
           type: string
-        url:
-          type: string
+          description: Comparison operator to apply
+          example: gte
       required:
-      - partnerId
-      - startTime
-      - endTime
-      - questionText
-      - sideA
-      - sideB
-      - status
+      - value
+      - operator
   securitySchemes:
     access-token:
       scheme: bearer

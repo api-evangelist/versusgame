@@ -450,23 +450,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreateArticleDtoV2:
-      type: object
-      properties:
-        url:
-          type: string
-        partnerId:
-          type: string
-        sourceType:
-          allOf:
-          - $ref: '#/components/schemas/sourceType'
-        text:
-          type: string
-      required:
-      - url
-      - partnerId
-      - sourceType
-      - text
+    sourceType:
+      type: string
+      enum:
+      - widget
+      - manual
+      - blob
     GameStates:
       type: string
       enum:
@@ -481,180 +470,20 @@ components:
       - canceled
       - refunded
       - quarantined
-    Answers:
+    NewVersionDto:
       type: object
       properties:
-        text:
-          type: string
-      required:
-      - text
-    CreateGameDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        orientation:
-          allOf:
-          - $ref: '#/components/schemas/Orientation'
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        correctAnswer:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        startTime:
-          format: date-time
-          type: string
-        lastJoinTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        gameTitle:
-          type: string
-        sourceUrl:
-          type: string
-        categoryId:
-          type: string
-        sideA:
-          type: string
-        sideB:
-          type: string
-        videoAssetId:
-          type: string
-        text:
-          type: string
-        isAd:
-          type: boolean
-        isPrivate:
-          type: boolean
-        bingSearch:
-          type: string
-        bingSearchClaim:
-          type: string
-        metadata:
-          type: object
-        urls:
-          type: array
-          items:
-            type: string
-        questionVideoAssetId:
-          type: string
-        landscapeVideoAssetId:
-          type: string
-        audioAssetId:
-          type: string
-      required:
-      - language
-      - gameType
-      - startTime
-      - lastJoinTime
-      - endTime
-      - gameTitle
-      - sourceUrl
-      - categoryId
-      - sideA
-      - sideB
-      - text
-      - isAd
-    SetStateDto:
-      type: object
-      properties:
-        state:
-          allOf:
-          - $ref: '#/components/schemas/GameDraftState'
         version:
           type: number
-        gameIds:
-          type: array
-          items:
-            type: string
-        lock:
-          type: number
-          minimum: 0
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
       required:
       - version
-    SideStatsEntity:
-      type: object
-      properties:
-        whiteTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
-        blackTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
-        freeTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
-      required:
-      - whiteTickets
-      - blackTickets
-      - freeTickets
-    ListGameDraftV2:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameDraftEntity'
-      required:
-      - items
-    ArticleEntity:
-      type: object
-      properties:
-        sourceType:
-          allOf:
-          - $ref: '#/components/schemas/ArticleSourceType'
-        id:
-          type: string
-        articleKey:
-          type: string
-        partnerId:
-          type: string
-        url:
-          type: string
-        hostName:
-          type: string
-        rawOpenAiChat:
-          type: array
-          items:
-            type: object
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        drafts:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameDraftEntity'
-      required:
-      - sourceType
-      - id
-      - articleKey
-      - partnerId
-      - url
-      - hostName
-      - createdAt
-      - updatedAt
-      - drafts
-    Question:
-      type: object
-      properties:
-        text:
-          type: string
-        images_query:
-          type: string
-        image_type:
-          type: string
-        image_search:
-          $ref: '#/components/schemas/ImageSearch'
-      required:
-      - text
-      - images_query
-      - image_type
-      - image_search
-    sourceType:
+      - gameDetail
+      - manualOverrides
+    ArticleSourceType:
       type: string
       enum:
       - widget
@@ -673,369 +502,11 @@ components:
       - gameplays
       - tickets
       - matched
-    Overlay:
-      type: object
-      properties:
-        start_chunk:
-          type: number
-        end_chunk:
-          type: number
-        images_query:
-          type: string
-        image_type:
-          type: string
-        image_search:
-          $ref: '#/components/schemas/ImageSearch'
-      required:
-      - start_chunk
-      - end_chunk
-      - images_query
-      - image_type
-      - image_search
-    GameDraftEntity:
-      type: object
-      properties:
-        articleId:
-          type: string
-        url:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        state:
-          allOf:
-          - $ref: '#/components/schemas/GameDraftState'
-        lock:
-          type: number
-        userId:
-          type: string
-        manualOverrides:
-          type: object
-        version:
-          type: number
-        gameIds:
-          type: array
-          items:
-            type: string
-        systemMessage:
-          type: string
-        systemMessageName:
-          type: string
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        article:
-          $ref: '#/components/schemas/ArticleEntity'
-        id:
-          type: string
-        gameDetail:
-          $ref: '#/components/schemas/GameDetail'
-        text:
-          type: string
-      required:
-      - articleId
-      - url
-      - createdAt
-      - updatedAt
-      - state
-      - lock
-      - version
-      - gameIds
-      - article
-      - id
-      - gameDetail
-      - text
-    HostArticleResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/HostArticle'
-      required:
-      - items
-    GameType:
+    Side:
       type: string
       enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    HostArticle:
-      type: object
-      properties:
-        url:
-          type: string
-        id:
-          type: string
-        draftsCount:
-          type: number
-        sourceType:
-          type: string
-        createDay:
-          format: date-time
-          type: string
-      required:
-      - url
-      - id
-      - draftsCount
-      - sourceType
-      - createDay
-    ArticleSourceType:
-      type: string
-      enum:
-      - widget
-      - manual
-      - blob
-    Synopsis:
-      type: object
-      properties:
-        text:
-          type: string
-        images_query:
-          type: string
-        image_type:
-          type: string
-        image_search:
-          $ref: '#/components/schemas/ImageSearch'
-      required:
-      - text
-      - images_query
-      - image_type
-      - image_search
-    GameDraft:
-      type: object
-      properties:
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        state:
-          allOf:
-          - $ref: '#/components/schemas/GameDraftState'
-        id:
-          type: string
-        gameIndex:
-          type: string
-        lock:
-          type: number
-        userId:
-          type: string
-        gameDetail:
-          $ref: '#/components/schemas/GameDetail'
-        manualOverrides:
-          type: object
-        version:
-          type: number
-        gameIds:
-          type: array
-          items:
-            type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        systemMessage:
-          type: string
-        systemMessageName:
-          type: string
-        url:
-          type: string
-      required:
-      - gameType
-      - state
-      - id
-      - gameIndex
-      - lock
-      - gameDetail
-      - manualOverrides
-      - version
-      - gameIds
-      - createdAt
-      - updatedAt
-      - systemMessage
-      - systemMessageName
-      - url
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    GameDraftState:
-      type: string
-      enum:
-      - sqa-to-review
-      - video-to-review
-      - video-ready
-      - approved
-      - rejected
-      - published
-    NewVersionDto:
-      type: object
-      properties:
-        version:
-          type: number
-        gameDetail:
-          $ref: '#/components/schemas/GameDetail'
-        manualOverrides:
-          type: object
-      required:
-      - version
-      - gameDetail
-      - manualOverrides
-    Article:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        rawOpenAiChat:
-          type: array
-          items:
-            type: object
-        hostName:
-          type: string
-        partnerId:
-          type: string
-        sourceType:
-          enum:
-          - widget
-          - manual
-          - blob
-          type: string
-      required:
-      - id
-      - url
-      - createdAt
-      - updatedAt
-      - rawOpenAiChat
-      - hostName
-      - partnerId
-    PartnerDomain:
-      type: object
-      properties:
-        hostName:
-          type: string
-        id:
-          type: string
-        draftsCount:
-          type: number
-      required:
-      - hostName
-      - id
-      - draftsCount
-    PartnerDomainResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartnerDomain'
-      required:
-      - items
-    SlushingEntity:
-      type: object
-      properties:
-        whiteTickets:
-          type: number
-        blackTickets:
-          type: number
-        blackTicketsGameplays:
-          type: number
-      required:
-      - whiteTickets
-      - blackTickets
-      - blackTicketsGameplays
-    GameDetail:
-      type: object
-      properties:
-        correctAnswer:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        synopsis:
-          type: array
-          items:
-            $ref: '#/components/schemas/Synopsis'
-        overlays:
-          type: array
-          items:
-            $ref: '#/components/schemas/Overlay'
-        question:
-          type: array
-          items:
-            $ref: '#/components/schemas/Question'
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Answers'
-      required:
-      - synopsis
-      - overlays
-      - question
-      - answers
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
+      - A
+      - B
     GameEntity:
       type: object
       properties:
@@ -1157,31 +628,159 @@ components:
       - text
       - categoryId
       - category
-    StatsEntity:
+    VideoUrls:
       type: object
       properties:
-        sideA:
-          $ref: '#/components/schemas/SideStatsEntity'
-        sideB:
-          $ref: '#/components/schemas/SideStatsEntity'
-      required:
-      - sideA
-      - sideB
-    ImageSearch:
-      type: object
-      properties:
-        searchId:
+        hls:
           type: string
-        selected:
-          type: number
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
       required:
-      - searchId
-      - selected
-    Side:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    GameDraft:
+      type: object
+      properties:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        id:
+          type: string
+        gameIndex:
+          type: string
+        lock:
+          type: number
+        userId:
+          type: string
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        url:
+          type: string
+      required:
+      - gameType
+      - state
+      - id
+      - gameIndex
+      - lock
+      - gameDetail
+      - manualOverrides
+      - version
+      - gameIds
+      - createdAt
+      - updatedAt
+      - systemMessage
+      - systemMessageName
+      - url
+    GameType:
       type: string
       enum:
-      - A
-      - B
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    Synopsis:
+      type: object
+      properties:
+        text:
+          type: string
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - text
+      - images_query
+      - image_type
+      - image_search
+    Answers:
+      type: object
+      properties:
+        text:
+          type: string
+      required:
+      - text
+    HostArticle:
+      type: object
+      properties:
+        url:
+          type: string
+        id:
+          type: string
+        draftsCount:
+          type: number
+        sourceType:
+          type: string
+        createDay:
+          format: date-time
+          type: string
+      required:
+      - url
+      - id
+      - draftsCount
+      - sourceType
+      - createDay
     CreateDraftDto:
       type: object
       properties:
@@ -1202,6 +801,150 @@ components:
       - systemMessage
       - systemMessageName
       - url
+    Overlay:
+      type: object
+      properties:
+        start_chunk:
+          type: number
+        end_chunk:
+          type: number
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - start_chunk
+      - end_chunk
+      - images_query
+      - image_type
+      - image_search
+    ImageSearch:
+      type: object
+      properties:
+        searchId:
+          type: string
+        selected:
+          type: number
+      required:
+      - searchId
+      - selected
+    SideStatsEntity:
+      type: object
+      properties:
+        whiteTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        blackTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        freeTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+      required:
+      - whiteTickets
+      - blackTickets
+      - freeTickets
+    ListGameDraftV2:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftEntity'
+      required:
+      - items
+    StatsEntity:
+      type: object
+      properties:
+        sideA:
+          $ref: '#/components/schemas/SideStatsEntity'
+        sideB:
+          $ref: '#/components/schemas/SideStatsEntity'
+      required:
+      - sideA
+      - sideB
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    SlushingEntity:
+      type: object
+      properties:
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        blackTicketsGameplays:
+          type: number
+      required:
+      - whiteTickets
+      - blackTickets
+      - blackTicketsGameplays
+    GameDraftState:
+      type: string
+      enum:
+      - sqa-to-review
+      - video-to-review
+      - video-ready
+      - approved
+      - rejected
+      - published
+    GameDraftEntity:
+      type: object
+      properties:
+        articleId:
+          type: string
+        url:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        lock:
+          type: number
+        userId:
+          type: string
+        manualOverrides:
+          type: object
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        article:
+          $ref: '#/components/schemas/ArticleEntity'
+        id:
+          type: string
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        text:
+          type: string
+      required:
+      - articleId
+      - url
+      - createdAt
+      - updatedAt
+      - state
+      - lock
+      - version
+      - gameIds
+      - article
+      - id
+      - gameDetail
+      - text
     Category:
       type: object
       properties:
@@ -1229,6 +972,263 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
+    ArticleEntity:
+      type: object
+      properties:
+        sourceType:
+          allOf:
+          - $ref: '#/components/schemas/ArticleSourceType'
+        id:
+          type: string
+        articleKey:
+          type: string
+        partnerId:
+          type: string
+        url:
+          type: string
+        hostName:
+          type: string
+        rawOpenAiChat:
+          type: array
+          items:
+            type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        drafts:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftEntity'
+      required:
+      - sourceType
+      - id
+      - articleKey
+      - partnerId
+      - url
+      - hostName
+      - createdAt
+      - updatedAt
+      - drafts
+    Question:
+      type: object
+      properties:
+        text:
+          type: string
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - text
+      - images_query
+      - image_type
+      - image_search
+    CreateGameDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        startTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        categoryId:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        text:
+          type: string
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        urls:
+          type: array
+          items:
+            type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+      required:
+      - language
+      - gameType
+      - startTime
+      - lastJoinTime
+      - endTime
+      - gameTitle
+      - sourceUrl
+      - categoryId
+      - sideA
+      - sideB
+      - text
+      - isAd
+    PartnerDomain:
+      type: object
+      properties:
+        hostName:
+          type: string
+        id:
+          type: string
+        draftsCount:
+          type: number
+      required:
+      - hostName
+      - id
+      - draftsCount
+    HostArticleResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostArticle'
+      required:
+      - items
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    Article:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        rawOpenAiChat:
+          type: array
+          items:
+            type: object
+        hostName:
+          type: string
+        partnerId:
+          type: string
+        sourceType:
+          enum:
+          - widget
+          - manual
+          - blob
+          type: string
+      required:
+      - id
+      - url
+      - createdAt
+      - updatedAt
+      - rawOpenAiChat
+      - hostName
+      - partnerId
+    SetStateDto:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        lock:
+          type: number
+          minimum: 0
+      required:
+      - version
+    GameDetail:
+      type: object
+      properties:
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        synopsis:
+          type: array
+          items:
+            $ref: '#/components/schemas/Synopsis'
+        overlays:
+          type: array
+          items:
+            $ref: '#/components/schemas/Overlay'
+        question:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answers'
+      required:
+      - synopsis
+      - overlays
+      - question
+      - answers
+    PartnerDomainResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerDomain'
+      required:
+      - items
+    CreateArticleDtoV2:
+      type: object
+      properties:
+        url:
+          type: string
+        partnerId:
+          type: string
+        sourceType:
+          allOf:
+          - $ref: '#/components/schemas/sourceType'
+        text:
+          type: string
+      required:
+      - url
+      - partnerId
+      - sourceType
+      - text
   securitySchemes:
     access-token:
       scheme: bearer

@@ -177,6 +177,143 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    CreateGameSetDto:
+      type: object
+      properties:
+        partnerId:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+        games:
+          type: array
+          items:
+            type: string
+      required:
+      - partnerId
+      - startTime
+      - endTime
+      - games
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
     Game:
       type: object
       properties:
@@ -303,99 +440,6 @@ components:
           type: array
           items:
             type: string
-    GameStates:
-      type: string
-      enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
-      - canceled
-      - refunded
-      - quarantined
-    ListGameSet:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameSet'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    CreateGameSetDto:
-      type: object
-      properties:
-        partnerId:
-          type: string
-        startTime:
-          type: string
-        endTime:
-          type: string
-        games:
-          type: array
-          items:
-            type: string
-      required:
-      - partnerId
-      - startTime
-      - endTime
-      - games
-    GameType:
-      type: string
-      enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
     GameSet:
       type: object
       properties:
@@ -433,62 +477,18 @@ components:
       - endTime
       - deletedAt
       - games
-    Side:
-      type: string
-      enum:
-      - A
-      - B
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    Category:
+    ListGameSet:
       type: object
       properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
-          type: string
-        categoryName:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameSet'
+        total:
+          type: number
       required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
+      - items
+      - total
   securitySchemes:
     access-token:
       scheme: bearer

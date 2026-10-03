@@ -27,13 +27,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    level:
-      type: string
-      enum:
-      - level1
-      - level2
-      - level3
-      - level4
     GamePlayAchievementEntity:
       type: object
       properties:
@@ -70,6 +63,13 @@ components:
       - friends-invited
       - gameset-completed
       - gameset-challenge-won
+    level:
+      type: string
+      enum:
+      - level1
+      - level2
+      - level3
+      - level4
   securitySchemes:
     access-token:
       scheme: bearer

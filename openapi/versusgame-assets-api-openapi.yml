@@ -126,6 +126,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AssetSearchFindAllDto2:
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/AssetSearchFindAllDto'
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
     JobStatus:
       type: string
       enum:
@@ -240,30 +264,6 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
-    AssetSearchFindAllDto2:
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/AssetSearchFindAllDto'
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
   securitySchemes:
     access-token:
       scheme: bearer

@@ -91,6 +91,35 @@ paths:
       - buddy-list
 components:
   schemas:
+    CreateBuddyListInvitationRequestDTO:
+      type: object
+      properties:
+        gameSetAttempt:
+          type: number
+          default: 1
+          description: Required for multiple attempts with This_That game sets
+        invitingPlayerGameResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameSetResult'
+        invitingPlayerId:
+          type: string
+        invitingPlayerUsername:
+          type: string
+        invitingPlayerAnalyticsId:
+          type: string
+        distributorId:
+          type: string
+        deepLinkUrl:
+          type: string
+        gameSetId:
+          type: string
+      required:
+      - invitingPlayerGameResults
+      - invitingPlayerAnalyticsId
+      - distributorId
+      - deepLinkUrl
+      - gameSetId
     BuddyListInvitationEntity:
       type: object
       properties:
@@ -140,35 +169,6 @@ components:
       - gameSetId
       - invitationDate
       - buddyListId
-    CreateBuddyListInvitationRequestDTO:
-      type: object
-      properties:
-        gameSetAttempt:
-          type: number
-          default: 1
-          description: Required for multiple attempts with This_That game sets
-        invitingPlayerGameResults:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameSetResult'
-        invitingPlayerId:
-          type: string
-        invitingPlayerUsername:
-          type: string
-        invitingPlayerAnalyticsId:
-          type: string
-        distributorId:
-          type: string
-        deepLinkUrl:
-          type: string
-        gameSetId:
-          type: string
-      required:
-      - invitingPlayerGameResults
-      - invitingPlayerAnalyticsId
-      - distributorId
-      - deepLinkUrl
-      - gameSetId
     GameSetResult:
       type: object
       properties:

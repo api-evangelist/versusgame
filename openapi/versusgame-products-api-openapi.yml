@@ -149,16 +149,39 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CreateProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        language:
+          type: string
+          enum:
+          - en-us
+          - es-mx
+      required:
+      - productName
+      - productDescription
+      - whiteTickets
+      - blackTickets
+      - amount
+      - mostPopular
+      - language
     SortFindProductDto2:
       type: object
       properties:
         sort:
           $ref: '#/components/schemas/SortFindProductDto'
-    SearchFindProductDto2:
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/SearchFindProductDto'
     UpdateProductDto:
       type: object
       properties:
@@ -183,15 +206,23 @@ components:
           enum:
           - en-us
           - es-mx
-    SortFindProductDto:
+    SearchFindProductDto2:
       type: object
       properties:
-        amount:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        productName:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
+        search:
+          $ref: '#/components/schemas/SearchFindProductDto'
+    ListProduct:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductEntity'
+        total:
+          type: number
+      required:
+      - items
+      - total
     ProductEntity:
       type: object
       properties:
@@ -229,18 +260,11 @@ components:
       - mostPopular
       - createdAt
       - deletedAt
-    ListProduct:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductEntity'
-        total:
-          type: number
-      required:
-      - items
-      - total
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
     SearchFindProductDto:
       type: object
       properties:
@@ -251,39 +275,15 @@ components:
       enum:
       - asc
       - desc
-    CreateProductDto:
+    SortFindProductDto:
       type: object
       properties:
-        productName:
-          type: string
-        productDescription:
-          type: string
-        whiteTickets:
-          type: number
-        blackTickets:
-          type: number
         amount:
-          type: number
-        mostPopular:
-          type: boolean
-        language:
-          type: string
-          enum:
-          - en-us
-          - es-mx
-      required:
-      - productName
-      - productDescription
-      - whiteTickets
-      - blackTickets
-      - amount
-      - mostPopular
-      - language
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        productName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
   securitySchemes:
     access-token:
       scheme: bearer

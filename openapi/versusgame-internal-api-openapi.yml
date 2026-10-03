@@ -81,15 +81,6 @@ components:
       - profileColor
       - createdAt
       - updatedAt
-    FindUserslDto:
-      type: object
-      properties:
-        userIds:
-          type: array
-          items:
-            type: string
-      required:
-      - userIds
     UserInfo:
       type: object
       properties:
@@ -121,6 +112,15 @@ components:
       - roles
       - createdAt
       - updatedAt
+    FindUserslDto:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+      required:
+      - userIds
   securitySchemes:
     access-token:
       scheme: bearer

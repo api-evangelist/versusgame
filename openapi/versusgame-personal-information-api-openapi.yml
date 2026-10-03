@@ -45,12 +45,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdatePersonalInformationDto:
-      type: object
-      properties:
-        birthday:
-          format: date-time
-          type: string
     PersonalInformation:
       type: object
       properties:
@@ -61,6 +55,12 @@ components:
           type: string
       required:
       - id
+    UpdatePersonalInformationDto:
+      type: object
+      properties:
+        birthday:
+          format: date-time
+          type: string
   securitySchemes:
     access-token:
       scheme: bearer

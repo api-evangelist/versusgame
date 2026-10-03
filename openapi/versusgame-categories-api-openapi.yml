@@ -166,72 +166,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreateCategoryDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        categoryName:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-      required:
-      - language
-      - categoryName
-    SortFindCategoryDto:
-      type: object
-      properties:
-        categoryName:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        updatedAt:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-    ListCategory:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    UpdateCategoryDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        categoryName:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-    SearchFindCategoryDto:
-      type: object
-      properties:
-        categoryName:
-          type: string
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
     Category:
       type: object
       properties:
@@ -259,6 +193,72 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
+    SortFindCategoryDto:
+      type: object
+      properties:
+        categoryName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    CreateCategoryDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        categoryName:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - categoryName
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    SearchFindCategoryDto:
+      type: object
+      properties:
+        categoryName:
+          type: string
+    ListCategory:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    UpdateCategoryDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        categoryName:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
   securitySchemes:
     access-token:
       scheme: bearer
