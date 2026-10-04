@@ -138,6 +138,25 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UpdatePartnerDomainDto:
+      type: object
+      properties:
+        articleUrlRules:
+          type: array
+          items:
+            type: string
+            pattern: /a-z|N|\*|\//
+        indexPagesRules:
+          type: array
+          items:
+            type: string
+            pattern: /a-z|N|\*|\//
+        enableAutogame:
+          type: boolean
+      required:
+      - articleUrlRules
+      - indexPagesRules
+      - enableAutogame
     SearchDto:
       type: object
       properties:
@@ -175,25 +194,6 @@ components:
       - userName
       - createdAt
       - updatedAt
-    UpdatePartnerDomainDto:
-      type: object
-      properties:
-        articleUrlRules:
-          type: array
-          items:
-            type: string
-            pattern: /a-z|N|\*|\//
-        indexPagesRules:
-          type: array
-          items:
-            type: string
-            pattern: /a-z|N|\*|\//
-        enableAutogame:
-          type: boolean
-      required:
-      - articleUrlRules
-      - indexPagesRules
-      - enableAutogame
     PartnerDomains:
       type: object
       properties:
@@ -231,18 +231,6 @@ components:
       - articleUrlRules
       - indexPagesRules
       - enableAutogame
-    ListPartnerDomains:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartnerDomains'
-        total:
-          type: number
-      required:
-      - items
-      - total
     CreatePartnerDomainDto:
       type: object
       properties:
@@ -265,6 +253,18 @@ components:
       - articleUrlRules
       - indexPagesRules
       - enableAutogame
+    ListPartnerDomains:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerDomains'
+        total:
+          type: number
+      required:
+      - items
+      - total
   securitySchemes:
     access-token:
       scheme: bearer

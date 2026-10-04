@@ -103,6 +103,38 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FundType:
+      type: string
+      enum:
+      - free
+      - white
+      - black
+      - gray
+      - coin
+      - pending_coin
+      - point
+    LedgerListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgersEntity'
+        next:
+          type: string
+      required:
+      - items
+    Fund:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/FundType'
+        amount:
+          type: number
+      required:
+      - type
+      - amount
     LedgersEntity:
       type: object
       properties:
@@ -126,27 +158,6 @@ components:
       - userId
       - createdAt
       - funds
-    FundType:
-      type: string
-      enum:
-      - free
-      - white
-      - black
-      - gray
-      - coin
-      - pending_coin
-      - point
-    Fund:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/FundType'
-        amount:
-          type: number
-      required:
-      - type
-      - amount
     FundsUpdatedReasons:
       type: string
       enum:
@@ -165,17 +176,6 @@ components:
       - admin_update
       - distributor_cut
       - achievement
-    LedgerListEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LedgersEntity'
-        next:
-          type: string
-      required:
-      - items
   securitySchemes:
     access-token:
       scheme: bearer

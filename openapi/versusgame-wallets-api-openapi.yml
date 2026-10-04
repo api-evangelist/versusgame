@@ -128,6 +128,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ClaimDailyGiftResponse:
+      type: object
+      properties:
+        amount:
+          type: number
+      required:
+      - amount
     ValidUpdateFund:
       type: object
       properties:
@@ -139,52 +146,6 @@ components:
       required:
       - type
       - amount
-    ClaimDailyGiftResponse:
-      type: object
-      properties:
-        amount:
-          type: number
-      required:
-      - amount
-    PromoteUserDto:
-      type: object
-      properties:
-        leaderboardLeague:
-          type: string
-          enum:
-          - level1
-          - level2
-          - level3
-          - level4
-        distributorId:
-          type: string
-      required:
-      - leaderboardLeague
-      - distributorId
-    AdminUpdateFundsDto:
-      type: object
-      properties:
-        reason:
-          allOf:
-          - $ref: '#/components/schemas/FundsUpdatedReasons'
-        walletVersion:
-          type: number
-        funds:
-          minItems: 1
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidUpdateFund'
-        adminDescription:
-          type: string
-        distributorId:
-          type: string
-        gameCorrectAnswer:
-          type: boolean
-        gameDeclared:
-          type: boolean
-      required:
-      - reason
-      - funds
     WalletResponse:
       type: object
       properties:
@@ -262,33 +223,21 @@ components:
       - emailVerified
       - referralCount
       - dailySetCounts
-    UpdateWalletResponse:
+    PromoteUserDto:
       type: object
       properties:
-        version:
-          type: number
-        updatedAt:
-          format: date-time
+        leaderboardLeague:
+          type: string
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+        distributorId:
           type: string
       required:
-      - updatedAt
-    ValidUpdateFunds:
-      type: string
-      enum:
-      - black
-      - white
-      - coin
-      - point
-    WalletLeague:
-      type: object
-      properties:
-        name:
-          type: string
-        leaderboardId:
-          type: string
-      required:
-      - name
-      - leaderboardId
+      - leaderboardLeague
+      - distributorId
     DemoteUserDto:
       type: object
       properties:
@@ -316,6 +265,47 @@ components:
       - totalWins
       - totalLosses
       - totalTies
+    ValidUpdateFunds:
+      type: string
+      enum:
+      - black
+      - white
+      - coin
+      - point
+    AdminUpdateFundsDto:
+      type: object
+      properties:
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/FundsUpdatedReasons'
+        walletVersion:
+          type: number
+        funds:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidUpdateFund'
+        adminDescription:
+          type: string
+        distributorId:
+          type: string
+        gameCorrectAnswer:
+          type: boolean
+        gameDeclared:
+          type: boolean
+      required:
+      - reason
+      - funds
+    UpdateWalletResponse:
+      type: object
+      properties:
+        version:
+          type: number
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - updatedAt
     FundsUpdatedReasons:
       type: string
       enum:
@@ -334,6 +324,16 @@ components:
       - admin_update
       - distributor_cut
       - achievement
+    WalletLeague:
+      type: object
+      properties:
+        name:
+          type: string
+        leaderboardId:
+          type: string
+      required:
+      - name
+      - leaderboardId
   securitySchemes:
     access-token:
       scheme: bearer

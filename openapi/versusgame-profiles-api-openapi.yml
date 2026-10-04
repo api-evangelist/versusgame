@@ -166,17 +166,25 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Role:
-      type: string
-      enum:
-      - anonymous
-      - ADMIN
-      - CREATOR
-      - USER
-      - SUPER_ADMIN
-      - AUTOGAME
-      - DISTRIBUTION_MANAGER
-      - MICROSOFT_REWARDS_USER
+    ValidUsernameDto:
+      type: object
+      properties:
+        username:
+          type: string
+      required:
+      - username
+    ListExpandedProfile:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExpandedProfile'
+        total:
+          type: number
+      required:
+      - items
+      - total
     Profile:
       type: object
       properties:
@@ -201,19 +209,6 @@ components:
       - profileColor
       - createdAt
       - updatedAt
-    SearchFindProfileEmailDto:
-      type: object
-      properties:
-        userEmail:
-          type: string
-        username:
-          type: string
-        usernameLike:
-          type: string
-        ids:
-          type: array
-          items:
-            type: string
     ExpandedProfile:
       type: object
       properties:
@@ -246,18 +241,6 @@ components:
       - profileColor
       - createdAt
       - updatedAt
-    ValidUsernameDto:
-      type: object
-      properties:
-        username:
-          type: string
-      required:
-      - username
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
     WalletResponse:
       type: object
       properties:
@@ -335,16 +318,30 @@ components:
       - emailVerified
       - referralCount
       - dailySetCounts
-    WalletLeague:
+    Role:
+      type: string
+      enum:
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
+    SearchFindProfileEmailDto:
       type: object
       properties:
-        name:
+        userEmail:
           type: string
-        leaderboardId:
+        username:
           type: string
-      required:
-      - name
-      - leaderboardId
+        usernameLike:
+          type: string
+        ids:
+          type: array
+          items:
+            type: string
     UpdateProfileDto:
       type: object
       properties:
@@ -356,18 +353,11 @@ components:
           type:
           - string
           - 'null'
-    ListExpandedProfile:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExpandedProfile'
-        total:
-          type: number
-      required:
-      - items
-      - total
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
     SortFindProfileDto:
       type: object
       properties:
@@ -397,6 +387,16 @@ components:
       - totalWins
       - totalLosses
       - totalTies
+    WalletLeague:
+      type: object
+      properties:
+        name:
+          type: string
+        leaderboardId:
+          type: string
+      required:
+      - name
+      - leaderboardId
   securitySchemes:
     access-token:
       scheme: bearer

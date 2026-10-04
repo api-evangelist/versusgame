@@ -214,137 +214,6 @@ components:
       - label
       - percentage
       - assetUrl
-    CreateMeterAdDto:
-      type: object
-      properties:
-        partnerId:
-          type: string
-        startTime:
-          type: number
-          minimum: 1
-          description: Unix timestamp in milliseconds
-        endTime:
-          type: number
-          description: Unix timestamp in milliseconds
-        questionText:
-          type: string
-        marketingText:
-          type: string
-          description: Frontend will supply a default if not provided
-        sideA:
-          $ref: '#/components/schemas/AdSideDto'
-        sideB:
-          $ref: '#/components/schemas/AdSideDto'
-        status:
-          enum:
-          - DRAFT
-          - PUBLISHED
-          - CANCELLED
-          type: string
-        url:
-          type: string
-      required:
-      - partnerId
-      - startTime
-      - endTime
-      - questionText
-      - sideA
-      - sideB
-      - status
-    UpdateAdSideDto:
-      type: object
-      properties:
-        label:
-          type: string
-        percentage:
-          type: number
-        assetUrl:
-          type: string
-    UpdateMeterAdDto:
-      type: object
-      properties:
-        partnerId:
-          type: string
-        startTime:
-          type: number
-        endTime:
-          type: number
-        questionText:
-          type: string
-        marketingText:
-          type: string
-        sideA:
-          $ref: '#/components/schemas/UpdateAdSideDto'
-        sideB:
-          $ref: '#/components/schemas/UpdateAdSideDto'
-        status:
-          enum:
-          - DRAFT
-          - PUBLISHED
-          - CANCELLED
-          type: string
-        url:
-          type: string
-    PaginatedMeterAdsDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/MeterAd'
-        total:
-          type: number
-        page:
-          type: number
-        pageSize:
-          type: number
-        pageCount:
-          type: number
-      required:
-      - items
-      - total
-      - page
-      - pageSize
-      - pageCount
-    SortOptionsDto:
-      type: object
-      properties:
-        status:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for status
-        partnerId:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for partnerId
-        startTime:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for startTime
-        endTime:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for endTime
-        questionText:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for questionText
-        marketingText:
-          enum:
-          - ASC
-          - DESC
-          type: string
-          description: Sort direction for marketingText
     MeterAd:
       type: object
       properties:
@@ -420,6 +289,100 @@ components:
       - createdAt
       - updatedAt
       - url
+    SortOptionsDto:
+      type: object
+      properties:
+        status:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for status
+        partnerId:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for partnerId
+        startTime:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for startTime
+        endTime:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for endTime
+        questionText:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for questionText
+        marketingText:
+          enum:
+          - ASC
+          - DESC
+          type: string
+          description: Sort direction for marketingText
+    PaginatedMeterAdsDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeterAd'
+        total:
+          type: number
+        page:
+          type: number
+        pageSize:
+          type: number
+        pageCount:
+          type: number
+      required:
+      - items
+      - total
+      - page
+      - pageSize
+      - pageCount
+    UpdateMeterAdDto:
+      type: object
+      properties:
+        partnerId:
+          type: string
+        startTime:
+          type: number
+        endTime:
+          type: number
+        questionText:
+          type: string
+        marketingText:
+          type: string
+        sideA:
+          $ref: '#/components/schemas/UpdateAdSideDto'
+        sideB:
+          $ref: '#/components/schemas/UpdateAdSideDto'
+        status:
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - CANCELLED
+          type: string
+        url:
+          type: string
+    UpdateAdSideDto:
+      type: object
+      properties:
+        label:
+          type: string
+        percentage:
+          type: number
+        assetUrl:
+          type: string
     TimeComparison:
       type: object
       properties:
@@ -442,6 +405,43 @@ components:
       required:
       - value
       - operator
+    CreateMeterAdDto:
+      type: object
+      properties:
+        partnerId:
+          type: string
+        startTime:
+          type: number
+          minimum: 1
+          description: Unix timestamp in milliseconds
+        endTime:
+          type: number
+          description: Unix timestamp in milliseconds
+        questionText:
+          type: string
+        marketingText:
+          type: string
+          description: Frontend will supply a default if not provided
+        sideA:
+          $ref: '#/components/schemas/AdSideDto'
+        sideB:
+          $ref: '#/components/schemas/AdSideDto'
+        status:
+          enum:
+          - DRAFT
+          - PUBLISHED
+          - CANCELLED
+          type: string
+        url:
+          type: string
+      required:
+      - partnerId
+      - startTime
+      - endTime
+      - questionText
+      - sideA
+      - sideB
+      - status
   securitySchemes:
     access-token:
       scheme: bearer

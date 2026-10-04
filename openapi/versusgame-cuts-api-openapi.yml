@@ -156,6 +156,39 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UpdateUserCutsDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        creatorCutPercentage:
+          type: number
+          minimum: 0
+          maximum: 50
+        parents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidParentCut'
+        version:
+          type: number
+          minimum: 0
+      required:
+      - userId
+      - creatorCutPercentage
+      - parents
+      - version
+    GlobalCutsHistoryListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalCutsHistoryEntity'
+        next:
+          type: string
+      required:
+      - items
+      - next
     UpdateGlobalCutsDto:
       type: object
       properties:
@@ -184,39 +217,16 @@ components:
       - defaultDistributorCutPercentage
       - defaultCreatorCutPercentage
       - version
-    UserCutsHistoryListEntity:
+    GlobalCutsHistoryEntity:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserCutsHistoryEntity'
-        next:
+        updatedBy:
           type: string
+        after:
+          $ref: '#/components/schemas/GlobalCutsEntity'
       required:
-      - items
-      - next
-    GlobalCutsEntity:
-      type: object
-      properties:
-        version:
-          type: number
-        transactionFeePercentage:
-          type: number
-        rakePercentage:
-          type: number
-        defaultDistributorCutPercentage:
-          type: number
-        defaultCreatorCutPercentage:
-          type: number
-        updatedAt:
-          type: string
-      required:
-      - transactionFeePercentage
-      - rakePercentage
-      - defaultDistributorCutPercentage
-      - defaultCreatorCutPercentage
-      - updatedAt
+      - updatedBy
+      - after
     UserCutsEntity:
       type: object
       properties:
@@ -238,32 +248,6 @@ components:
       - distributorCutPercentage
       - creatorCutPercentage
       - parents
-    UpdateUserDistributionCutsDto:
-      type: object
-      properties:
-        userId:
-          type: string
-        distributorCutPercentage:
-          type: number
-          minimum: 0
-          maximum: 100
-        version:
-          type: number
-          minimum: 0
-      required:
-      - userId
-      - distributorCutPercentage
-      - version
-    GlobalCutsHistoryEntity:
-      type: object
-      properties:
-        updatedBy:
-          type: string
-        after:
-          $ref: '#/components/schemas/GlobalCutsEntity'
-      required:
-      - updatedBy
-      - after
     ValidParentCut:
       type: object
       properties:
@@ -282,43 +266,39 @@ components:
       - cutPercentage
       - type
       - description
-    UserCutsHistoryEntity:
+    GlobalCutsEntity:
       type: object
       properties:
-        userId:
-          type: string
-        updatedBy:
-          type: string
-        after:
-          $ref: '#/components/schemas/UserCutsEntity'
-        createdAt:
-          type: number
-      required:
-      - userId
-      - updatedBy
-      - after
-      - createdAt
-    UpdateUserCutsDto:
-      type: object
-      properties:
-        userId:
-          type: string
-        creatorCutPercentage:
-          type: number
-          minimum: 0
-          maximum: 50
-        parents:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidParentCut'
         version:
           type: number
-          minimum: 0
+        transactionFeePercentage:
+          type: number
+        rakePercentage:
+          type: number
+        defaultDistributorCutPercentage:
+          type: number
+        defaultCreatorCutPercentage:
+          type: number
+        updatedAt:
+          type: string
       required:
-      - userId
-      - creatorCutPercentage
-      - parents
-      - version
+      - transactionFeePercentage
+      - rakePercentage
+      - defaultDistributorCutPercentage
+      - defaultCreatorCutPercentage
+      - updatedAt
+    UserCutsHistoryListEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserCutsHistoryEntity'
+        next:
+          type: string
+      required:
+      - items
+      - next
     ParentCut:
       type: object
       properties:
@@ -340,18 +320,38 @@ components:
       - userName
       - type
       - description
-    GlobalCutsHistoryListEntity:
+    UpdateUserDistributionCutsDto:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GlobalCutsHistoryEntity'
-        next:
+        userId:
           type: string
+        distributorCutPercentage:
+          type: number
+          minimum: 0
+          maximum: 100
+        version:
+          type: number
+          minimum: 0
       required:
-      - items
-      - next
+      - userId
+      - distributorCutPercentage
+      - version
+    UserCutsHistoryEntity:
+      type: object
+      properties:
+        userId:
+          type: string
+        updatedBy:
+          type: string
+        after:
+          $ref: '#/components/schemas/UserCutsEntity'
+        createdAt:
+          type: number
+      required:
+      - userId
+      - updatedBy
+      - after
+      - createdAt
   securitySchemes:
     access-token:
       scheme: bearer

@@ -614,32 +614,67 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ResendEmailVerificationDto:
+    MicrosoftRewardsDto:
       type: object
       properties:
         language:
           allOf:
           - $ref: '#/components/schemas/Language'
-        userId:
+        returnUrl:
           type: string
+        sourceDomain:
+          type: string
+      required:
+      - returnUrl
+      - sourceDomain
+    ChangePasswordDto:
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+      required:
+      - oldPassword
+      - newPassword
+    ValidateEmailDto:
+      type: object
+      properties:
         email:
           type: string
           format: email
       required:
-      - language
-      - userId
       - email
-    Role:
-      type: string
-      enum:
-      - anonymous
-      - ADMIN
-      - CREATOR
-      - USER
-      - SUPER_ADMIN
-      - AUTOGAME
-      - DISTRIBUTION_MANAGER
-      - MICROSOFT_REWARDS_USER
+    ConfirmInviteDto:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+      - password
+    SetCreatorDto:
+      type: object
+      properties:
+        avatarAssetId:
+          type: string
+        partnerName:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+      required:
+      - avatarAssetId
+      - partnerName
+      - profileColor
+      - userName
+    ResetPasswordSetNewDto:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+      - password
     UserEntity:
       type: object
       properties:
@@ -703,6 +738,70 @@ components:
       - isExemptFromSigningTos
       - roles
       - externalId
+    UpdateUserDto:
+      type: object
+      properties:
+        isExemptFromSigningTos:
+          type: boolean
+      required:
+      - isExemptFromSigningTos
+    ListUsersEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserEntity'
+      required:
+      - items
+    CredentialsEntity:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        accessToken:
+          type: string
+        accessTokenExpiresIn:
+          type: number
+        refreshToken:
+          type: string
+        lastTosSigned:
+          type: boolean
+        tosSignedAt:
+          format: date-time
+          type: string
+        isExemptFromSigningTos:
+          type: boolean
+        userId:
+          type: string
+        email:
+          type: string
+        payoutEmail:
+          type: string
+      required:
+      - roles
+      - accessToken
+      - accessTokenExpiresIn
+      - refreshToken
+      - lastTosSigned
+      - tosSignedAt
+      - isExemptFromSigningTos
+      - userId
+    SigninDto:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - password
     IdentifyExternalUser:
       type: object
       properties:
@@ -724,13 +823,24 @@ components:
       - sourceDomain
       - distributorId
       - returnUrl
-    ConfirmInviteDto:
+    ResetPasswordDto:
       type: object
       properties:
-        password:
+        email:
+          type: string
+          format: email
+        returnUrl:
           type: string
       required:
-      - password
+      - email
+      - returnUrl
+    PayoutEmailVerificationDto:
+      type: object
+      properties:
+        code:
+          type: string
+      required:
+      - code
     UpdatePayoutEmailDto:
       type: object
       properties:
@@ -739,31 +849,65 @@ components:
           format: email
       required:
       - email
-    PayoutEmailVerificationDto:
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    Role:
+      type: string
+      enum:
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
+    ResendEmailVerificationDto:
       type: object
       properties:
-        code:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        userId:
           type: string
-      required:
-      - code
-    SigninDto:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-      required:
-      - email
-      - password
-    ValidateEmailDto:
-      type: object
-      properties:
         email:
           type: string
           format: email
       required:
+      - language
+      - userId
       - email
+    SetRoleDto:
+      type: object
+      properties:
+        role:
+          allOf:
+          - $ref: '#/components/schemas/Role'
+      required:
+      - role
+    AdminInviteUserDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        email:
+          type: string
+          format: email
+        isExemptFromSigningTos:
+          type: boolean
+      required:
+      - email
+    UpdatePayoutEmailEntity:
+      type: object
+      properties:
+        verified:
+          type: boolean
+      required:
+      - verified
     SignupDto:
       type: object
       properties:
@@ -809,150 +953,6 @@ components:
       - tosSigned
       - sourceDomain
       - distributorId
-    AdminInviteUserDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        email:
-          type: string
-          format: email
-        isExemptFromSigningTos:
-          type: boolean
-      required:
-      - email
-    ChangePasswordDto:
-      type: object
-      properties:
-        oldPassword:
-          type: string
-        newPassword:
-          type: string
-      required:
-      - oldPassword
-      - newPassword
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    CredentialsEntity:
-      type: object
-      properties:
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        accessToken:
-          type: string
-        accessTokenExpiresIn:
-          type: number
-        refreshToken:
-          type: string
-        lastTosSigned:
-          type: boolean
-        tosSignedAt:
-          format: date-time
-          type: string
-        isExemptFromSigningTos:
-          type: boolean
-        userId:
-          type: string
-        email:
-          type: string
-        payoutEmail:
-          type: string
-      required:
-      - roles
-      - accessToken
-      - accessTokenExpiresIn
-      - refreshToken
-      - lastTosSigned
-      - tosSignedAt
-      - isExemptFromSigningTos
-      - userId
-    SetCreatorDto:
-      type: object
-      properties:
-        avatarAssetId:
-          type: string
-        partnerName:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-      required:
-      - avatarAssetId
-      - partnerName
-      - profileColor
-      - userName
-    UpdatePayoutEmailEntity:
-      type: object
-      properties:
-        verified:
-          type: boolean
-      required:
-      - verified
-    MicrosoftRewardsDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        returnUrl:
-          type: string
-        sourceDomain:
-          type: string
-      required:
-      - returnUrl
-      - sourceDomain
-    ResetPasswordDto:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-        returnUrl:
-          type: string
-      required:
-      - email
-      - returnUrl
-    SetRoleDto:
-      type: object
-      properties:
-        role:
-          allOf:
-          - $ref: '#/components/schemas/Role'
-      required:
-      - role
-    UpdateUserDto:
-      type: object
-      properties:
-        isExemptFromSigningTos:
-          type: boolean
-      required:
-      - isExemptFromSigningTos
-    ListUsersEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserEntity'
-      required:
-      - items
-    ResetPasswordSetNewDto:
-      type: object
-      properties:
-        password:
-          type: string
-      required:
-      - password
   securitySchemes:
     access-token:
       scheme: bearer

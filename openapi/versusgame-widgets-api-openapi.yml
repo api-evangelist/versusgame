@@ -308,6 +308,87 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    WidgetExpand:
+      type: string
+      enum:
+      - creator
+      - playlist
+    GetWidgetTVTResponseDto:
+      type: object
+      properties:
+        widget:
+          $ref: '#/components/schemas/Widget'
+        cursor:
+          type: string
+          description: Cursor for pagination will be returned if there are more results
+      required:
+      - widget
+    CreateWidgetDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        playlistId:
+          type: string
+        name:
+          type: string
+      required:
+      - type
+      - playlistId
+      - name
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    UpdateWidgetDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        name:
+          type: string
+    Widget:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        id:
+          type: string
+        name:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        playlistId:
+          type: string
+        playlist:
+          $ref: '#/components/schemas/Playlist'
+        deletedAt:
+          format: date-time
+          type: string
+      required:
+      - type
+      - id
+      - name
+      - creatorId
+      - creator
+      - playlistId
+      - playlist
+      - deletedAt
+    SortWidgetDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        name:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
     GameStates:
       type: string
       enum:
@@ -322,6 +403,11 @@ components:
       - canceled
       - refunded
       - quarantined
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
     GameSet:
       type: object
       properties:
@@ -359,292 +445,6 @@ components:
       - endTime
       - deletedAt
       - games
-    Playlist:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        gameSet:
-          $ref: '#/components/schemas/GameSet'
-        id:
-          type: string
-        totalGames:
-          type: number
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        widgets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Widget'
-        gamesOrder:
-          type: array
-          items:
-            type: string
-        games:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        autofilledGames:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        autofillCategories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-        autofillCreators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Creator'
-        autofillExcludedCreators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Creator'
-        autofill:
-          type: boolean
-      required:
-      - language
-      - id
-      - totalGames
-      - creatorId
-      - creator
-      - widgets
-      - games
-      - autofilledGames
-      - autofill
-    Side:
-      type: string
-      enum:
-      - A
-      - B
-    FindWidgetTextDtoV2:
-      type: object
-      properties:
-        distance:
-          type: number
-        text:
-          type: string
-        categoryIds:
-          type: array
-          items:
-            type: string
-        preferCategoryIds:
-          type: array
-          items:
-            type: string
-        excludeCategoryIds:
-          type: array
-          items:
-            type: string
-        context:
-          type: object
-        size:
-          type: number
-          minimum: 0
-          maximum: 500
-      required:
-      - context
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
-    GameType:
-      type: string
-      enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    CreateWidgetDto:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/WidgetTypes'
-        playlistId:
-          type: string
-        name:
-          type: string
-      required:
-      - type
-      - playlistId
-      - name
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    GetWidgetTVTResponseDto:
-      type: object
-      properties:
-        widget:
-          $ref: '#/components/schemas/Widget'
-        cursor:
-          type: string
-          description: Cursor for pagination will be returned if there are more results
-      required:
-      - widget
-    UpdateWidgetDto:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/WidgetTypes'
-        name:
-          type: string
-    WidgetExpand:
-      type: string
-      enum:
-      - creator
-      - playlist
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    ListWidgets:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Widget'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
-    SortWidgetDto:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        name:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-    Category:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
-          type: string
-        categoryName:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-      required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
-    WidgetTypes:
-      type: string
-      enum:
-      - inline
-      - expanding
-      - mobile-expanding
-      - docked
-      - carousel
-      - sidebar
-      - playlist
-    Widget:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/WidgetTypes'
-        id:
-          type: string
-        name:
-          type: string
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        playlistId:
-          type: string
-        playlist:
-          $ref: '#/components/schemas/Playlist'
-        deletedAt:
-          format: date-time
-          type: string
-      required:
-      - type
-      - id
-      - name
-      - creatorId
-      - creator
-      - playlistId
-      - playlist
-      - deletedAt
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
     FindWidgetForTVTDto:
       type: object
       properties:
@@ -664,6 +464,45 @@ components:
           description: Cursor for pagination
       required:
       - categoryIds
+    WidgetTypes:
+      type: string
+      enum:
+      - inline
+      - expanding
+      - mobile-expanding
+      - docked
+      - carousel
+      - sidebar
+      - playlist
+    SearchWidgetDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        creatorId:
+          type: string
+        name:
+          type: string
+        PlaylistId:
+          type: string
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    ListWidgets:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Widget'
+        total:
+          type: number
+      required:
+      - items
+      - total
     Game:
       type: object
       properties:
@@ -779,18 +618,179 @@ components:
       - createdAt
       - updatedAt
       - version
-    SearchWidgetDto:
+    VideoUrls:
       type: object
       properties:
-        type:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    FindWidgetTextDtoV2:
+      type: object
+      properties:
+        distance:
+          type: number
+        text:
+          type: string
+        categoryIds:
+          type: array
+          items:
+            type: string
+        preferCategoryIds:
+          type: array
+          items:
+            type: string
+        excludeCategoryIds:
+          type: array
+          items:
+            type: string
+        context:
+          type: object
+        size:
+          type: number
+          minimum: 0
+          maximum: 500
+      required:
+      - context
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    Playlist:
+      type: object
+      properties:
+        language:
           allOf:
-          - $ref: '#/components/schemas/WidgetTypes'
+          - $ref: '#/components/schemas/Language'
+        gameSet:
+          $ref: '#/components/schemas/GameSet'
+        id:
+          type: string
+        totalGames:
+          type: number
         creatorId:
           type: string
-        name:
+        creator:
+          $ref: '#/components/schemas/Creator'
+        widgets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Widget'
+        gamesOrder:
+          type: array
+          items:
+            type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofilledGames:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofillCategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        autofillCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofillExcludedCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofill:
+          type: boolean
+      required:
+      - language
+      - id
+      - totalGames
+      - creatorId
+      - creator
+      - widgets
+      - games
+      - autofilledGames
+      - autofill
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
           type: string
-        PlaylistId:
+        categoryName:
           type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
   securitySchemes:
     access-token:
       scheme: bearer

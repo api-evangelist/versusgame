@@ -1007,116 +1007,98 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    GameStates:
-      type: string
-      enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
-      - canceled
-      - refunded
-      - quarantined
-    NewVersionDto:
+    GoogleSearchResult:
       type: object
       properties:
-        version:
-          type: number
-        gameDetail:
-          $ref: '#/components/schemas/GameDetail'
-        manualOverrides:
-          type: object
-      required:
-      - version
-      - gameDetail
-      - manualOverrides
-    SynthesizeSpeechDto:
-      type: object
-      properties:
-        engine:
-          type: string
-        text:
-          type: string
-        languageCode:
-          type: string
-        voiceId:
-          type: string
-      required:
-      - engine
-      - text
-      - languageCode
-      - voiceId
-    CreateChatHistoryDto:
-      type: object
-      properties:
-        name:
-          type: string
-        history:
-          type: object
-        gameId:
-          type: string
-        messageVersion:
-          type: number
-      required:
-      - name
-      - history
-      - messageVersion
-    ChatCompletionsDto:
-      type: object
-      properties:
-        model:
-          type: string
-        messages:
+        searchInformation:
+          $ref: '#/components/schemas/SearchInformation'
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/MessageDto'
-        frequency_penalty:
-          type: number
-        function_call:
-          type: object
-        logit_bias:
-          type: object
-        max_tokens:
-          type: number
-        n:
-          type: number
-        presence_penalty:
-          type: number
-        response_format:
-          type: object
-        seed:
-          type: number
-        stop:
-          type: object
-        temperature:
-          type: number
-          minimum: 0
-          maximum: 2
-        tool_choice:
-          type: object
-        tools:
-          type: object
-        top_p:
-          type: number
-        user:
-          type: string
+            $ref: '#/components/schemas/Items'
       required:
-      - model
-      - messages
-    Upload:
+      - items
+    CreatePollyAssetDto:
       type: object
       properties:
-        uploadUrl:
+        syntesizedSpeech:
+          $ref: '#/components/schemas/SynthesizeSpeechDto'
+        name:
           type: string
-        resourceUrl:
+        userId:
           type: string
       required:
-      - uploadUrl
-      - resourceUrl
+      - syntesizedSpeech
+      - name
+      - userId
+    CreateArticleDto:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    MessageDto:
+      type: object
+      properties:
+        role:
+          type: object
+        content:
+          type: string
+        tool_calls:
+          type: object
+        tool_call_id:
+          type: string
+        name:
+          type: string
+      required:
+      - role
+      - content
+    CreateUploadDto:
+      type: object
+      properties:
+        extension:
+          type: string
+      required:
+      - extension
+    ImageSearch:
+      type: object
+      properties:
+        searchId:
+          type: string
+        selected:
+          type: number
+      required:
+      - searchId
+      - selected
+    InsertRawSearchDto:
+      type: object
+      properties:
+        searchInformation:
+          $ref: '#/components/schemas/SearchInformation'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Items'
+      required:
+      - items
+    Answers:
+      type: object
+      properties:
+        text:
+          type: string
+      required:
+      - text
+    GoogleSearch:
+      type: object
+      properties:
+        id:
+          type: string
+        result:
+          $ref: '#/components/schemas/GoogleSearchResult'
+      required:
+      - id
+      - result
     RenderDto:
       type: object
       properties:
@@ -1147,78 +1129,283 @@ components:
       - width
       - height
       - bundleBuildId
-    AudioResponse:
+    GameDetail:
       type: object
       properties:
-        audio_base64:
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        synopsis:
+          type: array
+          items:
+            $ref: '#/components/schemas/Synopsis'
+        overlays:
+          type: array
+          items:
+            $ref: '#/components/schemas/Overlay'
+        question:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answers'
+      required:
+      - synopsis
+      - overlays
+      - question
+      - answers
+    Question:
+      type: object
+      properties:
+        text:
           type: string
-        alignment:
-          type: object
-          properties:
-            characters:
-              type: array
-              items:
-                type: string
-            character_start_times_seconds:
-              type: array
-              items:
-                type: number
-            character_end_times_seconds:
-              type: array
-              items:
-                type: number
-          required:
-          - characters
-          - character_start_times_seconds
-          - character_end_times_seconds
-        normalized_alignment:
-          type: object
-          properties:
-            characters:
-              type: array
-              items:
-                type: string
-            character_start_times_seconds:
-              type: array
-              items:
-                type: number
-            character_end_times_seconds:
-              type: array
-              items:
-                type: number
-          required:
-          - characters
-          - character_start_times_seconds
-          - character_end_times_seconds
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
       required:
-      - audio_base64
-      - alignment
-      - normalized_alignment
-    CreateUploadDto:
+      - text
+      - images_query
+      - image_type
+      - image_search
+    Article:
       type: object
       properties:
-        extension:
+        id:
+          type: string
+        url:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        rawOpenAiChat:
+          type: array
+          items:
+            type: object
+        hostName:
+          type: string
+        partnerId:
+          type: string
+        sourceType:
+          enum:
+          - widget
+          - manual
+          - blob
           type: string
       required:
-      - extension
-    SideStatsByTicketTypeEntity:
+      - id
+      - url
+      - createdAt
+      - updatedAt
+      - rawOpenAiChat
+      - hostName
+      - partnerId
+    UpdateChatHistoryDto:
       type: object
       properties:
-        gameplays:
+        history:
+          type: object
+        name:
+          type: string
+        gameId:
+          type: string
+        messageVersion:
           type: number
-        tickets:
-          type: number
-        matched:
+        version:
           type: number
       required:
-      - gameplays
-      - tickets
-      - matched
-    CreatePollyAssetDto:
+      - version
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    VoiceGenerationDto:
+      type: object
+      properties:
+        text:
+          type: string
+        languageCode:
+          type: string
+          default: en
+        voiceId:
+          type: string
+          default: Brian
+        stability:
+          type: number
+          default: 0.5
+        similarityBoost:
+          type: number
+          default: 0.75
+      required:
+      - text
+      - languageCode
+      - voiceId
+      - stability
+      - similarityBoost
+    NewVersionDto:
+      type: object
+      properties:
+        version:
+          type: number
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+      required:
+      - version
+      - gameDetail
+      - manualOverrides
+    GameDraftState:
+      type: string
+      enum:
+      - sqa-to-review
+      - video-to-review
+      - video-ready
+      - approved
+      - rejected
+      - published
+    SynthesizeSpeechDto:
+      type: object
+      properties:
+        engine:
+          type: string
+        text:
+          type: string
+        languageCode:
+          type: string
+        voiceId:
+          type: string
+      required:
+      - engine
+      - text
+      - languageCode
+      - voiceId
+    Image:
+      type: object
+      properties:
+        byteSize:
+          type: number
+        contextLink:
+          type: string
+        height:
+          type: number
+        thumbnailHeight:
+          type: number
+        thumbnailLink:
+          type: string
+        thumbnailWidth:
+          type: number
+        width:
+          type: number
+    CreateGameDto:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        startTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        categoryId:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        text:
+          type: string
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        urls:
+          type: array
+          items:
+            type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+      required:
+      - language
+      - gameType
+      - startTime
+      - lastJoinTime
+      - endTime
+      - gameTitle
+      - sourceUrl
+      - categoryId
+      - sideA
+      - sideB
+      - text
+      - isAd
+    SlushingEntity:
+      type: object
+      properties:
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        blackTicketsGameplays:
+          type: number
+      required:
+      - whiteTickets
+      - blackTickets
+      - blackTicketsGameplays
+    CreateVoiceAssetDto:
       type: object
       properties:
         syntesizedSpeech:
-          $ref: '#/components/schemas/SynthesizeSpeechDto'
+          $ref: '#/components/schemas/VoiceGenerationDto'
         name:
           type: string
         userId:
@@ -1227,11 +1414,108 @@ components:
       - syntesizedSpeech
       - name
       - userId
-    Side:
-      type: string
-      enum:
-      - A
-      - B
+    StatsEntity:
+      type: object
+      properties:
+        sideA:
+          $ref: '#/components/schemas/SideStatsEntity'
+        sideB:
+          $ref: '#/components/schemas/SideStatsEntity'
+      required:
+      - sideA
+      - sideB
+    Items:
+      type: object
+      properties:
+        link:
+          type: string
+        fileFormat:
+          type: string
+        title:
+          type: string
+        htmlTitle:
+          type: string
+        displayLink:
+          type: string
+        mime:
+          type: string
+        image:
+          $ref: '#/components/schemas/Image'
+    SearchInformation:
+      type: object
+      properties:
+        totalResults:
+          type: string
+    Overlay:
+      type: object
+      properties:
+        start_chunk:
+          type: number
+        end_chunk:
+          type: number
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - start_chunk
+      - end_chunk
+      - images_query
+      - image_type
+      - image_search
+    SetStateDto:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        version:
+          type: number
+        gameIds:
+          type: array
+          items:
+            type: string
+        lock:
+          type: number
+          minimum: 0
+      required:
+      - version
+    Upload:
+      type: object
+      properties:
+        uploadUrl:
+          type: string
+        resourceUrl:
+          type: string
+      required:
+      - uploadUrl
+      - resourceUrl
+    GameDraftVersion:
+      type: object
+      properties:
+        id:
+          type: string
+        gameIndex:
+          type: string
+        userId:
+          type: string
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+        version:
+          type: number
+        createdAt:
+          type: string
+      required:
+      - id
+      - gameIndex
+      - gameDetail
+      - manualOverrides
+      - version
+      - createdAt
     GameEntity:
       type: object
       properties:
@@ -1353,6 +1637,234 @@ components:
       - text
       - categoryId
       - category
+    Synopsis:
+      type: object
+      properties:
+        text:
+          type: string
+        images_query:
+          type: string
+        image_type:
+          type: string
+        image_search:
+          $ref: '#/components/schemas/ImageSearch'
+      required:
+      - text
+      - images_query
+      - image_type
+      - image_search
+    AudioResponse:
+      type: object
+      properties:
+        audio_base64:
+          type: string
+        alignment:
+          type: object
+          properties:
+            characters:
+              type: array
+              items:
+                type: string
+            character_start_times_seconds:
+              type: array
+              items:
+                type: number
+            character_end_times_seconds:
+              type: array
+              items:
+                type: number
+          required:
+          - characters
+          - character_start_times_seconds
+          - character_end_times_seconds
+        normalized_alignment:
+          type: object
+          properties:
+            characters:
+              type: array
+              items:
+                type: string
+            character_start_times_seconds:
+              type: array
+              items:
+                type: number
+            character_end_times_seconds:
+              type: array
+              items:
+                type: number
+          required:
+          - characters
+          - character_start_times_seconds
+          - character_end_times_seconds
+      required:
+      - audio_base64
+      - alignment
+      - normalized_alignment
+    ListSpeechMark:
+      type: object
+      properties:
+        speechMarks:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeechMark'
+      required:
+      - speechMarks
+    ElevenLabsVoiceList:
+      type: object
+      properties:
+        total:
+          type: number
+        voices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ElevenLabsVoice'
+      required:
+      - total
+      - voices
+    ChatCompletionsDto:
+      type: object
+      properties:
+        model:
+          type: string
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageDto'
+        frequency_penalty:
+          type: number
+        function_call:
+          type: object
+        logit_bias:
+          type: object
+        max_tokens:
+          type: number
+        n:
+          type: number
+        presence_penalty:
+          type: number
+        response_format:
+          type: object
+        seed:
+          type: number
+        stop:
+          type: object
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+        tool_choice:
+          type: object
+        tools:
+          type: object
+        top_p:
+          type: number
+        user:
+          type: string
+      required:
+      - model
+      - messages
+    Side:
+      type: string
+      enum:
+      - A
+      - B
+    SideStatsByTicketTypeEntity:
+      type: object
+      properties:
+        gameplays:
+          type: number
+        tickets:
+          type: number
+        matched:
+          type: number
+      required:
+      - gameplays
+      - tickets
+      - matched
+    ListGameDraftVersion:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraftVersion'
+        next:
+          type: string
+      required:
+      - items
+      - next
+    ElevenLabsVoice:
+      type: object
+      properties:
+        voice_id:
+          type: string
+        name:
+          type: string
+        samples:
+          type: array
+          items:
+            type: object
+        category:
+          type: string
+        fine_tuning:
+          type: object
+        labels:
+          type: object
+        description:
+          type: string
+        preview_url:
+          type: string
+        available_for_tiers:
+          type: array
+          items:
+            type: string
+        settings:
+          type: object
+        sharing:
+          type: object
+        high_quality_base_model_ids:
+          type: array
+          items:
+            type: string
+        safety_control:
+          type: object
+        voice_verification:
+          type: object
+        owner_id:
+          type: string
+        permission_on_resource:
+          type: string
+        is_legacy:
+          type: boolean
+      required:
+      - voice_id
+    CreateChatHistoryDto:
+      type: object
+      properties:
+        name:
+          type: string
+        history:
+          type: object
+        gameId:
+          type: string
+        messageVersion:
+          type: number
+      required:
+      - name
+      - history
+      - messageVersion
+    ListVoices:
+      type: object
+      properties:
+        total:
+          type: number
+        voices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Voice'
+      required:
+      - total
+      - voices
     VideoUrls:
       type: object
       properties:
@@ -1372,74 +1884,56 @@ components:
       - mp4540
       - mp4720
       - poster
-    GameDraft:
+    ChatHistory:
       type: object
       properties:
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        state:
-          allOf:
-          - $ref: '#/components/schemas/GameDraftState'
         id:
           type: string
-        gameIndex:
+        creatorId:
           type: string
-        lock:
-          type: number
-        userId:
+        name:
           type: string
-        gameDetail:
-          $ref: '#/components/schemas/GameDetail'
-        manualOverrides:
+        history:
           type: object
+        gameId:
+          type: string
+        messageVersion:
+          type: number
         version:
           type: number
-        gameIds:
-          type: array
-          items:
-            type: string
         createdAt:
+          format: date-time
           type: string
         updatedAt:
-          type: string
-        systemMessage:
-          type: string
-        systemMessageName:
-          type: string
-        url:
+          format: date-time
           type: string
       required:
-      - gameType
-      - state
       - id
-      - gameIndex
-      - lock
-      - gameDetail
-      - manualOverrides
+      - creatorId
+      - name
+      - history
+      - gameId
+      - messageVersion
       - version
-      - gameIds
       - createdAt
       - updatedAt
-      - systemMessage
-      - systemMessageName
-      - url
-    GameType:
+    Language:
       type: string
       enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    JobStatus:
-      type: string
-      enum:
-      - created
-      - processing
-      - complete
-      - error
+      - en-us
+      - es-mx
+    ListGameDraft:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameDraft'
+        next:
+          type: string
+      required:
+      - items
+      - next
     Creator:
       type: object
       properties:
@@ -1470,123 +1964,6 @@ components:
       - userName
       - createdAt
       - updatedAt
-    GoogleSearchResult:
-      type: object
-      properties:
-        searchInformation:
-          $ref: '#/components/schemas/SearchInformation'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Items'
-      required:
-      - items
-    Synopsis:
-      type: object
-      properties:
-        text:
-          type: string
-        images_query:
-          type: string
-        image_type:
-          type: string
-        image_search:
-          $ref: '#/components/schemas/ImageSearch'
-      required:
-      - text
-      - images_query
-      - image_type
-      - image_search
-    UpdateChatHistoryDto:
-      type: object
-      properties:
-        history:
-          type: object
-        name:
-          type: string
-        gameId:
-          type: string
-        messageVersion:
-          type: number
-        version:
-          type: number
-      required:
-      - version
-    ListGameDraft:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameDraft'
-        next:
-          type: string
-      required:
-      - items
-      - next
-    Answers:
-      type: object
-      properties:
-        text:
-          type: string
-      required:
-      - text
-    ListGameDraftVersion:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameDraftVersion'
-        next:
-          type: string
-      required:
-      - items
-      - next
-    SpeechMark:
-      type: object
-      properties:
-        time:
-          type: number
-        type:
-          type: string
-        start:
-          type: number
-        end:
-          type: number
-        value:
-          type: string
-      required:
-      - time
-      - type
-      - start
-      - end
-      - value
-    SearchInformation:
-      type: object
-      properties:
-        totalResults:
-          type: string
-    CreateDraftDto:
-      type: object
-      properties:
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        gameDetail:
-          $ref: '#/components/schemas/GameDetail'
-        systemMessage:
-          type: string
-        systemMessageName:
-          type: string
-        url:
-          type: string
-      required:
-      - gameType
-      - gameDetail
-      - systemMessage
-      - systemMessageName
-      - url
     Asset:
       type: object
       properties:
@@ -1651,562 +2028,6 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
-    Voice:
-      type: object
-      properties:
-        gender:
-          type: string
-        id:
-          type: string
-        languageCode:
-          type: string
-        languageName:
-          type: string
-        name:
-          type: string
-        additionalLanguageCodes:
-          type: array
-          items:
-            type: string
-        supportedEngines:
-          type: array
-          items:
-            type: string
-      required:
-      - gender
-      - id
-      - languageCode
-      - languageName
-      - name
-      - additionalLanguageCodes
-      - supportedEngines
-    VoiceGenerationDto:
-      type: object
-      properties:
-        text:
-          type: string
-        languageCode:
-          type: string
-          default: en
-        voiceId:
-          type: string
-          default: Brian
-        stability:
-          type: number
-          default: 0.5
-        similarityBoost:
-          type: number
-          default: 0.75
-      required:
-      - text
-      - languageCode
-      - voiceId
-      - stability
-      - similarityBoost
-    InsertRawSearchDto:
-      type: object
-      properties:
-        searchInformation:
-          $ref: '#/components/schemas/SearchInformation'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Items'
-      required:
-      - items
-    ImageSearch:
-      type: object
-      properties:
-        searchId:
-          type: string
-        selected:
-          type: number
-      required:
-      - searchId
-      - selected
-    Overlay:
-      type: object
-      properties:
-        start_chunk:
-          type: number
-        end_chunk:
-          type: number
-        images_query:
-          type: string
-        image_type:
-          type: string
-        image_search:
-          $ref: '#/components/schemas/ImageSearch'
-      required:
-      - start_chunk
-      - end_chunk
-      - images_query
-      - image_type
-      - image_search
-    GameDraftVersion:
-      type: object
-      properties:
-        id:
-          type: string
-        gameIndex:
-          type: string
-        userId:
-          type: string
-        gameDetail:
-          $ref: '#/components/schemas/GameDetail'
-        manualOverrides:
-          type: object
-        version:
-          type: number
-        createdAt:
-          type: string
-      required:
-      - id
-      - gameIndex
-      - gameDetail
-      - manualOverrides
-      - version
-      - createdAt
-    ElevenLabsVoice:
-      type: object
-      properties:
-        voice_id:
-          type: string
-        name:
-          type: string
-        samples:
-          type: array
-          items:
-            type: object
-        category:
-          type: string
-        fine_tuning:
-          type: object
-        labels:
-          type: object
-        description:
-          type: string
-        preview_url:
-          type: string
-        available_for_tiers:
-          type: array
-          items:
-            type: string
-        settings:
-          type: object
-        sharing:
-          type: object
-        high_quality_base_model_ids:
-          type: array
-          items:
-            type: string
-        safety_control:
-          type: object
-        voice_verification:
-          type: object
-        owner_id:
-          type: string
-        permission_on_resource:
-          type: string
-        is_legacy:
-          type: boolean
-      required:
-      - voice_id
-    SideStatsEntity:
-      type: object
-      properties:
-        whiteTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
-        blackTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
-        freeTickets:
-          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
-      required:
-      - whiteTickets
-      - blackTickets
-      - freeTickets
-    GoogleSearch:
-      type: object
-      properties:
-        id:
-          type: string
-        result:
-          $ref: '#/components/schemas/GoogleSearchResult'
-      required:
-      - id
-      - result
-    StatsEntity:
-      type: object
-      properties:
-        sideA:
-          $ref: '#/components/schemas/SideStatsEntity'
-        sideB:
-          $ref: '#/components/schemas/SideStatsEntity'
-      required:
-      - sideA
-      - sideB
-    MessageDto:
-      type: object
-      properties:
-        role:
-          type: object
-        content:
-          type: string
-        tool_calls:
-          type: object
-        tool_call_id:
-          type: string
-        name:
-          type: string
-      required:
-      - role
-      - content
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    SlushingEntity:
-      type: object
-      properties:
-        whiteTickets:
-          type: number
-        blackTickets:
-          type: number
-        blackTicketsGameplays:
-          type: number
-      required:
-      - whiteTickets
-      - blackTickets
-      - blackTicketsGameplays
-    ChatHistoryList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatHistory'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    ListVoices:
-      type: object
-      properties:
-        total:
-          type: number
-        voices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Voice'
-      required:
-      - total
-      - voices
-    GameDraftState:
-      type: string
-      enum:
-      - sqa-to-review
-      - video-to-review
-      - video-ready
-      - approved
-      - rejected
-      - published
-    CreateVoiceAssetDto:
-      type: object
-      properties:
-        syntesizedSpeech:
-          $ref: '#/components/schemas/VoiceGenerationDto'
-        name:
-          type: string
-        userId:
-          type: string
-      required:
-      - syntesizedSpeech
-      - name
-      - userId
-    ChatHistory:
-      type: object
-      properties:
-        id:
-          type: string
-        creatorId:
-          type: string
-        name:
-          type: string
-        history:
-          type: object
-        gameId:
-          type: string
-        messageVersion:
-          type: number
-        version:
-          type: number
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - creatorId
-      - name
-      - history
-      - gameId
-      - messageVersion
-      - version
-      - createdAt
-      - updatedAt
-    CreateArticleDto:
-      type: object
-      properties:
-        url:
-          type: string
-      required:
-      - url
-    Items:
-      type: object
-      properties:
-        link:
-          type: string
-        fileFormat:
-          type: string
-        title:
-          type: string
-        htmlTitle:
-          type: string
-        displayLink:
-          type: string
-        mime:
-          type: string
-        image:
-          $ref: '#/components/schemas/Image'
-    Category:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
-          type: string
-        categoryName:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-      required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
-    Question:
-      type: object
-      properties:
-        text:
-          type: string
-        images_query:
-          type: string
-        image_type:
-          type: string
-        image_search:
-          $ref: '#/components/schemas/ImageSearch'
-      required:
-      - text
-      - images_query
-      - image_type
-      - image_search
-    CreateGameDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        orientation:
-          allOf:
-          - $ref: '#/components/schemas/Orientation'
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        correctAnswer:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        startTime:
-          format: date-time
-          type: string
-        lastJoinTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        gameTitle:
-          type: string
-        sourceUrl:
-          type: string
-        categoryId:
-          type: string
-        sideA:
-          type: string
-        sideB:
-          type: string
-        videoAssetId:
-          type: string
-        text:
-          type: string
-        isAd:
-          type: boolean
-        isPrivate:
-          type: boolean
-        bingSearch:
-          type: string
-        bingSearchClaim:
-          type: string
-        metadata:
-          type: object
-        urls:
-          type: array
-          items:
-            type: string
-        questionVideoAssetId:
-          type: string
-        landscapeVideoAssetId:
-          type: string
-        audioAssetId:
-          type: string
-      required:
-      - language
-      - gameType
-      - startTime
-      - lastJoinTime
-      - endTime
-      - gameTitle
-      - sourceUrl
-      - categoryId
-      - sideA
-      - sideB
-      - text
-      - isAd
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
-    ElevenLabsVoiceList:
-      type: object
-      properties:
-        total:
-          type: number
-        voices:
-          type: array
-          items:
-            $ref: '#/components/schemas/ElevenLabsVoice'
-      required:
-      - total
-      - voices
-    Article:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        rawOpenAiChat:
-          type: array
-          items:
-            type: object
-        hostName:
-          type: string
-        partnerId:
-          type: string
-        sourceType:
-          enum:
-          - widget
-          - manual
-          - blob
-          type: string
-      required:
-      - id
-      - url
-      - createdAt
-      - updatedAt
-      - rawOpenAiChat
-      - hostName
-      - partnerId
-    Image:
-      type: object
-      properties:
-        byteSize:
-          type: number
-        contextLink:
-          type: string
-        height:
-          type: number
-        thumbnailHeight:
-          type: number
-        thumbnailLink:
-          type: string
-        thumbnailWidth:
-          type: number
-        width:
-          type: number
-    SetStateDto:
-      type: object
-      properties:
-        state:
-          allOf:
-          - $ref: '#/components/schemas/GameDraftState'
-        version:
-          type: number
-        gameIds:
-          type: array
-          items:
-            type: string
-        lock:
-          type: number
-          minimum: 0
-      required:
-      - version
-    GameDetail:
-      type: object
-      properties:
-        correctAnswer:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        synopsis:
-          type: array
-          items:
-            $ref: '#/components/schemas/Synopsis'
-        overlays:
-          type: array
-          items:
-            $ref: '#/components/schemas/Overlay'
-        question:
-          type: array
-          items:
-            $ref: '#/components/schemas/Question'
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Answers'
-      required:
-      - synopsis
-      - overlays
-      - question
-      - answers
     ParsedDocument:
       type: object
       properties:
@@ -2259,15 +2080,194 @@ components:
       - dir
       - siteName
       - lang
-    ListSpeechMark:
+    JobStatus:
+      type: string
+      enum:
+      - created
+      - processing
+      - complete
+      - error
+    GameDraft:
       type: object
       properties:
-        speechMarks:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameDraftState'
+        id:
+          type: string
+        gameIndex:
+          type: string
+        lock:
+          type: number
+        userId:
+          type: string
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        manualOverrides:
+          type: object
+        version:
+          type: number
+        gameIds:
           type: array
           items:
-            $ref: '#/components/schemas/SpeechMark'
+            type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        url:
+          type: string
       required:
-      - speechMarks
+      - gameType
+      - state
+      - id
+      - gameIndex
+      - lock
+      - gameDetail
+      - manualOverrides
+      - version
+      - gameIds
+      - createdAt
+      - updatedAt
+      - systemMessage
+      - systemMessageName
+      - url
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
+    Voice:
+      type: object
+      properties:
+        gender:
+          type: string
+        id:
+          type: string
+        languageCode:
+          type: string
+        languageName:
+          type: string
+        name:
+          type: string
+        additionalLanguageCodes:
+          type: array
+          items:
+            type: string
+        supportedEngines:
+          type: array
+          items:
+            type: string
+      required:
+      - gender
+      - id
+      - languageCode
+      - languageName
+      - name
+      - additionalLanguageCodes
+      - supportedEngines
+    SpeechMark:
+      type: object
+      properties:
+        time:
+          type: number
+        type:
+          type: string
+        start:
+          type: number
+        end:
+          type: number
+        value:
+          type: string
+      required:
+      - time
+      - type
+      - start
+      - end
+      - value
+    SideStatsEntity:
+      type: object
+      properties:
+        whiteTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        blackTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+        freeTickets:
+          $ref: '#/components/schemas/SideStatsByTicketTypeEntity'
+      required:
+      - whiteTickets
+      - blackTickets
+      - freeTickets
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    ChatHistoryList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatHistory'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    CreateDraftDto:
+      type: object
+      properties:
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        gameDetail:
+          $ref: '#/components/schemas/GameDetail'
+        systemMessage:
+          type: string
+        systemMessageName:
+          type: string
+        url:
+          type: string
+      required:
+      - gameType
+      - gameDetail
+      - systemMessage
+      - systemMessageName
+      - url
   securitySchemes:
     access-token:
       scheme: bearer

@@ -51,6 +51,13 @@ components:
       - level
       - awardPoints
       - gamePlays
+    level:
+      type: string
+      enum:
+      - level1
+      - level2
+      - level3
+      - level4
     type:
       type: string
       enum:
@@ -63,13 +70,6 @@ components:
       - friends-invited
       - gameset-completed
       - gameset-challenge-won
-    level:
-      type: string
-      enum:
-      - level1
-      - level2
-      - level3
-      - level4
   securitySchemes:
     access-token:
       scheme: bearer

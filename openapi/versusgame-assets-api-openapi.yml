@@ -126,11 +126,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AssetSearchFindAllDto2:
+    ListAsset:
       type: object
       properties:
-        search:
-          $ref: '#/components/schemas/AssetSearchFindAllDto'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        total:
+          type: number
+      required:
+      - items
+      - total
     VideoUrls:
       type: object
       properties:
@@ -150,13 +157,11 @@ components:
       - mp4540
       - mp4720
       - poster
-    JobStatus:
-      type: string
-      enum:
-      - created
-      - processing
-      - complete
-      - error
+    AssetSearchFindAllDto2:
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/AssetSearchFindAllDto'
     AssetSearchFindAllDto:
       type: object
       properties:
@@ -168,38 +173,6 @@ components:
           type: array
           items:
             type: string
-    ListAsset:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Asset'
-        total:
-          type: number
-      required:
-      - items
-      - total
-    CreateAssetDto:
-      type: object
-      properties:
-        name:
-          type: string
-        mimeType:
-          type: string
-        size:
-          type: number
-          minimum: 1
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - name
-      - mimeType
-      - size
-      - width
-      - height
     Asset:
       type: object
       properties:
@@ -264,6 +237,33 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
+    CreateAssetDto:
+      type: object
+      properties:
+        name:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: number
+          minimum: 1
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - name
+      - mimeType
+      - size
+      - width
+      - height
+    JobStatus:
+      type: string
+      enum:
+      - created
+      - processing
+      - complete
+      - error
   securitySchemes:
     access-token:
       scheme: bearer

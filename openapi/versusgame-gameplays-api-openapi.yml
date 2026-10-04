@@ -146,65 +146,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    GameStates:
+    GameplayStates:
       type: string
       enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
+      - waiting_for_match
+      - matched
+      - declared_winner
+      - declared_loser
+      - won
+      - lost
       - canceled
-      - refunded
-      - quarantined
-    Category:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
-          type: string
-        categoryName:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
-      required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
-    Side:
-      type: string
-      enum:
-      - A
-      - B
-    TicketType:
-      type: string
-      enum:
-      - white
-      - black
-      - free
-    ListGameplayStates:
-      type: string
-      enum:
-      - all
-      - active
-      - pending
-      - finished
     VideoUrls:
       type: object
       properties:
@@ -224,6 +175,27 @@ components:
       - mp4540
       - mp4720
       - poster
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    ListGameplayStates:
+      type: string
+      enum:
+      - all
+      - active
+      - pending
+      - finished
     Language:
       type: string
       enum:
@@ -234,6 +206,136 @@ components:
       enum:
       - landscape
       - portrait
+    TicketType:
+      type: string
+      enum:
+      - white
+      - black
+      - free
+    RewardType:
+      type: string
+      enum:
+      - microsoft
+    Game:
+      type: object
+      properties:
+        audioUrl:
+          type: string
+        videoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        questionVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        landscapeVideoUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        resultUrls:
+          $ref: '#/components/schemas/VideoUrls'
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GameStates'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameType:
+          allOf:
+          - $ref: '#/components/schemas/GameType'
+        orientation:
+          allOf:
+          - $ref: '#/components/schemas/Orientation'
+        correctAnswer:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        id:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        lastJoinTime:
+          format: date-time
+          type: string
+        gameTitle:
+          type: string
+        sourceUrl:
+          type: string
+        sideA:
+          type: string
+        sideB:
+          type: string
+        videoAssetId:
+          type: string
+        questionVideoAssetId:
+          type: string
+        landscapeVideoAssetId:
+          type: string
+        audioAssetId:
+          type: string
+        resultAssetId:
+          type: string
+        text:
+          type: string
+        categoryId:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        isAd:
+          type: boolean
+        isPrivate:
+          type: boolean
+        bingSearch:
+          type: string
+        bingSearchClaim:
+          type: string
+        metadata:
+          type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        urls:
+          type: array
+          items:
+            type: string
+      required:
+      - audioUrl
+      - videoUrls
+      - questionVideoUrls
+      - landscapeVideoUrls
+      - resultUrls
+      - state
+      - language
+      - gameType
+      - id
+      - creatorId
+      - creator
+      - startTime
+      - endTime
+      - lastJoinTime
+      - gameTitle
+      - sourceUrl
+      - sideA
+      - sideB
+      - text
+      - categoryId
+      - category
+      - isAd
+      - createdAt
+      - updatedAt
+      - version
+    Side:
+      type: string
+      enum:
+      - A
+      - B
     GameType:
       type: string
       enum:
@@ -243,46 +345,6 @@ components:
       - TRIVIA
       - SURVEY
       - THIS_THAT
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    GameplayStates:
-      type: string
-      enum:
-      - waiting_for_match
-      - matched
-      - declared_winner
-      - declared_loser
-      - won
-      - lost
-      - canceled
     CreateGameplayDto:
       type: object
       properties:
@@ -403,125 +465,6 @@ components:
       - createdAt
       - opponents
       - returnUrl
-    Game:
-      type: object
-      properties:
-        audioUrl:
-          type: string
-        videoUrls:
-          $ref: '#/components/schemas/VideoUrls'
-        questionVideoUrls:
-          $ref: '#/components/schemas/VideoUrls'
-        landscapeVideoUrls:
-          $ref: '#/components/schemas/VideoUrls'
-        resultUrls:
-          $ref: '#/components/schemas/VideoUrls'
-        state:
-          allOf:
-          - $ref: '#/components/schemas/GameStates'
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        gameType:
-          allOf:
-          - $ref: '#/components/schemas/GameType'
-        orientation:
-          allOf:
-          - $ref: '#/components/schemas/Orientation'
-        correctAnswer:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        id:
-          type: string
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        startTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        lastJoinTime:
-          format: date-time
-          type: string
-        gameTitle:
-          type: string
-        sourceUrl:
-          type: string
-        sideA:
-          type: string
-        sideB:
-          type: string
-        videoAssetId:
-          type: string
-        questionVideoAssetId:
-          type: string
-        landscapeVideoAssetId:
-          type: string
-        audioAssetId:
-          type: string
-        resultAssetId:
-          type: string
-        text:
-          type: string
-        categoryId:
-          type: string
-        category:
-          $ref: '#/components/schemas/Category'
-        isAd:
-          type: boolean
-        isPrivate:
-          type: boolean
-        bingSearch:
-          type: string
-        bingSearchClaim:
-          type: string
-        metadata:
-          type: object
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        version:
-          type: number
-        urls:
-          type: array
-          items:
-            type: string
-      required:
-      - audioUrl
-      - videoUrls
-      - questionVideoUrls
-      - landscapeVideoUrls
-      - resultUrls
-      - state
-      - language
-      - gameType
-      - id
-      - creatorId
-      - creator
-      - startTime
-      - endTime
-      - lastJoinTime
-      - gameTitle
-      - sourceUrl
-      - sideA
-      - sideB
-      - text
-      - categoryId
-      - category
-      - isAd
-      - createdAt
-      - updatedAt
-      - version
-    RewardType:
-      type: string
-      enum:
-      - microsoft
     ListGameplays:
       type: object
       properties:
@@ -534,6 +477,63 @@ components:
       required:
       - items
       - next
+    Category:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
+          type: string
+        categoryName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        deletedAt:
+          type: string
+        sticker:
+          type: string
+        icon:
+          type: string
+      required:
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
     AchievementEntity:
       type: object
       properties:
