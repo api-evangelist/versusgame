@@ -218,92 +218,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateCustomUrlDto:
-      type: object
-      properties:
-        widgetId:
-          type: string
-        url:
-          type: string
-        websiteTitle:
-          type: string
-        backgroundColor:
-          type: string
-        textColor:
-          type: string
-    CreateCustomUrlDto:
-      type: object
-      properties:
-        widgetId:
-          type: string
-        url:
-          type: string
-        websiteTitle:
-          type: string
-        backgroundColor:
-          type: string
-        textColor:
-          type: string
-      required:
-      - widgetId
-      - url
-      - websiteTitle
-      - backgroundColor
-      - textColor
-    SortMode:
+    CustomUrlExpand:
       type: string
       enum:
-      - asc
-      - desc
-    Widget:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/WidgetTypes'
-        id:
-          type: string
-        name:
-          type: string
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        playlistId:
-          type: string
-        playlist:
-          $ref: '#/components/schemas/Playlist'
-        deletedAt:
-          format: date-time
-          type: string
-      required:
-      - type
-      - id
-      - name
-      - creatorId
       - creator
-      - playlistId
-      - playlist
-      - deletedAt
-    GameStates:
-      type: string
-      enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
-      - canceled
-      - refunded
-      - quarantined
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
+      - widget
+    CustomUrlSortFindAllDto2:
+      type: object
+      properties:
+        sort:
+          $ref: '#/components/schemas/CustomUrlSortFindAllDto'
     GameSet:
       type: object
       properties:
@@ -341,54 +265,208 @@ components:
       - endTime
       - deletedAt
       - games
-    ListCustomUrl:
+    VideoUrls:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomUrl'
-        total:
-          type: number
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
       required:
-      - items
-      - total
-    WidgetTypes:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    Orientation:
       type: string
       enum:
-      - inline
-      - expanding
-      - mobile-expanding
-      - docked
-      - carousel
-      - sidebar
-      - playlist
+      - landscape
+      - portrait
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
     CustomUrlSearchFindAllDto2:
       type: object
       properties:
         search:
           $ref: '#/components/schemas/CustomUrlSearchFindAllDto'
-    CustomUrlSearchFindAllDto:
+    CustomUrl:
       type: object
       properties:
-        creatorIds:
-          type: array
-          items:
-            type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        widgetId:
+          type: string
+        widget:
+          $ref: '#/components/schemas/Widget'
         url:
           type: string
         websiteTitle:
           type: string
+        backgroundColor:
+          type: string
+        textColor:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - creatorId
+      - creator
+      - widgetId
+      - widget
+      - url
+      - websiteTitle
+      - backgroundColor
+      - textColor
+      - createdAt
+      - updatedAt
+    Widget:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/WidgetTypes'
+        id:
+          type: string
+        name:
+          type: string
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        playlistId:
+          type: string
+        playlist:
+          $ref: '#/components/schemas/Playlist'
+        deletedAt:
+          format: date-time
+          type: string
+      required:
+      - type
+      - id
+      - name
+      - creatorId
+      - creator
+      - playlistId
+      - playlist
+      - deletedAt
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
     Side:
       type: string
       enum:
       - A
       - B
-    CustomUrlExpand:
-      type: string
-      enum:
+    Playlist:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        gameSet:
+          $ref: '#/components/schemas/GameSet'
+        id:
+          type: string
+        totalGames:
+          type: number
+        creatorId:
+          type: string
+        creator:
+          $ref: '#/components/schemas/Creator'
+        widgets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Widget'
+        gamesOrder:
+          type: array
+          items:
+            type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofilledGames:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        autofillCategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        autofillCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofillExcludedCreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        autofill:
+          type: boolean
+      required:
+      - language
+      - id
+      - totalGames
+      - creatorId
       - creator
-      - widget
+      - widgets
+      - games
+      - autofilledGames
+      - autofill
+    CustomUrlSortFindAllDto:
+      type: object
+      properties:
+        url:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        websiteTitle:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
     Game:
       type: object
       properties:
@@ -504,143 +582,6 @@ components:
       - createdAt
       - updatedAt
       - version
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    CustomUrlSortFindAllDto:
-      type: object
-      properties:
-        url:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        websiteTitle:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-    GameType:
-      type: string
-      enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    CustomUrlSortFindAllDto2:
-      type: object
-      properties:
-        sort:
-          $ref: '#/components/schemas/CustomUrlSortFindAllDto'
-    Playlist:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        gameSet:
-          $ref: '#/components/schemas/GameSet'
-        id:
-          type: string
-        totalGames:
-          type: number
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        widgets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Widget'
-        gamesOrder:
-          type: array
-          items:
-            type: string
-        games:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        autofilledGames:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        autofillCategories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-        autofillCreators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Creator'
-        autofillExcludedCreators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Creator'
-        autofill:
-          type: boolean
-      required:
-      - language
-      - id
-      - totalGames
-      - creatorId
-      - creator
-      - widgets
-      - games
-      - autofilledGames
-      - autofill
-    CustomUrl:
-      type: object
-      properties:
-        creatorId:
-          type: string
-        creator:
-          $ref: '#/components/schemas/Creator'
-        widgetId:
-          type: string
-        widget:
-          $ref: '#/components/schemas/Widget'
-        url:
-          type: string
-        websiteTitle:
-          type: string
-        backgroundColor:
-          type: string
-        textColor:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-      required:
-      - creatorId
-      - creator
-      - widgetId
-      - widget
-      - url
-      - websiteTitle
-      - backgroundColor
-      - textColor
-      - createdAt
-      - updatedAt
     Category:
       type: object
       properties:
@@ -668,36 +609,95 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
-    Creator:
+    GameStates:
+      type: string
+      enum:
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    ListCustomUrl:
       type: object
       properties:
-        avatar:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomUrl'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    UpdateCustomUrlDto:
+      type: object
+      properties:
+        widgetId:
           type: string
-        id:
+        url:
           type: string
-        partnerName:
+        websiteTitle:
           type: string
-        avatarAssetId:
+        backgroundColor:
           type: string
-        profileColor:
+        textColor:
           type: string
-        userName:
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    CreateCustomUrlDto:
+      type: object
+      properties:
+        widgetId:
           type: string
-        createdAt:
-          format: date-time
+        url:
           type: string
-        updatedAt:
-          format: date-time
+        websiteTitle:
+          type: string
+        backgroundColor:
+          type: string
+        textColor:
           type: string
       required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
+      - widgetId
+      - url
+      - websiteTitle
+      - backgroundColor
+      - textColor
+    CustomUrlSearchFindAllDto:
+      type: object
+      properties:
+        creatorIds:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+        websiteTitle:
+          type: string
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    WidgetTypes:
+      type: string
+      enum:
+      - inline
+      - expanding
+      - mobile-expanding
+      - docked
+      - carousel
+      - sidebar
+      - playlist
   securitySchemes:
     access-token:
       scheme: bearer

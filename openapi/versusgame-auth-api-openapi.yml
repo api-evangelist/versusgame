@@ -614,6 +614,153 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SetRoleDto:
+      type: object
+      properties:
+        role:
+          allOf:
+          - $ref: '#/components/schemas/Role'
+      required:
+      - role
+    IdentifyExternalUser:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        externalId:
+          type: string
+        sourceDomain:
+          type: string
+        distributorId:
+          type: string
+        returnUrl:
+          type: string
+        username:
+          type: string
+      required:
+      - externalId
+      - sourceDomain
+      - distributorId
+      - returnUrl
+    ResetPasswordSetNewDto:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+      - password
+    UpdatePayoutEmailEntity:
+      type: object
+      properties:
+        verified:
+          type: boolean
+      required:
+      - verified
+    UpdatePayoutEmailDto:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    PayoutEmailVerificationDto:
+      type: object
+      properties:
+        code:
+          type: string
+      required:
+      - code
+    SigninDto:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - password
+    UpdateUserDto:
+      type: object
+      properties:
+        isExemptFromSigningTos:
+          type: boolean
+      required:
+      - isExemptFromSigningTos
+    Role:
+      type: string
+      enum:
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
+    ConfirmInviteDto:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+      - password
+    CredentialsEntity:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        accessToken:
+          type: string
+        accessTokenExpiresIn:
+          type: number
+        refreshToken:
+          type: string
+        lastTosSigned:
+          type: boolean
+        tosSignedAt:
+          format: date-time
+          type: string
+        isExemptFromSigningTos:
+          type: boolean
+        userId:
+          type: string
+        email:
+          type: string
+        payoutEmail:
+          type: string
+      required:
+      - roles
+      - accessToken
+      - accessTokenExpiresIn
+      - refreshToken
+      - lastTosSigned
+      - tosSignedAt
+      - isExemptFromSigningTos
+      - userId
+    SetCreatorDto:
+      type: object
+      properties:
+        avatarAssetId:
+          type: string
+        partnerName:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+      required:
+      - avatarAssetId
+      - partnerName
+      - profileColor
+      - userName
     MicrosoftRewardsDto:
       type: object
       properties:
@@ -645,36 +792,6 @@ components:
           format: email
       required:
       - email
-    ConfirmInviteDto:
-      type: object
-      properties:
-        password:
-          type: string
-      required:
-      - password
-    SetCreatorDto:
-      type: object
-      properties:
-        avatarAssetId:
-          type: string
-        partnerName:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-      required:
-      - avatarAssetId
-      - partnerName
-      - profileColor
-      - userName
-    ResetPasswordSetNewDto:
-      type: object
-      properties:
-        password:
-          type: string
-      required:
-      - password
     UserEntity:
       type: object
       properties:
@@ -738,91 +855,24 @@ components:
       - isExemptFromSigningTos
       - roles
       - externalId
-    UpdateUserDto:
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    AdminInviteUserDto:
       type: object
       properties:
-        isExemptFromSigningTos:
-          type: boolean
-      required:
-      - isExemptFromSigningTos
-    ListUsersEntity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserEntity'
-      required:
-      - items
-    CredentialsEntity:
-      type: object
-      properties:
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
         language:
           allOf:
           - $ref: '#/components/schemas/Language'
-        accessToken:
+        email:
           type: string
-        accessTokenExpiresIn:
-          type: number
-        refreshToken:
-          type: string
-        lastTosSigned:
-          type: boolean
-        tosSignedAt:
-          format: date-time
-          type: string
+          format: email
         isExemptFromSigningTos:
           type: boolean
-        userId:
-          type: string
-        email:
-          type: string
-        payoutEmail:
-          type: string
-      required:
-      - roles
-      - accessToken
-      - accessTokenExpiresIn
-      - refreshToken
-      - lastTosSigned
-      - tosSignedAt
-      - isExemptFromSigningTos
-      - userId
-    SigninDto:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
       required:
       - email
-      - password
-    IdentifyExternalUser:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        externalId:
-          type: string
-        sourceDomain:
-          type: string
-        distributorId:
-          type: string
-        returnUrl:
-          type: string
-        username:
-          type: string
-      required:
-      - externalId
-      - sourceDomain
-      - distributorId
-      - returnUrl
     ResetPasswordDto:
       type: object
       properties:
@@ -834,37 +884,6 @@ components:
       required:
       - email
       - returnUrl
-    PayoutEmailVerificationDto:
-      type: object
-      properties:
-        code:
-          type: string
-      required:
-      - code
-    UpdatePayoutEmailDto:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-      required:
-      - email
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    Role:
-      type: string
-      enum:
-      - anonymous
-      - ADMIN
-      - CREATOR
-      - USER
-      - SUPER_ADMIN
-      - AUTOGAME
-      - DISTRIBUTION_MANAGER
-      - MICROSOFT_REWARDS_USER
     ResendEmailVerificationDto:
       type: object
       properties:
@@ -880,34 +899,6 @@ components:
       - language
       - userId
       - email
-    SetRoleDto:
-      type: object
-      properties:
-        role:
-          allOf:
-          - $ref: '#/components/schemas/Role'
-      required:
-      - role
-    AdminInviteUserDto:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        email:
-          type: string
-          format: email
-        isExemptFromSigningTos:
-          type: boolean
-      required:
-      - email
-    UpdatePayoutEmailEntity:
-      type: object
-      properties:
-        verified:
-          type: boolean
-      required:
-      - verified
     SignupDto:
       type: object
       properties:
@@ -953,6 +944,15 @@ components:
       - tosSigned
       - sourceDomain
       - distributorId
+    ListUsersEntity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserEntity'
+      required:
+      - items
   securitySchemes:
     access-token:
       scheme: bearer

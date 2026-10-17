@@ -177,66 +177,33 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateGameSetDto:
+    Category:
       type: object
       properties:
-        startTime:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        id:
           type: string
-        endTime:
+        categoryName:
           type: string
-        games:
-          type: array
-          items:
-            type: string
-    VideoUrls:
-      type: object
-      properties:
-        hls:
+        createdAt:
           type: string
-        mp4360:
+        updatedAt:
           type: string
-        mp4540:
+        deletedAt:
           type: string
-        mp4720:
+        sticker:
           type: string
-        poster:
+        icon:
           type: string
       required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
-    CreateGameSetDto:
-      type: object
-      properties:
-        partnerId:
-          type: string
-        startTime:
-          type: string
-        endTime:
-          type: string
-        games:
-          type: array
-          items:
-            type: string
-      required:
-      - partnerId
-      - startTime
-      - endTime
-      - games
-    ListGameSet:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameSet'
-        total:
-          type: number
-      required:
-      - items
-      - total
+      - language
+      - id
+      - categoryName
+      - createdAt
+      - updatedAt
+      - deletedAt
     GameStates:
       type: string
       enum:
@@ -251,16 +218,47 @@ components:
       - canceled
       - refunded
       - quarantined
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
+    UpdateGameSetDto:
+      type: object
+      properties:
+        startTime:
+          type: string
+        endTime:
+          type: string
+        games:
+          type: array
+          items:
+            type: string
+    Creator:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: string
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - avatar
+      - id
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
+      - createdAt
+      - updatedAt
     GameSet:
       type: object
       properties:
@@ -298,6 +296,42 @@ components:
       - endTime
       - deletedAt
       - games
+    ListGameSet:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameSet'
+        total:
+          type: number
+      required:
+      - items
+      - total
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
     Side:
       type: string
       enum:
@@ -312,11 +346,11 @@ components:
       - TRIVIA
       - SURVEY
       - THIS_THAT
-    SortMode:
+    Language:
       type: string
       enum:
-      - asc
-      - desc
+      - en-us
+      - es-mx
     Game:
       type: object
       properties:
@@ -432,63 +466,29 @@ components:
       - createdAt
       - updatedAt
       - version
-    Category:
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
+    CreateGameSetDto:
       type: object
       properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        id:
+        partnerId:
           type: string
-        categoryName:
+        startTime:
           type: string
-        createdAt:
+        endTime:
           type: string
-        updatedAt:
-          type: string
-        deletedAt:
-          type: string
-        sticker:
-          type: string
-        icon:
-          type: string
+        games:
+          type: array
+          items:
+            type: string
       required:
-      - language
-      - id
-      - categoryName
-      - createdAt
-      - updatedAt
-      - deletedAt
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
+      - partnerId
+      - startTime
+      - endTime
+      - games
   securitySchemes:
     access-token:
       scheme: bearer

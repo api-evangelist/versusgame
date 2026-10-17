@@ -57,6 +57,37 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        emailVerified:
+          type: boolean
+        roles:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: number
+        updatedAt:
+          type: number
+        blocked:
+          type: boolean
+        deletedAt:
+          type: number
+        language:
+          type: string
+        profile:
+          $ref: '#/components/schemas/Profile'
+      required:
+      - id
+      - emailVerified
+      - roles
+      - createdAt
+      - updatedAt
     FindUserslDto:
       type: object
       properties:
@@ -88,37 +119,6 @@ components:
       - id
       - username
       - profileColor
-      - createdAt
-      - updatedAt
-    UserInfo:
-      type: object
-      properties:
-        id:
-          type: string
-        email:
-          type: string
-        emailVerified:
-          type: boolean
-        roles:
-          type: array
-          items:
-            type: string
-        createdAt:
-          type: number
-        updatedAt:
-          type: number
-        blocked:
-          type: boolean
-        deletedAt:
-          type: number
-        language:
-          type: string
-        profile:
-          $ref: '#/components/schemas/Profile'
-      required:
-      - id
-      - emailVerified
-      - roles
       - createdAt
       - updatedAt
   securitySchemes:

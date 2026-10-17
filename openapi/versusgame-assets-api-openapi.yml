@@ -138,6 +138,22 @@ components:
       required:
       - items
       - total
+    AssetSearchFindAllDto:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        ids:
+          type: array
+          items:
+            type: string
+    AssetSearchFindAllDto2:
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/AssetSearchFindAllDto'
     VideoUrls:
       type: object
       properties:
@@ -157,22 +173,33 @@ components:
       - mp4540
       - mp4720
       - poster
-    AssetSearchFindAllDto2:
+    CreateAssetDto:
       type: object
       properties:
-        search:
-          $ref: '#/components/schemas/AssetSearchFindAllDto'
-    AssetSearchFindAllDto:
-      type: object
-      properties:
-        userIds:
-          type: array
-          items:
-            type: string
-        ids:
-          type: array
-          items:
-            type: string
+        name:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: number
+          minimum: 1
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - name
+      - mimeType
+      - size
+      - width
+      - height
+    JobStatus:
+      type: string
+      enum:
+      - created
+      - processing
+      - complete
+      - error
     Asset:
       type: object
       properties:
@@ -237,33 +264,6 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
-    CreateAssetDto:
-      type: object
-      properties:
-        name:
-          type: string
-        mimeType:
-          type: string
-        size:
-          type: number
-          minimum: 1
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - name
-      - mimeType
-      - size
-      - width
-      - height
-    JobStatus:
-      type: string
-      enum:
-      - created
-      - processing
-      - complete
-      - error
   securitySchemes:
     access-token:
       scheme: bearer

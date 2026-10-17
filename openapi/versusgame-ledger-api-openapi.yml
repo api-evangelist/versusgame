@@ -103,16 +103,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FundType:
-      type: string
-      enum:
-      - free
-      - white
-      - black
-      - gray
-      - coin
-      - pending_coin
-      - point
     LedgerListEntity:
       type: object
       properties:
@@ -124,17 +114,16 @@ components:
           type: string
       required:
       - items
-    Fund:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/FundType'
-        amount:
-          type: number
-      required:
-      - type
-      - amount
+    FundType:
+      type: string
+      enum:
+      - free
+      - white
+      - black
+      - gray
+      - coin
+      - pending_coin
+      - point
     LedgersEntity:
       type: object
       properties:
@@ -158,6 +147,17 @@ components:
       - userId
       - createdAt
       - funds
+    Fund:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/FundType'
+        amount:
+          type: number
+      required:
+      - type
+      - amount
     FundsUpdatedReasons:
       type: string
       enum:

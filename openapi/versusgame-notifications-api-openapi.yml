@@ -76,16 +76,59 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FundType:
+    UserAchievementNotification:
+      type: object
+      properties:
+        userId:
+          type: string
+        achievementId:
+          type: string
+      required:
+      - userId
+      - achievementId
+    VideoUrls:
+      type: object
+      properties:
+        hls:
+          type: string
+        mp4360:
+          type: string
+        mp4540:
+          type: string
+        mp4720:
+          type: string
+        poster:
+          type: string
+      required:
+      - hls
+      - mp4360
+      - mp4540
+      - mp4720
+      - poster
+    NotificationTypes:
       type: string
       enum:
-      - free
-      - white
-      - black
-      - gray
-      - coin
-      - pending_coin
-      - point
+      - cuts
+      - game_outcome
+      - game_played
+      - leaderboard_points
+      - user_demotion
+      - user_promotion
+      - user_achievement
+    Orientation:
+      type: string
+      enum:
+      - landscape
+      - portrait
+    GameType:
+      type: string
+      enum:
+      - POLL
+      - PREDICTION
+      - INSTANT_POLL
+      - TRIVIA
+      - SURVEY
+      - THIS_THAT
     Profile:
       type: object
       properties:
@@ -110,143 +153,36 @@ components:
       - profileColor
       - createdAt
       - updatedAt
-    NotificationDto:
+    Creator:
       type: object
       properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/NotificationTypesDto'
-        notification:
-          oneOf:
-          - $ref: '#/components/schemas/CutsNotification'
-          - $ref: '#/components/schemas/GameOutcomeNotification'
-          - $ref: '#/components/schemas/GamePlayedNotification'
-          - $ref: '#/components/schemas/LeaderboardPointsNotification'
-          - $ref: '#/components/schemas/UserDemotionNotification'
-          - $ref: '#/components/schemas/UserPromotionNotification'
-          - $ref: '#/components/schemas/UserAchievementNotification'
+        avatar:
+          type: string
         id:
           type: string
-        userId:
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
           type: string
         createdAt:
           format: date-time
           type: string
+        updatedAt:
+          format: date-time
+          type: string
       required:
-      - type
-      - notification
+      - avatar
       - id
-      - userId
+      - partnerName
+      - avatarAssetId
+      - profileColor
+      - userName
       - createdAt
-    NotificationsListEntity:
-      type: object
-      properties:
-        next:
-          type: string
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/NotificationDto'
-        gameEntities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Game'
-        userEntities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Profile'
-        users:
-          type: array
-          items:
-            type: string
-        games:
-          type: array
-          items:
-            type: string
-      required:
-      - items
-      - gameEntities
-      - userEntities
-      - users
-      - games
-    NotificationTypes:
-      type: string
-      enum:
-      - cuts
-      - game_outcome
-      - game_played
-      - leaderboard_points
-      - user_demotion
-      - user_promotion
-      - user_achievement
-    UserPromotionNotification:
-      type: object
-      properties:
-        userId:
-          type: string
-        fromLeague:
-          type: string
-          enum:
-          - level1
-          - level2
-          - level3
-          - level4
-        toLeague:
-          type: string
-          enum:
-          - level1
-          - level2
-          - level3
-          - level4
-      required:
-      - userId
-      - fromLeague
-      - toLeague
-    GameStates:
-      type: string
-      enum:
-      - new
-      - active
-      - waiting_for_declaration
-      - declaring_winner
-      - winner_declared
-      - changing_game_result
-      - processing_payouts
-      - ended
-      - canceled
-      - refunded
-      - quarantined
-    Orientation:
-      type: string
-      enum:
-      - landscape
-      - portrait
-    NotificationCount:
-      type: object
-      properties:
-        count:
-          type: number
-        rewardsToClaim:
-          type: number
-      required:
-      - count
-      - rewardsToClaim
-    Fund:
-      type: object
-      properties:
-        type:
-          allOf:
-          - $ref: '#/components/schemas/FundType'
-        amount:
-          type: number
-      required:
-      - type
-      - amount
-    Side:
-      type: string
-      enum:
-      - A
-      - B
+      - updatedAt
     CutsNotification:
       type: object
       properties:
@@ -278,27 +214,27 @@ components:
       - isCanceled
       - funds
       - creatorId
-    GamePlayedNotification:
+    LeaderboardPointsNotification:
       type: object
       properties:
-        side:
-          allOf:
-          - $ref: '#/components/schemas/Side'
-        ticketType:
-          allOf:
-          - $ref: '#/components/schemas/TicketType'
         id:
           type: string
-        gameId:
+        leaderboardId:
           type: string
-        quantity:
+        userId:
+          type: string
+        points:
           type: number
       required:
-      - side
-      - ticketType
       - id
-      - gameId
-      - quantity
+      - leaderboardId
+      - userId
+      - points
+    Side:
+      type: string
+      enum:
+      - A
+      - B
     Game:
       type: object
       properties:
@@ -414,128 +350,34 @@ components:
       - createdAt
       - updatedAt
       - version
-    GameplayStates:
+    FundsUpdatedReasons:
       type: string
       enum:
-      - waiting_for_match
-      - matched
-      - declared_winner
-      - declared_loser
-      - won
-      - lost
-      - canceled
-    UserAchievementNotification:
+      - free_gift
+      - host_cut
+      - referrer_cut
+      - parent_cut
+      - transaction_voided
+      - game_played
+      - game_outcome
+      - pending_outcome
+      - purchase
+      - redeem
+      - refund
+      - payout
+      - admin_update
+      - distributor_cut
+      - achievement
+    NotificationCount:
       type: object
       properties:
-        userId:
-          type: string
-        achievementId:
-          type: string
-      required:
-      - userId
-      - achievementId
-    VideoUrls:
-      type: object
-      properties:
-        hls:
-          type: string
-        mp4360:
-          type: string
-        mp4540:
-          type: string
-        mp4720:
-          type: string
-        poster:
-          type: string
-      required:
-      - hls
-      - mp4360
-      - mp4540
-      - mp4720
-      - poster
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
-    Creator:
-      type: object
-      properties:
-        avatar:
-          type: string
-        id:
-          type: string
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - avatar
-      - id
-      - partnerName
-      - avatarAssetId
-      - profileColor
-      - userName
-      - createdAt
-      - updatedAt
-    TicketType:
-      type: string
-      enum:
-      - white
-      - black
-      - free
-    UserDemotionNotification:
-      type: object
-      properties:
-        userId:
-          type: string
-      required:
-      - userId
-    LeaderboardPointsNotification:
-      type: object
-      properties:
-        id:
-          type: string
-        leaderboardId:
-          type: string
-        userId:
-          type: string
-        points:
+        count:
+          type: number
+        rewardsToClaim:
           type: number
       required:
-      - id
-      - leaderboardId
-      - userId
-      - points
-    GameType:
-      type: string
-      enum:
-      - POLL
-      - PREDICTION
-      - INSTANT_POLL
-      - TRIVIA
-      - SURVEY
-      - THIS_THAT
-    NotificationTypesDto:
-      type: string
-      enum:
-      - cuts
-      - game_outcome
-      - game_played
-      - leaderboard_points
-      - user_demotion
-      - user_promotion
-      - user_achievement
+      - count
+      - rewardsToClaim
     Category:
       type: object
       properties:
@@ -563,24 +405,90 @@ components:
       - createdAt
       - updatedAt
       - deletedAt
-    FundsUpdatedReasons:
+    GameStates:
       type: string
       enum:
-      - free_gift
-      - host_cut
-      - referrer_cut
-      - parent_cut
-      - transaction_voided
-      - game_played
-      - game_outcome
-      - pending_outcome
-      - purchase
-      - redeem
-      - refund
-      - payout
-      - admin_update
-      - distributor_cut
-      - achievement
+      - new
+      - active
+      - waiting_for_declaration
+      - declaring_winner
+      - winner_declared
+      - changing_game_result
+      - processing_payouts
+      - ended
+      - canceled
+      - refunded
+      - quarantined
+    GameplayStates:
+      type: string
+      enum:
+      - waiting_for_match
+      - matched
+      - declared_winner
+      - declared_loser
+      - won
+      - lost
+      - canceled
+    NotificationsListEntity:
+      type: object
+      properties:
+        next:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationDto'
+        gameEntities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Game'
+        userEntities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Profile'
+        users:
+          type: array
+          items:
+            type: string
+        games:
+          type: array
+          items:
+            type: string
+      required:
+      - items
+      - gameEntities
+      - userEntities
+      - users
+      - games
+    TicketType:
+      type: string
+      enum:
+      - white
+      - black
+      - free
+    UserPromotionNotification:
+      type: object
+      properties:
+        userId:
+          type: string
+        fromLeague:
+          type: string
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+        toLeague:
+          type: string
+          enum:
+          - level1
+          - level2
+          - level3
+          - level4
+      required:
+      - userId
+      - fromLeague
+      - toLeague
     GameOutcomeNotification:
       type: object
       properties:
@@ -617,6 +525,98 @@ components:
       - matched
       - outcomeChanged
       - funds
+    GamePlayedNotification:
+      type: object
+      properties:
+        side:
+          allOf:
+          - $ref: '#/components/schemas/Side'
+        ticketType:
+          allOf:
+          - $ref: '#/components/schemas/TicketType'
+        id:
+          type: string
+        gameId:
+          type: string
+        quantity:
+          type: number
+      required:
+      - side
+      - ticketType
+      - id
+      - gameId
+      - quantity
+    NotificationDto:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/NotificationTypesDto'
+        notification:
+          oneOf:
+          - $ref: '#/components/schemas/CutsNotification'
+          - $ref: '#/components/schemas/GameOutcomeNotification'
+          - $ref: '#/components/schemas/GamePlayedNotification'
+          - $ref: '#/components/schemas/LeaderboardPointsNotification'
+          - $ref: '#/components/schemas/UserDemotionNotification'
+          - $ref: '#/components/schemas/UserPromotionNotification'
+          - $ref: '#/components/schemas/UserAchievementNotification'
+        id:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - type
+      - notification
+      - id
+      - userId
+      - createdAt
+    UserDemotionNotification:
+      type: object
+      properties:
+        userId:
+          type: string
+      required:
+      - userId
+    FundType:
+      type: string
+      enum:
+      - free
+      - white
+      - black
+      - gray
+      - coin
+      - pending_coin
+      - point
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    Fund:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/FundType'
+        amount:
+          type: number
+      required:
+      - type
+      - amount
+    NotificationTypesDto:
+      type: string
+      enum:
+      - cuts
+      - game_outcome
+      - game_played
+      - leaderboard_points
+      - user_demotion
+      - user_promotion
+      - user_achievement
   securitySchemes:
     access-token:
       scheme: bearer

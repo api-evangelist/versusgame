@@ -102,28 +102,6 @@ components:
       - mediaId
       - keyFrameIndex
       - timestamp
-    SearchKeyFramesDto:
-      type: object
-      properties:
-        mediaId:
-          type: string
-        description:
-          type: string
-        embedding:
-          type: array
-          items:
-            type: number
-        image:
-          format: Binary
-          allOf:
-          - $ref: '#/components/schemas/File'
-    CreateKeyFrameResponse:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
     SearchKeyFrameResponse:
       type: object
       properties:
@@ -144,6 +122,13 @@ components:
     File:
       type: object
       properties: {}
+    CreateKeyFrameResponse:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     KeyFrameEntity:
       type: object
       properties:
@@ -170,6 +155,21 @@ components:
       - description
       - keyFrameIndex
       - embedding
+    SearchKeyFramesDto:
+      type: object
+      properties:
+        mediaId:
+          type: string
+        description:
+          type: string
+        embedding:
+          type: array
+          items:
+            type: number
+        image:
+          format: Binary
+          allOf:
+          - $ref: '#/components/schemas/File'
   securitySchemes:
     access-token:
       scheme: bearer

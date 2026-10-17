@@ -166,13 +166,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ValidUsernameDto:
-      type: object
-      properties:
-        username:
-          type: string
-      required:
-      - username
     ListExpandedProfile:
       type: object
       properties:
@@ -209,6 +202,24 @@ components:
       - profileColor
       - createdAt
       - updatedAt
+    ValidUsernameDto:
+      type: object
+      properties:
+        username:
+          type: string
+      required:
+      - username
+    UpdateProfileDto:
+      type: object
+      properties:
+        username:
+          type: string
+        profileColor:
+          type: string
+        avatarAssetId:
+          type:
+          - string
+          - 'null'
     ExpandedProfile:
       type: object
       properties:
@@ -241,6 +252,47 @@ components:
       - profileColor
       - createdAt
       - updatedAt
+    DailySetCount:
+      type: object
+      properties:
+        totalCompleted:
+          type: number
+          default: 0
+        totalWins:
+          type: number
+          default: 0
+        totalLosses:
+          type: number
+          default: 0
+        totalTies:
+          type: number
+          default: 0
+      required:
+      - totalCompleted
+      - totalWins
+      - totalLosses
+      - totalTies
+    Role:
+      type: string
+      enum:
+      - anonymous
+      - ADMIN
+      - CREATOR
+      - USER
+      - SUPER_ADMIN
+      - AUTOGAME
+      - DISTRIBUTION_MANAGER
+      - MICROSOFT_REWARDS_USER
+    WalletLeague:
+      type: object
+      properties:
+        name:
+          type: string
+        leaderboardId:
+          type: string
+      required:
+      - name
+      - leaderboardId
     WalletResponse:
       type: object
       properties:
@@ -318,41 +370,6 @@ components:
       - emailVerified
       - referralCount
       - dailySetCounts
-    Role:
-      type: string
-      enum:
-      - anonymous
-      - ADMIN
-      - CREATOR
-      - USER
-      - SUPER_ADMIN
-      - AUTOGAME
-      - DISTRIBUTION_MANAGER
-      - MICROSOFT_REWARDS_USER
-    SearchFindProfileEmailDto:
-      type: object
-      properties:
-        userEmail:
-          type: string
-        username:
-          type: string
-        usernameLike:
-          type: string
-        ids:
-          type: array
-          items:
-            type: string
-    UpdateProfileDto:
-      type: object
-      properties:
-        username:
-          type: string
-        profileColor:
-          type: string
-        avatarAssetId:
-          type:
-          - string
-          - 'null'
     SortMode:
       type: string
       enum:
@@ -367,36 +384,19 @@ components:
         createdAt:
           allOf:
           - $ref: '#/components/schemas/SortMode'
-    DailySetCount:
+    SearchFindProfileEmailDto:
       type: object
       properties:
-        totalCompleted:
-          type: number
-          default: 0
-        totalWins:
-          type: number
-          default: 0
-        totalLosses:
-          type: number
-          default: 0
-        totalTies:
-          type: number
-          default: 0
-      required:
-      - totalCompleted
-      - totalWins
-      - totalLosses
-      - totalTies
-    WalletLeague:
-      type: object
-      properties:
-        name:
+        userEmail:
           type: string
-        leaderboardId:
+        username:
           type: string
-      required:
-      - name
-      - leaderboardId
+        usernameLike:
+          type: string
+        ids:
+          type: array
+          items:
+            type: string
   securitySchemes:
     access-token:
       scheme: bearer

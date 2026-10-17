@@ -161,20 +161,6 @@ components:
       required:
       - items
       - total
-    SortFindProductDto:
-      type: object
-      properties:
-        amount:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        productName:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-    Language:
-      type: string
-      enum:
-      - en-us
-      - es-mx
     UpdateProductDto:
       type: object
       properties:
@@ -199,26 +185,63 @@ components:
           enum:
           - en-us
           - es-mx
-    SortFindProductDto2:
-      type: object
-      properties:
-        sort:
-          $ref: '#/components/schemas/SortFindProductDto'
     SearchFindProductDto2:
       type: object
       properties:
         search:
           $ref: '#/components/schemas/SearchFindProductDto'
-    SearchFindProductDto:
+    Language:
+      type: string
+      enum:
+      - en-us
+      - es-mx
+    SortFindProductDto:
       type: object
       properties:
+        amount:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
         productName:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
     SortMode:
       type: string
       enum:
       - asc
       - desc
+    CreateProductDto:
+      type: object
+      properties:
+        productName:
+          type: string
+        productDescription:
+          type: string
+        whiteTickets:
+          type: number
+        blackTickets:
+          type: number
+        amount:
+          type: number
+        mostPopular:
+          type: boolean
+        language:
+          type: string
+          enum:
+          - en-us
+          - es-mx
+      required:
+      - productName
+      - productDescription
+      - whiteTickets
+      - blackTickets
+      - amount
+      - mostPopular
+      - language
+    SortFindProductDto2:
+      type: object
+      properties:
+        sort:
+          $ref: '#/components/schemas/SortFindProductDto'
     ProductEntity:
       type: object
       properties:
@@ -256,34 +279,11 @@ components:
       - mostPopular
       - createdAt
       - deletedAt
-    CreateProductDto:
+    SearchFindProductDto:
       type: object
       properties:
         productName:
           type: string
-        productDescription:
-          type: string
-        whiteTickets:
-          type: number
-        blackTickets:
-          type: number
-        amount:
-          type: number
-        mostPopular:
-          type: boolean
-        language:
-          type: string
-          enum:
-          - en-us
-          - es-mx
-      required:
-      - productName
-      - productDescription
-      - whiteTickets
-      - blackTickets
-      - amount
-      - mostPopular
-      - language
   securitySchemes:
     access-token:
       scheme: bearer

@@ -147,15 +147,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SortFindCreatorDto:
-      type: object
-      properties:
-        partnerName:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
-        userName:
-          allOf:
-          - $ref: '#/components/schemas/SortMode'
     SearchFindCreatorDto:
       type: object
       properties:
@@ -167,22 +158,6 @@ components:
           type: string
         userName:
           type: string
-    UpdateCreatorDto:
-      type: object
-      properties:
-        partnerName:
-          type: string
-        avatarAssetId:
-          type: string
-        profileColor:
-          type: string
-        userName:
-          type: string
-    SortMode:
-      type: string
-      enum:
-      - asc
-      - desc
     ListCreator:
       type: object
       properties:
@@ -225,6 +200,31 @@ components:
       - userName
       - createdAt
       - updatedAt
+    UpdateCreatorDto:
+      type: object
+      properties:
+        partnerName:
+          type: string
+        avatarAssetId:
+          type: string
+        profileColor:
+          type: string
+        userName:
+          type: string
+    SortFindCreatorDto:
+      type: object
+      properties:
+        partnerName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+        userName:
+          allOf:
+          - $ref: '#/components/schemas/SortMode'
+    SortMode:
+      type: string
+      enum:
+      - asc
+      - desc
   securitySchemes:
     access-token:
       scheme: bearer
